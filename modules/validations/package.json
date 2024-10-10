@@ -1,0 +1,12 @@
+{
+  "name": "shared-validations",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "author": "Shinobisoft524",
+  "license": "UNLICENSED",
+  "scripts": {},
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "resolutions": {}
+}
