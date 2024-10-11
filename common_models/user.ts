@@ -4,19 +4,17 @@ export interface IAuthUser {
 }
 
 export interface IBaseUser {
-  id: string;
+  id?: number;
   email: string;
   emailVerified?: Date;
   password: string;
   name: string;
-  roleId: string;
 }
 
 export interface IRole {
-  id: string;
+  id: number;
   name: string;
   description: string;
-  isActived: boolean;
 }
 
 export interface IFullUser extends IBaseUser {
