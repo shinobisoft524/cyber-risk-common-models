@@ -7513,9 +7513,9 @@ export namespace Prisma {
   export type OrganisationGroupByOutputType = {
     id: number
     name: string
-    description: string
-    isActive: boolean
-    ownerId: number
+    description: string | null
+    isActive: boolean | null
+    ownerId: number | null
     createdAt: Date
     updatedAt: Date
     _count: OrganisationCountAggregateOutputType | null
@@ -7547,7 +7547,7 @@ export namespace Prisma {
     ownerId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    Owner?: boolean | UserDefaultArgs<ExtArgs>
+    Owner?: boolean | Organisation$OwnerArgs<ExtArgs>
     Assessment?: boolean | Organisation$AssessmentArgs<ExtArgs>
     Team?: boolean | Organisation$TeamArgs<ExtArgs>
     _count?: boolean | OrganisationCountOutputTypeDefaultArgs<ExtArgs>
@@ -7565,7 +7565,7 @@ export namespace Prisma {
   }
 
   export type OrganisationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Owner?: boolean | UserDefaultArgs<ExtArgs>
+    Owner?: boolean | Organisation$OwnerArgs<ExtArgs>
     Assessment?: boolean | Organisation$AssessmentArgs<ExtArgs>
     Team?: boolean | Organisation$TeamArgs<ExtArgs>
     _count?: boolean | OrganisationCountOutputTypeDefaultArgs<ExtArgs>
@@ -7574,16 +7574,16 @@ export namespace Prisma {
   export type $OrganisationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Organisation"
     objects: {
-      Owner: Prisma.$UserPayload<ExtArgs>
+      Owner: Prisma.$UserPayload<ExtArgs> | null
       Assessment: Prisma.$AssessmentPayload<ExtArgs>[]
       Team: Prisma.$TeamPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      description: string
-      isActive: boolean
-      ownerId: number
+      description: string | null
+      isActive: boolean | null
+      ownerId: number | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["organisation"]>
@@ -7926,7 +7926,7 @@ export namespace Prisma {
    */
   export interface Prisma__OrganisationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Owner<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    Owner<T extends Organisation$OwnerArgs<ExtArgs> = {}>(args?: Subset<T, Organisation$OwnerArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     Assessment<T extends Organisation$AssessmentArgs<ExtArgs> = {}>(args?: Subset<T, Organisation$AssessmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentPayload<ExtArgs>, T, "findMany"> | Null>
     Team<T extends Organisation$TeamArgs<ExtArgs> = {}>(args?: Subset<T, Organisation$TeamArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamPayload<ExtArgs>, T, "findMany"> | Null>
     /**
@@ -8261,6 +8261,21 @@ export namespace Prisma {
      * Filter which Organisations to delete
      */
     where?: OrganisationWhereInput
+  }
+
+  /**
+   * Organisation.Owner
+   */
+  export type Organisation$OwnerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -16067,12 +16082,12 @@ export namespace Prisma {
     NOT?: OrganisationWhereInput | OrganisationWhereInput[]
     id?: IntFilter<"Organisation"> | number
     name?: StringFilter<"Organisation"> | string
-    description?: StringFilter<"Organisation"> | string
-    isActive?: BoolFilter<"Organisation"> | boolean
-    ownerId?: IntFilter<"Organisation"> | number
+    description?: StringNullableFilter<"Organisation"> | string | null
+    isActive?: BoolNullableFilter<"Organisation"> | boolean | null
+    ownerId?: IntNullableFilter<"Organisation"> | number | null
     createdAt?: DateTimeFilter<"Organisation"> | Date | string
     updatedAt?: DateTimeFilter<"Organisation"> | Date | string
-    Owner?: XOR<UserRelationFilter, UserWhereInput>
+    Owner?: XOR<UserNullableRelationFilter, UserWhereInput> | null
     Assessment?: AssessmentListRelationFilter
     Team?: TeamListRelationFilter
   }
@@ -16080,9 +16095,9 @@ export namespace Prisma {
   export type OrganisationOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    description?: SortOrder
-    isActive?: SortOrder
-    ownerId?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrderInput | SortOrder
+    ownerId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     Owner?: UserOrderByWithRelationInput
@@ -16092,26 +16107,26 @@ export namespace Prisma {
 
   export type OrganisationWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    description?: string
+    name?: string
     ownerId?: number
     AND?: OrganisationWhereInput | OrganisationWhereInput[]
     OR?: OrganisationWhereInput[]
     NOT?: OrganisationWhereInput | OrganisationWhereInput[]
-    name?: StringFilter<"Organisation"> | string
-    isActive?: BoolFilter<"Organisation"> | boolean
+    description?: StringNullableFilter<"Organisation"> | string | null
+    isActive?: BoolNullableFilter<"Organisation"> | boolean | null
     createdAt?: DateTimeFilter<"Organisation"> | Date | string
     updatedAt?: DateTimeFilter<"Organisation"> | Date | string
-    Owner?: XOR<UserRelationFilter, UserWhereInput>
+    Owner?: XOR<UserNullableRelationFilter, UserWhereInput> | null
     Assessment?: AssessmentListRelationFilter
     Team?: TeamListRelationFilter
-  }, "id" | "id" | "description" | "ownerId">
+  }, "id" | "id" | "name" | "ownerId">
 
   export type OrganisationOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    description?: SortOrder
-    isActive?: SortOrder
-    ownerId?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrderInput | SortOrder
+    ownerId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: OrganisationCountOrderByAggregateInput
@@ -16127,9 +16142,9 @@ export namespace Prisma {
     NOT?: OrganisationScalarWhereWithAggregatesInput | OrganisationScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Organisation"> | number
     name?: StringWithAggregatesFilter<"Organisation"> | string
-    description?: StringWithAggregatesFilter<"Organisation"> | string
-    isActive?: BoolWithAggregatesFilter<"Organisation"> | boolean
-    ownerId?: IntWithAggregatesFilter<"Organisation"> | number
+    description?: StringNullableWithAggregatesFilter<"Organisation"> | string | null
+    isActive?: BoolNullableWithAggregatesFilter<"Organisation"> | boolean | null
+    ownerId?: IntNullableWithAggregatesFilter<"Organisation"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Organisation"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Organisation"> | Date | string
   }
@@ -17154,11 +17169,11 @@ export namespace Prisma {
 
   export type OrganisationCreateInput = {
     name: string
-    description: string
-    isActive?: boolean
+    description?: string | null
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    Owner: UserCreateNestedOneWithoutOrganisationInput
+    Owner?: UserCreateNestedOneWithoutOrganisationInput
     Assessment?: AssessmentCreateNestedManyWithoutOrganisationInput
     Team?: TeamCreateNestedManyWithoutOrganisationInput
   }
@@ -17166,9 +17181,9 @@ export namespace Prisma {
   export type OrganisationUncheckedCreateInput = {
     id?: number
     name: string
-    description: string
-    isActive?: boolean
-    ownerId: number
+    description?: string | null
+    isActive?: boolean | null
+    ownerId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Assessment?: AssessmentUncheckedCreateNestedManyWithoutOrganisationInput
@@ -17177,11 +17192,11 @@ export namespace Prisma {
 
   export type OrganisationUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Owner?: UserUpdateOneRequiredWithoutOrganisationNestedInput
+    Owner?: UserUpdateOneWithoutOrganisationNestedInput
     Assessment?: AssessmentUpdateManyWithoutOrganisationNestedInput
     Team?: TeamUpdateManyWithoutOrganisationNestedInput
   }
@@ -17189,9 +17204,9 @@ export namespace Prisma {
   export type OrganisationUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    ownerId?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ownerId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUncheckedUpdateManyWithoutOrganisationNestedInput
@@ -17201,17 +17216,17 @@ export namespace Prisma {
   export type OrganisationCreateManyInput = {
     id?: number
     name: string
-    description: string
-    isActive?: boolean
-    ownerId: number
+    description?: string | null
+    isActive?: boolean | null
+    ownerId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type OrganisationUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17219,9 +17234,9 @@ export namespace Prisma {
   export type OrganisationUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    ownerId?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ownerId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18327,9 +18342,25 @@ export namespace Prisma {
     assessmentAssignId?: SortOrder
   }
 
-  export type UserRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type UserNullableRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
   }
 
   export type AssessmentListRelationFilter = {
@@ -18390,6 +18421,30 @@ export namespace Prisma {
   export type OrganisationSumOrderByAggregateInput = {
     id?: SortOrder
     ownerId?: SortOrder
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type EnumQuestionTypeNullableFilter<$PrismaModel = never> = {
@@ -18602,6 +18657,11 @@ export namespace Prisma {
     in?: $Enums.TeamMemberLevel[]
     notIn?: $Enums.TeamMemberLevel[]
     not?: NestedEnumTeamMemberLevelFilter<$PrismaModel> | $Enums.TeamMemberLevel
+  }
+
+  export type UserRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
   export type TeamMemberCountOrderByAggregateInput = {
@@ -19310,10 +19370,16 @@ export namespace Prisma {
     connect?: TeamWhereUniqueInput | TeamWhereUniqueInput[]
   }
 
-  export type UserUpdateOneRequiredWithoutOrganisationNestedInput = {
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
+  export type UserUpdateOneWithoutOrganisationNestedInput = {
     create?: XOR<UserCreateWithoutOrganisationInput, UserUncheckedCreateWithoutOrganisationInput>
     connectOrCreate?: UserCreateOrConnectWithoutOrganisationInput
     upsert?: UserUpsertWithoutOrganisationInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOrganisationInput, UserUpdateWithoutOrganisationInput>, UserUncheckedUpdateWithoutOrganisationInput>
   }
@@ -19344,6 +19410,14 @@ export namespace Prisma {
     update?: TeamUpdateWithWhereUniqueWithoutOrganisationInput | TeamUpdateWithWhereUniqueWithoutOrganisationInput[]
     updateMany?: TeamUpdateManyWithWhereWithoutOrganisationInput | TeamUpdateManyWithWhereWithoutOrganisationInput[]
     deleteMany?: TeamScalarWhereInput | TeamScalarWhereInput[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type AssessmentUncheckedUpdateManyWithoutOrganisationNestedInput = {
@@ -20057,6 +20131,46 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedEnumQuestionTypeNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.QuestionType | EnumQuestionTypeFieldRefInput<$PrismaModel> | null
     in?: $Enums.QuestionType[] | null
@@ -20118,20 +20232,20 @@ export namespace Prisma {
 
   export type OrganisationCreateWithoutAssessmentInput = {
     name: string
-    description: string
-    isActive?: boolean
+    description?: string | null
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    Owner: UserCreateNestedOneWithoutOrganisationInput
+    Owner?: UserCreateNestedOneWithoutOrganisationInput
     Team?: TeamCreateNestedManyWithoutOrganisationInput
   }
 
   export type OrganisationUncheckedCreateWithoutAssessmentInput = {
     id?: number
     name: string
-    description: string
-    isActive?: boolean
-    ownerId: number
+    description?: string | null
+    isActive?: boolean | null
+    ownerId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Team?: TeamUncheckedCreateNestedManyWithoutOrganisationInput
@@ -20262,20 +20376,20 @@ export namespace Prisma {
 
   export type OrganisationUpdateWithoutAssessmentInput = {
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Owner?: UserUpdateOneRequiredWithoutOrganisationNestedInput
+    Owner?: UserUpdateOneWithoutOrganisationNestedInput
     Team?: TeamUpdateManyWithoutOrganisationNestedInput
   }
 
   export type OrganisationUncheckedUpdateWithoutAssessmentInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    ownerId?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ownerId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Team?: TeamUncheckedUpdateManyWithoutOrganisationNestedInput
@@ -21912,20 +22026,20 @@ export namespace Prisma {
 
   export type OrganisationCreateWithoutTeamInput = {
     name: string
-    description: string
-    isActive?: boolean
+    description?: string | null
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    Owner: UserCreateNestedOneWithoutOrganisationInput
+    Owner?: UserCreateNestedOneWithoutOrganisationInput
     Assessment?: AssessmentCreateNestedManyWithoutOrganisationInput
   }
 
   export type OrganisationUncheckedCreateWithoutTeamInput = {
     id?: number
     name: string
-    description: string
-    isActive?: boolean
-    ownerId: number
+    description?: string | null
+    isActive?: boolean | null
+    ownerId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Assessment?: AssessmentUncheckedCreateNestedManyWithoutOrganisationInput
@@ -22027,20 +22141,20 @@ export namespace Prisma {
 
   export type OrganisationUpdateWithoutTeamInput = {
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Owner?: UserUpdateOneRequiredWithoutOrganisationNestedInput
+    Owner?: UserUpdateOneWithoutOrganisationNestedInput
     Assessment?: AssessmentUpdateManyWithoutOrganisationNestedInput
   }
 
   export type OrganisationUncheckedUpdateWithoutTeamInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    ownerId?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ownerId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUncheckedUpdateManyWithoutOrganisationNestedInput
@@ -22300,8 +22414,8 @@ export namespace Prisma {
 
   export type OrganisationCreateWithoutOwnerInput = {
     name: string
-    description: string
-    isActive?: boolean
+    description?: string | null
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Assessment?: AssessmentCreateNestedManyWithoutOrganisationInput
@@ -22311,8 +22425,8 @@ export namespace Prisma {
   export type OrganisationUncheckedCreateWithoutOwnerInput = {
     id?: number
     name: string
-    description: string
-    isActive?: boolean
+    description?: string | null
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Assessment?: AssessmentUncheckedCreateNestedManyWithoutOrganisationInput
@@ -22397,8 +22511,8 @@ export namespace Prisma {
 
   export type OrganisationUpdateWithoutOwnerInput = {
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUpdateManyWithoutOrganisationNestedInput
@@ -22408,8 +22522,8 @@ export namespace Prisma {
   export type OrganisationUncheckedUpdateWithoutOwnerInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUncheckedUpdateManyWithoutOrganisationNestedInput
