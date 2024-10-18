@@ -16392,10 +16392,10 @@ export namespace Prisma {
 
   export type TeamWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    name?: string
     AND?: TeamWhereInput | TeamWhereInput[]
     OR?: TeamWhereInput[]
     NOT?: TeamWhereInput | TeamWhereInput[]
-    name?: StringFilter<"Team"> | string
     description?: StringNullableFilter<"Team"> | string | null
     logo?: StringNullableFilter<"Team"> | string | null
     organisationId?: IntFilter<"Team"> | number
@@ -16409,7 +16409,7 @@ export namespace Prisma {
     Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
     AssessmentAssign?: AssessmentAssignListRelationFilter
     AssessmentQuestionAssign?: AssessmentQuestionAssignListRelationFilter
-  }, "id" | "id">
+  }, "id" | "id" | "name">
 
   export type TeamOrderByWithAggregationInput = {
     id?: SortOrder
