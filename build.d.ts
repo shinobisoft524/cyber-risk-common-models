@@ -79,6 +79,26 @@ export type Team = $Result.DefaultSelection<Prisma.$TeamPayload>
  */
 export type TeamMember = $Result.DefaultSelection<Prisma.$TeamMemberPayload>
 /**
+ * Model Template
+ * 
+ */
+export type Template = $Result.DefaultSelection<Prisma.$TemplatePayload>
+/**
+ * Model TemplateStage
+ * 
+ */
+export type TemplateStage = $Result.DefaultSelection<Prisma.$TemplateStagePayload>
+/**
+ * Model TemplateQuestion
+ * 
+ */
+export type TemplateQuestion = $Result.DefaultSelection<Prisma.$TemplateQuestionPayload>
+/**
+ * Model TemplateQuestionAnswer
+ * 
+ */
+export type TemplateQuestionAnswer = $Result.DefaultSelection<Prisma.$TemplateQuestionAnswerPayload>
+/**
  * Model User
  * 
  */
@@ -388,6 +408,46 @@ export class PrismaClient<
     * ```
     */
   get teamMember(): Prisma.TeamMemberDelegate<ExtArgs>;
+
+  /**
+   * `prisma.template`: Exposes CRUD operations for the **Template** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Templates
+    * const templates = await prisma.template.findMany()
+    * ```
+    */
+  get template(): Prisma.TemplateDelegate<ExtArgs>;
+
+  /**
+   * `prisma.templateStage`: Exposes CRUD operations for the **TemplateStage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TemplateStages
+    * const templateStages = await prisma.templateStage.findMany()
+    * ```
+    */
+  get templateStage(): Prisma.TemplateStageDelegate<ExtArgs>;
+
+  /**
+   * `prisma.templateQuestion`: Exposes CRUD operations for the **TemplateQuestion** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TemplateQuestions
+    * const templateQuestions = await prisma.templateQuestion.findMany()
+    * ```
+    */
+  get templateQuestion(): Prisma.TemplateQuestionDelegate<ExtArgs>;
+
+  /**
+   * `prisma.templateQuestionAnswer`: Exposes CRUD operations for the **TemplateQuestionAnswer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TemplateQuestionAnswers
+    * const templateQuestionAnswers = await prisma.templateQuestionAnswer.findMany()
+    * ```
+    */
+  get templateQuestionAnswer(): Prisma.TemplateQuestionAnswerDelegate<ExtArgs>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -860,6 +920,10 @@ export namespace Prisma {
     Role: 'Role',
     Team: 'Team',
     TeamMember: 'TeamMember',
+    Template: 'Template',
+    TemplateStage: 'TemplateStage',
+    TemplateQuestion: 'TemplateQuestion',
+    TemplateQuestionAnswer: 'TemplateQuestionAnswer',
     User: 'User',
     UserRole: 'UserRole'
   };
@@ -877,7 +941,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "assessment" | "assessmentAssign" | "assessmentQuestion" | "assessmentQuestionAnswer" | "assessmentQuestionAssign" | "organisation" | "organisationRole" | "organisationStructure" | "question" | "auestionAnswer" | "role" | "team" | "teamMember" | "user" | "userRole"
+      modelProps: "assessment" | "assessmentAssign" | "assessmentQuestion" | "assessmentQuestionAnswer" | "assessmentQuestionAssign" | "organisation" | "organisationRole" | "organisationStructure" | "question" | "auestionAnswer" | "role" | "team" | "teamMember" | "template" | "templateStage" | "templateQuestion" | "templateQuestionAnswer" | "user" | "userRole"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1739,6 +1803,270 @@ export namespace Prisma {
           }
         }
       }
+      Template: {
+        payload: Prisma.$TemplatePayload<ExtArgs>
+        fields: Prisma.TemplateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TemplateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TemplateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplatePayload>
+          }
+          findFirst: {
+            args: Prisma.TemplateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TemplateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplatePayload>
+          }
+          findMany: {
+            args: Prisma.TemplateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplatePayload>[]
+          }
+          create: {
+            args: Prisma.TemplateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplatePayload>
+          }
+          createMany: {
+            args: Prisma.TemplateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.TemplateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplatePayload>
+          }
+          update: {
+            args: Prisma.TemplateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplatePayload>
+          }
+          deleteMany: {
+            args: Prisma.TemplateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TemplateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TemplateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplatePayload>
+          }
+          aggregate: {
+            args: Prisma.TemplateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTemplate>
+          }
+          groupBy: {
+            args: Prisma.TemplateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TemplateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TemplateCountArgs<ExtArgs>
+            result: $Utils.Optional<TemplateCountAggregateOutputType> | number
+          }
+        }
+      }
+      TemplateStage: {
+        payload: Prisma.$TemplateStagePayload<ExtArgs>
+        fields: Prisma.TemplateStageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TemplateStageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateStagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TemplateStageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateStagePayload>
+          }
+          findFirst: {
+            args: Prisma.TemplateStageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateStagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TemplateStageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateStagePayload>
+          }
+          findMany: {
+            args: Prisma.TemplateStageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateStagePayload>[]
+          }
+          create: {
+            args: Prisma.TemplateStageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateStagePayload>
+          }
+          createMany: {
+            args: Prisma.TemplateStageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.TemplateStageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateStagePayload>
+          }
+          update: {
+            args: Prisma.TemplateStageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateStagePayload>
+          }
+          deleteMany: {
+            args: Prisma.TemplateStageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TemplateStageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TemplateStageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateStagePayload>
+          }
+          aggregate: {
+            args: Prisma.TemplateStageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTemplateStage>
+          }
+          groupBy: {
+            args: Prisma.TemplateStageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TemplateStageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TemplateStageCountArgs<ExtArgs>
+            result: $Utils.Optional<TemplateStageCountAggregateOutputType> | number
+          }
+        }
+      }
+      TemplateQuestion: {
+        payload: Prisma.$TemplateQuestionPayload<ExtArgs>
+        fields: Prisma.TemplateQuestionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TemplateQuestionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TemplateQuestionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionPayload>
+          }
+          findFirst: {
+            args: Prisma.TemplateQuestionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TemplateQuestionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionPayload>
+          }
+          findMany: {
+            args: Prisma.TemplateQuestionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionPayload>[]
+          }
+          create: {
+            args: Prisma.TemplateQuestionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionPayload>
+          }
+          createMany: {
+            args: Prisma.TemplateQuestionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.TemplateQuestionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionPayload>
+          }
+          update: {
+            args: Prisma.TemplateQuestionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionPayload>
+          }
+          deleteMany: {
+            args: Prisma.TemplateQuestionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TemplateQuestionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TemplateQuestionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionPayload>
+          }
+          aggregate: {
+            args: Prisma.TemplateQuestionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTemplateQuestion>
+          }
+          groupBy: {
+            args: Prisma.TemplateQuestionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TemplateQuestionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TemplateQuestionCountArgs<ExtArgs>
+            result: $Utils.Optional<TemplateQuestionCountAggregateOutputType> | number
+          }
+        }
+      }
+      TemplateQuestionAnswer: {
+        payload: Prisma.$TemplateQuestionAnswerPayload<ExtArgs>
+        fields: Prisma.TemplateQuestionAnswerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TemplateQuestionAnswerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionAnswerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TemplateQuestionAnswerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionAnswerPayload>
+          }
+          findFirst: {
+            args: Prisma.TemplateQuestionAnswerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionAnswerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TemplateQuestionAnswerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionAnswerPayload>
+          }
+          findMany: {
+            args: Prisma.TemplateQuestionAnswerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionAnswerPayload>[]
+          }
+          create: {
+            args: Prisma.TemplateQuestionAnswerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionAnswerPayload>
+          }
+          createMany: {
+            args: Prisma.TemplateQuestionAnswerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.TemplateQuestionAnswerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionAnswerPayload>
+          }
+          update: {
+            args: Prisma.TemplateQuestionAnswerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionAnswerPayload>
+          }
+          deleteMany: {
+            args: Prisma.TemplateQuestionAnswerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TemplateQuestionAnswerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TemplateQuestionAnswerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TemplateQuestionAnswerPayload>
+          }
+          aggregate: {
+            args: Prisma.TemplateQuestionAnswerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTemplateQuestionAnswer>
+          }
+          groupBy: {
+            args: Prisma.TemplateQuestionAnswerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TemplateQuestionAnswerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TemplateQuestionAnswerCountArgs<ExtArgs>
+            result: $Utils.Optional<TemplateQuestionAnswerCountAggregateOutputType> | number
+          }
+        }
+      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -2437,6 +2765,99 @@ export namespace Prisma {
    */
   export type TeamMemberCountOutputTypeCountAssessmentQuestionAssignArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AssessmentQuestionAssignWhereInput
+  }
+
+
+  /**
+   * Count Type TemplateCountOutputType
+   */
+
+  export type TemplateCountOutputType = {
+    TemplateStage: number
+  }
+
+  export type TemplateCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    TemplateStage?: boolean | TemplateCountOutputTypeCountTemplateStageArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TemplateCountOutputType without action
+   */
+  export type TemplateCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateCountOutputType
+     */
+    select?: TemplateCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TemplateCountOutputType without action
+   */
+  export type TemplateCountOutputTypeCountTemplateStageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TemplateStageWhereInput
+  }
+
+
+  /**
+   * Count Type TemplateStageCountOutputType
+   */
+
+  export type TemplateStageCountOutputType = {
+    TemplateQuestion: number
+  }
+
+  export type TemplateStageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    TemplateQuestion?: boolean | TemplateStageCountOutputTypeCountTemplateQuestionArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TemplateStageCountOutputType without action
+   */
+  export type TemplateStageCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateStageCountOutputType
+     */
+    select?: TemplateStageCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TemplateStageCountOutputType without action
+   */
+  export type TemplateStageCountOutputTypeCountTemplateQuestionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TemplateQuestionWhereInput
+  }
+
+
+  /**
+   * Count Type TemplateQuestionCountOutputType
+   */
+
+  export type TemplateQuestionCountOutputType = {
+    TemplateQuestionAnswer: number
+  }
+
+  export type TemplateQuestionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    TemplateQuestionAnswer?: boolean | TemplateQuestionCountOutputTypeCountTemplateQuestionAnswerArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TemplateQuestionCountOutputType without action
+   */
+  export type TemplateQuestionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestionCountOutputType
+     */
+    select?: TemplateQuestionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TemplateQuestionCountOutputType without action
+   */
+  export type TemplateQuestionCountOutputTypeCountTemplateQuestionAnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TemplateQuestionAnswerWhereInput
   }
 
 
@@ -15468,6 +15889,3836 @@ export namespace Prisma {
 
 
   /**
+   * Model Template
+   */
+
+  export type AggregateTemplate = {
+    _count: TemplateCountAggregateOutputType | null
+    _avg: TemplateAvgAggregateOutputType | null
+    _sum: TemplateSumAggregateOutputType | null
+    _min: TemplateMinAggregateOutputType | null
+    _max: TemplateMaxAggregateOutputType | null
+  }
+
+  export type TemplateAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TemplateSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TemplateMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TemplateMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TemplateCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TemplateAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type TemplateSumAggregateInputType = {
+    id?: true
+  }
+
+  export type TemplateMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TemplateMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TemplateCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TemplateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Template to aggregate.
+     */
+    where?: TemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Templates to fetch.
+     */
+    orderBy?: TemplateOrderByWithRelationInput | TemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Templates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Templates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Templates
+    **/
+    _count?: true | TemplateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TemplateAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TemplateSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TemplateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TemplateMaxAggregateInputType
+  }
+
+  export type GetTemplateAggregateType<T extends TemplateAggregateArgs> = {
+        [P in keyof T & keyof AggregateTemplate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTemplate[P]>
+      : GetScalarType<T[P], AggregateTemplate[P]>
+  }
+
+
+
+
+  export type TemplateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TemplateWhereInput
+    orderBy?: TemplateOrderByWithAggregationInput | TemplateOrderByWithAggregationInput[]
+    by: TemplateScalarFieldEnum[] | TemplateScalarFieldEnum
+    having?: TemplateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TemplateCountAggregateInputType | true
+    _avg?: TemplateAvgAggregateInputType
+    _sum?: TemplateSumAggregateInputType
+    _min?: TemplateMinAggregateInputType
+    _max?: TemplateMaxAggregateInputType
+  }
+
+  export type TemplateGroupByOutputType = {
+    id: number
+    name: string
+    description: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: TemplateCountAggregateOutputType | null
+    _avg: TemplateAvgAggregateOutputType | null
+    _sum: TemplateSumAggregateOutputType | null
+    _min: TemplateMinAggregateOutputType | null
+    _max: TemplateMaxAggregateOutputType | null
+  }
+
+  type GetTemplateGroupByPayload<T extends TemplateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TemplateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TemplateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TemplateGroupByOutputType[P]>
+            : GetScalarType<T[P], TemplateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    TemplateStage?: boolean | Template$TemplateStageArgs<ExtArgs>
+    _count?: boolean | TemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["template"]>
+
+
+  export type TemplateSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type TemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    TemplateStage?: boolean | Template$TemplateStageArgs<ExtArgs>
+    _count?: boolean | TemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $TemplatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Template"
+    objects: {
+      TemplateStage: Prisma.$TemplateStagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      description: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["template"]>
+    composites: {}
+  }
+
+  type TemplateGetPayload<S extends boolean | null | undefined | TemplateDefaultArgs> = $Result.GetResult<Prisma.$TemplatePayload, S>
+
+  type TemplateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<TemplateFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: TemplateCountAggregateInputType | true
+    }
+
+  export interface TemplateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Template'], meta: { name: 'Template' } }
+    /**
+     * Find zero or one Template that matches the filter.
+     * @param {TemplateFindUniqueArgs} args - Arguments to find a Template
+     * @example
+     * // Get one Template
+     * const template = await prisma.template.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TemplateFindUniqueArgs>(args: SelectSubset<T, TemplateFindUniqueArgs<ExtArgs>>): Prisma__TemplateClient<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Template that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {TemplateFindUniqueOrThrowArgs} args - Arguments to find a Template
+     * @example
+     * // Get one Template
+     * const template = await prisma.template.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TemplateFindUniqueOrThrowArgs>(args: SelectSubset<T, TemplateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TemplateClient<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Template that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateFindFirstArgs} args - Arguments to find a Template
+     * @example
+     * // Get one Template
+     * const template = await prisma.template.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TemplateFindFirstArgs>(args?: SelectSubset<T, TemplateFindFirstArgs<ExtArgs>>): Prisma__TemplateClient<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Template that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateFindFirstOrThrowArgs} args - Arguments to find a Template
+     * @example
+     * // Get one Template
+     * const template = await prisma.template.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TemplateFindFirstOrThrowArgs>(args?: SelectSubset<T, TemplateFindFirstOrThrowArgs<ExtArgs>>): Prisma__TemplateClient<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Templates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Templates
+     * const templates = await prisma.template.findMany()
+     * 
+     * // Get first 10 Templates
+     * const templates = await prisma.template.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const templateWithIdOnly = await prisma.template.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TemplateFindManyArgs>(args?: SelectSubset<T, TemplateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Template.
+     * @param {TemplateCreateArgs} args - Arguments to create a Template.
+     * @example
+     * // Create one Template
+     * const Template = await prisma.template.create({
+     *   data: {
+     *     // ... data to create a Template
+     *   }
+     * })
+     * 
+     */
+    create<T extends TemplateCreateArgs>(args: SelectSubset<T, TemplateCreateArgs<ExtArgs>>): Prisma__TemplateClient<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Templates.
+     * @param {TemplateCreateManyArgs} args - Arguments to create many Templates.
+     * @example
+     * // Create many Templates
+     * const template = await prisma.template.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TemplateCreateManyArgs>(args?: SelectSubset<T, TemplateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Template.
+     * @param {TemplateDeleteArgs} args - Arguments to delete one Template.
+     * @example
+     * // Delete one Template
+     * const Template = await prisma.template.delete({
+     *   where: {
+     *     // ... filter to delete one Template
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TemplateDeleteArgs>(args: SelectSubset<T, TemplateDeleteArgs<ExtArgs>>): Prisma__TemplateClient<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Template.
+     * @param {TemplateUpdateArgs} args - Arguments to update one Template.
+     * @example
+     * // Update one Template
+     * const template = await prisma.template.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TemplateUpdateArgs>(args: SelectSubset<T, TemplateUpdateArgs<ExtArgs>>): Prisma__TemplateClient<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Templates.
+     * @param {TemplateDeleteManyArgs} args - Arguments to filter Templates to delete.
+     * @example
+     * // Delete a few Templates
+     * const { count } = await prisma.template.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TemplateDeleteManyArgs>(args?: SelectSubset<T, TemplateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Templates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Templates
+     * const template = await prisma.template.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TemplateUpdateManyArgs>(args: SelectSubset<T, TemplateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Template.
+     * @param {TemplateUpsertArgs} args - Arguments to update or create a Template.
+     * @example
+     * // Update or create a Template
+     * const template = await prisma.template.upsert({
+     *   create: {
+     *     // ... data to create a Template
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Template we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TemplateUpsertArgs>(args: SelectSubset<T, TemplateUpsertArgs<ExtArgs>>): Prisma__TemplateClient<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Templates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateCountArgs} args - Arguments to filter Templates to count.
+     * @example
+     * // Count the number of Templates
+     * const count = await prisma.template.count({
+     *   where: {
+     *     // ... the filter for the Templates we want to count
+     *   }
+     * })
+    **/
+    count<T extends TemplateCountArgs>(
+      args?: Subset<T, TemplateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TemplateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Template.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TemplateAggregateArgs>(args: Subset<T, TemplateAggregateArgs>): Prisma.PrismaPromise<GetTemplateAggregateType<T>>
+
+    /**
+     * Group by Template.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TemplateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TemplateGroupByArgs['orderBy'] }
+        : { orderBy?: TemplateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Template model
+   */
+  readonly fields: TemplateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Template.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    TemplateStage<T extends Template$TemplateStageArgs<ExtArgs> = {}>(args?: Subset<T, Template$TemplateStageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TemplateStagePayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Template model
+   */ 
+  interface TemplateFieldRefs {
+    readonly id: FieldRef<"Template", 'Int'>
+    readonly name: FieldRef<"Template", 'String'>
+    readonly description: FieldRef<"Template", 'String'>
+    readonly isActive: FieldRef<"Template", 'Boolean'>
+    readonly createdAt: FieldRef<"Template", 'DateTime'>
+    readonly updatedAt: FieldRef<"Template", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Template findUnique
+   */
+  export type TemplateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Template
+     */
+    select?: TemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which Template to fetch.
+     */
+    where: TemplateWhereUniqueInput
+  }
+
+  /**
+   * Template findUniqueOrThrow
+   */
+  export type TemplateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Template
+     */
+    select?: TemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which Template to fetch.
+     */
+    where: TemplateWhereUniqueInput
+  }
+
+  /**
+   * Template findFirst
+   */
+  export type TemplateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Template
+     */
+    select?: TemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which Template to fetch.
+     */
+    where?: TemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Templates to fetch.
+     */
+    orderBy?: TemplateOrderByWithRelationInput | TemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Templates.
+     */
+    cursor?: TemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Templates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Templates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Templates.
+     */
+    distinct?: TemplateScalarFieldEnum | TemplateScalarFieldEnum[]
+  }
+
+  /**
+   * Template findFirstOrThrow
+   */
+  export type TemplateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Template
+     */
+    select?: TemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which Template to fetch.
+     */
+    where?: TemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Templates to fetch.
+     */
+    orderBy?: TemplateOrderByWithRelationInput | TemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Templates.
+     */
+    cursor?: TemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Templates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Templates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Templates.
+     */
+    distinct?: TemplateScalarFieldEnum | TemplateScalarFieldEnum[]
+  }
+
+  /**
+   * Template findMany
+   */
+  export type TemplateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Template
+     */
+    select?: TemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which Templates to fetch.
+     */
+    where?: TemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Templates to fetch.
+     */
+    orderBy?: TemplateOrderByWithRelationInput | TemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Templates.
+     */
+    cursor?: TemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Templates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Templates.
+     */
+    skip?: number
+    distinct?: TemplateScalarFieldEnum | TemplateScalarFieldEnum[]
+  }
+
+  /**
+   * Template create
+   */
+  export type TemplateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Template
+     */
+    select?: TemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Template.
+     */
+    data: XOR<TemplateCreateInput, TemplateUncheckedCreateInput>
+  }
+
+  /**
+   * Template createMany
+   */
+  export type TemplateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Templates.
+     */
+    data: TemplateCreateManyInput | TemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Template update
+   */
+  export type TemplateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Template
+     */
+    select?: TemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Template.
+     */
+    data: XOR<TemplateUpdateInput, TemplateUncheckedUpdateInput>
+    /**
+     * Choose, which Template to update.
+     */
+    where: TemplateWhereUniqueInput
+  }
+
+  /**
+   * Template updateMany
+   */
+  export type TemplateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Templates.
+     */
+    data: XOR<TemplateUpdateManyMutationInput, TemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which Templates to update
+     */
+    where?: TemplateWhereInput
+  }
+
+  /**
+   * Template upsert
+   */
+  export type TemplateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Template
+     */
+    select?: TemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Template to update in case it exists.
+     */
+    where: TemplateWhereUniqueInput
+    /**
+     * In case the Template found by the `where` argument doesn't exist, create a new Template with this data.
+     */
+    create: XOR<TemplateCreateInput, TemplateUncheckedCreateInput>
+    /**
+     * In case the Template was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TemplateUpdateInput, TemplateUncheckedUpdateInput>
+  }
+
+  /**
+   * Template delete
+   */
+  export type TemplateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Template
+     */
+    select?: TemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateInclude<ExtArgs> | null
+    /**
+     * Filter which Template to delete.
+     */
+    where: TemplateWhereUniqueInput
+  }
+
+  /**
+   * Template deleteMany
+   */
+  export type TemplateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Templates to delete
+     */
+    where?: TemplateWhereInput
+  }
+
+  /**
+   * Template.TemplateStage
+   */
+  export type Template$TemplateStageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateStage
+     */
+    select?: TemplateStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateStageInclude<ExtArgs> | null
+    where?: TemplateStageWhereInput
+    orderBy?: TemplateStageOrderByWithRelationInput | TemplateStageOrderByWithRelationInput[]
+    cursor?: TemplateStageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TemplateStageScalarFieldEnum | TemplateStageScalarFieldEnum[]
+  }
+
+  /**
+   * Template without action
+   */
+  export type TemplateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Template
+     */
+    select?: TemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TemplateStage
+   */
+
+  export type AggregateTemplateStage = {
+    _count: TemplateStageCountAggregateOutputType | null
+    _avg: TemplateStageAvgAggregateOutputType | null
+    _sum: TemplateStageSumAggregateOutputType | null
+    _min: TemplateStageMinAggregateOutputType | null
+    _max: TemplateStageMaxAggregateOutputType | null
+  }
+
+  export type TemplateStageAvgAggregateOutputType = {
+    id: number | null
+    templateId: number | null
+  }
+
+  export type TemplateStageSumAggregateOutputType = {
+    id: number | null
+    templateId: number | null
+  }
+
+  export type TemplateStageMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    templateId: number | null
+  }
+
+  export type TemplateStageMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    templateId: number | null
+  }
+
+  export type TemplateStageCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    templateId: number
+    _all: number
+  }
+
+
+  export type TemplateStageAvgAggregateInputType = {
+    id?: true
+    templateId?: true
+  }
+
+  export type TemplateStageSumAggregateInputType = {
+    id?: true
+    templateId?: true
+  }
+
+  export type TemplateStageMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    templateId?: true
+  }
+
+  export type TemplateStageMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    templateId?: true
+  }
+
+  export type TemplateStageCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    templateId?: true
+    _all?: true
+  }
+
+  export type TemplateStageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TemplateStage to aggregate.
+     */
+    where?: TemplateStageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TemplateStages to fetch.
+     */
+    orderBy?: TemplateStageOrderByWithRelationInput | TemplateStageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TemplateStageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TemplateStages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TemplateStages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TemplateStages
+    **/
+    _count?: true | TemplateStageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TemplateStageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TemplateStageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TemplateStageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TemplateStageMaxAggregateInputType
+  }
+
+  export type GetTemplateStageAggregateType<T extends TemplateStageAggregateArgs> = {
+        [P in keyof T & keyof AggregateTemplateStage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTemplateStage[P]>
+      : GetScalarType<T[P], AggregateTemplateStage[P]>
+  }
+
+
+
+
+  export type TemplateStageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TemplateStageWhereInput
+    orderBy?: TemplateStageOrderByWithAggregationInput | TemplateStageOrderByWithAggregationInput[]
+    by: TemplateStageScalarFieldEnum[] | TemplateStageScalarFieldEnum
+    having?: TemplateStageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TemplateStageCountAggregateInputType | true
+    _avg?: TemplateStageAvgAggregateInputType
+    _sum?: TemplateStageSumAggregateInputType
+    _min?: TemplateStageMinAggregateInputType
+    _max?: TemplateStageMaxAggregateInputType
+  }
+
+  export type TemplateStageGroupByOutputType = {
+    id: number
+    name: string
+    description: string | null
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    templateId: number
+    _count: TemplateStageCountAggregateOutputType | null
+    _avg: TemplateStageAvgAggregateOutputType | null
+    _sum: TemplateStageSumAggregateOutputType | null
+    _min: TemplateStageMinAggregateOutputType | null
+    _max: TemplateStageMaxAggregateOutputType | null
+  }
+
+  type GetTemplateStageGroupByPayload<T extends TemplateStageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TemplateStageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TemplateStageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TemplateStageGroupByOutputType[P]>
+            : GetScalarType<T[P], TemplateStageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TemplateStageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    templateId?: boolean
+    Template?: boolean | TemplateDefaultArgs<ExtArgs>
+    TemplateQuestion?: boolean | TemplateStage$TemplateQuestionArgs<ExtArgs>
+    _count?: boolean | TemplateStageCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["templateStage"]>
+
+
+  export type TemplateStageSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    templateId?: boolean
+  }
+
+  export type TemplateStageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Template?: boolean | TemplateDefaultArgs<ExtArgs>
+    TemplateQuestion?: boolean | TemplateStage$TemplateQuestionArgs<ExtArgs>
+    _count?: boolean | TemplateStageCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $TemplateStagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TemplateStage"
+    objects: {
+      Template: Prisma.$TemplatePayload<ExtArgs>
+      TemplateQuestion: Prisma.$TemplateQuestionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      description: string | null
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+      templateId: number
+    }, ExtArgs["result"]["templateStage"]>
+    composites: {}
+  }
+
+  type TemplateStageGetPayload<S extends boolean | null | undefined | TemplateStageDefaultArgs> = $Result.GetResult<Prisma.$TemplateStagePayload, S>
+
+  type TemplateStageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<TemplateStageFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: TemplateStageCountAggregateInputType | true
+    }
+
+  export interface TemplateStageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TemplateStage'], meta: { name: 'TemplateStage' } }
+    /**
+     * Find zero or one TemplateStage that matches the filter.
+     * @param {TemplateStageFindUniqueArgs} args - Arguments to find a TemplateStage
+     * @example
+     * // Get one TemplateStage
+     * const templateStage = await prisma.templateStage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TemplateStageFindUniqueArgs>(args: SelectSubset<T, TemplateStageFindUniqueArgs<ExtArgs>>): Prisma__TemplateStageClient<$Result.GetResult<Prisma.$TemplateStagePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one TemplateStage that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {TemplateStageFindUniqueOrThrowArgs} args - Arguments to find a TemplateStage
+     * @example
+     * // Get one TemplateStage
+     * const templateStage = await prisma.templateStage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TemplateStageFindUniqueOrThrowArgs>(args: SelectSubset<T, TemplateStageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TemplateStageClient<$Result.GetResult<Prisma.$TemplateStagePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first TemplateStage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateStageFindFirstArgs} args - Arguments to find a TemplateStage
+     * @example
+     * // Get one TemplateStage
+     * const templateStage = await prisma.templateStage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TemplateStageFindFirstArgs>(args?: SelectSubset<T, TemplateStageFindFirstArgs<ExtArgs>>): Prisma__TemplateStageClient<$Result.GetResult<Prisma.$TemplateStagePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first TemplateStage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateStageFindFirstOrThrowArgs} args - Arguments to find a TemplateStage
+     * @example
+     * // Get one TemplateStage
+     * const templateStage = await prisma.templateStage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TemplateStageFindFirstOrThrowArgs>(args?: SelectSubset<T, TemplateStageFindFirstOrThrowArgs<ExtArgs>>): Prisma__TemplateStageClient<$Result.GetResult<Prisma.$TemplateStagePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more TemplateStages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateStageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TemplateStages
+     * const templateStages = await prisma.templateStage.findMany()
+     * 
+     * // Get first 10 TemplateStages
+     * const templateStages = await prisma.templateStage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const templateStageWithIdOnly = await prisma.templateStage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TemplateStageFindManyArgs>(args?: SelectSubset<T, TemplateStageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TemplateStagePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a TemplateStage.
+     * @param {TemplateStageCreateArgs} args - Arguments to create a TemplateStage.
+     * @example
+     * // Create one TemplateStage
+     * const TemplateStage = await prisma.templateStage.create({
+     *   data: {
+     *     // ... data to create a TemplateStage
+     *   }
+     * })
+     * 
+     */
+    create<T extends TemplateStageCreateArgs>(args: SelectSubset<T, TemplateStageCreateArgs<ExtArgs>>): Prisma__TemplateStageClient<$Result.GetResult<Prisma.$TemplateStagePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many TemplateStages.
+     * @param {TemplateStageCreateManyArgs} args - Arguments to create many TemplateStages.
+     * @example
+     * // Create many TemplateStages
+     * const templateStage = await prisma.templateStage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TemplateStageCreateManyArgs>(args?: SelectSubset<T, TemplateStageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a TemplateStage.
+     * @param {TemplateStageDeleteArgs} args - Arguments to delete one TemplateStage.
+     * @example
+     * // Delete one TemplateStage
+     * const TemplateStage = await prisma.templateStage.delete({
+     *   where: {
+     *     // ... filter to delete one TemplateStage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TemplateStageDeleteArgs>(args: SelectSubset<T, TemplateStageDeleteArgs<ExtArgs>>): Prisma__TemplateStageClient<$Result.GetResult<Prisma.$TemplateStagePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one TemplateStage.
+     * @param {TemplateStageUpdateArgs} args - Arguments to update one TemplateStage.
+     * @example
+     * // Update one TemplateStage
+     * const templateStage = await prisma.templateStage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TemplateStageUpdateArgs>(args: SelectSubset<T, TemplateStageUpdateArgs<ExtArgs>>): Prisma__TemplateStageClient<$Result.GetResult<Prisma.$TemplateStagePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more TemplateStages.
+     * @param {TemplateStageDeleteManyArgs} args - Arguments to filter TemplateStages to delete.
+     * @example
+     * // Delete a few TemplateStages
+     * const { count } = await prisma.templateStage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TemplateStageDeleteManyArgs>(args?: SelectSubset<T, TemplateStageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TemplateStages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateStageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TemplateStages
+     * const templateStage = await prisma.templateStage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TemplateStageUpdateManyArgs>(args: SelectSubset<T, TemplateStageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TemplateStage.
+     * @param {TemplateStageUpsertArgs} args - Arguments to update or create a TemplateStage.
+     * @example
+     * // Update or create a TemplateStage
+     * const templateStage = await prisma.templateStage.upsert({
+     *   create: {
+     *     // ... data to create a TemplateStage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TemplateStage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TemplateStageUpsertArgs>(args: SelectSubset<T, TemplateStageUpsertArgs<ExtArgs>>): Prisma__TemplateStageClient<$Result.GetResult<Prisma.$TemplateStagePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of TemplateStages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateStageCountArgs} args - Arguments to filter TemplateStages to count.
+     * @example
+     * // Count the number of TemplateStages
+     * const count = await prisma.templateStage.count({
+     *   where: {
+     *     // ... the filter for the TemplateStages we want to count
+     *   }
+     * })
+    **/
+    count<T extends TemplateStageCountArgs>(
+      args?: Subset<T, TemplateStageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TemplateStageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TemplateStage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateStageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TemplateStageAggregateArgs>(args: Subset<T, TemplateStageAggregateArgs>): Prisma.PrismaPromise<GetTemplateStageAggregateType<T>>
+
+    /**
+     * Group by TemplateStage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateStageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TemplateStageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TemplateStageGroupByArgs['orderBy'] }
+        : { orderBy?: TemplateStageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TemplateStageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTemplateStageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TemplateStage model
+   */
+  readonly fields: TemplateStageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TemplateStage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TemplateStageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Template<T extends TemplateDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TemplateDefaultArgs<ExtArgs>>): Prisma__TemplateClient<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    TemplateQuestion<T extends TemplateStage$TemplateQuestionArgs<ExtArgs> = {}>(args?: Subset<T, TemplateStage$TemplateQuestionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TemplateQuestionPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TemplateStage model
+   */ 
+  interface TemplateStageFieldRefs {
+    readonly id: FieldRef<"TemplateStage", 'Int'>
+    readonly name: FieldRef<"TemplateStage", 'String'>
+    readonly description: FieldRef<"TemplateStage", 'String'>
+    readonly isActive: FieldRef<"TemplateStage", 'Boolean'>
+    readonly createdAt: FieldRef<"TemplateStage", 'DateTime'>
+    readonly updatedAt: FieldRef<"TemplateStage", 'DateTime'>
+    readonly templateId: FieldRef<"TemplateStage", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TemplateStage findUnique
+   */
+  export type TemplateStageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateStage
+     */
+    select?: TemplateStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateStageInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateStage to fetch.
+     */
+    where: TemplateStageWhereUniqueInput
+  }
+
+  /**
+   * TemplateStage findUniqueOrThrow
+   */
+  export type TemplateStageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateStage
+     */
+    select?: TemplateStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateStageInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateStage to fetch.
+     */
+    where: TemplateStageWhereUniqueInput
+  }
+
+  /**
+   * TemplateStage findFirst
+   */
+  export type TemplateStageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateStage
+     */
+    select?: TemplateStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateStageInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateStage to fetch.
+     */
+    where?: TemplateStageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TemplateStages to fetch.
+     */
+    orderBy?: TemplateStageOrderByWithRelationInput | TemplateStageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TemplateStages.
+     */
+    cursor?: TemplateStageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TemplateStages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TemplateStages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TemplateStages.
+     */
+    distinct?: TemplateStageScalarFieldEnum | TemplateStageScalarFieldEnum[]
+  }
+
+  /**
+   * TemplateStage findFirstOrThrow
+   */
+  export type TemplateStageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateStage
+     */
+    select?: TemplateStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateStageInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateStage to fetch.
+     */
+    where?: TemplateStageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TemplateStages to fetch.
+     */
+    orderBy?: TemplateStageOrderByWithRelationInput | TemplateStageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TemplateStages.
+     */
+    cursor?: TemplateStageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TemplateStages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TemplateStages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TemplateStages.
+     */
+    distinct?: TemplateStageScalarFieldEnum | TemplateStageScalarFieldEnum[]
+  }
+
+  /**
+   * TemplateStage findMany
+   */
+  export type TemplateStageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateStage
+     */
+    select?: TemplateStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateStageInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateStages to fetch.
+     */
+    where?: TemplateStageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TemplateStages to fetch.
+     */
+    orderBy?: TemplateStageOrderByWithRelationInput | TemplateStageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TemplateStages.
+     */
+    cursor?: TemplateStageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TemplateStages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TemplateStages.
+     */
+    skip?: number
+    distinct?: TemplateStageScalarFieldEnum | TemplateStageScalarFieldEnum[]
+  }
+
+  /**
+   * TemplateStage create
+   */
+  export type TemplateStageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateStage
+     */
+    select?: TemplateStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateStageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TemplateStage.
+     */
+    data: XOR<TemplateStageCreateInput, TemplateStageUncheckedCreateInput>
+  }
+
+  /**
+   * TemplateStage createMany
+   */
+  export type TemplateStageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TemplateStages.
+     */
+    data: TemplateStageCreateManyInput | TemplateStageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TemplateStage update
+   */
+  export type TemplateStageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateStage
+     */
+    select?: TemplateStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateStageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TemplateStage.
+     */
+    data: XOR<TemplateStageUpdateInput, TemplateStageUncheckedUpdateInput>
+    /**
+     * Choose, which TemplateStage to update.
+     */
+    where: TemplateStageWhereUniqueInput
+  }
+
+  /**
+   * TemplateStage updateMany
+   */
+  export type TemplateStageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TemplateStages.
+     */
+    data: XOR<TemplateStageUpdateManyMutationInput, TemplateStageUncheckedUpdateManyInput>
+    /**
+     * Filter which TemplateStages to update
+     */
+    where?: TemplateStageWhereInput
+  }
+
+  /**
+   * TemplateStage upsert
+   */
+  export type TemplateStageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateStage
+     */
+    select?: TemplateStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateStageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TemplateStage to update in case it exists.
+     */
+    where: TemplateStageWhereUniqueInput
+    /**
+     * In case the TemplateStage found by the `where` argument doesn't exist, create a new TemplateStage with this data.
+     */
+    create: XOR<TemplateStageCreateInput, TemplateStageUncheckedCreateInput>
+    /**
+     * In case the TemplateStage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TemplateStageUpdateInput, TemplateStageUncheckedUpdateInput>
+  }
+
+  /**
+   * TemplateStage delete
+   */
+  export type TemplateStageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateStage
+     */
+    select?: TemplateStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateStageInclude<ExtArgs> | null
+    /**
+     * Filter which TemplateStage to delete.
+     */
+    where: TemplateStageWhereUniqueInput
+  }
+
+  /**
+   * TemplateStage deleteMany
+   */
+  export type TemplateStageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TemplateStages to delete
+     */
+    where?: TemplateStageWhereInput
+  }
+
+  /**
+   * TemplateStage.TemplateQuestion
+   */
+  export type TemplateStage$TemplateQuestionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestion
+     */
+    select?: TemplateQuestionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionInclude<ExtArgs> | null
+    where?: TemplateQuestionWhereInput
+    orderBy?: TemplateQuestionOrderByWithRelationInput | TemplateQuestionOrderByWithRelationInput[]
+    cursor?: TemplateQuestionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TemplateQuestionScalarFieldEnum | TemplateQuestionScalarFieldEnum[]
+  }
+
+  /**
+   * TemplateStage without action
+   */
+  export type TemplateStageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateStage
+     */
+    select?: TemplateStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateStageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TemplateQuestion
+   */
+
+  export type AggregateTemplateQuestion = {
+    _count: TemplateQuestionCountAggregateOutputType | null
+    _avg: TemplateQuestionAvgAggregateOutputType | null
+    _sum: TemplateQuestionSumAggregateOutputType | null
+    _min: TemplateQuestionMinAggregateOutputType | null
+    _max: TemplateQuestionMaxAggregateOutputType | null
+  }
+
+  export type TemplateQuestionAvgAggregateOutputType = {
+    id: number | null
+    templateStageId: number | null
+    templateId: number | null
+  }
+
+  export type TemplateQuestionSumAggregateOutputType = {
+    id: number | null
+    templateStageId: number | null
+    templateId: number | null
+  }
+
+  export type TemplateQuestionMinAggregateOutputType = {
+    id: number | null
+    question: string | null
+    description: string | null
+    isActive: boolean | null
+    templateStageId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    templateId: number | null
+  }
+
+  export type TemplateQuestionMaxAggregateOutputType = {
+    id: number | null
+    question: string | null
+    description: string | null
+    isActive: boolean | null
+    templateStageId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    templateId: number | null
+  }
+
+  export type TemplateQuestionCountAggregateOutputType = {
+    id: number
+    question: number
+    description: number
+    isActive: number
+    templateStageId: number
+    createdAt: number
+    updatedAt: number
+    templateId: number
+    _all: number
+  }
+
+
+  export type TemplateQuestionAvgAggregateInputType = {
+    id?: true
+    templateStageId?: true
+    templateId?: true
+  }
+
+  export type TemplateQuestionSumAggregateInputType = {
+    id?: true
+    templateStageId?: true
+    templateId?: true
+  }
+
+  export type TemplateQuestionMinAggregateInputType = {
+    id?: true
+    question?: true
+    description?: true
+    isActive?: true
+    templateStageId?: true
+    createdAt?: true
+    updatedAt?: true
+    templateId?: true
+  }
+
+  export type TemplateQuestionMaxAggregateInputType = {
+    id?: true
+    question?: true
+    description?: true
+    isActive?: true
+    templateStageId?: true
+    createdAt?: true
+    updatedAt?: true
+    templateId?: true
+  }
+
+  export type TemplateQuestionCountAggregateInputType = {
+    id?: true
+    question?: true
+    description?: true
+    isActive?: true
+    templateStageId?: true
+    createdAt?: true
+    updatedAt?: true
+    templateId?: true
+    _all?: true
+  }
+
+  export type TemplateQuestionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TemplateQuestion to aggregate.
+     */
+    where?: TemplateQuestionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TemplateQuestions to fetch.
+     */
+    orderBy?: TemplateQuestionOrderByWithRelationInput | TemplateQuestionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TemplateQuestionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TemplateQuestions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TemplateQuestions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TemplateQuestions
+    **/
+    _count?: true | TemplateQuestionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TemplateQuestionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TemplateQuestionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TemplateQuestionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TemplateQuestionMaxAggregateInputType
+  }
+
+  export type GetTemplateQuestionAggregateType<T extends TemplateQuestionAggregateArgs> = {
+        [P in keyof T & keyof AggregateTemplateQuestion]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTemplateQuestion[P]>
+      : GetScalarType<T[P], AggregateTemplateQuestion[P]>
+  }
+
+
+
+
+  export type TemplateQuestionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TemplateQuestionWhereInput
+    orderBy?: TemplateQuestionOrderByWithAggregationInput | TemplateQuestionOrderByWithAggregationInput[]
+    by: TemplateQuestionScalarFieldEnum[] | TemplateQuestionScalarFieldEnum
+    having?: TemplateQuestionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TemplateQuestionCountAggregateInputType | true
+    _avg?: TemplateQuestionAvgAggregateInputType
+    _sum?: TemplateQuestionSumAggregateInputType
+    _min?: TemplateQuestionMinAggregateInputType
+    _max?: TemplateQuestionMaxAggregateInputType
+  }
+
+  export type TemplateQuestionGroupByOutputType = {
+    id: number
+    question: string
+    description: string | null
+    isActive: boolean
+    templateStageId: number
+    createdAt: Date
+    updatedAt: Date
+    templateId: number | null
+    _count: TemplateQuestionCountAggregateOutputType | null
+    _avg: TemplateQuestionAvgAggregateOutputType | null
+    _sum: TemplateQuestionSumAggregateOutputType | null
+    _min: TemplateQuestionMinAggregateOutputType | null
+    _max: TemplateQuestionMaxAggregateOutputType | null
+  }
+
+  type GetTemplateQuestionGroupByPayload<T extends TemplateQuestionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TemplateQuestionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TemplateQuestionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TemplateQuestionGroupByOutputType[P]>
+            : GetScalarType<T[P], TemplateQuestionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TemplateQuestionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    question?: boolean
+    description?: boolean
+    isActive?: boolean
+    templateStageId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    templateId?: boolean
+    TemplateStage?: boolean | TemplateStageDefaultArgs<ExtArgs>
+    TemplateQuestionAnswer?: boolean | TemplateQuestion$TemplateQuestionAnswerArgs<ExtArgs>
+    _count?: boolean | TemplateQuestionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["templateQuestion"]>
+
+
+  export type TemplateQuestionSelectScalar = {
+    id?: boolean
+    question?: boolean
+    description?: boolean
+    isActive?: boolean
+    templateStageId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    templateId?: boolean
+  }
+
+  export type TemplateQuestionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    TemplateStage?: boolean | TemplateStageDefaultArgs<ExtArgs>
+    TemplateQuestionAnswer?: boolean | TemplateQuestion$TemplateQuestionAnswerArgs<ExtArgs>
+    _count?: boolean | TemplateQuestionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $TemplateQuestionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TemplateQuestion"
+    objects: {
+      TemplateStage: Prisma.$TemplateStagePayload<ExtArgs>
+      TemplateQuestionAnswer: Prisma.$TemplateQuestionAnswerPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      question: string
+      description: string | null
+      isActive: boolean
+      templateStageId: number
+      createdAt: Date
+      updatedAt: Date
+      templateId: number | null
+    }, ExtArgs["result"]["templateQuestion"]>
+    composites: {}
+  }
+
+  type TemplateQuestionGetPayload<S extends boolean | null | undefined | TemplateQuestionDefaultArgs> = $Result.GetResult<Prisma.$TemplateQuestionPayload, S>
+
+  type TemplateQuestionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<TemplateQuestionFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: TemplateQuestionCountAggregateInputType | true
+    }
+
+  export interface TemplateQuestionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TemplateQuestion'], meta: { name: 'TemplateQuestion' } }
+    /**
+     * Find zero or one TemplateQuestion that matches the filter.
+     * @param {TemplateQuestionFindUniqueArgs} args - Arguments to find a TemplateQuestion
+     * @example
+     * // Get one TemplateQuestion
+     * const templateQuestion = await prisma.templateQuestion.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TemplateQuestionFindUniqueArgs>(args: SelectSubset<T, TemplateQuestionFindUniqueArgs<ExtArgs>>): Prisma__TemplateQuestionClient<$Result.GetResult<Prisma.$TemplateQuestionPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one TemplateQuestion that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {TemplateQuestionFindUniqueOrThrowArgs} args - Arguments to find a TemplateQuestion
+     * @example
+     * // Get one TemplateQuestion
+     * const templateQuestion = await prisma.templateQuestion.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TemplateQuestionFindUniqueOrThrowArgs>(args: SelectSubset<T, TemplateQuestionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TemplateQuestionClient<$Result.GetResult<Prisma.$TemplateQuestionPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first TemplateQuestion that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionFindFirstArgs} args - Arguments to find a TemplateQuestion
+     * @example
+     * // Get one TemplateQuestion
+     * const templateQuestion = await prisma.templateQuestion.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TemplateQuestionFindFirstArgs>(args?: SelectSubset<T, TemplateQuestionFindFirstArgs<ExtArgs>>): Prisma__TemplateQuestionClient<$Result.GetResult<Prisma.$TemplateQuestionPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first TemplateQuestion that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionFindFirstOrThrowArgs} args - Arguments to find a TemplateQuestion
+     * @example
+     * // Get one TemplateQuestion
+     * const templateQuestion = await prisma.templateQuestion.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TemplateQuestionFindFirstOrThrowArgs>(args?: SelectSubset<T, TemplateQuestionFindFirstOrThrowArgs<ExtArgs>>): Prisma__TemplateQuestionClient<$Result.GetResult<Prisma.$TemplateQuestionPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more TemplateQuestions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TemplateQuestions
+     * const templateQuestions = await prisma.templateQuestion.findMany()
+     * 
+     * // Get first 10 TemplateQuestions
+     * const templateQuestions = await prisma.templateQuestion.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const templateQuestionWithIdOnly = await prisma.templateQuestion.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TemplateQuestionFindManyArgs>(args?: SelectSubset<T, TemplateQuestionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TemplateQuestionPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a TemplateQuestion.
+     * @param {TemplateQuestionCreateArgs} args - Arguments to create a TemplateQuestion.
+     * @example
+     * // Create one TemplateQuestion
+     * const TemplateQuestion = await prisma.templateQuestion.create({
+     *   data: {
+     *     // ... data to create a TemplateQuestion
+     *   }
+     * })
+     * 
+     */
+    create<T extends TemplateQuestionCreateArgs>(args: SelectSubset<T, TemplateQuestionCreateArgs<ExtArgs>>): Prisma__TemplateQuestionClient<$Result.GetResult<Prisma.$TemplateQuestionPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many TemplateQuestions.
+     * @param {TemplateQuestionCreateManyArgs} args - Arguments to create many TemplateQuestions.
+     * @example
+     * // Create many TemplateQuestions
+     * const templateQuestion = await prisma.templateQuestion.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TemplateQuestionCreateManyArgs>(args?: SelectSubset<T, TemplateQuestionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a TemplateQuestion.
+     * @param {TemplateQuestionDeleteArgs} args - Arguments to delete one TemplateQuestion.
+     * @example
+     * // Delete one TemplateQuestion
+     * const TemplateQuestion = await prisma.templateQuestion.delete({
+     *   where: {
+     *     // ... filter to delete one TemplateQuestion
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TemplateQuestionDeleteArgs>(args: SelectSubset<T, TemplateQuestionDeleteArgs<ExtArgs>>): Prisma__TemplateQuestionClient<$Result.GetResult<Prisma.$TemplateQuestionPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one TemplateQuestion.
+     * @param {TemplateQuestionUpdateArgs} args - Arguments to update one TemplateQuestion.
+     * @example
+     * // Update one TemplateQuestion
+     * const templateQuestion = await prisma.templateQuestion.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TemplateQuestionUpdateArgs>(args: SelectSubset<T, TemplateQuestionUpdateArgs<ExtArgs>>): Prisma__TemplateQuestionClient<$Result.GetResult<Prisma.$TemplateQuestionPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more TemplateQuestions.
+     * @param {TemplateQuestionDeleteManyArgs} args - Arguments to filter TemplateQuestions to delete.
+     * @example
+     * // Delete a few TemplateQuestions
+     * const { count } = await prisma.templateQuestion.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TemplateQuestionDeleteManyArgs>(args?: SelectSubset<T, TemplateQuestionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TemplateQuestions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TemplateQuestions
+     * const templateQuestion = await prisma.templateQuestion.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TemplateQuestionUpdateManyArgs>(args: SelectSubset<T, TemplateQuestionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TemplateQuestion.
+     * @param {TemplateQuestionUpsertArgs} args - Arguments to update or create a TemplateQuestion.
+     * @example
+     * // Update or create a TemplateQuestion
+     * const templateQuestion = await prisma.templateQuestion.upsert({
+     *   create: {
+     *     // ... data to create a TemplateQuestion
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TemplateQuestion we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TemplateQuestionUpsertArgs>(args: SelectSubset<T, TemplateQuestionUpsertArgs<ExtArgs>>): Prisma__TemplateQuestionClient<$Result.GetResult<Prisma.$TemplateQuestionPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of TemplateQuestions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionCountArgs} args - Arguments to filter TemplateQuestions to count.
+     * @example
+     * // Count the number of TemplateQuestions
+     * const count = await prisma.templateQuestion.count({
+     *   where: {
+     *     // ... the filter for the TemplateQuestions we want to count
+     *   }
+     * })
+    **/
+    count<T extends TemplateQuestionCountArgs>(
+      args?: Subset<T, TemplateQuestionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TemplateQuestionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TemplateQuestion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TemplateQuestionAggregateArgs>(args: Subset<T, TemplateQuestionAggregateArgs>): Prisma.PrismaPromise<GetTemplateQuestionAggregateType<T>>
+
+    /**
+     * Group by TemplateQuestion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TemplateQuestionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TemplateQuestionGroupByArgs['orderBy'] }
+        : { orderBy?: TemplateQuestionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TemplateQuestionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTemplateQuestionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TemplateQuestion model
+   */
+  readonly fields: TemplateQuestionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TemplateQuestion.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TemplateQuestionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    TemplateStage<T extends TemplateStageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TemplateStageDefaultArgs<ExtArgs>>): Prisma__TemplateStageClient<$Result.GetResult<Prisma.$TemplateStagePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    TemplateQuestionAnswer<T extends TemplateQuestion$TemplateQuestionAnswerArgs<ExtArgs> = {}>(args?: Subset<T, TemplateQuestion$TemplateQuestionAnswerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TemplateQuestionAnswerPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TemplateQuestion model
+   */ 
+  interface TemplateQuestionFieldRefs {
+    readonly id: FieldRef<"TemplateQuestion", 'Int'>
+    readonly question: FieldRef<"TemplateQuestion", 'String'>
+    readonly description: FieldRef<"TemplateQuestion", 'String'>
+    readonly isActive: FieldRef<"TemplateQuestion", 'Boolean'>
+    readonly templateStageId: FieldRef<"TemplateQuestion", 'Int'>
+    readonly createdAt: FieldRef<"TemplateQuestion", 'DateTime'>
+    readonly updatedAt: FieldRef<"TemplateQuestion", 'DateTime'>
+    readonly templateId: FieldRef<"TemplateQuestion", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TemplateQuestion findUnique
+   */
+  export type TemplateQuestionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestion
+     */
+    select?: TemplateQuestionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateQuestion to fetch.
+     */
+    where: TemplateQuestionWhereUniqueInput
+  }
+
+  /**
+   * TemplateQuestion findUniqueOrThrow
+   */
+  export type TemplateQuestionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestion
+     */
+    select?: TemplateQuestionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateQuestion to fetch.
+     */
+    where: TemplateQuestionWhereUniqueInput
+  }
+
+  /**
+   * TemplateQuestion findFirst
+   */
+  export type TemplateQuestionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestion
+     */
+    select?: TemplateQuestionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateQuestion to fetch.
+     */
+    where?: TemplateQuestionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TemplateQuestions to fetch.
+     */
+    orderBy?: TemplateQuestionOrderByWithRelationInput | TemplateQuestionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TemplateQuestions.
+     */
+    cursor?: TemplateQuestionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TemplateQuestions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TemplateQuestions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TemplateQuestions.
+     */
+    distinct?: TemplateQuestionScalarFieldEnum | TemplateQuestionScalarFieldEnum[]
+  }
+
+  /**
+   * TemplateQuestion findFirstOrThrow
+   */
+  export type TemplateQuestionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestion
+     */
+    select?: TemplateQuestionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateQuestion to fetch.
+     */
+    where?: TemplateQuestionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TemplateQuestions to fetch.
+     */
+    orderBy?: TemplateQuestionOrderByWithRelationInput | TemplateQuestionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TemplateQuestions.
+     */
+    cursor?: TemplateQuestionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TemplateQuestions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TemplateQuestions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TemplateQuestions.
+     */
+    distinct?: TemplateQuestionScalarFieldEnum | TemplateQuestionScalarFieldEnum[]
+  }
+
+  /**
+   * TemplateQuestion findMany
+   */
+  export type TemplateQuestionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestion
+     */
+    select?: TemplateQuestionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateQuestions to fetch.
+     */
+    where?: TemplateQuestionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TemplateQuestions to fetch.
+     */
+    orderBy?: TemplateQuestionOrderByWithRelationInput | TemplateQuestionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TemplateQuestions.
+     */
+    cursor?: TemplateQuestionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TemplateQuestions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TemplateQuestions.
+     */
+    skip?: number
+    distinct?: TemplateQuestionScalarFieldEnum | TemplateQuestionScalarFieldEnum[]
+  }
+
+  /**
+   * TemplateQuestion create
+   */
+  export type TemplateQuestionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestion
+     */
+    select?: TemplateQuestionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TemplateQuestion.
+     */
+    data: XOR<TemplateQuestionCreateInput, TemplateQuestionUncheckedCreateInput>
+  }
+
+  /**
+   * TemplateQuestion createMany
+   */
+  export type TemplateQuestionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TemplateQuestions.
+     */
+    data: TemplateQuestionCreateManyInput | TemplateQuestionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TemplateQuestion update
+   */
+  export type TemplateQuestionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestion
+     */
+    select?: TemplateQuestionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TemplateQuestion.
+     */
+    data: XOR<TemplateQuestionUpdateInput, TemplateQuestionUncheckedUpdateInput>
+    /**
+     * Choose, which TemplateQuestion to update.
+     */
+    where: TemplateQuestionWhereUniqueInput
+  }
+
+  /**
+   * TemplateQuestion updateMany
+   */
+  export type TemplateQuestionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TemplateQuestions.
+     */
+    data: XOR<TemplateQuestionUpdateManyMutationInput, TemplateQuestionUncheckedUpdateManyInput>
+    /**
+     * Filter which TemplateQuestions to update
+     */
+    where?: TemplateQuestionWhereInput
+  }
+
+  /**
+   * TemplateQuestion upsert
+   */
+  export type TemplateQuestionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestion
+     */
+    select?: TemplateQuestionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TemplateQuestion to update in case it exists.
+     */
+    where: TemplateQuestionWhereUniqueInput
+    /**
+     * In case the TemplateQuestion found by the `where` argument doesn't exist, create a new TemplateQuestion with this data.
+     */
+    create: XOR<TemplateQuestionCreateInput, TemplateQuestionUncheckedCreateInput>
+    /**
+     * In case the TemplateQuestion was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TemplateQuestionUpdateInput, TemplateQuestionUncheckedUpdateInput>
+  }
+
+  /**
+   * TemplateQuestion delete
+   */
+  export type TemplateQuestionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestion
+     */
+    select?: TemplateQuestionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionInclude<ExtArgs> | null
+    /**
+     * Filter which TemplateQuestion to delete.
+     */
+    where: TemplateQuestionWhereUniqueInput
+  }
+
+  /**
+   * TemplateQuestion deleteMany
+   */
+  export type TemplateQuestionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TemplateQuestions to delete
+     */
+    where?: TemplateQuestionWhereInput
+  }
+
+  /**
+   * TemplateQuestion.TemplateQuestionAnswer
+   */
+  export type TemplateQuestion$TemplateQuestionAnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestionAnswer
+     */
+    select?: TemplateQuestionAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionAnswerInclude<ExtArgs> | null
+    where?: TemplateQuestionAnswerWhereInput
+    orderBy?: TemplateQuestionAnswerOrderByWithRelationInput | TemplateQuestionAnswerOrderByWithRelationInput[]
+    cursor?: TemplateQuestionAnswerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TemplateQuestionAnswerScalarFieldEnum | TemplateQuestionAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * TemplateQuestion without action
+   */
+  export type TemplateQuestionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestion
+     */
+    select?: TemplateQuestionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TemplateQuestionAnswer
+   */
+
+  export type AggregateTemplateQuestionAnswer = {
+    _count: TemplateQuestionAnswerCountAggregateOutputType | null
+    _avg: TemplateQuestionAnswerAvgAggregateOutputType | null
+    _sum: TemplateQuestionAnswerSumAggregateOutputType | null
+    _min: TemplateQuestionAnswerMinAggregateOutputType | null
+    _max: TemplateQuestionAnswerMaxAggregateOutputType | null
+  }
+
+  export type TemplateQuestionAnswerAvgAggregateOutputType = {
+    id: number | null
+    templateQuestionId: number | null
+  }
+
+  export type TemplateQuestionAnswerSumAggregateOutputType = {
+    id: number | null
+    templateQuestionId: number | null
+  }
+
+  export type TemplateQuestionAnswerMinAggregateOutputType = {
+    id: number | null
+    answer: string | null
+    description: string | null
+    isActive: boolean | null
+    templateQuestionId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TemplateQuestionAnswerMaxAggregateOutputType = {
+    id: number | null
+    answer: string | null
+    description: string | null
+    isActive: boolean | null
+    templateQuestionId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TemplateQuestionAnswerCountAggregateOutputType = {
+    id: number
+    answer: number
+    description: number
+    isActive: number
+    templateQuestionId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TemplateQuestionAnswerAvgAggregateInputType = {
+    id?: true
+    templateQuestionId?: true
+  }
+
+  export type TemplateQuestionAnswerSumAggregateInputType = {
+    id?: true
+    templateQuestionId?: true
+  }
+
+  export type TemplateQuestionAnswerMinAggregateInputType = {
+    id?: true
+    answer?: true
+    description?: true
+    isActive?: true
+    templateQuestionId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TemplateQuestionAnswerMaxAggregateInputType = {
+    id?: true
+    answer?: true
+    description?: true
+    isActive?: true
+    templateQuestionId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TemplateQuestionAnswerCountAggregateInputType = {
+    id?: true
+    answer?: true
+    description?: true
+    isActive?: true
+    templateQuestionId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TemplateQuestionAnswerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TemplateQuestionAnswer to aggregate.
+     */
+    where?: TemplateQuestionAnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TemplateQuestionAnswers to fetch.
+     */
+    orderBy?: TemplateQuestionAnswerOrderByWithRelationInput | TemplateQuestionAnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TemplateQuestionAnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TemplateQuestionAnswers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TemplateQuestionAnswers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TemplateQuestionAnswers
+    **/
+    _count?: true | TemplateQuestionAnswerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TemplateQuestionAnswerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TemplateQuestionAnswerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TemplateQuestionAnswerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TemplateQuestionAnswerMaxAggregateInputType
+  }
+
+  export type GetTemplateQuestionAnswerAggregateType<T extends TemplateQuestionAnswerAggregateArgs> = {
+        [P in keyof T & keyof AggregateTemplateQuestionAnswer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTemplateQuestionAnswer[P]>
+      : GetScalarType<T[P], AggregateTemplateQuestionAnswer[P]>
+  }
+
+
+
+
+  export type TemplateQuestionAnswerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TemplateQuestionAnswerWhereInput
+    orderBy?: TemplateQuestionAnswerOrderByWithAggregationInput | TemplateQuestionAnswerOrderByWithAggregationInput[]
+    by: TemplateQuestionAnswerScalarFieldEnum[] | TemplateQuestionAnswerScalarFieldEnum
+    having?: TemplateQuestionAnswerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TemplateQuestionAnswerCountAggregateInputType | true
+    _avg?: TemplateQuestionAnswerAvgAggregateInputType
+    _sum?: TemplateQuestionAnswerSumAggregateInputType
+    _min?: TemplateQuestionAnswerMinAggregateInputType
+    _max?: TemplateQuestionAnswerMaxAggregateInputType
+  }
+
+  export type TemplateQuestionAnswerGroupByOutputType = {
+    id: number
+    answer: string
+    description: string | null
+    isActive: boolean
+    templateQuestionId: number
+    createdAt: Date
+    updatedAt: Date
+    _count: TemplateQuestionAnswerCountAggregateOutputType | null
+    _avg: TemplateQuestionAnswerAvgAggregateOutputType | null
+    _sum: TemplateQuestionAnswerSumAggregateOutputType | null
+    _min: TemplateQuestionAnswerMinAggregateOutputType | null
+    _max: TemplateQuestionAnswerMaxAggregateOutputType | null
+  }
+
+  type GetTemplateQuestionAnswerGroupByPayload<T extends TemplateQuestionAnswerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TemplateQuestionAnswerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TemplateQuestionAnswerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TemplateQuestionAnswerGroupByOutputType[P]>
+            : GetScalarType<T[P], TemplateQuestionAnswerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TemplateQuestionAnswerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    answer?: boolean
+    description?: boolean
+    isActive?: boolean
+    templateQuestionId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    TemplateQuestion?: boolean | TemplateQuestionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["templateQuestionAnswer"]>
+
+
+  export type TemplateQuestionAnswerSelectScalar = {
+    id?: boolean
+    answer?: boolean
+    description?: boolean
+    isActive?: boolean
+    templateQuestionId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type TemplateQuestionAnswerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    TemplateQuestion?: boolean | TemplateQuestionDefaultArgs<ExtArgs>
+  }
+
+  export type $TemplateQuestionAnswerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TemplateQuestionAnswer"
+    objects: {
+      TemplateQuestion: Prisma.$TemplateQuestionPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      answer: string
+      description: string | null
+      isActive: boolean
+      templateQuestionId: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["templateQuestionAnswer"]>
+    composites: {}
+  }
+
+  type TemplateQuestionAnswerGetPayload<S extends boolean | null | undefined | TemplateQuestionAnswerDefaultArgs> = $Result.GetResult<Prisma.$TemplateQuestionAnswerPayload, S>
+
+  type TemplateQuestionAnswerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<TemplateQuestionAnswerFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: TemplateQuestionAnswerCountAggregateInputType | true
+    }
+
+  export interface TemplateQuestionAnswerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TemplateQuestionAnswer'], meta: { name: 'TemplateQuestionAnswer' } }
+    /**
+     * Find zero or one TemplateQuestionAnswer that matches the filter.
+     * @param {TemplateQuestionAnswerFindUniqueArgs} args - Arguments to find a TemplateQuestionAnswer
+     * @example
+     * // Get one TemplateQuestionAnswer
+     * const templateQuestionAnswer = await prisma.templateQuestionAnswer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TemplateQuestionAnswerFindUniqueArgs>(args: SelectSubset<T, TemplateQuestionAnswerFindUniqueArgs<ExtArgs>>): Prisma__TemplateQuestionAnswerClient<$Result.GetResult<Prisma.$TemplateQuestionAnswerPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one TemplateQuestionAnswer that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {TemplateQuestionAnswerFindUniqueOrThrowArgs} args - Arguments to find a TemplateQuestionAnswer
+     * @example
+     * // Get one TemplateQuestionAnswer
+     * const templateQuestionAnswer = await prisma.templateQuestionAnswer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TemplateQuestionAnswerFindUniqueOrThrowArgs>(args: SelectSubset<T, TemplateQuestionAnswerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TemplateQuestionAnswerClient<$Result.GetResult<Prisma.$TemplateQuestionAnswerPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first TemplateQuestionAnswer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionAnswerFindFirstArgs} args - Arguments to find a TemplateQuestionAnswer
+     * @example
+     * // Get one TemplateQuestionAnswer
+     * const templateQuestionAnswer = await prisma.templateQuestionAnswer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TemplateQuestionAnswerFindFirstArgs>(args?: SelectSubset<T, TemplateQuestionAnswerFindFirstArgs<ExtArgs>>): Prisma__TemplateQuestionAnswerClient<$Result.GetResult<Prisma.$TemplateQuestionAnswerPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first TemplateQuestionAnswer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionAnswerFindFirstOrThrowArgs} args - Arguments to find a TemplateQuestionAnswer
+     * @example
+     * // Get one TemplateQuestionAnswer
+     * const templateQuestionAnswer = await prisma.templateQuestionAnswer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TemplateQuestionAnswerFindFirstOrThrowArgs>(args?: SelectSubset<T, TemplateQuestionAnswerFindFirstOrThrowArgs<ExtArgs>>): Prisma__TemplateQuestionAnswerClient<$Result.GetResult<Prisma.$TemplateQuestionAnswerPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more TemplateQuestionAnswers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionAnswerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TemplateQuestionAnswers
+     * const templateQuestionAnswers = await prisma.templateQuestionAnswer.findMany()
+     * 
+     * // Get first 10 TemplateQuestionAnswers
+     * const templateQuestionAnswers = await prisma.templateQuestionAnswer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const templateQuestionAnswerWithIdOnly = await prisma.templateQuestionAnswer.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TemplateQuestionAnswerFindManyArgs>(args?: SelectSubset<T, TemplateQuestionAnswerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TemplateQuestionAnswerPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a TemplateQuestionAnswer.
+     * @param {TemplateQuestionAnswerCreateArgs} args - Arguments to create a TemplateQuestionAnswer.
+     * @example
+     * // Create one TemplateQuestionAnswer
+     * const TemplateQuestionAnswer = await prisma.templateQuestionAnswer.create({
+     *   data: {
+     *     // ... data to create a TemplateQuestionAnswer
+     *   }
+     * })
+     * 
+     */
+    create<T extends TemplateQuestionAnswerCreateArgs>(args: SelectSubset<T, TemplateQuestionAnswerCreateArgs<ExtArgs>>): Prisma__TemplateQuestionAnswerClient<$Result.GetResult<Prisma.$TemplateQuestionAnswerPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many TemplateQuestionAnswers.
+     * @param {TemplateQuestionAnswerCreateManyArgs} args - Arguments to create many TemplateQuestionAnswers.
+     * @example
+     * // Create many TemplateQuestionAnswers
+     * const templateQuestionAnswer = await prisma.templateQuestionAnswer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TemplateQuestionAnswerCreateManyArgs>(args?: SelectSubset<T, TemplateQuestionAnswerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a TemplateQuestionAnswer.
+     * @param {TemplateQuestionAnswerDeleteArgs} args - Arguments to delete one TemplateQuestionAnswer.
+     * @example
+     * // Delete one TemplateQuestionAnswer
+     * const TemplateQuestionAnswer = await prisma.templateQuestionAnswer.delete({
+     *   where: {
+     *     // ... filter to delete one TemplateQuestionAnswer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TemplateQuestionAnswerDeleteArgs>(args: SelectSubset<T, TemplateQuestionAnswerDeleteArgs<ExtArgs>>): Prisma__TemplateQuestionAnswerClient<$Result.GetResult<Prisma.$TemplateQuestionAnswerPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one TemplateQuestionAnswer.
+     * @param {TemplateQuestionAnswerUpdateArgs} args - Arguments to update one TemplateQuestionAnswer.
+     * @example
+     * // Update one TemplateQuestionAnswer
+     * const templateQuestionAnswer = await prisma.templateQuestionAnswer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TemplateQuestionAnswerUpdateArgs>(args: SelectSubset<T, TemplateQuestionAnswerUpdateArgs<ExtArgs>>): Prisma__TemplateQuestionAnswerClient<$Result.GetResult<Prisma.$TemplateQuestionAnswerPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more TemplateQuestionAnswers.
+     * @param {TemplateQuestionAnswerDeleteManyArgs} args - Arguments to filter TemplateQuestionAnswers to delete.
+     * @example
+     * // Delete a few TemplateQuestionAnswers
+     * const { count } = await prisma.templateQuestionAnswer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TemplateQuestionAnswerDeleteManyArgs>(args?: SelectSubset<T, TemplateQuestionAnswerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TemplateQuestionAnswers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionAnswerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TemplateQuestionAnswers
+     * const templateQuestionAnswer = await prisma.templateQuestionAnswer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TemplateQuestionAnswerUpdateManyArgs>(args: SelectSubset<T, TemplateQuestionAnswerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TemplateQuestionAnswer.
+     * @param {TemplateQuestionAnswerUpsertArgs} args - Arguments to update or create a TemplateQuestionAnswer.
+     * @example
+     * // Update or create a TemplateQuestionAnswer
+     * const templateQuestionAnswer = await prisma.templateQuestionAnswer.upsert({
+     *   create: {
+     *     // ... data to create a TemplateQuestionAnswer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TemplateQuestionAnswer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TemplateQuestionAnswerUpsertArgs>(args: SelectSubset<T, TemplateQuestionAnswerUpsertArgs<ExtArgs>>): Prisma__TemplateQuestionAnswerClient<$Result.GetResult<Prisma.$TemplateQuestionAnswerPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of TemplateQuestionAnswers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionAnswerCountArgs} args - Arguments to filter TemplateQuestionAnswers to count.
+     * @example
+     * // Count the number of TemplateQuestionAnswers
+     * const count = await prisma.templateQuestionAnswer.count({
+     *   where: {
+     *     // ... the filter for the TemplateQuestionAnswers we want to count
+     *   }
+     * })
+    **/
+    count<T extends TemplateQuestionAnswerCountArgs>(
+      args?: Subset<T, TemplateQuestionAnswerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TemplateQuestionAnswerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TemplateQuestionAnswer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionAnswerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TemplateQuestionAnswerAggregateArgs>(args: Subset<T, TemplateQuestionAnswerAggregateArgs>): Prisma.PrismaPromise<GetTemplateQuestionAnswerAggregateType<T>>
+
+    /**
+     * Group by TemplateQuestionAnswer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TemplateQuestionAnswerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TemplateQuestionAnswerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TemplateQuestionAnswerGroupByArgs['orderBy'] }
+        : { orderBy?: TemplateQuestionAnswerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TemplateQuestionAnswerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTemplateQuestionAnswerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TemplateQuestionAnswer model
+   */
+  readonly fields: TemplateQuestionAnswerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TemplateQuestionAnswer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TemplateQuestionAnswerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    TemplateQuestion<T extends TemplateQuestionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TemplateQuestionDefaultArgs<ExtArgs>>): Prisma__TemplateQuestionClient<$Result.GetResult<Prisma.$TemplateQuestionPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TemplateQuestionAnswer model
+   */ 
+  interface TemplateQuestionAnswerFieldRefs {
+    readonly id: FieldRef<"TemplateQuestionAnswer", 'Int'>
+    readonly answer: FieldRef<"TemplateQuestionAnswer", 'String'>
+    readonly description: FieldRef<"TemplateQuestionAnswer", 'String'>
+    readonly isActive: FieldRef<"TemplateQuestionAnswer", 'Boolean'>
+    readonly templateQuestionId: FieldRef<"TemplateQuestionAnswer", 'Int'>
+    readonly createdAt: FieldRef<"TemplateQuestionAnswer", 'DateTime'>
+    readonly updatedAt: FieldRef<"TemplateQuestionAnswer", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TemplateQuestionAnswer findUnique
+   */
+  export type TemplateQuestionAnswerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestionAnswer
+     */
+    select?: TemplateQuestionAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionAnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateQuestionAnswer to fetch.
+     */
+    where: TemplateQuestionAnswerWhereUniqueInput
+  }
+
+  /**
+   * TemplateQuestionAnswer findUniqueOrThrow
+   */
+  export type TemplateQuestionAnswerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestionAnswer
+     */
+    select?: TemplateQuestionAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionAnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateQuestionAnswer to fetch.
+     */
+    where: TemplateQuestionAnswerWhereUniqueInput
+  }
+
+  /**
+   * TemplateQuestionAnswer findFirst
+   */
+  export type TemplateQuestionAnswerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestionAnswer
+     */
+    select?: TemplateQuestionAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionAnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateQuestionAnswer to fetch.
+     */
+    where?: TemplateQuestionAnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TemplateQuestionAnswers to fetch.
+     */
+    orderBy?: TemplateQuestionAnswerOrderByWithRelationInput | TemplateQuestionAnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TemplateQuestionAnswers.
+     */
+    cursor?: TemplateQuestionAnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TemplateQuestionAnswers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TemplateQuestionAnswers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TemplateQuestionAnswers.
+     */
+    distinct?: TemplateQuestionAnswerScalarFieldEnum | TemplateQuestionAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * TemplateQuestionAnswer findFirstOrThrow
+   */
+  export type TemplateQuestionAnswerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestionAnswer
+     */
+    select?: TemplateQuestionAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionAnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateQuestionAnswer to fetch.
+     */
+    where?: TemplateQuestionAnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TemplateQuestionAnswers to fetch.
+     */
+    orderBy?: TemplateQuestionAnswerOrderByWithRelationInput | TemplateQuestionAnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TemplateQuestionAnswers.
+     */
+    cursor?: TemplateQuestionAnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TemplateQuestionAnswers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TemplateQuestionAnswers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TemplateQuestionAnswers.
+     */
+    distinct?: TemplateQuestionAnswerScalarFieldEnum | TemplateQuestionAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * TemplateQuestionAnswer findMany
+   */
+  export type TemplateQuestionAnswerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestionAnswer
+     */
+    select?: TemplateQuestionAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionAnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which TemplateQuestionAnswers to fetch.
+     */
+    where?: TemplateQuestionAnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TemplateQuestionAnswers to fetch.
+     */
+    orderBy?: TemplateQuestionAnswerOrderByWithRelationInput | TemplateQuestionAnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TemplateQuestionAnswers.
+     */
+    cursor?: TemplateQuestionAnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TemplateQuestionAnswers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TemplateQuestionAnswers.
+     */
+    skip?: number
+    distinct?: TemplateQuestionAnswerScalarFieldEnum | TemplateQuestionAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * TemplateQuestionAnswer create
+   */
+  export type TemplateQuestionAnswerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestionAnswer
+     */
+    select?: TemplateQuestionAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionAnswerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TemplateQuestionAnswer.
+     */
+    data: XOR<TemplateQuestionAnswerCreateInput, TemplateQuestionAnswerUncheckedCreateInput>
+  }
+
+  /**
+   * TemplateQuestionAnswer createMany
+   */
+  export type TemplateQuestionAnswerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TemplateQuestionAnswers.
+     */
+    data: TemplateQuestionAnswerCreateManyInput | TemplateQuestionAnswerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TemplateQuestionAnswer update
+   */
+  export type TemplateQuestionAnswerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestionAnswer
+     */
+    select?: TemplateQuestionAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionAnswerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TemplateQuestionAnswer.
+     */
+    data: XOR<TemplateQuestionAnswerUpdateInput, TemplateQuestionAnswerUncheckedUpdateInput>
+    /**
+     * Choose, which TemplateQuestionAnswer to update.
+     */
+    where: TemplateQuestionAnswerWhereUniqueInput
+  }
+
+  /**
+   * TemplateQuestionAnswer updateMany
+   */
+  export type TemplateQuestionAnswerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TemplateQuestionAnswers.
+     */
+    data: XOR<TemplateQuestionAnswerUpdateManyMutationInput, TemplateQuestionAnswerUncheckedUpdateManyInput>
+    /**
+     * Filter which TemplateQuestionAnswers to update
+     */
+    where?: TemplateQuestionAnswerWhereInput
+  }
+
+  /**
+   * TemplateQuestionAnswer upsert
+   */
+  export type TemplateQuestionAnswerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestionAnswer
+     */
+    select?: TemplateQuestionAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionAnswerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TemplateQuestionAnswer to update in case it exists.
+     */
+    where: TemplateQuestionAnswerWhereUniqueInput
+    /**
+     * In case the TemplateQuestionAnswer found by the `where` argument doesn't exist, create a new TemplateQuestionAnswer with this data.
+     */
+    create: XOR<TemplateQuestionAnswerCreateInput, TemplateQuestionAnswerUncheckedCreateInput>
+    /**
+     * In case the TemplateQuestionAnswer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TemplateQuestionAnswerUpdateInput, TemplateQuestionAnswerUncheckedUpdateInput>
+  }
+
+  /**
+   * TemplateQuestionAnswer delete
+   */
+  export type TemplateQuestionAnswerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestionAnswer
+     */
+    select?: TemplateQuestionAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionAnswerInclude<ExtArgs> | null
+    /**
+     * Filter which TemplateQuestionAnswer to delete.
+     */
+    where: TemplateQuestionAnswerWhereUniqueInput
+  }
+
+  /**
+   * TemplateQuestionAnswer deleteMany
+   */
+  export type TemplateQuestionAnswerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TemplateQuestionAnswers to delete
+     */
+    where?: TemplateQuestionAnswerWhereInput
+  }
+
+  /**
+   * TemplateQuestionAnswer without action
+   */
+  export type TemplateQuestionAnswerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TemplateQuestionAnswer
+     */
+    select?: TemplateQuestionAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateQuestionAnswerInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model User
    */
 
@@ -17770,6 +22021,58 @@ export namespace Prisma {
   export type TeamMemberScalarFieldEnum = (typeof TeamMemberScalarFieldEnum)[keyof typeof TeamMemberScalarFieldEnum]
 
 
+  export const TemplateScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TemplateScalarFieldEnum = (typeof TemplateScalarFieldEnum)[keyof typeof TemplateScalarFieldEnum]
+
+
+  export const TemplateStageScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    templateId: 'templateId'
+  };
+
+  export type TemplateStageScalarFieldEnum = (typeof TemplateStageScalarFieldEnum)[keyof typeof TemplateStageScalarFieldEnum]
+
+
+  export const TemplateQuestionScalarFieldEnum: {
+    id: 'id',
+    question: 'question',
+    description: 'description',
+    isActive: 'isActive',
+    templateStageId: 'templateStageId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    templateId: 'templateId'
+  };
+
+  export type TemplateQuestionScalarFieldEnum = (typeof TemplateQuestionScalarFieldEnum)[keyof typeof TemplateQuestionScalarFieldEnum]
+
+
+  export const TemplateQuestionAnswerScalarFieldEnum: {
+    id: 'id',
+    answer: 'answer',
+    description: 'description',
+    isActive: 'isActive',
+    templateQuestionId: 'templateQuestionId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TemplateQuestionAnswerScalarFieldEnum = (typeof TemplateQuestionAnswerScalarFieldEnum)[keyof typeof TemplateQuestionAnswerScalarFieldEnum]
+
+
   export const UserScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -18916,6 +23219,280 @@ export namespace Prisma {
     tfaToken?: StringNullableWithAggregatesFilter<"TeamMember"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"TeamMember"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"TeamMember"> | Date | string
+  }
+
+  export type TemplateWhereInput = {
+    AND?: TemplateWhereInput | TemplateWhereInput[]
+    OR?: TemplateWhereInput[]
+    NOT?: TemplateWhereInput | TemplateWhereInput[]
+    id?: IntFilter<"Template"> | number
+    name?: StringFilter<"Template"> | string
+    description?: StringNullableFilter<"Template"> | string | null
+    isActive?: BoolFilter<"Template"> | boolean
+    createdAt?: DateTimeFilter<"Template"> | Date | string
+    updatedAt?: DateTimeFilter<"Template"> | Date | string
+    TemplateStage?: TemplateStageListRelationFilter
+  }
+
+  export type TemplateOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    TemplateStage?: TemplateStageOrderByRelationAggregateInput
+  }
+
+  export type TemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TemplateWhereInput | TemplateWhereInput[]
+    OR?: TemplateWhereInput[]
+    NOT?: TemplateWhereInput | TemplateWhereInput[]
+    name?: StringFilter<"Template"> | string
+    description?: StringNullableFilter<"Template"> | string | null
+    isActive?: BoolFilter<"Template"> | boolean
+    createdAt?: DateTimeFilter<"Template"> | Date | string
+    updatedAt?: DateTimeFilter<"Template"> | Date | string
+    TemplateStage?: TemplateStageListRelationFilter
+  }, "id" | "id">
+
+  export type TemplateOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: TemplateCountOrderByAggregateInput
+    _avg?: TemplateAvgOrderByAggregateInput
+    _max?: TemplateMaxOrderByAggregateInput
+    _min?: TemplateMinOrderByAggregateInput
+    _sum?: TemplateSumOrderByAggregateInput
+  }
+
+  export type TemplateScalarWhereWithAggregatesInput = {
+    AND?: TemplateScalarWhereWithAggregatesInput | TemplateScalarWhereWithAggregatesInput[]
+    OR?: TemplateScalarWhereWithAggregatesInput[]
+    NOT?: TemplateScalarWhereWithAggregatesInput | TemplateScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Template"> | number
+    name?: StringWithAggregatesFilter<"Template"> | string
+    description?: StringNullableWithAggregatesFilter<"Template"> | string | null
+    isActive?: BoolWithAggregatesFilter<"Template"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Template"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Template"> | Date | string
+  }
+
+  export type TemplateStageWhereInput = {
+    AND?: TemplateStageWhereInput | TemplateStageWhereInput[]
+    OR?: TemplateStageWhereInput[]
+    NOT?: TemplateStageWhereInput | TemplateStageWhereInput[]
+    id?: IntFilter<"TemplateStage"> | number
+    name?: StringFilter<"TemplateStage"> | string
+    description?: StringNullableFilter<"TemplateStage"> | string | null
+    isActive?: BoolFilter<"TemplateStage"> | boolean
+    createdAt?: DateTimeFilter<"TemplateStage"> | Date | string
+    updatedAt?: DateTimeFilter<"TemplateStage"> | Date | string
+    templateId?: IntFilter<"TemplateStage"> | number
+    Template?: XOR<TemplateRelationFilter, TemplateWhereInput>
+    TemplateQuestion?: TemplateQuestionListRelationFilter
+  }
+
+  export type TemplateStageOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+    Template?: TemplateOrderByWithRelationInput
+    TemplateQuestion?: TemplateQuestionOrderByRelationAggregateInput
+  }
+
+  export type TemplateStageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TemplateStageWhereInput | TemplateStageWhereInput[]
+    OR?: TemplateStageWhereInput[]
+    NOT?: TemplateStageWhereInput | TemplateStageWhereInput[]
+    name?: StringFilter<"TemplateStage"> | string
+    description?: StringNullableFilter<"TemplateStage"> | string | null
+    isActive?: BoolFilter<"TemplateStage"> | boolean
+    createdAt?: DateTimeFilter<"TemplateStage"> | Date | string
+    updatedAt?: DateTimeFilter<"TemplateStage"> | Date | string
+    templateId?: IntFilter<"TemplateStage"> | number
+    Template?: XOR<TemplateRelationFilter, TemplateWhereInput>
+    TemplateQuestion?: TemplateQuestionListRelationFilter
+  }, "id" | "id">
+
+  export type TemplateStageOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+    _count?: TemplateStageCountOrderByAggregateInput
+    _avg?: TemplateStageAvgOrderByAggregateInput
+    _max?: TemplateStageMaxOrderByAggregateInput
+    _min?: TemplateStageMinOrderByAggregateInput
+    _sum?: TemplateStageSumOrderByAggregateInput
+  }
+
+  export type TemplateStageScalarWhereWithAggregatesInput = {
+    AND?: TemplateStageScalarWhereWithAggregatesInput | TemplateStageScalarWhereWithAggregatesInput[]
+    OR?: TemplateStageScalarWhereWithAggregatesInput[]
+    NOT?: TemplateStageScalarWhereWithAggregatesInput | TemplateStageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TemplateStage"> | number
+    name?: StringWithAggregatesFilter<"TemplateStage"> | string
+    description?: StringNullableWithAggregatesFilter<"TemplateStage"> | string | null
+    isActive?: BoolWithAggregatesFilter<"TemplateStage"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"TemplateStage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TemplateStage"> | Date | string
+    templateId?: IntWithAggregatesFilter<"TemplateStage"> | number
+  }
+
+  export type TemplateQuestionWhereInput = {
+    AND?: TemplateQuestionWhereInput | TemplateQuestionWhereInput[]
+    OR?: TemplateQuestionWhereInput[]
+    NOT?: TemplateQuestionWhereInput | TemplateQuestionWhereInput[]
+    id?: IntFilter<"TemplateQuestion"> | number
+    question?: StringFilter<"TemplateQuestion"> | string
+    description?: StringNullableFilter<"TemplateQuestion"> | string | null
+    isActive?: BoolFilter<"TemplateQuestion"> | boolean
+    templateStageId?: IntFilter<"TemplateQuestion"> | number
+    createdAt?: DateTimeFilter<"TemplateQuestion"> | Date | string
+    updatedAt?: DateTimeFilter<"TemplateQuestion"> | Date | string
+    templateId?: IntNullableFilter<"TemplateQuestion"> | number | null
+    TemplateStage?: XOR<TemplateStageRelationFilter, TemplateStageWhereInput>
+    TemplateQuestionAnswer?: TemplateQuestionAnswerListRelationFilter
+  }
+
+  export type TemplateQuestionOrderByWithRelationInput = {
+    id?: SortOrder
+    question?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    templateStageId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrderInput | SortOrder
+    TemplateStage?: TemplateStageOrderByWithRelationInput
+    TemplateQuestionAnswer?: TemplateQuestionAnswerOrderByRelationAggregateInput
+  }
+
+  export type TemplateQuestionWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TemplateQuestionWhereInput | TemplateQuestionWhereInput[]
+    OR?: TemplateQuestionWhereInput[]
+    NOT?: TemplateQuestionWhereInput | TemplateQuestionWhereInput[]
+    question?: StringFilter<"TemplateQuestion"> | string
+    description?: StringNullableFilter<"TemplateQuestion"> | string | null
+    isActive?: BoolFilter<"TemplateQuestion"> | boolean
+    templateStageId?: IntFilter<"TemplateQuestion"> | number
+    createdAt?: DateTimeFilter<"TemplateQuestion"> | Date | string
+    updatedAt?: DateTimeFilter<"TemplateQuestion"> | Date | string
+    templateId?: IntNullableFilter<"TemplateQuestion"> | number | null
+    TemplateStage?: XOR<TemplateStageRelationFilter, TemplateStageWhereInput>
+    TemplateQuestionAnswer?: TemplateQuestionAnswerListRelationFilter
+  }, "id" | "id">
+
+  export type TemplateQuestionOrderByWithAggregationInput = {
+    id?: SortOrder
+    question?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    templateStageId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrderInput | SortOrder
+    _count?: TemplateQuestionCountOrderByAggregateInput
+    _avg?: TemplateQuestionAvgOrderByAggregateInput
+    _max?: TemplateQuestionMaxOrderByAggregateInput
+    _min?: TemplateQuestionMinOrderByAggregateInput
+    _sum?: TemplateQuestionSumOrderByAggregateInput
+  }
+
+  export type TemplateQuestionScalarWhereWithAggregatesInput = {
+    AND?: TemplateQuestionScalarWhereWithAggregatesInput | TemplateQuestionScalarWhereWithAggregatesInput[]
+    OR?: TemplateQuestionScalarWhereWithAggregatesInput[]
+    NOT?: TemplateQuestionScalarWhereWithAggregatesInput | TemplateQuestionScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TemplateQuestion"> | number
+    question?: StringWithAggregatesFilter<"TemplateQuestion"> | string
+    description?: StringNullableWithAggregatesFilter<"TemplateQuestion"> | string | null
+    isActive?: BoolWithAggregatesFilter<"TemplateQuestion"> | boolean
+    templateStageId?: IntWithAggregatesFilter<"TemplateQuestion"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"TemplateQuestion"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TemplateQuestion"> | Date | string
+    templateId?: IntNullableWithAggregatesFilter<"TemplateQuestion"> | number | null
+  }
+
+  export type TemplateQuestionAnswerWhereInput = {
+    AND?: TemplateQuestionAnswerWhereInput | TemplateQuestionAnswerWhereInput[]
+    OR?: TemplateQuestionAnswerWhereInput[]
+    NOT?: TemplateQuestionAnswerWhereInput | TemplateQuestionAnswerWhereInput[]
+    id?: IntFilter<"TemplateQuestionAnswer"> | number
+    answer?: StringFilter<"TemplateQuestionAnswer"> | string
+    description?: StringNullableFilter<"TemplateQuestionAnswer"> | string | null
+    isActive?: BoolFilter<"TemplateQuestionAnswer"> | boolean
+    templateQuestionId?: IntFilter<"TemplateQuestionAnswer"> | number
+    createdAt?: DateTimeFilter<"TemplateQuestionAnswer"> | Date | string
+    updatedAt?: DateTimeFilter<"TemplateQuestionAnswer"> | Date | string
+    TemplateQuestion?: XOR<TemplateQuestionRelationFilter, TemplateQuestionWhereInput>
+  }
+
+  export type TemplateQuestionAnswerOrderByWithRelationInput = {
+    id?: SortOrder
+    answer?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    templateQuestionId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    TemplateQuestion?: TemplateQuestionOrderByWithRelationInput
+  }
+
+  export type TemplateQuestionAnswerWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TemplateQuestionAnswerWhereInput | TemplateQuestionAnswerWhereInput[]
+    OR?: TemplateQuestionAnswerWhereInput[]
+    NOT?: TemplateQuestionAnswerWhereInput | TemplateQuestionAnswerWhereInput[]
+    answer?: StringFilter<"TemplateQuestionAnswer"> | string
+    description?: StringNullableFilter<"TemplateQuestionAnswer"> | string | null
+    isActive?: BoolFilter<"TemplateQuestionAnswer"> | boolean
+    templateQuestionId?: IntFilter<"TemplateQuestionAnswer"> | number
+    createdAt?: DateTimeFilter<"TemplateQuestionAnswer"> | Date | string
+    updatedAt?: DateTimeFilter<"TemplateQuestionAnswer"> | Date | string
+    TemplateQuestion?: XOR<TemplateQuestionRelationFilter, TemplateQuestionWhereInput>
+  }, "id" | "id">
+
+  export type TemplateQuestionAnswerOrderByWithAggregationInput = {
+    id?: SortOrder
+    answer?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    templateQuestionId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: TemplateQuestionAnswerCountOrderByAggregateInput
+    _avg?: TemplateQuestionAnswerAvgOrderByAggregateInput
+    _max?: TemplateQuestionAnswerMaxOrderByAggregateInput
+    _min?: TemplateQuestionAnswerMinOrderByAggregateInput
+    _sum?: TemplateQuestionAnswerSumOrderByAggregateInput
+  }
+
+  export type TemplateQuestionAnswerScalarWhereWithAggregatesInput = {
+    AND?: TemplateQuestionAnswerScalarWhereWithAggregatesInput | TemplateQuestionAnswerScalarWhereWithAggregatesInput[]
+    OR?: TemplateQuestionAnswerScalarWhereWithAggregatesInput[]
+    NOT?: TemplateQuestionAnswerScalarWhereWithAggregatesInput | TemplateQuestionAnswerScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TemplateQuestionAnswer"> | number
+    answer?: StringWithAggregatesFilter<"TemplateQuestionAnswer"> | string
+    description?: StringNullableWithAggregatesFilter<"TemplateQuestionAnswer"> | string | null
+    isActive?: BoolWithAggregatesFilter<"TemplateQuestionAnswer"> | boolean
+    templateQuestionId?: IntWithAggregatesFilter<"TemplateQuestionAnswer"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"TemplateQuestionAnswer"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TemplateQuestionAnswer"> | Date | string
   }
 
   export type UserWhereInput = {
@@ -20169,6 +24746,283 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TemplateCreateInput = {
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    TemplateStage?: TemplateStageCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TemplateUncheckedCreateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    TemplateStage?: TemplateStageUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TemplateUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    TemplateStage?: TemplateStageUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TemplateUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    TemplateStage?: TemplateStageUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TemplateCreateManyInput = {
+    id?: number
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TemplateUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TemplateUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TemplateStageCreateInput = {
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Template: TemplateCreateNestedOneWithoutTemplateStageInput
+    TemplateQuestion?: TemplateQuestionCreateNestedManyWithoutTemplateStageInput
+  }
+
+  export type TemplateStageUncheckedCreateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId: number
+    TemplateQuestion?: TemplateQuestionUncheckedCreateNestedManyWithoutTemplateStageInput
+  }
+
+  export type TemplateStageUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Template?: TemplateUpdateOneRequiredWithoutTemplateStageNestedInput
+    TemplateQuestion?: TemplateQuestionUpdateManyWithoutTemplateStageNestedInput
+  }
+
+  export type TemplateStageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: IntFieldUpdateOperationsInput | number
+    TemplateQuestion?: TemplateQuestionUncheckedUpdateManyWithoutTemplateStageNestedInput
+  }
+
+  export type TemplateStageCreateManyInput = {
+    id?: number
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId: number
+  }
+
+  export type TemplateStageUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TemplateStageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TemplateQuestionCreateInput = {
+    question: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId?: number | null
+    TemplateStage: TemplateStageCreateNestedOneWithoutTemplateQuestionInput
+    TemplateQuestionAnswer?: TemplateQuestionAnswerCreateNestedManyWithoutTemplateQuestionInput
+  }
+
+  export type TemplateQuestionUncheckedCreateInput = {
+    id?: number
+    question: string
+    description?: string | null
+    isActive?: boolean
+    templateStageId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId?: number | null
+    TemplateQuestionAnswer?: TemplateQuestionAnswerUncheckedCreateNestedManyWithoutTemplateQuestionInput
+  }
+
+  export type TemplateQuestionUpdateInput = {
+    question?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: NullableIntFieldUpdateOperationsInput | number | null
+    TemplateStage?: TemplateStageUpdateOneRequiredWithoutTemplateQuestionNestedInput
+    TemplateQuestionAnswer?: TemplateQuestionAnswerUpdateManyWithoutTemplateQuestionNestedInput
+  }
+
+  export type TemplateQuestionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    question?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    templateStageId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: NullableIntFieldUpdateOperationsInput | number | null
+    TemplateQuestionAnswer?: TemplateQuestionAnswerUncheckedUpdateManyWithoutTemplateQuestionNestedInput
+  }
+
+  export type TemplateQuestionCreateManyInput = {
+    id?: number
+    question: string
+    description?: string | null
+    isActive?: boolean
+    templateStageId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId?: number | null
+  }
+
+  export type TemplateQuestionUpdateManyMutationInput = {
+    question?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type TemplateQuestionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    question?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    templateStageId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type TemplateQuestionAnswerCreateInput = {
+    answer: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    TemplateQuestion: TemplateQuestionCreateNestedOneWithoutTemplateQuestionAnswerInput
+  }
+
+  export type TemplateQuestionAnswerUncheckedCreateInput = {
+    id?: number
+    answer: string
+    description?: string | null
+    isActive?: boolean
+    templateQuestionId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TemplateQuestionAnswerUpdateInput = {
+    answer?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    TemplateQuestion?: TemplateQuestionUpdateOneRequiredWithoutTemplateQuestionAnswerNestedInput
+  }
+
+  export type TemplateQuestionAnswerUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    answer?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    templateQuestionId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TemplateQuestionAnswerCreateManyInput = {
+    id?: number
+    answer: string
+    description?: string | null
+    isActive?: boolean
+    templateQuestionId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TemplateQuestionAnswerUpdateManyMutationInput = {
+    answer?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TemplateQuestionAnswerUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    answer?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    templateQuestionId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateInput = {
     name: string
     firstName?: string | null
@@ -21366,6 +26220,211 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTeamMemberLevelFilter<$PrismaModel>
     _max?: NestedEnumTeamMemberLevelFilter<$PrismaModel>
+  }
+
+  export type TemplateStageListRelationFilter = {
+    every?: TemplateStageWhereInput
+    some?: TemplateStageWhereInput
+    none?: TemplateStageWhereInput
+  }
+
+  export type TemplateStageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TemplateCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TemplateAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TemplateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TemplateMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TemplateSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TemplateRelationFilter = {
+    is?: TemplateWhereInput
+    isNot?: TemplateWhereInput
+  }
+
+  export type TemplateQuestionListRelationFilter = {
+    every?: TemplateQuestionWhereInput
+    some?: TemplateQuestionWhereInput
+    none?: TemplateQuestionWhereInput
+  }
+
+  export type TemplateQuestionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TemplateStageCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type TemplateStageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type TemplateStageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type TemplateStageMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type TemplateStageSumOrderByAggregateInput = {
+    id?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type TemplateStageRelationFilter = {
+    is?: TemplateStageWhereInput
+    isNot?: TemplateStageWhereInput
+  }
+
+  export type TemplateQuestionAnswerListRelationFilter = {
+    every?: TemplateQuestionAnswerWhereInput
+    some?: TemplateQuestionAnswerWhereInput
+    none?: TemplateQuestionAnswerWhereInput
+  }
+
+  export type TemplateQuestionAnswerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TemplateQuestionCountOrderByAggregateInput = {
+    id?: SortOrder
+    question?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    templateStageId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type TemplateQuestionAvgOrderByAggregateInput = {
+    id?: SortOrder
+    templateStageId?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type TemplateQuestionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    question?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    templateStageId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type TemplateQuestionMinOrderByAggregateInput = {
+    id?: SortOrder
+    question?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    templateStageId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type TemplateQuestionSumOrderByAggregateInput = {
+    id?: SortOrder
+    templateStageId?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type TemplateQuestionRelationFilter = {
+    is?: TemplateQuestionWhereInput
+    isNot?: TemplateQuestionWhereInput
+  }
+
+  export type TemplateQuestionAnswerCountOrderByAggregateInput = {
+    id?: SortOrder
+    answer?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    templateQuestionId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TemplateQuestionAnswerAvgOrderByAggregateInput = {
+    id?: SortOrder
+    templateQuestionId?: SortOrder
+  }
+
+  export type TemplateQuestionAnswerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    answer?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    templateQuestionId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TemplateQuestionAnswerMinOrderByAggregateInput = {
+    id?: SortOrder
+    answer?: SortOrder
+    description?: SortOrder
+    isActive?: SortOrder
+    templateQuestionId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type TemplateQuestionAnswerSumOrderByAggregateInput = {
+    id?: SortOrder
+    templateQuestionId?: SortOrder
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -22662,6 +27721,174 @@ export namespace Prisma {
     update?: AssessmentQuestionAssignUpdateWithWhereUniqueWithoutMemberInput | AssessmentQuestionAssignUpdateWithWhereUniqueWithoutMemberInput[]
     updateMany?: AssessmentQuestionAssignUpdateManyWithWhereWithoutMemberInput | AssessmentQuestionAssignUpdateManyWithWhereWithoutMemberInput[]
     deleteMany?: AssessmentQuestionAssignScalarWhereInput | AssessmentQuestionAssignScalarWhereInput[]
+  }
+
+  export type TemplateStageCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<TemplateStageCreateWithoutTemplateInput, TemplateStageUncheckedCreateWithoutTemplateInput> | TemplateStageCreateWithoutTemplateInput[] | TemplateStageUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TemplateStageCreateOrConnectWithoutTemplateInput | TemplateStageCreateOrConnectWithoutTemplateInput[]
+    createMany?: TemplateStageCreateManyTemplateInputEnvelope
+    connect?: TemplateStageWhereUniqueInput | TemplateStageWhereUniqueInput[]
+  }
+
+  export type TemplateStageUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<TemplateStageCreateWithoutTemplateInput, TemplateStageUncheckedCreateWithoutTemplateInput> | TemplateStageCreateWithoutTemplateInput[] | TemplateStageUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TemplateStageCreateOrConnectWithoutTemplateInput | TemplateStageCreateOrConnectWithoutTemplateInput[]
+    createMany?: TemplateStageCreateManyTemplateInputEnvelope
+    connect?: TemplateStageWhereUniqueInput | TemplateStageWhereUniqueInput[]
+  }
+
+  export type TemplateStageUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<TemplateStageCreateWithoutTemplateInput, TemplateStageUncheckedCreateWithoutTemplateInput> | TemplateStageCreateWithoutTemplateInput[] | TemplateStageUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TemplateStageCreateOrConnectWithoutTemplateInput | TemplateStageCreateOrConnectWithoutTemplateInput[]
+    upsert?: TemplateStageUpsertWithWhereUniqueWithoutTemplateInput | TemplateStageUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: TemplateStageCreateManyTemplateInputEnvelope
+    set?: TemplateStageWhereUniqueInput | TemplateStageWhereUniqueInput[]
+    disconnect?: TemplateStageWhereUniqueInput | TemplateStageWhereUniqueInput[]
+    delete?: TemplateStageWhereUniqueInput | TemplateStageWhereUniqueInput[]
+    connect?: TemplateStageWhereUniqueInput | TemplateStageWhereUniqueInput[]
+    update?: TemplateStageUpdateWithWhereUniqueWithoutTemplateInput | TemplateStageUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: TemplateStageUpdateManyWithWhereWithoutTemplateInput | TemplateStageUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: TemplateStageScalarWhereInput | TemplateStageScalarWhereInput[]
+  }
+
+  export type TemplateStageUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<TemplateStageCreateWithoutTemplateInput, TemplateStageUncheckedCreateWithoutTemplateInput> | TemplateStageCreateWithoutTemplateInput[] | TemplateStageUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: TemplateStageCreateOrConnectWithoutTemplateInput | TemplateStageCreateOrConnectWithoutTemplateInput[]
+    upsert?: TemplateStageUpsertWithWhereUniqueWithoutTemplateInput | TemplateStageUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: TemplateStageCreateManyTemplateInputEnvelope
+    set?: TemplateStageWhereUniqueInput | TemplateStageWhereUniqueInput[]
+    disconnect?: TemplateStageWhereUniqueInput | TemplateStageWhereUniqueInput[]
+    delete?: TemplateStageWhereUniqueInput | TemplateStageWhereUniqueInput[]
+    connect?: TemplateStageWhereUniqueInput | TemplateStageWhereUniqueInput[]
+    update?: TemplateStageUpdateWithWhereUniqueWithoutTemplateInput | TemplateStageUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: TemplateStageUpdateManyWithWhereWithoutTemplateInput | TemplateStageUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: TemplateStageScalarWhereInput | TemplateStageScalarWhereInput[]
+  }
+
+  export type TemplateCreateNestedOneWithoutTemplateStageInput = {
+    create?: XOR<TemplateCreateWithoutTemplateStageInput, TemplateUncheckedCreateWithoutTemplateStageInput>
+    connectOrCreate?: TemplateCreateOrConnectWithoutTemplateStageInput
+    connect?: TemplateWhereUniqueInput
+  }
+
+  export type TemplateQuestionCreateNestedManyWithoutTemplateStageInput = {
+    create?: XOR<TemplateQuestionCreateWithoutTemplateStageInput, TemplateQuestionUncheckedCreateWithoutTemplateStageInput> | TemplateQuestionCreateWithoutTemplateStageInput[] | TemplateQuestionUncheckedCreateWithoutTemplateStageInput[]
+    connectOrCreate?: TemplateQuestionCreateOrConnectWithoutTemplateStageInput | TemplateQuestionCreateOrConnectWithoutTemplateStageInput[]
+    createMany?: TemplateQuestionCreateManyTemplateStageInputEnvelope
+    connect?: TemplateQuestionWhereUniqueInput | TemplateQuestionWhereUniqueInput[]
+  }
+
+  export type TemplateQuestionUncheckedCreateNestedManyWithoutTemplateStageInput = {
+    create?: XOR<TemplateQuestionCreateWithoutTemplateStageInput, TemplateQuestionUncheckedCreateWithoutTemplateStageInput> | TemplateQuestionCreateWithoutTemplateStageInput[] | TemplateQuestionUncheckedCreateWithoutTemplateStageInput[]
+    connectOrCreate?: TemplateQuestionCreateOrConnectWithoutTemplateStageInput | TemplateQuestionCreateOrConnectWithoutTemplateStageInput[]
+    createMany?: TemplateQuestionCreateManyTemplateStageInputEnvelope
+    connect?: TemplateQuestionWhereUniqueInput | TemplateQuestionWhereUniqueInput[]
+  }
+
+  export type TemplateUpdateOneRequiredWithoutTemplateStageNestedInput = {
+    create?: XOR<TemplateCreateWithoutTemplateStageInput, TemplateUncheckedCreateWithoutTemplateStageInput>
+    connectOrCreate?: TemplateCreateOrConnectWithoutTemplateStageInput
+    upsert?: TemplateUpsertWithoutTemplateStageInput
+    connect?: TemplateWhereUniqueInput
+    update?: XOR<XOR<TemplateUpdateToOneWithWhereWithoutTemplateStageInput, TemplateUpdateWithoutTemplateStageInput>, TemplateUncheckedUpdateWithoutTemplateStageInput>
+  }
+
+  export type TemplateQuestionUpdateManyWithoutTemplateStageNestedInput = {
+    create?: XOR<TemplateQuestionCreateWithoutTemplateStageInput, TemplateQuestionUncheckedCreateWithoutTemplateStageInput> | TemplateQuestionCreateWithoutTemplateStageInput[] | TemplateQuestionUncheckedCreateWithoutTemplateStageInput[]
+    connectOrCreate?: TemplateQuestionCreateOrConnectWithoutTemplateStageInput | TemplateQuestionCreateOrConnectWithoutTemplateStageInput[]
+    upsert?: TemplateQuestionUpsertWithWhereUniqueWithoutTemplateStageInput | TemplateQuestionUpsertWithWhereUniqueWithoutTemplateStageInput[]
+    createMany?: TemplateQuestionCreateManyTemplateStageInputEnvelope
+    set?: TemplateQuestionWhereUniqueInput | TemplateQuestionWhereUniqueInput[]
+    disconnect?: TemplateQuestionWhereUniqueInput | TemplateQuestionWhereUniqueInput[]
+    delete?: TemplateQuestionWhereUniqueInput | TemplateQuestionWhereUniqueInput[]
+    connect?: TemplateQuestionWhereUniqueInput | TemplateQuestionWhereUniqueInput[]
+    update?: TemplateQuestionUpdateWithWhereUniqueWithoutTemplateStageInput | TemplateQuestionUpdateWithWhereUniqueWithoutTemplateStageInput[]
+    updateMany?: TemplateQuestionUpdateManyWithWhereWithoutTemplateStageInput | TemplateQuestionUpdateManyWithWhereWithoutTemplateStageInput[]
+    deleteMany?: TemplateQuestionScalarWhereInput | TemplateQuestionScalarWhereInput[]
+  }
+
+  export type TemplateQuestionUncheckedUpdateManyWithoutTemplateStageNestedInput = {
+    create?: XOR<TemplateQuestionCreateWithoutTemplateStageInput, TemplateQuestionUncheckedCreateWithoutTemplateStageInput> | TemplateQuestionCreateWithoutTemplateStageInput[] | TemplateQuestionUncheckedCreateWithoutTemplateStageInput[]
+    connectOrCreate?: TemplateQuestionCreateOrConnectWithoutTemplateStageInput | TemplateQuestionCreateOrConnectWithoutTemplateStageInput[]
+    upsert?: TemplateQuestionUpsertWithWhereUniqueWithoutTemplateStageInput | TemplateQuestionUpsertWithWhereUniqueWithoutTemplateStageInput[]
+    createMany?: TemplateQuestionCreateManyTemplateStageInputEnvelope
+    set?: TemplateQuestionWhereUniqueInput | TemplateQuestionWhereUniqueInput[]
+    disconnect?: TemplateQuestionWhereUniqueInput | TemplateQuestionWhereUniqueInput[]
+    delete?: TemplateQuestionWhereUniqueInput | TemplateQuestionWhereUniqueInput[]
+    connect?: TemplateQuestionWhereUniqueInput | TemplateQuestionWhereUniqueInput[]
+    update?: TemplateQuestionUpdateWithWhereUniqueWithoutTemplateStageInput | TemplateQuestionUpdateWithWhereUniqueWithoutTemplateStageInput[]
+    updateMany?: TemplateQuestionUpdateManyWithWhereWithoutTemplateStageInput | TemplateQuestionUpdateManyWithWhereWithoutTemplateStageInput[]
+    deleteMany?: TemplateQuestionScalarWhereInput | TemplateQuestionScalarWhereInput[]
+  }
+
+  export type TemplateStageCreateNestedOneWithoutTemplateQuestionInput = {
+    create?: XOR<TemplateStageCreateWithoutTemplateQuestionInput, TemplateStageUncheckedCreateWithoutTemplateQuestionInput>
+    connectOrCreate?: TemplateStageCreateOrConnectWithoutTemplateQuestionInput
+    connect?: TemplateStageWhereUniqueInput
+  }
+
+  export type TemplateQuestionAnswerCreateNestedManyWithoutTemplateQuestionInput = {
+    create?: XOR<TemplateQuestionAnswerCreateWithoutTemplateQuestionInput, TemplateQuestionAnswerUncheckedCreateWithoutTemplateQuestionInput> | TemplateQuestionAnswerCreateWithoutTemplateQuestionInput[] | TemplateQuestionAnswerUncheckedCreateWithoutTemplateQuestionInput[]
+    connectOrCreate?: TemplateQuestionAnswerCreateOrConnectWithoutTemplateQuestionInput | TemplateQuestionAnswerCreateOrConnectWithoutTemplateQuestionInput[]
+    createMany?: TemplateQuestionAnswerCreateManyTemplateQuestionInputEnvelope
+    connect?: TemplateQuestionAnswerWhereUniqueInput | TemplateQuestionAnswerWhereUniqueInput[]
+  }
+
+  export type TemplateQuestionAnswerUncheckedCreateNestedManyWithoutTemplateQuestionInput = {
+    create?: XOR<TemplateQuestionAnswerCreateWithoutTemplateQuestionInput, TemplateQuestionAnswerUncheckedCreateWithoutTemplateQuestionInput> | TemplateQuestionAnswerCreateWithoutTemplateQuestionInput[] | TemplateQuestionAnswerUncheckedCreateWithoutTemplateQuestionInput[]
+    connectOrCreate?: TemplateQuestionAnswerCreateOrConnectWithoutTemplateQuestionInput | TemplateQuestionAnswerCreateOrConnectWithoutTemplateQuestionInput[]
+    createMany?: TemplateQuestionAnswerCreateManyTemplateQuestionInputEnvelope
+    connect?: TemplateQuestionAnswerWhereUniqueInput | TemplateQuestionAnswerWhereUniqueInput[]
+  }
+
+  export type TemplateStageUpdateOneRequiredWithoutTemplateQuestionNestedInput = {
+    create?: XOR<TemplateStageCreateWithoutTemplateQuestionInput, TemplateStageUncheckedCreateWithoutTemplateQuestionInput>
+    connectOrCreate?: TemplateStageCreateOrConnectWithoutTemplateQuestionInput
+    upsert?: TemplateStageUpsertWithoutTemplateQuestionInput
+    connect?: TemplateStageWhereUniqueInput
+    update?: XOR<XOR<TemplateStageUpdateToOneWithWhereWithoutTemplateQuestionInput, TemplateStageUpdateWithoutTemplateQuestionInput>, TemplateStageUncheckedUpdateWithoutTemplateQuestionInput>
+  }
+
+  export type TemplateQuestionAnswerUpdateManyWithoutTemplateQuestionNestedInput = {
+    create?: XOR<TemplateQuestionAnswerCreateWithoutTemplateQuestionInput, TemplateQuestionAnswerUncheckedCreateWithoutTemplateQuestionInput> | TemplateQuestionAnswerCreateWithoutTemplateQuestionInput[] | TemplateQuestionAnswerUncheckedCreateWithoutTemplateQuestionInput[]
+    connectOrCreate?: TemplateQuestionAnswerCreateOrConnectWithoutTemplateQuestionInput | TemplateQuestionAnswerCreateOrConnectWithoutTemplateQuestionInput[]
+    upsert?: TemplateQuestionAnswerUpsertWithWhereUniqueWithoutTemplateQuestionInput | TemplateQuestionAnswerUpsertWithWhereUniqueWithoutTemplateQuestionInput[]
+    createMany?: TemplateQuestionAnswerCreateManyTemplateQuestionInputEnvelope
+    set?: TemplateQuestionAnswerWhereUniqueInput | TemplateQuestionAnswerWhereUniqueInput[]
+    disconnect?: TemplateQuestionAnswerWhereUniqueInput | TemplateQuestionAnswerWhereUniqueInput[]
+    delete?: TemplateQuestionAnswerWhereUniqueInput | TemplateQuestionAnswerWhereUniqueInput[]
+    connect?: TemplateQuestionAnswerWhereUniqueInput | TemplateQuestionAnswerWhereUniqueInput[]
+    update?: TemplateQuestionAnswerUpdateWithWhereUniqueWithoutTemplateQuestionInput | TemplateQuestionAnswerUpdateWithWhereUniqueWithoutTemplateQuestionInput[]
+    updateMany?: TemplateQuestionAnswerUpdateManyWithWhereWithoutTemplateQuestionInput | TemplateQuestionAnswerUpdateManyWithWhereWithoutTemplateQuestionInput[]
+    deleteMany?: TemplateQuestionAnswerScalarWhereInput | TemplateQuestionAnswerScalarWhereInput[]
+  }
+
+  export type TemplateQuestionAnswerUncheckedUpdateManyWithoutTemplateQuestionNestedInput = {
+    create?: XOR<TemplateQuestionAnswerCreateWithoutTemplateQuestionInput, TemplateQuestionAnswerUncheckedCreateWithoutTemplateQuestionInput> | TemplateQuestionAnswerCreateWithoutTemplateQuestionInput[] | TemplateQuestionAnswerUncheckedCreateWithoutTemplateQuestionInput[]
+    connectOrCreate?: TemplateQuestionAnswerCreateOrConnectWithoutTemplateQuestionInput | TemplateQuestionAnswerCreateOrConnectWithoutTemplateQuestionInput[]
+    upsert?: TemplateQuestionAnswerUpsertWithWhereUniqueWithoutTemplateQuestionInput | TemplateQuestionAnswerUpsertWithWhereUniqueWithoutTemplateQuestionInput[]
+    createMany?: TemplateQuestionAnswerCreateManyTemplateQuestionInputEnvelope
+    set?: TemplateQuestionAnswerWhereUniqueInput | TemplateQuestionAnswerWhereUniqueInput[]
+    disconnect?: TemplateQuestionAnswerWhereUniqueInput | TemplateQuestionAnswerWhereUniqueInput[]
+    delete?: TemplateQuestionAnswerWhereUniqueInput | TemplateQuestionAnswerWhereUniqueInput[]
+    connect?: TemplateQuestionAnswerWhereUniqueInput | TemplateQuestionAnswerWhereUniqueInput[]
+    update?: TemplateQuestionAnswerUpdateWithWhereUniqueWithoutTemplateQuestionInput | TemplateQuestionAnswerUpdateWithWhereUniqueWithoutTemplateQuestionInput[]
+    updateMany?: TemplateQuestionAnswerUpdateManyWithWhereWithoutTemplateQuestionInput | TemplateQuestionAnswerUpdateManyWithWhereWithoutTemplateQuestionInput[]
+    deleteMany?: TemplateQuestionAnswerScalarWhereInput | TemplateQuestionAnswerScalarWhereInput[]
+  }
+
+  export type TemplateQuestionCreateNestedOneWithoutTemplateQuestionAnswerInput = {
+    create?: XOR<TemplateQuestionCreateWithoutTemplateQuestionAnswerInput, TemplateQuestionUncheckedCreateWithoutTemplateQuestionAnswerInput>
+    connectOrCreate?: TemplateQuestionCreateOrConnectWithoutTemplateQuestionAnswerInput
+    connect?: TemplateQuestionWhereUniqueInput
+  }
+
+  export type TemplateQuestionUpdateOneRequiredWithoutTemplateQuestionAnswerNestedInput = {
+    create?: XOR<TemplateQuestionCreateWithoutTemplateQuestionAnswerInput, TemplateQuestionUncheckedCreateWithoutTemplateQuestionAnswerInput>
+    connectOrCreate?: TemplateQuestionCreateOrConnectWithoutTemplateQuestionAnswerInput
+    upsert?: TemplateQuestionUpsertWithoutTemplateQuestionAnswerInput
+    connect?: TemplateQuestionWhereUniqueInput
+    update?: XOR<XOR<TemplateQuestionUpdateToOneWithWhereWithoutTemplateQuestionAnswerInput, TemplateQuestionUpdateWithoutTemplateQuestionAnswerInput>, TemplateQuestionUncheckedUpdateWithoutTemplateQuestionAnswerInput>
   }
 
   export type OrganisationCreateNestedOneWithoutOwnerInput = {
@@ -25770,6 +30997,343 @@ export namespace Prisma {
     data: XOR<AssessmentQuestionAssignUpdateManyMutationInput, AssessmentQuestionAssignUncheckedUpdateManyWithoutMemberInput>
   }
 
+  export type TemplateStageCreateWithoutTemplateInput = {
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    TemplateQuestion?: TemplateQuestionCreateNestedManyWithoutTemplateStageInput
+  }
+
+  export type TemplateStageUncheckedCreateWithoutTemplateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    TemplateQuestion?: TemplateQuestionUncheckedCreateNestedManyWithoutTemplateStageInput
+  }
+
+  export type TemplateStageCreateOrConnectWithoutTemplateInput = {
+    where: TemplateStageWhereUniqueInput
+    create: XOR<TemplateStageCreateWithoutTemplateInput, TemplateStageUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type TemplateStageCreateManyTemplateInputEnvelope = {
+    data: TemplateStageCreateManyTemplateInput | TemplateStageCreateManyTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TemplateStageUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: TemplateStageWhereUniqueInput
+    update: XOR<TemplateStageUpdateWithoutTemplateInput, TemplateStageUncheckedUpdateWithoutTemplateInput>
+    create: XOR<TemplateStageCreateWithoutTemplateInput, TemplateStageUncheckedCreateWithoutTemplateInput>
+  }
+
+  export type TemplateStageUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: TemplateStageWhereUniqueInput
+    data: XOR<TemplateStageUpdateWithoutTemplateInput, TemplateStageUncheckedUpdateWithoutTemplateInput>
+  }
+
+  export type TemplateStageUpdateManyWithWhereWithoutTemplateInput = {
+    where: TemplateStageScalarWhereInput
+    data: XOR<TemplateStageUpdateManyMutationInput, TemplateStageUncheckedUpdateManyWithoutTemplateInput>
+  }
+
+  export type TemplateStageScalarWhereInput = {
+    AND?: TemplateStageScalarWhereInput | TemplateStageScalarWhereInput[]
+    OR?: TemplateStageScalarWhereInput[]
+    NOT?: TemplateStageScalarWhereInput | TemplateStageScalarWhereInput[]
+    id?: IntFilter<"TemplateStage"> | number
+    name?: StringFilter<"TemplateStage"> | string
+    description?: StringNullableFilter<"TemplateStage"> | string | null
+    isActive?: BoolFilter<"TemplateStage"> | boolean
+    createdAt?: DateTimeFilter<"TemplateStage"> | Date | string
+    updatedAt?: DateTimeFilter<"TemplateStage"> | Date | string
+    templateId?: IntFilter<"TemplateStage"> | number
+  }
+
+  export type TemplateCreateWithoutTemplateStageInput = {
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TemplateUncheckedCreateWithoutTemplateStageInput = {
+    id?: number
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TemplateCreateOrConnectWithoutTemplateStageInput = {
+    where: TemplateWhereUniqueInput
+    create: XOR<TemplateCreateWithoutTemplateStageInput, TemplateUncheckedCreateWithoutTemplateStageInput>
+  }
+
+  export type TemplateQuestionCreateWithoutTemplateStageInput = {
+    question: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId?: number | null
+    TemplateQuestionAnswer?: TemplateQuestionAnswerCreateNestedManyWithoutTemplateQuestionInput
+  }
+
+  export type TemplateQuestionUncheckedCreateWithoutTemplateStageInput = {
+    id?: number
+    question: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId?: number | null
+    TemplateQuestionAnswer?: TemplateQuestionAnswerUncheckedCreateNestedManyWithoutTemplateQuestionInput
+  }
+
+  export type TemplateQuestionCreateOrConnectWithoutTemplateStageInput = {
+    where: TemplateQuestionWhereUniqueInput
+    create: XOR<TemplateQuestionCreateWithoutTemplateStageInput, TemplateQuestionUncheckedCreateWithoutTemplateStageInput>
+  }
+
+  export type TemplateQuestionCreateManyTemplateStageInputEnvelope = {
+    data: TemplateQuestionCreateManyTemplateStageInput | TemplateQuestionCreateManyTemplateStageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TemplateUpsertWithoutTemplateStageInput = {
+    update: XOR<TemplateUpdateWithoutTemplateStageInput, TemplateUncheckedUpdateWithoutTemplateStageInput>
+    create: XOR<TemplateCreateWithoutTemplateStageInput, TemplateUncheckedCreateWithoutTemplateStageInput>
+    where?: TemplateWhereInput
+  }
+
+  export type TemplateUpdateToOneWithWhereWithoutTemplateStageInput = {
+    where?: TemplateWhereInput
+    data: XOR<TemplateUpdateWithoutTemplateStageInput, TemplateUncheckedUpdateWithoutTemplateStageInput>
+  }
+
+  export type TemplateUpdateWithoutTemplateStageInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TemplateUncheckedUpdateWithoutTemplateStageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TemplateQuestionUpsertWithWhereUniqueWithoutTemplateStageInput = {
+    where: TemplateQuestionWhereUniqueInput
+    update: XOR<TemplateQuestionUpdateWithoutTemplateStageInput, TemplateQuestionUncheckedUpdateWithoutTemplateStageInput>
+    create: XOR<TemplateQuestionCreateWithoutTemplateStageInput, TemplateQuestionUncheckedCreateWithoutTemplateStageInput>
+  }
+
+  export type TemplateQuestionUpdateWithWhereUniqueWithoutTemplateStageInput = {
+    where: TemplateQuestionWhereUniqueInput
+    data: XOR<TemplateQuestionUpdateWithoutTemplateStageInput, TemplateQuestionUncheckedUpdateWithoutTemplateStageInput>
+  }
+
+  export type TemplateQuestionUpdateManyWithWhereWithoutTemplateStageInput = {
+    where: TemplateQuestionScalarWhereInput
+    data: XOR<TemplateQuestionUpdateManyMutationInput, TemplateQuestionUncheckedUpdateManyWithoutTemplateStageInput>
+  }
+
+  export type TemplateQuestionScalarWhereInput = {
+    AND?: TemplateQuestionScalarWhereInput | TemplateQuestionScalarWhereInput[]
+    OR?: TemplateQuestionScalarWhereInput[]
+    NOT?: TemplateQuestionScalarWhereInput | TemplateQuestionScalarWhereInput[]
+    id?: IntFilter<"TemplateQuestion"> | number
+    question?: StringFilter<"TemplateQuestion"> | string
+    description?: StringNullableFilter<"TemplateQuestion"> | string | null
+    isActive?: BoolFilter<"TemplateQuestion"> | boolean
+    templateStageId?: IntFilter<"TemplateQuestion"> | number
+    createdAt?: DateTimeFilter<"TemplateQuestion"> | Date | string
+    updatedAt?: DateTimeFilter<"TemplateQuestion"> | Date | string
+    templateId?: IntNullableFilter<"TemplateQuestion"> | number | null
+  }
+
+  export type TemplateStageCreateWithoutTemplateQuestionInput = {
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Template: TemplateCreateNestedOneWithoutTemplateStageInput
+  }
+
+  export type TemplateStageUncheckedCreateWithoutTemplateQuestionInput = {
+    id?: number
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId: number
+  }
+
+  export type TemplateStageCreateOrConnectWithoutTemplateQuestionInput = {
+    where: TemplateStageWhereUniqueInput
+    create: XOR<TemplateStageCreateWithoutTemplateQuestionInput, TemplateStageUncheckedCreateWithoutTemplateQuestionInput>
+  }
+
+  export type TemplateQuestionAnswerCreateWithoutTemplateQuestionInput = {
+    answer: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TemplateQuestionAnswerUncheckedCreateWithoutTemplateQuestionInput = {
+    id?: number
+    answer: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TemplateQuestionAnswerCreateOrConnectWithoutTemplateQuestionInput = {
+    where: TemplateQuestionAnswerWhereUniqueInput
+    create: XOR<TemplateQuestionAnswerCreateWithoutTemplateQuestionInput, TemplateQuestionAnswerUncheckedCreateWithoutTemplateQuestionInput>
+  }
+
+  export type TemplateQuestionAnswerCreateManyTemplateQuestionInputEnvelope = {
+    data: TemplateQuestionAnswerCreateManyTemplateQuestionInput | TemplateQuestionAnswerCreateManyTemplateQuestionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TemplateStageUpsertWithoutTemplateQuestionInput = {
+    update: XOR<TemplateStageUpdateWithoutTemplateQuestionInput, TemplateStageUncheckedUpdateWithoutTemplateQuestionInput>
+    create: XOR<TemplateStageCreateWithoutTemplateQuestionInput, TemplateStageUncheckedCreateWithoutTemplateQuestionInput>
+    where?: TemplateStageWhereInput
+  }
+
+  export type TemplateStageUpdateToOneWithWhereWithoutTemplateQuestionInput = {
+    where?: TemplateStageWhereInput
+    data: XOR<TemplateStageUpdateWithoutTemplateQuestionInput, TemplateStageUncheckedUpdateWithoutTemplateQuestionInput>
+  }
+
+  export type TemplateStageUpdateWithoutTemplateQuestionInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Template?: TemplateUpdateOneRequiredWithoutTemplateStageNestedInput
+  }
+
+  export type TemplateStageUncheckedUpdateWithoutTemplateQuestionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TemplateQuestionAnswerUpsertWithWhereUniqueWithoutTemplateQuestionInput = {
+    where: TemplateQuestionAnswerWhereUniqueInput
+    update: XOR<TemplateQuestionAnswerUpdateWithoutTemplateQuestionInput, TemplateQuestionAnswerUncheckedUpdateWithoutTemplateQuestionInput>
+    create: XOR<TemplateQuestionAnswerCreateWithoutTemplateQuestionInput, TemplateQuestionAnswerUncheckedCreateWithoutTemplateQuestionInput>
+  }
+
+  export type TemplateQuestionAnswerUpdateWithWhereUniqueWithoutTemplateQuestionInput = {
+    where: TemplateQuestionAnswerWhereUniqueInput
+    data: XOR<TemplateQuestionAnswerUpdateWithoutTemplateQuestionInput, TemplateQuestionAnswerUncheckedUpdateWithoutTemplateQuestionInput>
+  }
+
+  export type TemplateQuestionAnswerUpdateManyWithWhereWithoutTemplateQuestionInput = {
+    where: TemplateQuestionAnswerScalarWhereInput
+    data: XOR<TemplateQuestionAnswerUpdateManyMutationInput, TemplateQuestionAnswerUncheckedUpdateManyWithoutTemplateQuestionInput>
+  }
+
+  export type TemplateQuestionAnswerScalarWhereInput = {
+    AND?: TemplateQuestionAnswerScalarWhereInput | TemplateQuestionAnswerScalarWhereInput[]
+    OR?: TemplateQuestionAnswerScalarWhereInput[]
+    NOT?: TemplateQuestionAnswerScalarWhereInput | TemplateQuestionAnswerScalarWhereInput[]
+    id?: IntFilter<"TemplateQuestionAnswer"> | number
+    answer?: StringFilter<"TemplateQuestionAnswer"> | string
+    description?: StringNullableFilter<"TemplateQuestionAnswer"> | string | null
+    isActive?: BoolFilter<"TemplateQuestionAnswer"> | boolean
+    templateQuestionId?: IntFilter<"TemplateQuestionAnswer"> | number
+    createdAt?: DateTimeFilter<"TemplateQuestionAnswer"> | Date | string
+    updatedAt?: DateTimeFilter<"TemplateQuestionAnswer"> | Date | string
+  }
+
+  export type TemplateQuestionCreateWithoutTemplateQuestionAnswerInput = {
+    question: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId?: number | null
+    TemplateStage: TemplateStageCreateNestedOneWithoutTemplateQuestionInput
+  }
+
+  export type TemplateQuestionUncheckedCreateWithoutTemplateQuestionAnswerInput = {
+    id?: number
+    question: string
+    description?: string | null
+    isActive?: boolean
+    templateStageId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId?: number | null
+  }
+
+  export type TemplateQuestionCreateOrConnectWithoutTemplateQuestionAnswerInput = {
+    where: TemplateQuestionWhereUniqueInput
+    create: XOR<TemplateQuestionCreateWithoutTemplateQuestionAnswerInput, TemplateQuestionUncheckedCreateWithoutTemplateQuestionAnswerInput>
+  }
+
+  export type TemplateQuestionUpsertWithoutTemplateQuestionAnswerInput = {
+    update: XOR<TemplateQuestionUpdateWithoutTemplateQuestionAnswerInput, TemplateQuestionUncheckedUpdateWithoutTemplateQuestionAnswerInput>
+    create: XOR<TemplateQuestionCreateWithoutTemplateQuestionAnswerInput, TemplateQuestionUncheckedCreateWithoutTemplateQuestionAnswerInput>
+    where?: TemplateQuestionWhereInput
+  }
+
+  export type TemplateQuestionUpdateToOneWithWhereWithoutTemplateQuestionAnswerInput = {
+    where?: TemplateQuestionWhereInput
+    data: XOR<TemplateQuestionUpdateWithoutTemplateQuestionAnswerInput, TemplateQuestionUncheckedUpdateWithoutTemplateQuestionAnswerInput>
+  }
+
+  export type TemplateQuestionUpdateWithoutTemplateQuestionAnswerInput = {
+    question?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: NullableIntFieldUpdateOperationsInput | number | null
+    TemplateStage?: TemplateStageUpdateOneRequiredWithoutTemplateQuestionNestedInput
+  }
+
+  export type TemplateQuestionUncheckedUpdateWithoutTemplateQuestionAnswerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    question?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    templateStageId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
   export type OrganisationCreateWithoutOwnerInput = {
     name: string
     description?: string | null
@@ -27020,6 +32584,119 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TemplateStageCreateManyTemplateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TemplateStageUpdateWithoutTemplateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    TemplateQuestion?: TemplateQuestionUpdateManyWithoutTemplateStageNestedInput
+  }
+
+  export type TemplateStageUncheckedUpdateWithoutTemplateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    TemplateQuestion?: TemplateQuestionUncheckedUpdateManyWithoutTemplateStageNestedInput
+  }
+
+  export type TemplateStageUncheckedUpdateManyWithoutTemplateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TemplateQuestionCreateManyTemplateStageInput = {
+    id?: number
+    question: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId?: number | null
+  }
+
+  export type TemplateQuestionUpdateWithoutTemplateStageInput = {
+    question?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: NullableIntFieldUpdateOperationsInput | number | null
+    TemplateQuestionAnswer?: TemplateQuestionAnswerUpdateManyWithoutTemplateQuestionNestedInput
+  }
+
+  export type TemplateQuestionUncheckedUpdateWithoutTemplateStageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    question?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: NullableIntFieldUpdateOperationsInput | number | null
+    TemplateQuestionAnswer?: TemplateQuestionAnswerUncheckedUpdateManyWithoutTemplateQuestionNestedInput
+  }
+
+  export type TemplateQuestionUncheckedUpdateManyWithoutTemplateStageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    question?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type TemplateQuestionAnswerCreateManyTemplateQuestionInput = {
+    id?: number
+    answer: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TemplateQuestionAnswerUpdateWithoutTemplateQuestionInput = {
+    answer?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TemplateQuestionAnswerUncheckedUpdateWithoutTemplateQuestionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    answer?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TemplateQuestionAnswerUncheckedUpdateManyWithoutTemplateQuestionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    answer?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserRoleCreateManyUserInput = {
     id?: number
     roleId: number
@@ -27181,6 +32858,18 @@ export namespace Prisma {
      */
     export type TeamMemberCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TeamMemberCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use TemplateCountOutputTypeDefaultArgs instead
+     */
+    export type TemplateCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TemplateCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TemplateStageCountOutputTypeDefaultArgs instead
+     */
+    export type TemplateStageCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TemplateStageCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TemplateQuestionCountOutputTypeDefaultArgs instead
+     */
+    export type TemplateQuestionCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TemplateQuestionCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use UserCountOutputTypeDefaultArgs instead
      */
     export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -27236,6 +32925,22 @@ export namespace Prisma {
      * @deprecated Use TeamMemberDefaultArgs instead
      */
     export type TeamMemberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TeamMemberDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TemplateDefaultArgs instead
+     */
+    export type TemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TemplateDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TemplateStageDefaultArgs instead
+     */
+    export type TemplateStageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TemplateStageDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TemplateQuestionDefaultArgs instead
+     */
+    export type TemplateQuestionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TemplateQuestionDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TemplateQuestionAnswerDefaultArgs instead
+     */
+    export type TemplateQuestionAnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TemplateQuestionAnswerDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */
