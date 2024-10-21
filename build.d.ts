@@ -23246,16 +23246,16 @@ export namespace Prisma {
 
   export type TemplateWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    name?: string
     AND?: TemplateWhereInput | TemplateWhereInput[]
     OR?: TemplateWhereInput[]
     NOT?: TemplateWhereInput | TemplateWhereInput[]
-    name?: StringFilter<"Template"> | string
     description?: StringNullableFilter<"Template"> | string | null
     isActive?: BoolFilter<"Template"> | boolean
     createdAt?: DateTimeFilter<"Template"> | Date | string
     updatedAt?: DateTimeFilter<"Template"> | Date | string
     TemplateStage?: TemplateStageListRelationFilter
-  }, "id" | "id">
+  }, "id" | "id" | "name">
 
   export type TemplateOrderByWithAggregationInput = {
     id?: SortOrder
