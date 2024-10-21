@@ -2358,11 +2358,13 @@ export namespace Prisma {
   export type TeamCountOutputType = {
     AssessmentAssign: number
     AssessmentQuestionAssign: number
+    OrganisationStructure: number
   }
 
   export type TeamCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     AssessmentAssign?: boolean | TeamCountOutputTypeCountAssessmentAssignArgs
     AssessmentQuestionAssign?: boolean | TeamCountOutputTypeCountAssessmentQuestionAssignArgs
+    OrganisationStructure?: boolean | TeamCountOutputTypeCountOrganisationStructureArgs
   }
 
   // Custom InputTypes
@@ -2388,6 +2390,13 @@ export namespace Prisma {
    */
   export type TeamCountOutputTypeCountAssessmentQuestionAssignArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AssessmentQuestionAssignWhereInput
+  }
+
+  /**
+   * TeamCountOutputType without action
+   */
+  export type TeamCountOutputTypeCountOrganisationStructureArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OrganisationStructureWhereInput
   }
 
 
@@ -9657,7 +9666,7 @@ export namespace Prisma {
   export type OrganisationStructureGroupByOutputType = {
     id: number
     organisationId: number
-    teamId: number
+    teamId: number | null
     userId: number
     createdAt: Date
     updatedAt: Date
@@ -9689,6 +9698,7 @@ export namespace Prisma {
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    Team?: boolean | OrganisationStructure$TeamArgs<ExtArgs>
     OrganisationRole?: boolean | OrganisationStructure$OrganisationRoleArgs<ExtArgs>
     User?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | OrganisationStructureCountOutputTypeDefaultArgs<ExtArgs>
@@ -9705,6 +9715,7 @@ export namespace Prisma {
   }
 
   export type OrganisationStructureInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Team?: boolean | OrganisationStructure$TeamArgs<ExtArgs>
     OrganisationRole?: boolean | OrganisationStructure$OrganisationRoleArgs<ExtArgs>
     User?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | OrganisationStructureCountOutputTypeDefaultArgs<ExtArgs>
@@ -9713,13 +9724,14 @@ export namespace Prisma {
   export type $OrganisationStructurePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "OrganisationStructure"
     objects: {
+      Team: Prisma.$TeamPayload<ExtArgs> | null
       OrganisationRole: Prisma.$OrganisationRolePayload<ExtArgs>[]
       User: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       organisationId: number
-      teamId: number
+      teamId: number | null
       userId: number
       createdAt: Date
       updatedAt: Date
@@ -10063,6 +10075,7 @@ export namespace Prisma {
    */
   export interface Prisma__OrganisationStructureClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    Team<T extends OrganisationStructure$TeamArgs<ExtArgs> = {}>(args?: Subset<T, OrganisationStructure$TeamArgs<ExtArgs>>): Prisma__TeamClient<$Result.GetResult<Prisma.$TeamPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     OrganisationRole<T extends OrganisationStructure$OrganisationRoleArgs<ExtArgs> = {}>(args?: Subset<T, OrganisationStructure$OrganisationRoleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganisationRolePayload<ExtArgs>, T, "findMany"> | Null>
     User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
@@ -10396,6 +10409,21 @@ export namespace Prisma {
      * Filter which OrganisationStructures to delete
      */
     where?: OrganisationStructureWhereInput
+  }
+
+  /**
+   * OrganisationStructure.Team
+   */
+  export type OrganisationStructure$TeamArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Team
+     */
+    select?: TeamSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamInclude<ExtArgs> | null
+    where?: TeamWhereInput
   }
 
   /**
@@ -13610,6 +13638,7 @@ export namespace Prisma {
     Organisation?: boolean | OrganisationDefaultArgs<ExtArgs>
     AssessmentAssign?: boolean | Team$AssessmentAssignArgs<ExtArgs>
     AssessmentQuestionAssign?: boolean | Team$AssessmentQuestionAssignArgs<ExtArgs>
+    OrganisationStructure?: boolean | Team$OrganisationStructureArgs<ExtArgs>
     _count?: boolean | TeamCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["team"]>
 
@@ -13633,6 +13662,7 @@ export namespace Prisma {
     Organisation?: boolean | OrganisationDefaultArgs<ExtArgs>
     AssessmentAssign?: boolean | Team$AssessmentAssignArgs<ExtArgs>
     AssessmentQuestionAssign?: boolean | Team$AssessmentQuestionAssignArgs<ExtArgs>
+    OrganisationStructure?: boolean | Team$OrganisationStructureArgs<ExtArgs>
     _count?: boolean | TeamCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -13642,6 +13672,7 @@ export namespace Prisma {
       Organisation: Prisma.$OrganisationPayload<ExtArgs>
       AssessmentAssign: Prisma.$AssessmentAssignPayload<ExtArgs>[]
       AssessmentQuestionAssign: Prisma.$AssessmentQuestionAssignPayload<ExtArgs>[]
+      OrganisationStructure: Prisma.$OrganisationStructurePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -13999,6 +14030,7 @@ export namespace Prisma {
     Organisation<T extends OrganisationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganisationDefaultArgs<ExtArgs>>): Prisma__OrganisationClient<$Result.GetResult<Prisma.$OrganisationPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     AssessmentAssign<T extends Team$AssessmentAssignArgs<ExtArgs> = {}>(args?: Subset<T, Team$AssessmentAssignArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentAssignPayload<ExtArgs>, T, "findMany"> | Null>
     AssessmentQuestionAssign<T extends Team$AssessmentQuestionAssignArgs<ExtArgs> = {}>(args?: Subset<T, Team$AssessmentQuestionAssignArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentQuestionAssignPayload<ExtArgs>, T, "findMany"> | Null>
+    OrganisationStructure<T extends Team$OrganisationStructureArgs<ExtArgs> = {}>(args?: Subset<T, Team$OrganisationStructureArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganisationStructurePayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14376,6 +14408,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AssessmentQuestionAssignScalarFieldEnum | AssessmentQuestionAssignScalarFieldEnum[]
+  }
+
+  /**
+   * Team.OrganisationStructure
+   */
+  export type Team$OrganisationStructureArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationStructure
+     */
+    select?: OrganisationStructureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganisationStructureInclude<ExtArgs> | null
+    where?: OrganisationStructureWhereInput
+    orderBy?: OrganisationStructureOrderByWithRelationInput | OrganisationStructureOrderByWithRelationInput[]
+    cursor?: OrganisationStructureWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OrganisationStructureScalarFieldEnum | OrganisationStructureScalarFieldEnum[]
   }
 
   /**
@@ -18386,10 +18438,11 @@ export namespace Prisma {
     NOT?: OrganisationStructureWhereInput | OrganisationStructureWhereInput[]
     id?: IntFilter<"OrganisationStructure"> | number
     organisationId?: IntFilter<"OrganisationStructure"> | number
-    teamId?: IntFilter<"OrganisationStructure"> | number
+    teamId?: IntNullableFilter<"OrganisationStructure"> | number | null
     userId?: IntFilter<"OrganisationStructure"> | number
     createdAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
     updatedAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
+    Team?: XOR<TeamNullableRelationFilter, TeamWhereInput> | null
     OrganisationRole?: OrganisationRoleListRelationFilter
     User?: XOR<UserRelationFilter, UserWhereInput>
   }
@@ -18397,10 +18450,11 @@ export namespace Prisma {
   export type OrganisationStructureOrderByWithRelationInput = {
     id?: SortOrder
     organisationId?: SortOrder
-    teamId?: SortOrder
+    teamId?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    Team?: TeamOrderByWithRelationInput
     OrganisationRole?: OrganisationRoleOrderByRelationAggregateInput
     User?: UserOrderByWithRelationInput
   }
@@ -18411,10 +18465,11 @@ export namespace Prisma {
     OR?: OrganisationStructureWhereInput[]
     NOT?: OrganisationStructureWhereInput | OrganisationStructureWhereInput[]
     organisationId?: IntFilter<"OrganisationStructure"> | number
-    teamId?: IntFilter<"OrganisationStructure"> | number
+    teamId?: IntNullableFilter<"OrganisationStructure"> | number | null
     userId?: IntFilter<"OrganisationStructure"> | number
     createdAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
     updatedAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
+    Team?: XOR<TeamNullableRelationFilter, TeamWhereInput> | null
     OrganisationRole?: OrganisationRoleListRelationFilter
     User?: XOR<UserRelationFilter, UserWhereInput>
   }, "id" | "id">
@@ -18422,7 +18477,7 @@ export namespace Prisma {
   export type OrganisationStructureOrderByWithAggregationInput = {
     id?: SortOrder
     organisationId?: SortOrder
-    teamId?: SortOrder
+    teamId?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -18439,7 +18494,7 @@ export namespace Prisma {
     NOT?: OrganisationStructureScalarWhereWithAggregatesInput | OrganisationStructureScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"OrganisationStructure"> | number
     organisationId?: IntWithAggregatesFilter<"OrganisationStructure"> | number
-    teamId?: IntWithAggregatesFilter<"OrganisationStructure"> | number
+    teamId?: IntNullableWithAggregatesFilter<"OrganisationStructure"> | number | null
     userId?: IntWithAggregatesFilter<"OrganisationStructure"> | number
     createdAt?: DateTimeWithAggregatesFilter<"OrganisationStructure"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"OrganisationStructure"> | Date | string
@@ -18669,6 +18724,7 @@ export namespace Prisma {
     Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
     AssessmentAssign?: AssessmentAssignListRelationFilter
     AssessmentQuestionAssign?: AssessmentQuestionAssignListRelationFilter
+    OrganisationStructure?: OrganisationStructureListRelationFilter
   }
 
   export type TeamOrderByWithRelationInput = {
@@ -18687,6 +18743,7 @@ export namespace Prisma {
     Organisation?: OrganisationOrderByWithRelationInput
     AssessmentAssign?: AssessmentAssignOrderByRelationAggregateInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignOrderByRelationAggregateInput
+    OrganisationStructure?: OrganisationStructureOrderByRelationAggregateInput
   }
 
   export type TeamWhereUniqueInput = Prisma.AtLeast<{
@@ -18708,6 +18765,7 @@ export namespace Prisma {
     Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
     AssessmentAssign?: AssessmentAssignListRelationFilter
     AssessmentQuestionAssign?: AssessmentQuestionAssignListRelationFilter
+    OrganisationStructure?: OrganisationStructureListRelationFilter
   }, "id" | "id" | "name">
 
   export type TeamOrderByWithAggregationInput = {
@@ -19596,9 +19654,9 @@ export namespace Prisma {
 
   export type OrganisationStructureCreateInput = {
     organisationId: number
-    teamId: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    Team?: TeamCreateNestedOneWithoutOrganisationStructureInput
     OrganisationRole?: OrganisationRoleCreateNestedManyWithoutOrganisationStructureInput
     User: UserCreateNestedOneWithoutOrganisationStructureInput
   }
@@ -19606,7 +19664,7 @@ export namespace Prisma {
   export type OrganisationStructureUncheckedCreateInput = {
     id?: number
     organisationId: number
-    teamId: number
+    teamId?: number | null
     userId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19615,9 +19673,9 @@ export namespace Prisma {
 
   export type OrganisationStructureUpdateInput = {
     organisationId?: IntFieldUpdateOperationsInput | number
-    teamId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Team?: TeamUpdateOneWithoutOrganisationStructureNestedInput
     OrganisationRole?: OrganisationRoleUpdateManyWithoutOrganisationStructureNestedInput
     User?: UserUpdateOneRequiredWithoutOrganisationStructureNestedInput
   }
@@ -19625,7 +19683,7 @@ export namespace Prisma {
   export type OrganisationStructureUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
-    teamId?: IntFieldUpdateOperationsInput | number
+    teamId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19635,7 +19693,7 @@ export namespace Prisma {
   export type OrganisationStructureCreateManyInput = {
     id?: number
     organisationId: number
-    teamId: number
+    teamId?: number | null
     userId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19643,7 +19701,6 @@ export namespace Prisma {
 
   export type OrganisationStructureUpdateManyMutationInput = {
     organisationId?: IntFieldUpdateOperationsInput | number
-    teamId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19651,7 +19708,7 @@ export namespace Prisma {
   export type OrganisationStructureUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
-    teamId?: IntFieldUpdateOperationsInput | number
+    teamId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19884,6 +19941,7 @@ export namespace Prisma {
     Organisation: OrganisationCreateNestedOneWithoutTeamInput
     AssessmentAssign?: AssessmentAssignCreateNestedManyWithoutTeamInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignCreateNestedManyWithoutTeamInput
+    OrganisationStructure?: OrganisationStructureCreateNestedManyWithoutTeamInput
   }
 
   export type TeamUncheckedCreateInput = {
@@ -19901,6 +19959,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutTeamInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutTeamInput
+    OrganisationStructure?: OrganisationStructureUncheckedCreateNestedManyWithoutTeamInput
   }
 
   export type TeamUpdateInput = {
@@ -19917,6 +19976,7 @@ export namespace Prisma {
     Organisation?: OrganisationUpdateOneRequiredWithoutTeamNestedInput
     AssessmentAssign?: AssessmentAssignUpdateManyWithoutTeamNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUpdateManyWithoutTeamNestedInput
+    OrganisationStructure?: OrganisationStructureUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamUncheckedUpdateInput = {
@@ -19934,6 +19994,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutTeamNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutTeamNestedInput
+    OrganisationStructure?: OrganisationStructureUncheckedUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamCreateManyInput = {
@@ -20917,6 +20978,11 @@ export namespace Prisma {
     roleId?: SortOrder
   }
 
+  export type TeamNullableRelationFilter = {
+    is?: TeamWhereInput | null
+    isNot?: TeamWhereInput | null
+  }
+
   export type OrganisationRoleListRelationFilter = {
     every?: OrganisationRoleWhereInput
     some?: OrganisationRoleWhereInput
@@ -21123,6 +21189,16 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type OrganisationStructureListRelationFilter = {
+    every?: OrganisationStructureWhereInput
+    some?: OrganisationStructureWhereInput
+    none?: OrganisationStructureWhereInput
+  }
+
+  export type OrganisationStructureOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type TeamCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -21266,17 +21342,7 @@ export namespace Prisma {
     none?: TeamMemberWhereInput
   }
 
-  export type OrganisationStructureListRelationFilter = {
-    every?: OrganisationStructureWhereInput
-    some?: OrganisationStructureWhereInput
-    none?: OrganisationStructureWhereInput
-  }
-
   export type TeamMemberOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type OrganisationStructureOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -22002,6 +22068,12 @@ export namespace Prisma {
     update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutOrganisationRoleInput, RoleUpdateWithoutOrganisationRoleInput>, RoleUncheckedUpdateWithoutOrganisationRoleInput>
   }
 
+  export type TeamCreateNestedOneWithoutOrganisationStructureInput = {
+    create?: XOR<TeamCreateWithoutOrganisationStructureInput, TeamUncheckedCreateWithoutOrganisationStructureInput>
+    connectOrCreate?: TeamCreateOrConnectWithoutOrganisationStructureInput
+    connect?: TeamWhereUniqueInput
+  }
+
   export type OrganisationRoleCreateNestedManyWithoutOrganisationStructureInput = {
     create?: XOR<OrganisationRoleCreateWithoutOrganisationStructureInput, OrganisationRoleUncheckedCreateWithoutOrganisationStructureInput> | OrganisationRoleCreateWithoutOrganisationStructureInput[] | OrganisationRoleUncheckedCreateWithoutOrganisationStructureInput[]
     connectOrCreate?: OrganisationRoleCreateOrConnectWithoutOrganisationStructureInput | OrganisationRoleCreateOrConnectWithoutOrganisationStructureInput[]
@@ -22020,6 +22092,16 @@ export namespace Prisma {
     connectOrCreate?: OrganisationRoleCreateOrConnectWithoutOrganisationStructureInput | OrganisationRoleCreateOrConnectWithoutOrganisationStructureInput[]
     createMany?: OrganisationRoleCreateManyOrganisationStructureInputEnvelope
     connect?: OrganisationRoleWhereUniqueInput | OrganisationRoleWhereUniqueInput[]
+  }
+
+  export type TeamUpdateOneWithoutOrganisationStructureNestedInput = {
+    create?: XOR<TeamCreateWithoutOrganisationStructureInput, TeamUncheckedCreateWithoutOrganisationStructureInput>
+    connectOrCreate?: TeamCreateOrConnectWithoutOrganisationStructureInput
+    upsert?: TeamUpsertWithoutOrganisationStructureInput
+    disconnect?: TeamWhereInput | boolean
+    delete?: TeamWhereInput | boolean
+    connect?: TeamWhereUniqueInput
+    update?: XOR<XOR<TeamUpdateToOneWithWhereWithoutOrganisationStructureInput, TeamUpdateWithoutOrganisationStructureInput>, TeamUncheckedUpdateWithoutOrganisationStructureInput>
   }
 
   export type OrganisationRoleUpdateManyWithoutOrganisationStructureNestedInput = {
@@ -22306,6 +22388,13 @@ export namespace Prisma {
     connect?: AssessmentQuestionAssignWhereUniqueInput | AssessmentQuestionAssignWhereUniqueInput[]
   }
 
+  export type OrganisationStructureCreateNestedManyWithoutTeamInput = {
+    create?: XOR<OrganisationStructureCreateWithoutTeamInput, OrganisationStructureUncheckedCreateWithoutTeamInput> | OrganisationStructureCreateWithoutTeamInput[] | OrganisationStructureUncheckedCreateWithoutTeamInput[]
+    connectOrCreate?: OrganisationStructureCreateOrConnectWithoutTeamInput | OrganisationStructureCreateOrConnectWithoutTeamInput[]
+    createMany?: OrganisationStructureCreateManyTeamInputEnvelope
+    connect?: OrganisationStructureWhereUniqueInput | OrganisationStructureWhereUniqueInput[]
+  }
+
   export type AssessmentAssignUncheckedCreateNestedManyWithoutTeamInput = {
     create?: XOR<AssessmentAssignCreateWithoutTeamInput, AssessmentAssignUncheckedCreateWithoutTeamInput> | AssessmentAssignCreateWithoutTeamInput[] | AssessmentAssignUncheckedCreateWithoutTeamInput[]
     connectOrCreate?: AssessmentAssignCreateOrConnectWithoutTeamInput | AssessmentAssignCreateOrConnectWithoutTeamInput[]
@@ -22318,6 +22407,13 @@ export namespace Prisma {
     connectOrCreate?: AssessmentQuestionAssignCreateOrConnectWithoutTeamInput | AssessmentQuestionAssignCreateOrConnectWithoutTeamInput[]
     createMany?: AssessmentQuestionAssignCreateManyTeamInputEnvelope
     connect?: AssessmentQuestionAssignWhereUniqueInput | AssessmentQuestionAssignWhereUniqueInput[]
+  }
+
+  export type OrganisationStructureUncheckedCreateNestedManyWithoutTeamInput = {
+    create?: XOR<OrganisationStructureCreateWithoutTeamInput, OrganisationStructureUncheckedCreateWithoutTeamInput> | OrganisationStructureCreateWithoutTeamInput[] | OrganisationStructureUncheckedCreateWithoutTeamInput[]
+    connectOrCreate?: OrganisationStructureCreateOrConnectWithoutTeamInput | OrganisationStructureCreateOrConnectWithoutTeamInput[]
+    createMany?: OrganisationStructureCreateManyTeamInputEnvelope
+    connect?: OrganisationStructureWhereUniqueInput | OrganisationStructureWhereUniqueInput[]
   }
 
   export type OrganisationUpdateOneRequiredWithoutTeamNestedInput = {
@@ -22356,6 +22452,20 @@ export namespace Prisma {
     deleteMany?: AssessmentQuestionAssignScalarWhereInput | AssessmentQuestionAssignScalarWhereInput[]
   }
 
+  export type OrganisationStructureUpdateManyWithoutTeamNestedInput = {
+    create?: XOR<OrganisationStructureCreateWithoutTeamInput, OrganisationStructureUncheckedCreateWithoutTeamInput> | OrganisationStructureCreateWithoutTeamInput[] | OrganisationStructureUncheckedCreateWithoutTeamInput[]
+    connectOrCreate?: OrganisationStructureCreateOrConnectWithoutTeamInput | OrganisationStructureCreateOrConnectWithoutTeamInput[]
+    upsert?: OrganisationStructureUpsertWithWhereUniqueWithoutTeamInput | OrganisationStructureUpsertWithWhereUniqueWithoutTeamInput[]
+    createMany?: OrganisationStructureCreateManyTeamInputEnvelope
+    set?: OrganisationStructureWhereUniqueInput | OrganisationStructureWhereUniqueInput[]
+    disconnect?: OrganisationStructureWhereUniqueInput | OrganisationStructureWhereUniqueInput[]
+    delete?: OrganisationStructureWhereUniqueInput | OrganisationStructureWhereUniqueInput[]
+    connect?: OrganisationStructureWhereUniqueInput | OrganisationStructureWhereUniqueInput[]
+    update?: OrganisationStructureUpdateWithWhereUniqueWithoutTeamInput | OrganisationStructureUpdateWithWhereUniqueWithoutTeamInput[]
+    updateMany?: OrganisationStructureUpdateManyWithWhereWithoutTeamInput | OrganisationStructureUpdateManyWithWhereWithoutTeamInput[]
+    deleteMany?: OrganisationStructureScalarWhereInput | OrganisationStructureScalarWhereInput[]
+  }
+
   export type AssessmentAssignUncheckedUpdateManyWithoutTeamNestedInput = {
     create?: XOR<AssessmentAssignCreateWithoutTeamInput, AssessmentAssignUncheckedCreateWithoutTeamInput> | AssessmentAssignCreateWithoutTeamInput[] | AssessmentAssignUncheckedCreateWithoutTeamInput[]
     connectOrCreate?: AssessmentAssignCreateOrConnectWithoutTeamInput | AssessmentAssignCreateOrConnectWithoutTeamInput[]
@@ -22382,6 +22492,20 @@ export namespace Prisma {
     update?: AssessmentQuestionAssignUpdateWithWhereUniqueWithoutTeamInput | AssessmentQuestionAssignUpdateWithWhereUniqueWithoutTeamInput[]
     updateMany?: AssessmentQuestionAssignUpdateManyWithWhereWithoutTeamInput | AssessmentQuestionAssignUpdateManyWithWhereWithoutTeamInput[]
     deleteMany?: AssessmentQuestionAssignScalarWhereInput | AssessmentQuestionAssignScalarWhereInput[]
+  }
+
+  export type OrganisationStructureUncheckedUpdateManyWithoutTeamNestedInput = {
+    create?: XOR<OrganisationStructureCreateWithoutTeamInput, OrganisationStructureUncheckedCreateWithoutTeamInput> | OrganisationStructureCreateWithoutTeamInput[] | OrganisationStructureUncheckedCreateWithoutTeamInput[]
+    connectOrCreate?: OrganisationStructureCreateOrConnectWithoutTeamInput | OrganisationStructureCreateOrConnectWithoutTeamInput[]
+    upsert?: OrganisationStructureUpsertWithWhereUniqueWithoutTeamInput | OrganisationStructureUpsertWithWhereUniqueWithoutTeamInput[]
+    createMany?: OrganisationStructureCreateManyTeamInputEnvelope
+    set?: OrganisationStructureWhereUniqueInput | OrganisationStructureWhereUniqueInput[]
+    disconnect?: OrganisationStructureWhereUniqueInput | OrganisationStructureWhereUniqueInput[]
+    delete?: OrganisationStructureWhereUniqueInput | OrganisationStructureWhereUniqueInput[]
+    connect?: OrganisationStructureWhereUniqueInput | OrganisationStructureWhereUniqueInput[]
+    update?: OrganisationStructureUpdateWithWhereUniqueWithoutTeamInput | OrganisationStructureUpdateWithWhereUniqueWithoutTeamInput[]
+    updateMany?: OrganisationStructureUpdateManyWithWhereWithoutTeamInput | OrganisationStructureUpdateManyWithWhereWithoutTeamInput[]
+    deleteMany?: OrganisationStructureScalarWhereInput | OrganisationStructureScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutTeamMemberInput = {
@@ -23237,6 +23361,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     Organisation: OrganisationCreateNestedOneWithoutTeamInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignCreateNestedManyWithoutTeamInput
+    OrganisationStructure?: OrganisationStructureCreateNestedManyWithoutTeamInput
   }
 
   export type TeamUncheckedCreateWithoutAssessmentAssignInput = {
@@ -23253,6 +23378,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutTeamInput
+    OrganisationStructure?: OrganisationStructureUncheckedCreateNestedManyWithoutTeamInput
   }
 
   export type TeamCreateOrConnectWithoutAssessmentAssignInput = {
@@ -23401,6 +23527,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Organisation?: OrganisationUpdateOneRequiredWithoutTeamNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUpdateManyWithoutTeamNestedInput
+    OrganisationStructure?: OrganisationStructureUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamUncheckedUpdateWithoutAssessmentAssignInput = {
@@ -23417,6 +23544,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutTeamNestedInput
+    OrganisationStructure?: OrganisationStructureUncheckedUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamMemberUpsertWithoutAssessmentAssignInput = {
@@ -23853,6 +23981,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     Organisation: OrganisationCreateNestedOneWithoutTeamInput
     AssessmentAssign?: AssessmentAssignCreateNestedManyWithoutTeamInput
+    OrganisationStructure?: OrganisationStructureCreateNestedManyWithoutTeamInput
   }
 
   export type TeamUncheckedCreateWithoutAssessmentQuestionAssignInput = {
@@ -23869,6 +23998,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutTeamInput
+    OrganisationStructure?: OrganisationStructureUncheckedCreateNestedManyWithoutTeamInput
   }
 
   export type TeamCreateOrConnectWithoutAssessmentQuestionAssignInput = {
@@ -24055,6 +24185,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Organisation?: OrganisationUpdateOneRequiredWithoutTeamNestedInput
     AssessmentAssign?: AssessmentAssignUpdateManyWithoutTeamNestedInput
+    OrganisationStructure?: OrganisationStructureUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamUncheckedUpdateWithoutAssessmentQuestionAssignInput = {
@@ -24071,6 +24202,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutTeamNestedInput
+    OrganisationStructure?: OrganisationStructureUncheckedUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamMemberUpsertWithoutAssessmentQuestionAssignInput = {
@@ -24316,6 +24448,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     AssessmentAssign?: AssessmentAssignCreateNestedManyWithoutTeamInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignCreateNestedManyWithoutTeamInput
+    OrganisationStructure?: OrganisationStructureCreateNestedManyWithoutTeamInput
   }
 
   export type TeamUncheckedCreateWithoutOrganisationInput = {
@@ -24332,6 +24465,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutTeamInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutTeamInput
+    OrganisationStructure?: OrganisationStructureUncheckedCreateNestedManyWithoutTeamInput
   }
 
   export type TeamCreateOrConnectWithoutOrganisationInput = {
@@ -24474,16 +24608,16 @@ export namespace Prisma {
 
   export type OrganisationStructureCreateWithoutOrganisationRoleInput = {
     organisationId: number
-    teamId: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    Team?: TeamCreateNestedOneWithoutOrganisationStructureInput
     User: UserCreateNestedOneWithoutOrganisationStructureInput
   }
 
   export type OrganisationStructureUncheckedCreateWithoutOrganisationRoleInput = {
     id?: number
     organisationId: number
-    teamId: number
+    teamId?: number | null
     userId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24531,16 +24665,16 @@ export namespace Prisma {
 
   export type OrganisationStructureUpdateWithoutOrganisationRoleInput = {
     organisationId?: IntFieldUpdateOperationsInput | number
-    teamId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Team?: TeamUpdateOneWithoutOrganisationStructureNestedInput
     User?: UserUpdateOneRequiredWithoutOrganisationStructureNestedInput
   }
 
   export type OrganisationStructureUncheckedUpdateWithoutOrganisationRoleInput = {
     id?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
-    teamId?: IntFieldUpdateOperationsInput | number
+    teamId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24574,6 +24708,44 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     UserRole?: UserRoleUncheckedUpdateManyWithoutRoleNestedInput
+  }
+
+  export type TeamCreateWithoutOrganisationStructureInput = {
+    name: string
+    description?: string | null
+    logo?: string | null
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Organisation: OrganisationCreateNestedOneWithoutTeamInput
+    AssessmentAssign?: AssessmentAssignCreateNestedManyWithoutTeamInput
+    AssessmentQuestionAssign?: AssessmentQuestionAssignCreateNestedManyWithoutTeamInput
+  }
+
+  export type TeamUncheckedCreateWithoutOrganisationStructureInput = {
+    id?: number
+    name: string
+    description?: string | null
+    logo?: string | null
+    organisationId: number
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutTeamInput
+    AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutTeamInput
+  }
+
+  export type TeamCreateOrConnectWithoutOrganisationStructureInput = {
+    where: TeamWhereUniqueInput
+    create: XOR<TeamCreateWithoutOrganisationStructureInput, TeamUncheckedCreateWithoutOrganisationStructureInput>
   }
 
   export type OrganisationRoleCreateWithoutOrganisationStructureInput = {
@@ -24651,6 +24823,50 @@ export namespace Prisma {
   export type UserCreateOrConnectWithoutOrganisationStructureInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutOrganisationStructureInput, UserUncheckedCreateWithoutOrganisationStructureInput>
+  }
+
+  export type TeamUpsertWithoutOrganisationStructureInput = {
+    update: XOR<TeamUpdateWithoutOrganisationStructureInput, TeamUncheckedUpdateWithoutOrganisationStructureInput>
+    create: XOR<TeamCreateWithoutOrganisationStructureInput, TeamUncheckedCreateWithoutOrganisationStructureInput>
+    where?: TeamWhereInput
+  }
+
+  export type TeamUpdateToOneWithWhereWithoutOrganisationStructureInput = {
+    where?: TeamWhereInput
+    data: XOR<TeamUpdateWithoutOrganisationStructureInput, TeamUncheckedUpdateWithoutOrganisationStructureInput>
+  }
+
+  export type TeamUpdateWithoutOrganisationStructureInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Organisation?: OrganisationUpdateOneRequiredWithoutTeamNestedInput
+    AssessmentAssign?: AssessmentAssignUpdateManyWithoutTeamNestedInput
+    AssessmentQuestionAssign?: AssessmentQuestionAssignUpdateManyWithoutTeamNestedInput
+  }
+
+  export type TeamUncheckedUpdateWithoutOrganisationStructureInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    organisationId?: IntFieldUpdateOperationsInput | number
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutTeamNestedInput
+    AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutTeamNestedInput
   }
 
   export type OrganisationRoleUpsertWithWhereUniqueWithoutOrganisationStructureInput = {
@@ -25133,6 +25349,33 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type OrganisationStructureCreateWithoutTeamInput = {
+    organisationId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    OrganisationRole?: OrganisationRoleCreateNestedManyWithoutOrganisationStructureInput
+    User: UserCreateNestedOneWithoutOrganisationStructureInput
+  }
+
+  export type OrganisationStructureUncheckedCreateWithoutTeamInput = {
+    id?: number
+    organisationId: number
+    userId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    OrganisationRole?: OrganisationRoleUncheckedCreateNestedManyWithoutOrganisationStructureInput
+  }
+
+  export type OrganisationStructureCreateOrConnectWithoutTeamInput = {
+    where: OrganisationStructureWhereUniqueInput
+    create: XOR<OrganisationStructureCreateWithoutTeamInput, OrganisationStructureUncheckedCreateWithoutTeamInput>
+  }
+
+  export type OrganisationStructureCreateManyTeamInputEnvelope = {
+    data: OrganisationStructureCreateManyTeamInput | OrganisationStructureCreateManyTeamInput[]
+    skipDuplicates?: boolean
+  }
+
   export type OrganisationUpsertWithoutTeamInput = {
     update: XOR<OrganisationUpdateWithoutTeamInput, OrganisationUncheckedUpdateWithoutTeamInput>
     create: XOR<OrganisationCreateWithoutTeamInput, OrganisationUncheckedCreateWithoutTeamInput>
@@ -25195,6 +25438,34 @@ export namespace Prisma {
   export type AssessmentQuestionAssignUpdateManyWithWhereWithoutTeamInput = {
     where: AssessmentQuestionAssignScalarWhereInput
     data: XOR<AssessmentQuestionAssignUpdateManyMutationInput, AssessmentQuestionAssignUncheckedUpdateManyWithoutTeamInput>
+  }
+
+  export type OrganisationStructureUpsertWithWhereUniqueWithoutTeamInput = {
+    where: OrganisationStructureWhereUniqueInput
+    update: XOR<OrganisationStructureUpdateWithoutTeamInput, OrganisationStructureUncheckedUpdateWithoutTeamInput>
+    create: XOR<OrganisationStructureCreateWithoutTeamInput, OrganisationStructureUncheckedCreateWithoutTeamInput>
+  }
+
+  export type OrganisationStructureUpdateWithWhereUniqueWithoutTeamInput = {
+    where: OrganisationStructureWhereUniqueInput
+    data: XOR<OrganisationStructureUpdateWithoutTeamInput, OrganisationStructureUncheckedUpdateWithoutTeamInput>
+  }
+
+  export type OrganisationStructureUpdateManyWithWhereWithoutTeamInput = {
+    where: OrganisationStructureScalarWhereInput
+    data: XOR<OrganisationStructureUpdateManyMutationInput, OrganisationStructureUncheckedUpdateManyWithoutTeamInput>
+  }
+
+  export type OrganisationStructureScalarWhereInput = {
+    AND?: OrganisationStructureScalarWhereInput | OrganisationStructureScalarWhereInput[]
+    OR?: OrganisationStructureScalarWhereInput[]
+    NOT?: OrganisationStructureScalarWhereInput | OrganisationStructureScalarWhereInput[]
+    id?: IntFilter<"OrganisationStructure"> | number
+    organisationId?: IntFilter<"OrganisationStructure"> | number
+    teamId?: IntNullableFilter<"OrganisationStructure"> | number | null
+    userId?: IntFilter<"OrganisationStructure"> | number
+    createdAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
+    updatedAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
   }
 
   export type UserCreateWithoutTeamMemberInput = {
@@ -25509,16 +25780,16 @@ export namespace Prisma {
 
   export type OrganisationStructureCreateWithoutUserInput = {
     organisationId: number
-    teamId: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    Team?: TeamCreateNestedOneWithoutOrganisationStructureInput
     OrganisationRole?: OrganisationRoleCreateNestedManyWithoutOrganisationStructureInput
   }
 
   export type OrganisationStructureUncheckedCreateWithoutUserInput = {
     id?: number
     organisationId: number
-    teamId: number
+    teamId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     OrganisationRole?: OrganisationRoleUncheckedCreateNestedManyWithoutOrganisationStructureInput
@@ -25628,18 +25899,6 @@ export namespace Prisma {
   export type OrganisationStructureUpdateManyWithWhereWithoutUserInput = {
     where: OrganisationStructureScalarWhereInput
     data: XOR<OrganisationStructureUpdateManyMutationInput, OrganisationStructureUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type OrganisationStructureScalarWhereInput = {
-    AND?: OrganisationStructureScalarWhereInput | OrganisationStructureScalarWhereInput[]
-    OR?: OrganisationStructureScalarWhereInput[]
-    NOT?: OrganisationStructureScalarWhereInput | OrganisationStructureScalarWhereInput[]
-    id?: IntFilter<"OrganisationStructure"> | number
-    organisationId?: IntFilter<"OrganisationStructure"> | number
-    teamId?: IntFilter<"OrganisationStructure"> | number
-    userId?: IntFilter<"OrganisationStructure"> | number
-    createdAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
-    updatedAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
   }
 
   export type UserCreateWithoutUserRoleInput = {
@@ -26198,6 +26457,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     AssessmentAssign?: AssessmentAssignUpdateManyWithoutTeamNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUpdateManyWithoutTeamNestedInput
+    OrganisationStructure?: OrganisationStructureUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamUncheckedUpdateWithoutOrganisationInput = {
@@ -26214,6 +26474,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutTeamNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutTeamNestedInput
+    OrganisationStructure?: OrganisationStructureUncheckedUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamUncheckedUpdateManyWithoutOrganisationInput = {
@@ -26440,6 +26701,14 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type OrganisationStructureCreateManyTeamInput = {
+    id?: number
+    organisationId: number
+    userId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type AssessmentAssignUpdateWithoutTeamInput = {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26522,6 +26791,31 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     secretToken?: NullableStringFieldUpdateOperationsInput | string | null
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OrganisationStructureUpdateWithoutTeamInput = {
+    organisationId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    OrganisationRole?: OrganisationRoleUpdateManyWithoutOrganisationStructureNestedInput
+    User?: UserUpdateOneRequiredWithoutOrganisationStructureNestedInput
+  }
+
+  export type OrganisationStructureUncheckedUpdateWithoutTeamInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    organisationId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    OrganisationRole?: OrganisationRoleUncheckedUpdateManyWithoutOrganisationStructureNestedInput
+  }
+
+  export type OrganisationStructureUncheckedUpdateManyWithoutTeamInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    organisationId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -26662,7 +26956,7 @@ export namespace Prisma {
   export type OrganisationStructureCreateManyUserInput = {
     id?: number
     organisationId: number
-    teamId: number
+    teamId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -26728,16 +27022,16 @@ export namespace Prisma {
 
   export type OrganisationStructureUpdateWithoutUserInput = {
     organisationId?: IntFieldUpdateOperationsInput | number
-    teamId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Team?: TeamUpdateOneWithoutOrganisationStructureNestedInput
     OrganisationRole?: OrganisationRoleUpdateManyWithoutOrganisationStructureNestedInput
   }
 
   export type OrganisationStructureUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
-    teamId?: IntFieldUpdateOperationsInput | number
+    teamId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrganisationRole?: OrganisationRoleUncheckedUpdateManyWithoutOrganisationStructureNestedInput
@@ -26746,7 +27040,7 @@ export namespace Prisma {
   export type OrganisationStructureUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
-    teamId?: IntFieldUpdateOperationsInput | number
+    teamId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
