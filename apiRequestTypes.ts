@@ -33,3 +33,7 @@ export interface ITemplateDetailReq {
 export interface ITemplateListReq {
   id?: number;
 }
+
+export interface IOrganisationAssessmentDetailReq {
+  id?: number;
+}
