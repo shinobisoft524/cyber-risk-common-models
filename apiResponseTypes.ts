@@ -9,3 +9,10 @@ export interface ITemplateListRes {
   name: string;
   TemplateStage: { id: number; name: string }[];
 }
+
+export interface IOrganisationAssessmentDetailRes {
+  id: number;
+  name: string;
+  templateId: number;
+  Template: { name: string };
+}
