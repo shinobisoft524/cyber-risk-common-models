@@ -3,3 +3,9 @@ export interface IOrganisationDetailRes {
   name: string;
   Owner?: { id: number; name: string; email: string };
 }
+
+export interface ITemplateListRes {
+  id: number;
+  name: string;
+  TemplateStage: { id: number; name: string }[];
+}
