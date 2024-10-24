@@ -1,3 +1,9 @@
+export interface IStandardRes<T> {
+  data: T;
+  message?: string;
+  statusCode: number;
+}
+
 export interface IOrganisationDetailRes {
   id: number;
   name: string;
@@ -23,4 +29,13 @@ export interface IOrganisationTemplateRes {
   organisationId: number;
   templateId: number;
   Template: { id: number; name: string };
+}
+
+export interface IOrganisationAssessmentRes {
+  id: number;
+  name: string;
+  description: string;
+  logo: string;
+  isActive: boolean;
+  organisationTemplateId: number;
 }
