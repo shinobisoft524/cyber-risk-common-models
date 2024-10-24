@@ -16,3 +16,11 @@ export interface IOrganisationAssessmentDetailRes {
   templateId: number;
   Template: { name: string };
 }
+
+export interface IOrganisationTemplateRes {
+  id: number;
+  name: string;
+  organisationId: number;
+  templateId: number;
+  Template: { id: number; name: string };
+}

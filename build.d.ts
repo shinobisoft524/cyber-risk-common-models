@@ -3279,7 +3279,7 @@ export namespace Prisma {
     tfaToken: string | null
     createdAt: Date
     updatedAt: Date
-    organisationTemplateId: number
+    organisationTemplateId: number | null
     _count: AssessmentCountAggregateOutputType | null
     _avg: AssessmentAvgAggregateOutputType | null
     _sum: AssessmentSumAggregateOutputType | null
@@ -3371,7 +3371,7 @@ export namespace Prisma {
       tfaToken: string | null
       createdAt: Date
       updatedAt: Date
-      organisationTemplateId: number
+      organisationTemplateId: number | null
     }, ExtArgs["result"]["assessment"]>
     composites: {}
   }
@@ -23487,7 +23487,7 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"Assessment"> | string | null
     createdAt?: DateTimeFilter<"Assessment"> | Date | string
     updatedAt?: DateTimeFilter<"Assessment"> | Date | string
-    organisationTemplateId?: IntFilter<"Assessment"> | number
+    organisationTemplateId?: IntNullableFilter<"Assessment"> | number | null
     Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
     AssessmentAssign?: AssessmentAssignListRelationFilter
     AssessmentQuestionAssign?: AssessmentQuestionAssignListRelationFilter
@@ -23508,7 +23508,7 @@ export namespace Prisma {
     tfaToken?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    organisationTemplateId?: SortOrder
+    organisationTemplateId?: SortOrderInput | SortOrder
     Organisation?: OrganisationOrderByWithRelationInput
     AssessmentAssign?: AssessmentAssignOrderByRelationAggregateInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignOrderByRelationAggregateInput
@@ -23532,7 +23532,7 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"Assessment"> | string | null
     createdAt?: DateTimeFilter<"Assessment"> | Date | string
     updatedAt?: DateTimeFilter<"Assessment"> | Date | string
-    organisationTemplateId?: IntFilter<"Assessment"> | number
+    organisationTemplateId?: IntNullableFilter<"Assessment"> | number | null
     Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
     AssessmentAssign?: AssessmentAssignListRelationFilter
     AssessmentQuestionAssign?: AssessmentQuestionAssignListRelationFilter
@@ -23553,7 +23553,7 @@ export namespace Prisma {
     tfaToken?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    organisationTemplateId?: SortOrder
+    organisationTemplateId?: SortOrderInput | SortOrder
     _count?: AssessmentCountOrderByAggregateInput
     _avg?: AssessmentAvgOrderByAggregateInput
     _max?: AssessmentMaxOrderByAggregateInput
@@ -23577,7 +23577,7 @@ export namespace Prisma {
     tfaToken?: StringNullableWithAggregatesFilter<"Assessment"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Assessment"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Assessment"> | Date | string
-    organisationTemplateId?: IntWithAggregatesFilter<"Assessment"> | number
+    organisationTemplateId?: IntNullableWithAggregatesFilter<"Assessment"> | number | null
   }
 
   export type AssessmentAssignWhereInput = {
@@ -25136,7 +25136,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    organisationTemplateId: number
+    organisationTemplateId?: number | null
     AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
@@ -25173,7 +25173,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    organisationTemplateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
     AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
@@ -25192,7 +25192,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    organisationTemplateId: number
+    organisationTemplateId?: number | null
   }
 
   export type AssessmentUpdateManyMutationInput = {
@@ -25221,7 +25221,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    organisationTemplateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AssessmentAssignCreateInput = {
@@ -26839,6 +26839,17 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type OrganisationRelationFilter = {
     is?: OrganisationWhereInput
     isNot?: OrganisationWhereInput
@@ -27014,6 +27025,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type AssessmentRelationFilter = {
@@ -27273,17 +27300,6 @@ export namespace Prisma {
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type UserNullableRelationFilter = {
     is?: UserWhereInput | null
     isNot?: UserWhereInput | null
@@ -27365,22 +27381,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type OrganisationStructureRelationFilter = {
@@ -28335,6 +28335,14 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type AssessmentAssignUncheckedUpdateManyWithoutAssessmentNestedInput = {
     create?: XOR<AssessmentAssignCreateWithoutAssessmentInput, AssessmentAssignUncheckedCreateWithoutAssessmentInput> | AssessmentAssignCreateWithoutAssessmentInput[] | AssessmentAssignUncheckedCreateWithoutAssessmentInput[]
     connectOrCreate?: AssessmentAssignCreateOrConnectWithoutAssessmentInput | AssessmentAssignCreateOrConnectWithoutAssessmentInput[]
@@ -28773,14 +28781,6 @@ export namespace Prisma {
     update?: OrganisationTemplateUpdateWithWhereUniqueWithoutOrganisationInput | OrganisationTemplateUpdateWithWhereUniqueWithoutOrganisationInput[]
     updateMany?: OrganisationTemplateUpdateManyWithWhereWithoutOrganisationInput | OrganisationTemplateUpdateManyWithWhereWithoutOrganisationInput[]
     deleteMany?: OrganisationTemplateScalarWhereInput | OrganisationTemplateScalarWhereInput[]
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type AssessmentUncheckedUpdateManyWithoutOrganisationNestedInput = {
@@ -29922,6 +29922,17 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -29983,17 +29994,6 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -30014,19 +30014,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -30054,6 +30041,19 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumQuestionTypeNullableFilter<$PrismaModel = never> = {
@@ -30489,7 +30489,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    organisationTemplateId: number
+    organisationTemplateId?: number | null
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
   }
@@ -30651,7 +30651,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    organisationTemplateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
   }
@@ -30784,7 +30784,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    organisationTemplateId: number
+    organisationTemplateId?: number | null
     AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutAssessmentInput
   }
@@ -30902,7 +30902,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    organisationTemplateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
     AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutAssessmentNestedInput
   }
@@ -31117,7 +31117,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    organisationTemplateId: number
+    organisationTemplateId?: number | null
     AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
   }
@@ -31317,7 +31317,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    organisationTemplateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
     AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
   }
@@ -31586,7 +31586,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    organisationTemplateId: number
+    organisationTemplateId?: number | null
     AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
@@ -31782,7 +31782,7 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"Assessment"> | string | null
     createdAt?: DateTimeFilter<"Assessment"> | Date | string
     updatedAt?: DateTimeFilter<"Assessment"> | Date | string
-    organisationTemplateId?: IntFilter<"Assessment"> | number
+    organisationTemplateId?: IntNullableFilter<"Assessment"> | number | null
   }
 
   export type TeamUpsertWithWhereUniqueWithoutOrganisationInput = {
@@ -34236,7 +34236,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    organisationTemplateId: number
+    organisationTemplateId?: number | null
   }
 
   export type TeamCreateManyOrganisationInput = {
@@ -34297,7 +34297,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    organisationTemplateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
     AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
@@ -34315,7 +34315,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    organisationTemplateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type TeamUpdateWithoutOrganisationInput = {
