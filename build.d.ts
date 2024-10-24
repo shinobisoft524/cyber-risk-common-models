@@ -54,6 +54,11 @@ export type OrganisationRole = $Result.DefaultSelection<Prisma.$OrganisationRole
  */
 export type OrganisationStructure = $Result.DefaultSelection<Prisma.$OrganisationStructurePayload>
 /**
+ * Model OrganisationTemplate
+ * 
+ */
+export type OrganisationTemplate = $Result.DefaultSelection<Prisma.$OrganisationTemplatePayload>
+/**
  * Model Question
  * 
  */
@@ -358,6 +363,16 @@ export class PrismaClient<
     * ```
     */
   get organisationStructure(): Prisma.OrganisationStructureDelegate<ExtArgs>;
+
+  /**
+   * `prisma.organisationTemplate`: Exposes CRUD operations for the **OrganisationTemplate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OrganisationTemplates
+    * const organisationTemplates = await prisma.organisationTemplate.findMany()
+    * ```
+    */
+  get organisationTemplate(): Prisma.OrganisationTemplateDelegate<ExtArgs>;
 
   /**
    * `prisma.question`: Exposes CRUD operations for the **Question** model.
@@ -915,6 +930,7 @@ export namespace Prisma {
     Organisation: 'Organisation',
     OrganisationRole: 'OrganisationRole',
     OrganisationStructure: 'OrganisationStructure',
+    OrganisationTemplate: 'OrganisationTemplate',
     Question: 'Question',
     AuestionAnswer: 'AuestionAnswer',
     Role: 'Role',
@@ -941,7 +957,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "assessment" | "assessmentAssign" | "assessmentQuestion" | "assessmentQuestionAnswer" | "assessmentQuestionAssign" | "organisation" | "organisationRole" | "organisationStructure" | "question" | "auestionAnswer" | "role" | "team" | "teamMember" | "template" | "templateStage" | "templateQuestion" | "templateQuestionAnswer" | "user" | "userRole"
+      modelProps: "assessment" | "assessmentAssign" | "assessmentQuestion" | "assessmentQuestionAnswer" | "assessmentQuestionAssign" | "organisation" | "organisationRole" | "organisationStructure" | "organisationTemplate" | "question" | "auestionAnswer" | "role" | "team" | "teamMember" | "template" | "templateStage" | "templateQuestion" | "templateQuestionAnswer" | "user" | "userRole"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1470,6 +1486,72 @@ export namespace Prisma {
           count: {
             args: Prisma.OrganisationStructureCountArgs<ExtArgs>
             result: $Utils.Optional<OrganisationStructureCountAggregateOutputType> | number
+          }
+        }
+      }
+      OrganisationTemplate: {
+        payload: Prisma.$OrganisationTemplatePayload<ExtArgs>
+        fields: Prisma.OrganisationTemplateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OrganisationTemplateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganisationTemplatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OrganisationTemplateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganisationTemplatePayload>
+          }
+          findFirst: {
+            args: Prisma.OrganisationTemplateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganisationTemplatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OrganisationTemplateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganisationTemplatePayload>
+          }
+          findMany: {
+            args: Prisma.OrganisationTemplateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganisationTemplatePayload>[]
+          }
+          create: {
+            args: Prisma.OrganisationTemplateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganisationTemplatePayload>
+          }
+          createMany: {
+            args: Prisma.OrganisationTemplateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.OrganisationTemplateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganisationTemplatePayload>
+          }
+          update: {
+            args: Prisma.OrganisationTemplateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganisationTemplatePayload>
+          }
+          deleteMany: {
+            args: Prisma.OrganisationTemplateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OrganisationTemplateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.OrganisationTemplateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrganisationTemplatePayload>
+          }
+          aggregate: {
+            args: Prisma.OrganisationTemplateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOrganisationTemplate>
+          }
+          groupBy: {
+            args: Prisma.OrganisationTemplateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OrganisationTemplateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OrganisationTemplateCountArgs<ExtArgs>
+            result: $Utils.Optional<OrganisationTemplateCountAggregateOutputType> | number
           }
         }
       }
@@ -2504,11 +2586,13 @@ export namespace Prisma {
   export type OrganisationCountOutputType = {
     Assessment: number
     Team: number
+    OrganisationTemplate: number
   }
 
   export type OrganisationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Assessment?: boolean | OrganisationCountOutputTypeCountAssessmentArgs
     Team?: boolean | OrganisationCountOutputTypeCountTeamArgs
+    OrganisationTemplate?: boolean | OrganisationCountOutputTypeCountOrganisationTemplateArgs
   }
 
   // Custom InputTypes
@@ -2534,6 +2618,13 @@ export namespace Prisma {
    */
   export type OrganisationCountOutputTypeCountTeamArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TeamWhereInput
+  }
+
+  /**
+   * OrganisationCountOutputType without action
+   */
+  export type OrganisationCountOutputTypeCountOrganisationTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OrganisationTemplateWhereInput
   }
 
 
@@ -2565,6 +2656,37 @@ export namespace Prisma {
    */
   export type OrganisationStructureCountOutputTypeCountOrganisationRoleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: OrganisationRoleWhereInput
+  }
+
+
+  /**
+   * Count Type OrganisationTemplateCountOutputType
+   */
+
+  export type OrganisationTemplateCountOutputType = {
+    Assessment: number
+  }
+
+  export type OrganisationTemplateCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Assessment?: boolean | OrganisationTemplateCountOutputTypeCountAssessmentArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * OrganisationTemplateCountOutputType without action
+   */
+  export type OrganisationTemplateCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationTemplateCountOutputType
+     */
+    select?: OrganisationTemplateCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * OrganisationTemplateCountOutputType without action
+   */
+  export type OrganisationTemplateCountOutputTypeCountAssessmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AssessmentWhereInput
   }
 
 
@@ -2774,12 +2896,12 @@ export namespace Prisma {
 
   export type TemplateCountOutputType = {
     TemplateStage: number
-    Assessment: number
+    OrganisationTemplate: number
   }
 
   export type TemplateCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     TemplateStage?: boolean | TemplateCountOutputTypeCountTemplateStageArgs
-    Assessment?: boolean | TemplateCountOutputTypeCountAssessmentArgs
+    OrganisationTemplate?: boolean | TemplateCountOutputTypeCountOrganisationTemplateArgs
   }
 
   // Custom InputTypes
@@ -2803,8 +2925,8 @@ export namespace Prisma {
   /**
    * TemplateCountOutputType without action
    */
-  export type TemplateCountOutputTypeCountAssessmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AssessmentWhereInput
+  export type TemplateCountOutputTypeCountOrganisationTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OrganisationTemplateWhereInput
   }
 
 
@@ -2938,13 +3060,13 @@ export namespace Prisma {
   export type AssessmentAvgAggregateOutputType = {
     id: number | null
     organisationId: number | null
-    templateId: number | null
+    organisationTemplateId: number | null
   }
 
   export type AssessmentSumAggregateOutputType = {
     id: number | null
     organisationId: number | null
-    templateId: number | null
+    organisationTemplateId: number | null
   }
 
   export type AssessmentMinAggregateOutputType = {
@@ -2960,7 +3082,7 @@ export namespace Prisma {
     tfaToken: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    templateId: number | null
+    organisationTemplateId: number | null
   }
 
   export type AssessmentMaxAggregateOutputType = {
@@ -2976,7 +3098,7 @@ export namespace Prisma {
     tfaToken: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    templateId: number | null
+    organisationTemplateId: number | null
   }
 
   export type AssessmentCountAggregateOutputType = {
@@ -2992,7 +3114,7 @@ export namespace Prisma {
     tfaToken: number
     createdAt: number
     updatedAt: number
-    templateId: number
+    organisationTemplateId: number
     _all: number
   }
 
@@ -3000,13 +3122,13 @@ export namespace Prisma {
   export type AssessmentAvgAggregateInputType = {
     id?: true
     organisationId?: true
-    templateId?: true
+    organisationTemplateId?: true
   }
 
   export type AssessmentSumAggregateInputType = {
     id?: true
     organisationId?: true
-    templateId?: true
+    organisationTemplateId?: true
   }
 
   export type AssessmentMinAggregateInputType = {
@@ -3022,7 +3144,7 @@ export namespace Prisma {
     tfaToken?: true
     createdAt?: true
     updatedAt?: true
-    templateId?: true
+    organisationTemplateId?: true
   }
 
   export type AssessmentMaxAggregateInputType = {
@@ -3038,7 +3160,7 @@ export namespace Prisma {
     tfaToken?: true
     createdAt?: true
     updatedAt?: true
-    templateId?: true
+    organisationTemplateId?: true
   }
 
   export type AssessmentCountAggregateInputType = {
@@ -3054,7 +3176,7 @@ export namespace Prisma {
     tfaToken?: true
     createdAt?: true
     updatedAt?: true
-    templateId?: true
+    organisationTemplateId?: true
     _all?: true
   }
 
@@ -3157,7 +3279,7 @@ export namespace Prisma {
     tfaToken: string | null
     createdAt: Date
     updatedAt: Date
-    templateId: number
+    organisationTemplateId: number
     _count: AssessmentCountAggregateOutputType | null
     _avg: AssessmentAvgAggregateOutputType | null
     _sum: AssessmentSumAggregateOutputType | null
@@ -3192,12 +3314,12 @@ export namespace Prisma {
     tfaToken?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    templateId?: boolean
+    organisationTemplateId?: boolean
     Organisation?: boolean | OrganisationDefaultArgs<ExtArgs>
     AssessmentAssign?: boolean | Assessment$AssessmentAssignArgs<ExtArgs>
     AssessmentQuestionAssign?: boolean | Assessment$AssessmentQuestionAssignArgs<ExtArgs>
     AssessmentQuestion?: boolean | Assessment$AssessmentQuestionArgs<ExtArgs>
-    Template?: boolean | Assessment$TemplateArgs<ExtArgs>
+    OrganisationTemplate?: boolean | Assessment$OrganisationTemplateArgs<ExtArgs>
     _count?: boolean | AssessmentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["assessment"]>
 
@@ -3215,7 +3337,7 @@ export namespace Prisma {
     tfaToken?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    templateId?: boolean
+    organisationTemplateId?: boolean
   }
 
   export type AssessmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3223,7 +3345,7 @@ export namespace Prisma {
     AssessmentAssign?: boolean | Assessment$AssessmentAssignArgs<ExtArgs>
     AssessmentQuestionAssign?: boolean | Assessment$AssessmentQuestionAssignArgs<ExtArgs>
     AssessmentQuestion?: boolean | Assessment$AssessmentQuestionArgs<ExtArgs>
-    Template?: boolean | Assessment$TemplateArgs<ExtArgs>
+    OrganisationTemplate?: boolean | Assessment$OrganisationTemplateArgs<ExtArgs>
     _count?: boolean | AssessmentCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -3234,7 +3356,7 @@ export namespace Prisma {
       AssessmentAssign: Prisma.$AssessmentAssignPayload<ExtArgs>[]
       AssessmentQuestionAssign: Prisma.$AssessmentQuestionAssignPayload<ExtArgs>[]
       AssessmentQuestion: Prisma.$AssessmentQuestionPayload<ExtArgs>[]
-      Template: Prisma.$TemplatePayload<ExtArgs> | null
+      OrganisationTemplate: Prisma.$OrganisationTemplatePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3249,7 +3371,7 @@ export namespace Prisma {
       tfaToken: string | null
       createdAt: Date
       updatedAt: Date
-      templateId: number
+      organisationTemplateId: number
     }, ExtArgs["result"]["assessment"]>
     composites: {}
   }
@@ -3594,7 +3716,7 @@ export namespace Prisma {
     AssessmentAssign<T extends Assessment$AssessmentAssignArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$AssessmentAssignArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentAssignPayload<ExtArgs>, T, "findMany"> | Null>
     AssessmentQuestionAssign<T extends Assessment$AssessmentQuestionAssignArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$AssessmentQuestionAssignArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentQuestionAssignPayload<ExtArgs>, T, "findMany"> | Null>
     AssessmentQuestion<T extends Assessment$AssessmentQuestionArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$AssessmentQuestionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentQuestionPayload<ExtArgs>, T, "findMany"> | Null>
-    Template<T extends Assessment$TemplateArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$TemplateArgs<ExtArgs>>): Prisma__TemplateClient<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    OrganisationTemplate<T extends Assessment$OrganisationTemplateArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$OrganisationTemplateArgs<ExtArgs>>): Prisma__OrganisationTemplateClient<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3636,7 +3758,7 @@ export namespace Prisma {
     readonly tfaToken: FieldRef<"Assessment", 'String'>
     readonly createdAt: FieldRef<"Assessment", 'DateTime'>
     readonly updatedAt: FieldRef<"Assessment", 'DateTime'>
-    readonly templateId: FieldRef<"Assessment", 'Int'>
+    readonly organisationTemplateId: FieldRef<"Assessment", 'Int'>
   }
     
 
@@ -3996,18 +4118,18 @@ export namespace Prisma {
   }
 
   /**
-   * Assessment.Template
+   * Assessment.OrganisationTemplate
    */
-  export type Assessment$TemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Assessment$OrganisationTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Template
+     * Select specific fields to fetch from the OrganisationTemplate
      */
-    select?: TemplateSelect<ExtArgs> | null
+    select?: OrganisationTemplateSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TemplateInclude<ExtArgs> | null
-    where?: TemplateWhereInput
+    include?: OrganisationTemplateInclude<ExtArgs> | null
+    where?: OrganisationTemplateWhereInput
   }
 
   /**
@@ -8236,6 +8358,7 @@ export namespace Prisma {
     Owner?: boolean | Organisation$OwnerArgs<ExtArgs>
     Assessment?: boolean | Organisation$AssessmentArgs<ExtArgs>
     Team?: boolean | Organisation$TeamArgs<ExtArgs>
+    OrganisationTemplate?: boolean | Organisation$OrganisationTemplateArgs<ExtArgs>
     _count?: boolean | OrganisationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["organisation"]>
 
@@ -8254,6 +8377,7 @@ export namespace Prisma {
     Owner?: boolean | Organisation$OwnerArgs<ExtArgs>
     Assessment?: boolean | Organisation$AssessmentArgs<ExtArgs>
     Team?: boolean | Organisation$TeamArgs<ExtArgs>
+    OrganisationTemplate?: boolean | Organisation$OrganisationTemplateArgs<ExtArgs>
     _count?: boolean | OrganisationCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -8263,6 +8387,7 @@ export namespace Prisma {
       Owner: Prisma.$UserPayload<ExtArgs> | null
       Assessment: Prisma.$AssessmentPayload<ExtArgs>[]
       Team: Prisma.$TeamPayload<ExtArgs>[]
+      OrganisationTemplate: Prisma.$OrganisationTemplatePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -8615,6 +8740,7 @@ export namespace Prisma {
     Owner<T extends Organisation$OwnerArgs<ExtArgs> = {}>(args?: Subset<T, Organisation$OwnerArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     Assessment<T extends Organisation$AssessmentArgs<ExtArgs> = {}>(args?: Subset<T, Organisation$AssessmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentPayload<ExtArgs>, T, "findMany"> | Null>
     Team<T extends Organisation$TeamArgs<ExtArgs> = {}>(args?: Subset<T, Organisation$TeamArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamPayload<ExtArgs>, T, "findMany"> | Null>
+    OrganisationTemplate<T extends Organisation$OrganisationTemplateArgs<ExtArgs> = {}>(args?: Subset<T, Organisation$OrganisationTemplateArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9002,6 +9128,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TeamScalarFieldEnum | TeamScalarFieldEnum[]
+  }
+
+  /**
+   * Organisation.OrganisationTemplate
+   */
+  export type Organisation$OrganisationTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationTemplate
+     */
+    select?: OrganisationTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganisationTemplateInclude<ExtArgs> | null
+    where?: OrganisationTemplateWhereInput
+    orderBy?: OrganisationTemplateOrderByWithRelationInput | OrganisationTemplateOrderByWithRelationInput[]
+    cursor?: OrganisationTemplateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OrganisationTemplateScalarFieldEnum | OrganisationTemplateScalarFieldEnum[]
   }
 
   /**
@@ -10922,6 +11068,1060 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: OrganisationStructureInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model OrganisationTemplate
+   */
+
+  export type AggregateOrganisationTemplate = {
+    _count: OrganisationTemplateCountAggregateOutputType | null
+    _avg: OrganisationTemplateAvgAggregateOutputType | null
+    _sum: OrganisationTemplateSumAggregateOutputType | null
+    _min: OrganisationTemplateMinAggregateOutputType | null
+    _max: OrganisationTemplateMaxAggregateOutputType | null
+  }
+
+  export type OrganisationTemplateAvgAggregateOutputType = {
+    id: number | null
+    organisationId: number | null
+    templateId: number | null
+  }
+
+  export type OrganisationTemplateSumAggregateOutputType = {
+    id: number | null
+    organisationId: number | null
+    templateId: number | null
+  }
+
+  export type OrganisationTemplateMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    logo: string | null
+    organisationId: number | null
+    password: string | null
+    rememberToken: string | null
+    isActive: boolean | null
+    secretToken: string | null
+    tfaToken: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    templateId: number | null
+  }
+
+  export type OrganisationTemplateMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    logo: string | null
+    organisationId: number | null
+    password: string | null
+    rememberToken: string | null
+    isActive: boolean | null
+    secretToken: string | null
+    tfaToken: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    templateId: number | null
+  }
+
+  export type OrganisationTemplateCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    logo: number
+    organisationId: number
+    password: number
+    rememberToken: number
+    isActive: number
+    secretToken: number
+    tfaToken: number
+    createdAt: number
+    updatedAt: number
+    templateId: number
+    _all: number
+  }
+
+
+  export type OrganisationTemplateAvgAggregateInputType = {
+    id?: true
+    organisationId?: true
+    templateId?: true
+  }
+
+  export type OrganisationTemplateSumAggregateInputType = {
+    id?: true
+    organisationId?: true
+    templateId?: true
+  }
+
+  export type OrganisationTemplateMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    logo?: true
+    organisationId?: true
+    password?: true
+    rememberToken?: true
+    isActive?: true
+    secretToken?: true
+    tfaToken?: true
+    createdAt?: true
+    updatedAt?: true
+    templateId?: true
+  }
+
+  export type OrganisationTemplateMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    logo?: true
+    organisationId?: true
+    password?: true
+    rememberToken?: true
+    isActive?: true
+    secretToken?: true
+    tfaToken?: true
+    createdAt?: true
+    updatedAt?: true
+    templateId?: true
+  }
+
+  export type OrganisationTemplateCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    logo?: true
+    organisationId?: true
+    password?: true
+    rememberToken?: true
+    isActive?: true
+    secretToken?: true
+    tfaToken?: true
+    createdAt?: true
+    updatedAt?: true
+    templateId?: true
+    _all?: true
+  }
+
+  export type OrganisationTemplateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OrganisationTemplate to aggregate.
+     */
+    where?: OrganisationTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OrganisationTemplates to fetch.
+     */
+    orderBy?: OrganisationTemplateOrderByWithRelationInput | OrganisationTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OrganisationTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OrganisationTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OrganisationTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OrganisationTemplates
+    **/
+    _count?: true | OrganisationTemplateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: OrganisationTemplateAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: OrganisationTemplateSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OrganisationTemplateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OrganisationTemplateMaxAggregateInputType
+  }
+
+  export type GetOrganisationTemplateAggregateType<T extends OrganisationTemplateAggregateArgs> = {
+        [P in keyof T & keyof AggregateOrganisationTemplate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOrganisationTemplate[P]>
+      : GetScalarType<T[P], AggregateOrganisationTemplate[P]>
+  }
+
+
+
+
+  export type OrganisationTemplateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OrganisationTemplateWhereInput
+    orderBy?: OrganisationTemplateOrderByWithAggregationInput | OrganisationTemplateOrderByWithAggregationInput[]
+    by: OrganisationTemplateScalarFieldEnum[] | OrganisationTemplateScalarFieldEnum
+    having?: OrganisationTemplateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OrganisationTemplateCountAggregateInputType | true
+    _avg?: OrganisationTemplateAvgAggregateInputType
+    _sum?: OrganisationTemplateSumAggregateInputType
+    _min?: OrganisationTemplateMinAggregateInputType
+    _max?: OrganisationTemplateMaxAggregateInputType
+  }
+
+  export type OrganisationTemplateGroupByOutputType = {
+    id: number
+    name: string
+    description: string | null
+    logo: string | null
+    organisationId: number
+    password: string | null
+    rememberToken: string | null
+    isActive: boolean
+    secretToken: string | null
+    tfaToken: string | null
+    createdAt: Date
+    updatedAt: Date
+    templateId: number
+    _count: OrganisationTemplateCountAggregateOutputType | null
+    _avg: OrganisationTemplateAvgAggregateOutputType | null
+    _sum: OrganisationTemplateSumAggregateOutputType | null
+    _min: OrganisationTemplateMinAggregateOutputType | null
+    _max: OrganisationTemplateMaxAggregateOutputType | null
+  }
+
+  type GetOrganisationTemplateGroupByPayload<T extends OrganisationTemplateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OrganisationTemplateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OrganisationTemplateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OrganisationTemplateGroupByOutputType[P]>
+            : GetScalarType<T[P], OrganisationTemplateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OrganisationTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    logo?: boolean
+    organisationId?: boolean
+    password?: boolean
+    rememberToken?: boolean
+    isActive?: boolean
+    secretToken?: boolean
+    tfaToken?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    templateId?: boolean
+    Organisation?: boolean | OrganisationDefaultArgs<ExtArgs>
+    Template?: boolean | OrganisationTemplate$TemplateArgs<ExtArgs>
+    Assessment?: boolean | OrganisationTemplate$AssessmentArgs<ExtArgs>
+    _count?: boolean | OrganisationTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["organisationTemplate"]>
+
+
+  export type OrganisationTemplateSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    logo?: boolean
+    organisationId?: boolean
+    password?: boolean
+    rememberToken?: boolean
+    isActive?: boolean
+    secretToken?: boolean
+    tfaToken?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    templateId?: boolean
+  }
+
+  export type OrganisationTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Organisation?: boolean | OrganisationDefaultArgs<ExtArgs>
+    Template?: boolean | OrganisationTemplate$TemplateArgs<ExtArgs>
+    Assessment?: boolean | OrganisationTemplate$AssessmentArgs<ExtArgs>
+    _count?: boolean | OrganisationTemplateCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $OrganisationTemplatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OrganisationTemplate"
+    objects: {
+      Organisation: Prisma.$OrganisationPayload<ExtArgs>
+      Template: Prisma.$TemplatePayload<ExtArgs> | null
+      Assessment: Prisma.$AssessmentPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      description: string | null
+      logo: string | null
+      organisationId: number
+      password: string | null
+      rememberToken: string | null
+      isActive: boolean
+      secretToken: string | null
+      tfaToken: string | null
+      createdAt: Date
+      updatedAt: Date
+      templateId: number
+    }, ExtArgs["result"]["organisationTemplate"]>
+    composites: {}
+  }
+
+  type OrganisationTemplateGetPayload<S extends boolean | null | undefined | OrganisationTemplateDefaultArgs> = $Result.GetResult<Prisma.$OrganisationTemplatePayload, S>
+
+  type OrganisationTemplateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<OrganisationTemplateFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: OrganisationTemplateCountAggregateInputType | true
+    }
+
+  export interface OrganisationTemplateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OrganisationTemplate'], meta: { name: 'OrganisationTemplate' } }
+    /**
+     * Find zero or one OrganisationTemplate that matches the filter.
+     * @param {OrganisationTemplateFindUniqueArgs} args - Arguments to find a OrganisationTemplate
+     * @example
+     * // Get one OrganisationTemplate
+     * const organisationTemplate = await prisma.organisationTemplate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OrganisationTemplateFindUniqueArgs>(args: SelectSubset<T, OrganisationTemplateFindUniqueArgs<ExtArgs>>): Prisma__OrganisationTemplateClient<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one OrganisationTemplate that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {OrganisationTemplateFindUniqueOrThrowArgs} args - Arguments to find a OrganisationTemplate
+     * @example
+     * // Get one OrganisationTemplate
+     * const organisationTemplate = await prisma.organisationTemplate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OrganisationTemplateFindUniqueOrThrowArgs>(args: SelectSubset<T, OrganisationTemplateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OrganisationTemplateClient<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first OrganisationTemplate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganisationTemplateFindFirstArgs} args - Arguments to find a OrganisationTemplate
+     * @example
+     * // Get one OrganisationTemplate
+     * const organisationTemplate = await prisma.organisationTemplate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OrganisationTemplateFindFirstArgs>(args?: SelectSubset<T, OrganisationTemplateFindFirstArgs<ExtArgs>>): Prisma__OrganisationTemplateClient<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first OrganisationTemplate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganisationTemplateFindFirstOrThrowArgs} args - Arguments to find a OrganisationTemplate
+     * @example
+     * // Get one OrganisationTemplate
+     * const organisationTemplate = await prisma.organisationTemplate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OrganisationTemplateFindFirstOrThrowArgs>(args?: SelectSubset<T, OrganisationTemplateFindFirstOrThrowArgs<ExtArgs>>): Prisma__OrganisationTemplateClient<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more OrganisationTemplates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganisationTemplateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OrganisationTemplates
+     * const organisationTemplates = await prisma.organisationTemplate.findMany()
+     * 
+     * // Get first 10 OrganisationTemplates
+     * const organisationTemplates = await prisma.organisationTemplate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const organisationTemplateWithIdOnly = await prisma.organisationTemplate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OrganisationTemplateFindManyArgs>(args?: SelectSubset<T, OrganisationTemplateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a OrganisationTemplate.
+     * @param {OrganisationTemplateCreateArgs} args - Arguments to create a OrganisationTemplate.
+     * @example
+     * // Create one OrganisationTemplate
+     * const OrganisationTemplate = await prisma.organisationTemplate.create({
+     *   data: {
+     *     // ... data to create a OrganisationTemplate
+     *   }
+     * })
+     * 
+     */
+    create<T extends OrganisationTemplateCreateArgs>(args: SelectSubset<T, OrganisationTemplateCreateArgs<ExtArgs>>): Prisma__OrganisationTemplateClient<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many OrganisationTemplates.
+     * @param {OrganisationTemplateCreateManyArgs} args - Arguments to create many OrganisationTemplates.
+     * @example
+     * // Create many OrganisationTemplates
+     * const organisationTemplate = await prisma.organisationTemplate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OrganisationTemplateCreateManyArgs>(args?: SelectSubset<T, OrganisationTemplateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a OrganisationTemplate.
+     * @param {OrganisationTemplateDeleteArgs} args - Arguments to delete one OrganisationTemplate.
+     * @example
+     * // Delete one OrganisationTemplate
+     * const OrganisationTemplate = await prisma.organisationTemplate.delete({
+     *   where: {
+     *     // ... filter to delete one OrganisationTemplate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OrganisationTemplateDeleteArgs>(args: SelectSubset<T, OrganisationTemplateDeleteArgs<ExtArgs>>): Prisma__OrganisationTemplateClient<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one OrganisationTemplate.
+     * @param {OrganisationTemplateUpdateArgs} args - Arguments to update one OrganisationTemplate.
+     * @example
+     * // Update one OrganisationTemplate
+     * const organisationTemplate = await prisma.organisationTemplate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OrganisationTemplateUpdateArgs>(args: SelectSubset<T, OrganisationTemplateUpdateArgs<ExtArgs>>): Prisma__OrganisationTemplateClient<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more OrganisationTemplates.
+     * @param {OrganisationTemplateDeleteManyArgs} args - Arguments to filter OrganisationTemplates to delete.
+     * @example
+     * // Delete a few OrganisationTemplates
+     * const { count } = await prisma.organisationTemplate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OrganisationTemplateDeleteManyArgs>(args?: SelectSubset<T, OrganisationTemplateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OrganisationTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganisationTemplateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OrganisationTemplates
+     * const organisationTemplate = await prisma.organisationTemplate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OrganisationTemplateUpdateManyArgs>(args: SelectSubset<T, OrganisationTemplateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one OrganisationTemplate.
+     * @param {OrganisationTemplateUpsertArgs} args - Arguments to update or create a OrganisationTemplate.
+     * @example
+     * // Update or create a OrganisationTemplate
+     * const organisationTemplate = await prisma.organisationTemplate.upsert({
+     *   create: {
+     *     // ... data to create a OrganisationTemplate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OrganisationTemplate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OrganisationTemplateUpsertArgs>(args: SelectSubset<T, OrganisationTemplateUpsertArgs<ExtArgs>>): Prisma__OrganisationTemplateClient<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of OrganisationTemplates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganisationTemplateCountArgs} args - Arguments to filter OrganisationTemplates to count.
+     * @example
+     * // Count the number of OrganisationTemplates
+     * const count = await prisma.organisationTemplate.count({
+     *   where: {
+     *     // ... the filter for the OrganisationTemplates we want to count
+     *   }
+     * })
+    **/
+    count<T extends OrganisationTemplateCountArgs>(
+      args?: Subset<T, OrganisationTemplateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OrganisationTemplateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OrganisationTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganisationTemplateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OrganisationTemplateAggregateArgs>(args: Subset<T, OrganisationTemplateAggregateArgs>): Prisma.PrismaPromise<GetOrganisationTemplateAggregateType<T>>
+
+    /**
+     * Group by OrganisationTemplate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrganisationTemplateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OrganisationTemplateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OrganisationTemplateGroupByArgs['orderBy'] }
+        : { orderBy?: OrganisationTemplateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OrganisationTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOrganisationTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OrganisationTemplate model
+   */
+  readonly fields: OrganisationTemplateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OrganisationTemplate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OrganisationTemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Organisation<T extends OrganisationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganisationDefaultArgs<ExtArgs>>): Prisma__OrganisationClient<$Result.GetResult<Prisma.$OrganisationPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    Template<T extends OrganisationTemplate$TemplateArgs<ExtArgs> = {}>(args?: Subset<T, OrganisationTemplate$TemplateArgs<ExtArgs>>): Prisma__TemplateClient<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    Assessment<T extends OrganisationTemplate$AssessmentArgs<ExtArgs> = {}>(args?: Subset<T, OrganisationTemplate$AssessmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OrganisationTemplate model
+   */ 
+  interface OrganisationTemplateFieldRefs {
+    readonly id: FieldRef<"OrganisationTemplate", 'Int'>
+    readonly name: FieldRef<"OrganisationTemplate", 'String'>
+    readonly description: FieldRef<"OrganisationTemplate", 'String'>
+    readonly logo: FieldRef<"OrganisationTemplate", 'String'>
+    readonly organisationId: FieldRef<"OrganisationTemplate", 'Int'>
+    readonly password: FieldRef<"OrganisationTemplate", 'String'>
+    readonly rememberToken: FieldRef<"OrganisationTemplate", 'String'>
+    readonly isActive: FieldRef<"OrganisationTemplate", 'Boolean'>
+    readonly secretToken: FieldRef<"OrganisationTemplate", 'String'>
+    readonly tfaToken: FieldRef<"OrganisationTemplate", 'String'>
+    readonly createdAt: FieldRef<"OrganisationTemplate", 'DateTime'>
+    readonly updatedAt: FieldRef<"OrganisationTemplate", 'DateTime'>
+    readonly templateId: FieldRef<"OrganisationTemplate", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OrganisationTemplate findUnique
+   */
+  export type OrganisationTemplateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationTemplate
+     */
+    select?: OrganisationTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganisationTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which OrganisationTemplate to fetch.
+     */
+    where: OrganisationTemplateWhereUniqueInput
+  }
+
+  /**
+   * OrganisationTemplate findUniqueOrThrow
+   */
+  export type OrganisationTemplateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationTemplate
+     */
+    select?: OrganisationTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganisationTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which OrganisationTemplate to fetch.
+     */
+    where: OrganisationTemplateWhereUniqueInput
+  }
+
+  /**
+   * OrganisationTemplate findFirst
+   */
+  export type OrganisationTemplateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationTemplate
+     */
+    select?: OrganisationTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganisationTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which OrganisationTemplate to fetch.
+     */
+    where?: OrganisationTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OrganisationTemplates to fetch.
+     */
+    orderBy?: OrganisationTemplateOrderByWithRelationInput | OrganisationTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OrganisationTemplates.
+     */
+    cursor?: OrganisationTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OrganisationTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OrganisationTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OrganisationTemplates.
+     */
+    distinct?: OrganisationTemplateScalarFieldEnum | OrganisationTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * OrganisationTemplate findFirstOrThrow
+   */
+  export type OrganisationTemplateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationTemplate
+     */
+    select?: OrganisationTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganisationTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which OrganisationTemplate to fetch.
+     */
+    where?: OrganisationTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OrganisationTemplates to fetch.
+     */
+    orderBy?: OrganisationTemplateOrderByWithRelationInput | OrganisationTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OrganisationTemplates.
+     */
+    cursor?: OrganisationTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OrganisationTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OrganisationTemplates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OrganisationTemplates.
+     */
+    distinct?: OrganisationTemplateScalarFieldEnum | OrganisationTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * OrganisationTemplate findMany
+   */
+  export type OrganisationTemplateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationTemplate
+     */
+    select?: OrganisationTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganisationTemplateInclude<ExtArgs> | null
+    /**
+     * Filter, which OrganisationTemplates to fetch.
+     */
+    where?: OrganisationTemplateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OrganisationTemplates to fetch.
+     */
+    orderBy?: OrganisationTemplateOrderByWithRelationInput | OrganisationTemplateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OrganisationTemplates.
+     */
+    cursor?: OrganisationTemplateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OrganisationTemplates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OrganisationTemplates.
+     */
+    skip?: number
+    distinct?: OrganisationTemplateScalarFieldEnum | OrganisationTemplateScalarFieldEnum[]
+  }
+
+  /**
+   * OrganisationTemplate create
+   */
+  export type OrganisationTemplateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationTemplate
+     */
+    select?: OrganisationTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganisationTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OrganisationTemplate.
+     */
+    data: XOR<OrganisationTemplateCreateInput, OrganisationTemplateUncheckedCreateInput>
+  }
+
+  /**
+   * OrganisationTemplate createMany
+   */
+  export type OrganisationTemplateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OrganisationTemplates.
+     */
+    data: OrganisationTemplateCreateManyInput | OrganisationTemplateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OrganisationTemplate update
+   */
+  export type OrganisationTemplateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationTemplate
+     */
+    select?: OrganisationTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganisationTemplateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OrganisationTemplate.
+     */
+    data: XOR<OrganisationTemplateUpdateInput, OrganisationTemplateUncheckedUpdateInput>
+    /**
+     * Choose, which OrganisationTemplate to update.
+     */
+    where: OrganisationTemplateWhereUniqueInput
+  }
+
+  /**
+   * OrganisationTemplate updateMany
+   */
+  export type OrganisationTemplateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OrganisationTemplates.
+     */
+    data: XOR<OrganisationTemplateUpdateManyMutationInput, OrganisationTemplateUncheckedUpdateManyInput>
+    /**
+     * Filter which OrganisationTemplates to update
+     */
+    where?: OrganisationTemplateWhereInput
+  }
+
+  /**
+   * OrganisationTemplate upsert
+   */
+  export type OrganisationTemplateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationTemplate
+     */
+    select?: OrganisationTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganisationTemplateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OrganisationTemplate to update in case it exists.
+     */
+    where: OrganisationTemplateWhereUniqueInput
+    /**
+     * In case the OrganisationTemplate found by the `where` argument doesn't exist, create a new OrganisationTemplate with this data.
+     */
+    create: XOR<OrganisationTemplateCreateInput, OrganisationTemplateUncheckedCreateInput>
+    /**
+     * In case the OrganisationTemplate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OrganisationTemplateUpdateInput, OrganisationTemplateUncheckedUpdateInput>
+  }
+
+  /**
+   * OrganisationTemplate delete
+   */
+  export type OrganisationTemplateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationTemplate
+     */
+    select?: OrganisationTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganisationTemplateInclude<ExtArgs> | null
+    /**
+     * Filter which OrganisationTemplate to delete.
+     */
+    where: OrganisationTemplateWhereUniqueInput
+  }
+
+  /**
+   * OrganisationTemplate deleteMany
+   */
+  export type OrganisationTemplateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OrganisationTemplates to delete
+     */
+    where?: OrganisationTemplateWhereInput
+  }
+
+  /**
+   * OrganisationTemplate.Template
+   */
+  export type OrganisationTemplate$TemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Template
+     */
+    select?: TemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TemplateInclude<ExtArgs> | null
+    where?: TemplateWhereInput
+  }
+
+  /**
+   * OrganisationTemplate.Assessment
+   */
+  export type OrganisationTemplate$AssessmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Assessment
+     */
+    select?: AssessmentSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentInclude<ExtArgs> | null
+    where?: AssessmentWhereInput
+    orderBy?: AssessmentOrderByWithRelationInput | AssessmentOrderByWithRelationInput[]
+    cursor?: AssessmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AssessmentScalarFieldEnum | AssessmentScalarFieldEnum[]
+  }
+
+  /**
+   * OrganisationTemplate without action
+   */
+  export type OrganisationTemplateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrganisationTemplate
+     */
+    select?: OrganisationTemplateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrganisationTemplateInclude<ExtArgs> | null
   }
 
 
@@ -16138,7 +17338,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     TemplateStage?: boolean | Template$TemplateStageArgs<ExtArgs>
-    Assessment?: boolean | Template$AssessmentArgs<ExtArgs>
+    OrganisationTemplate?: boolean | Template$OrganisationTemplateArgs<ExtArgs>
     _count?: boolean | TemplateCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["template"]>
 
@@ -16154,7 +17354,7 @@ export namespace Prisma {
 
   export type TemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     TemplateStage?: boolean | Template$TemplateStageArgs<ExtArgs>
-    Assessment?: boolean | Template$AssessmentArgs<ExtArgs>
+    OrganisationTemplate?: boolean | Template$OrganisationTemplateArgs<ExtArgs>
     _count?: boolean | TemplateCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -16162,7 +17362,7 @@ export namespace Prisma {
     name: "Template"
     objects: {
       TemplateStage: Prisma.$TemplateStagePayload<ExtArgs>[]
-      Assessment: Prisma.$AssessmentPayload<ExtArgs>[]
+      OrganisationTemplate: Prisma.$OrganisationTemplatePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -16512,7 +17712,7 @@ export namespace Prisma {
   export interface Prisma__TemplateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     TemplateStage<T extends Template$TemplateStageArgs<ExtArgs> = {}>(args?: Subset<T, Template$TemplateStageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TemplateStagePayload<ExtArgs>, T, "findMany"> | Null>
-    Assessment<T extends Template$AssessmentArgs<ExtArgs> = {}>(args?: Subset<T, Template$AssessmentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentPayload<ExtArgs>, T, "findMany"> | Null>
+    OrganisationTemplate<T extends Template$OrganisationTemplateArgs<ExtArgs> = {}>(args?: Subset<T, Template$OrganisationTemplateArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16867,23 +18067,23 @@ export namespace Prisma {
   }
 
   /**
-   * Template.Assessment
+   * Template.OrganisationTemplate
    */
-  export type Template$AssessmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Template$OrganisationTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Assessment
+     * Select specific fields to fetch from the OrganisationTemplate
      */
-    select?: AssessmentSelect<ExtArgs> | null
+    select?: OrganisationTemplateSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AssessmentInclude<ExtArgs> | null
-    where?: AssessmentWhereInput
-    orderBy?: AssessmentOrderByWithRelationInput | AssessmentOrderByWithRelationInput[]
-    cursor?: AssessmentWhereUniqueInput
+    include?: OrganisationTemplateInclude<ExtArgs> | null
+    where?: OrganisationTemplateWhereInput
+    orderBy?: OrganisationTemplateOrderByWithRelationInput | OrganisationTemplateOrderByWithRelationInput[]
+    cursor?: OrganisationTemplateWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AssessmentScalarFieldEnum | AssessmentScalarFieldEnum[]
+    distinct?: OrganisationTemplateScalarFieldEnum | OrganisationTemplateScalarFieldEnum[]
   }
 
   /**
@@ -21915,7 +23115,7 @@ export namespace Prisma {
     tfaToken: 'tfaToken',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    templateId: 'templateId'
+    organisationTemplateId: 'organisationTemplateId'
   };
 
   export type AssessmentScalarFieldEnum = (typeof AssessmentScalarFieldEnum)[keyof typeof AssessmentScalarFieldEnum]
@@ -22015,6 +23215,25 @@ export namespace Prisma {
   };
 
   export type OrganisationStructureScalarFieldEnum = (typeof OrganisationStructureScalarFieldEnum)[keyof typeof OrganisationStructureScalarFieldEnum]
+
+
+  export const OrganisationTemplateScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    logo: 'logo',
+    organisationId: 'organisationId',
+    password: 'password',
+    rememberToken: 'rememberToken',
+    isActive: 'isActive',
+    secretToken: 'secretToken',
+    tfaToken: 'tfaToken',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    templateId: 'templateId'
+  };
+
+  export type OrganisationTemplateScalarFieldEnum = (typeof OrganisationTemplateScalarFieldEnum)[keyof typeof OrganisationTemplateScalarFieldEnum]
 
 
   export const QuestionScalarFieldEnum: {
@@ -22268,12 +23487,12 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"Assessment"> | string | null
     createdAt?: DateTimeFilter<"Assessment"> | Date | string
     updatedAt?: DateTimeFilter<"Assessment"> | Date | string
-    templateId?: IntFilter<"Assessment"> | number
+    organisationTemplateId?: IntFilter<"Assessment"> | number
     Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
     AssessmentAssign?: AssessmentAssignListRelationFilter
     AssessmentQuestionAssign?: AssessmentQuestionAssignListRelationFilter
     AssessmentQuestion?: AssessmentQuestionListRelationFilter
-    Template?: XOR<TemplateNullableRelationFilter, TemplateWhereInput> | null
+    OrganisationTemplate?: XOR<OrganisationTemplateNullableRelationFilter, OrganisationTemplateWhereInput> | null
   }
 
   export type AssessmentOrderByWithRelationInput = {
@@ -22289,12 +23508,12 @@ export namespace Prisma {
     tfaToken?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    templateId?: SortOrder
+    organisationTemplateId?: SortOrder
     Organisation?: OrganisationOrderByWithRelationInput
     AssessmentAssign?: AssessmentAssignOrderByRelationAggregateInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignOrderByRelationAggregateInput
     AssessmentQuestion?: AssessmentQuestionOrderByRelationAggregateInput
-    Template?: TemplateOrderByWithRelationInput
+    OrganisationTemplate?: OrganisationTemplateOrderByWithRelationInput
   }
 
   export type AssessmentWhereUniqueInput = Prisma.AtLeast<{
@@ -22313,12 +23532,12 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"Assessment"> | string | null
     createdAt?: DateTimeFilter<"Assessment"> | Date | string
     updatedAt?: DateTimeFilter<"Assessment"> | Date | string
-    templateId?: IntFilter<"Assessment"> | number
+    organisationTemplateId?: IntFilter<"Assessment"> | number
     Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
     AssessmentAssign?: AssessmentAssignListRelationFilter
     AssessmentQuestionAssign?: AssessmentQuestionAssignListRelationFilter
     AssessmentQuestion?: AssessmentQuestionListRelationFilter
-    Template?: XOR<TemplateNullableRelationFilter, TemplateWhereInput> | null
+    OrganisationTemplate?: XOR<OrganisationTemplateNullableRelationFilter, OrganisationTemplateWhereInput> | null
   }, "id" | "id">
 
   export type AssessmentOrderByWithAggregationInput = {
@@ -22334,7 +23553,7 @@ export namespace Prisma {
     tfaToken?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    templateId?: SortOrder
+    organisationTemplateId?: SortOrder
     _count?: AssessmentCountOrderByAggregateInput
     _avg?: AssessmentAvgOrderByAggregateInput
     _max?: AssessmentMaxOrderByAggregateInput
@@ -22358,7 +23577,7 @@ export namespace Prisma {
     tfaToken?: StringNullableWithAggregatesFilter<"Assessment"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Assessment"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Assessment"> | Date | string
-    templateId?: IntWithAggregatesFilter<"Assessment"> | number
+    organisationTemplateId?: IntWithAggregatesFilter<"Assessment"> | number
   }
 
   export type AssessmentAssignWhereInput = {
@@ -22716,6 +23935,7 @@ export namespace Prisma {
     Owner?: XOR<UserNullableRelationFilter, UserWhereInput> | null
     Assessment?: AssessmentListRelationFilter
     Team?: TeamListRelationFilter
+    OrganisationTemplate?: OrganisationTemplateListRelationFilter
   }
 
   export type OrganisationOrderByWithRelationInput = {
@@ -22729,6 +23949,7 @@ export namespace Prisma {
     Owner?: UserOrderByWithRelationInput
     Assessment?: AssessmentOrderByRelationAggregateInput
     Team?: TeamOrderByRelationAggregateInput
+    OrganisationTemplate?: OrganisationTemplateOrderByRelationAggregateInput
   }
 
   export type OrganisationWhereUniqueInput = Prisma.AtLeast<{
@@ -22745,6 +23966,7 @@ export namespace Prisma {
     Owner?: XOR<UserNullableRelationFilter, UserWhereInput> | null
     Assessment?: AssessmentListRelationFilter
     Team?: TeamListRelationFilter
+    OrganisationTemplate?: OrganisationTemplateListRelationFilter
   }, "id" | "id" | "name" | "ownerId">
 
   export type OrganisationOrderByWithAggregationInput = {
@@ -22901,6 +24123,109 @@ export namespace Prisma {
     userId?: IntWithAggregatesFilter<"OrganisationStructure"> | number
     createdAt?: DateTimeWithAggregatesFilter<"OrganisationStructure"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"OrganisationStructure"> | Date | string
+  }
+
+  export type OrganisationTemplateWhereInput = {
+    AND?: OrganisationTemplateWhereInput | OrganisationTemplateWhereInput[]
+    OR?: OrganisationTemplateWhereInput[]
+    NOT?: OrganisationTemplateWhereInput | OrganisationTemplateWhereInput[]
+    id?: IntFilter<"OrganisationTemplate"> | number
+    name?: StringFilter<"OrganisationTemplate"> | string
+    description?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    logo?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    organisationId?: IntFilter<"OrganisationTemplate"> | number
+    password?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    rememberToken?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    isActive?: BoolFilter<"OrganisationTemplate"> | boolean
+    secretToken?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    tfaToken?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    createdAt?: DateTimeFilter<"OrganisationTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"OrganisationTemplate"> | Date | string
+    templateId?: IntFilter<"OrganisationTemplate"> | number
+    Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
+    Template?: XOR<TemplateNullableRelationFilter, TemplateWhereInput> | null
+    Assessment?: AssessmentListRelationFilter
+  }
+
+  export type OrganisationTemplateOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    logo?: SortOrderInput | SortOrder
+    organisationId?: SortOrder
+    password?: SortOrderInput | SortOrder
+    rememberToken?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    secretToken?: SortOrderInput | SortOrder
+    tfaToken?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+    Organisation?: OrganisationOrderByWithRelationInput
+    Template?: TemplateOrderByWithRelationInput
+    Assessment?: AssessmentOrderByRelationAggregateInput
+  }
+
+  export type OrganisationTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: OrganisationTemplateWhereInput | OrganisationTemplateWhereInput[]
+    OR?: OrganisationTemplateWhereInput[]
+    NOT?: OrganisationTemplateWhereInput | OrganisationTemplateWhereInput[]
+    name?: StringFilter<"OrganisationTemplate"> | string
+    description?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    logo?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    organisationId?: IntFilter<"OrganisationTemplate"> | number
+    password?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    rememberToken?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    isActive?: BoolFilter<"OrganisationTemplate"> | boolean
+    secretToken?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    tfaToken?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    createdAt?: DateTimeFilter<"OrganisationTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"OrganisationTemplate"> | Date | string
+    templateId?: IntFilter<"OrganisationTemplate"> | number
+    Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
+    Template?: XOR<TemplateNullableRelationFilter, TemplateWhereInput> | null
+    Assessment?: AssessmentListRelationFilter
+  }, "id" | "id">
+
+  export type OrganisationTemplateOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    logo?: SortOrderInput | SortOrder
+    organisationId?: SortOrder
+    password?: SortOrderInput | SortOrder
+    rememberToken?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    secretToken?: SortOrderInput | SortOrder
+    tfaToken?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+    _count?: OrganisationTemplateCountOrderByAggregateInput
+    _avg?: OrganisationTemplateAvgOrderByAggregateInput
+    _max?: OrganisationTemplateMaxOrderByAggregateInput
+    _min?: OrganisationTemplateMinOrderByAggregateInput
+    _sum?: OrganisationTemplateSumOrderByAggregateInput
+  }
+
+  export type OrganisationTemplateScalarWhereWithAggregatesInput = {
+    AND?: OrganisationTemplateScalarWhereWithAggregatesInput | OrganisationTemplateScalarWhereWithAggregatesInput[]
+    OR?: OrganisationTemplateScalarWhereWithAggregatesInput[]
+    NOT?: OrganisationTemplateScalarWhereWithAggregatesInput | OrganisationTemplateScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"OrganisationTemplate"> | number
+    name?: StringWithAggregatesFilter<"OrganisationTemplate"> | string
+    description?: StringNullableWithAggregatesFilter<"OrganisationTemplate"> | string | null
+    logo?: StringNullableWithAggregatesFilter<"OrganisationTemplate"> | string | null
+    organisationId?: IntWithAggregatesFilter<"OrganisationTemplate"> | number
+    password?: StringNullableWithAggregatesFilter<"OrganisationTemplate"> | string | null
+    rememberToken?: StringNullableWithAggregatesFilter<"OrganisationTemplate"> | string | null
+    isActive?: BoolWithAggregatesFilter<"OrganisationTemplate"> | boolean
+    secretToken?: StringNullableWithAggregatesFilter<"OrganisationTemplate"> | string | null
+    tfaToken?: StringNullableWithAggregatesFilter<"OrganisationTemplate"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"OrganisationTemplate"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"OrganisationTemplate"> | Date | string
+    templateId?: IntWithAggregatesFilter<"OrganisationTemplate"> | number
   }
 
   export type QuestionWhereInput = {
@@ -23308,7 +24633,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Template"> | Date | string
     updatedAt?: DateTimeFilter<"Template"> | Date | string
     TemplateStage?: TemplateStageListRelationFilter
-    Assessment?: AssessmentListRelationFilter
+    OrganisationTemplate?: OrganisationTemplateListRelationFilter
   }
 
   export type TemplateOrderByWithRelationInput = {
@@ -23319,7 +24644,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     TemplateStage?: TemplateStageOrderByRelationAggregateInput
-    Assessment?: AssessmentOrderByRelationAggregateInput
+    OrganisationTemplate?: OrganisationTemplateOrderByRelationAggregateInput
   }
 
   export type TemplateWhereUniqueInput = Prisma.AtLeast<{
@@ -23333,7 +24658,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Template"> | Date | string
     updatedAt?: DateTimeFilter<"Template"> | Date | string
     TemplateStage?: TemplateStageListRelationFilter
-    Assessment?: AssessmentListRelationFilter
+    OrganisationTemplate?: OrganisationTemplateListRelationFilter
   }, "id" | "id" | "name">
 
   export type TemplateOrderByWithAggregationInput = {
@@ -23795,7 +25120,7 @@ export namespace Prisma {
     AssessmentAssign?: AssessmentAssignCreateNestedManyWithoutAssessmentInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignCreateNestedManyWithoutAssessmentInput
     AssessmentQuestion?: AssessmentQuestionCreateNestedManyWithoutAssessmentInput
-    Template?: TemplateCreateNestedOneWithoutAssessmentInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateInput = {
@@ -23811,7 +25136,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    templateId: number
+    organisationTemplateId: number
     AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
@@ -23832,7 +25157,7 @@ export namespace Prisma {
     AssessmentAssign?: AssessmentAssignUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestion?: AssessmentQuestionUpdateManyWithoutAssessmentNestedInput
-    Template?: TemplateUpdateOneWithoutAssessmentNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateInput = {
@@ -23848,7 +25173,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    templateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: IntFieldUpdateOperationsInput | number
     AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
@@ -23867,7 +25192,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    templateId: number
+    organisationTemplateId: number
   }
 
   export type AssessmentUpdateManyMutationInput = {
@@ -23896,7 +25221,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    templateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: IntFieldUpdateOperationsInput | number
   }
 
   export type AssessmentAssignCreateInput = {
@@ -24232,6 +25557,7 @@ export namespace Prisma {
     Owner?: UserCreateNestedOneWithoutOrganisationInput
     Assessment?: AssessmentCreateNestedManyWithoutOrganisationInput
     Team?: TeamCreateNestedManyWithoutOrganisationInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedManyWithoutOrganisationInput
   }
 
   export type OrganisationUncheckedCreateInput = {
@@ -24244,6 +25570,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     Assessment?: AssessmentUncheckedCreateNestedManyWithoutOrganisationInput
     Team?: TeamUncheckedCreateNestedManyWithoutOrganisationInput
+    OrganisationTemplate?: OrganisationTemplateUncheckedCreateNestedManyWithoutOrganisationInput
   }
 
   export type OrganisationUpdateInput = {
@@ -24255,6 +25582,7 @@ export namespace Prisma {
     Owner?: UserUpdateOneWithoutOrganisationNestedInput
     Assessment?: AssessmentUpdateManyWithoutOrganisationNestedInput
     Team?: TeamUpdateManyWithoutOrganisationNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateManyWithoutOrganisationNestedInput
   }
 
   export type OrganisationUncheckedUpdateInput = {
@@ -24267,6 +25595,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUncheckedUpdateManyWithoutOrganisationNestedInput
     Team?: TeamUncheckedUpdateManyWithoutOrganisationNestedInput
+    OrganisationTemplate?: OrganisationTemplateUncheckedUpdateManyWithoutOrganisationNestedInput
   }
 
   export type OrganisationCreateManyInput = {
@@ -24408,6 +25737,117 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OrganisationTemplateCreateInput = {
+    name: string
+    description?: string | null
+    logo?: string | null
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Organisation: OrganisationCreateNestedOneWithoutOrganisationTemplateInput
+    Template?: TemplateCreateNestedOneWithoutOrganisationTemplateInput
+    Assessment?: AssessmentCreateNestedManyWithoutOrganisationTemplateInput
+  }
+
+  export type OrganisationTemplateUncheckedCreateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    logo?: string | null
+    organisationId: number
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId: number
+    Assessment?: AssessmentUncheckedCreateNestedManyWithoutOrganisationTemplateInput
+  }
+
+  export type OrganisationTemplateUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Organisation?: OrganisationUpdateOneRequiredWithoutOrganisationTemplateNestedInput
+    Template?: TemplateUpdateOneWithoutOrganisationTemplateNestedInput
+    Assessment?: AssessmentUpdateManyWithoutOrganisationTemplateNestedInput
+  }
+
+  export type OrganisationTemplateUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    organisationId?: IntFieldUpdateOperationsInput | number
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: IntFieldUpdateOperationsInput | number
+    Assessment?: AssessmentUncheckedUpdateManyWithoutOrganisationTemplateNestedInput
+  }
+
+  export type OrganisationTemplateCreateManyInput = {
+    id?: number
+    name: string
+    description?: string | null
+    logo?: string | null
+    organisationId: number
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId: number
+  }
+
+  export type OrganisationTemplateUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OrganisationTemplateUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    organisationId?: IntFieldUpdateOperationsInput | number
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: IntFieldUpdateOperationsInput | number
   }
 
   export type QuestionCreateInput = {
@@ -24838,7 +26278,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     TemplateStage?: TemplateStageCreateNestedManyWithoutTemplateInput
-    Assessment?: AssessmentCreateNestedManyWithoutTemplateInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedManyWithoutTemplateInput
   }
 
   export type TemplateUncheckedCreateInput = {
@@ -24849,7 +26289,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     TemplateStage?: TemplateStageUncheckedCreateNestedManyWithoutTemplateInput
-    Assessment?: AssessmentUncheckedCreateNestedManyWithoutTemplateInput
+    OrganisationTemplate?: OrganisationTemplateUncheckedCreateNestedManyWithoutTemplateInput
   }
 
   export type TemplateUpdateInput = {
@@ -24859,7 +26299,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     TemplateStage?: TemplateStageUpdateManyWithoutTemplateNestedInput
-    Assessment?: AssessmentUpdateManyWithoutTemplateNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateManyWithoutTemplateNestedInput
   }
 
   export type TemplateUncheckedUpdateInput = {
@@ -24870,7 +26310,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     TemplateStage?: TemplateStageUncheckedUpdateManyWithoutTemplateNestedInput
-    Assessment?: AssessmentUncheckedUpdateManyWithoutTemplateNestedInput
+    OrganisationTemplate?: OrganisationTemplateUncheckedUpdateManyWithoutTemplateNestedInput
   }
 
   export type TemplateCreateManyInput = {
@@ -25422,9 +26862,9 @@ export namespace Prisma {
     none?: AssessmentQuestionWhereInput
   }
 
-  export type TemplateNullableRelationFilter = {
-    is?: TemplateWhereInput | null
-    isNot?: TemplateWhereInput | null
+  export type OrganisationTemplateNullableRelationFilter = {
+    is?: OrganisationTemplateWhereInput | null
+    isNot?: OrganisationTemplateWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -25457,13 +26897,13 @@ export namespace Prisma {
     tfaToken?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    templateId?: SortOrder
+    organisationTemplateId?: SortOrder
   }
 
   export type AssessmentAvgOrderByAggregateInput = {
     id?: SortOrder
     organisationId?: SortOrder
-    templateId?: SortOrder
+    organisationTemplateId?: SortOrder
   }
 
   export type AssessmentMaxOrderByAggregateInput = {
@@ -25479,7 +26919,7 @@ export namespace Prisma {
     tfaToken?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    templateId?: SortOrder
+    organisationTemplateId?: SortOrder
   }
 
   export type AssessmentMinOrderByAggregateInput = {
@@ -25495,13 +26935,13 @@ export namespace Prisma {
     tfaToken?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    templateId?: SortOrder
+    organisationTemplateId?: SortOrder
   }
 
   export type AssessmentSumOrderByAggregateInput = {
     id?: SortOrder
     organisationId?: SortOrder
-    templateId?: SortOrder
+    organisationTemplateId?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -25861,11 +27301,21 @@ export namespace Prisma {
     none?: TeamWhereInput
   }
 
+  export type OrganisationTemplateListRelationFilter = {
+    every?: OrganisationTemplateWhereInput
+    some?: OrganisationTemplateWhereInput
+    none?: OrganisationTemplateWhereInput
+  }
+
   export type AssessmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type TeamOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type OrganisationTemplateOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -26038,6 +27488,71 @@ export namespace Prisma {
     organisationId?: SortOrder
     teamId?: SortOrder
     userId?: SortOrder
+  }
+
+  export type TemplateNullableRelationFilter = {
+    is?: TemplateWhereInput | null
+    isNot?: TemplateWhereInput | null
+  }
+
+  export type OrganisationTemplateCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    logo?: SortOrder
+    organisationId?: SortOrder
+    password?: SortOrder
+    rememberToken?: SortOrder
+    isActive?: SortOrder
+    secretToken?: SortOrder
+    tfaToken?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type OrganisationTemplateAvgOrderByAggregateInput = {
+    id?: SortOrder
+    organisationId?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type OrganisationTemplateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    logo?: SortOrder
+    organisationId?: SortOrder
+    password?: SortOrder
+    rememberToken?: SortOrder
+    isActive?: SortOrder
+    secretToken?: SortOrder
+    tfaToken?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type OrganisationTemplateMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    logo?: SortOrder
+    organisationId?: SortOrder
+    password?: SortOrder
+    rememberToken?: SortOrder
+    isActive?: SortOrder
+    secretToken?: SortOrder
+    tfaToken?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    templateId?: SortOrder
+  }
+
+  export type OrganisationTemplateSumOrderByAggregateInput = {
+    id?: SortOrder
+    organisationId?: SortOrder
+    templateId?: SortOrder
   }
 
   export type EnumQuestionTypeNullableFilter<$PrismaModel = never> = {
@@ -26709,10 +28224,10 @@ export namespace Prisma {
     connect?: AssessmentQuestionWhereUniqueInput | AssessmentQuestionWhereUniqueInput[]
   }
 
-  export type TemplateCreateNestedOneWithoutAssessmentInput = {
-    create?: XOR<TemplateCreateWithoutAssessmentInput, TemplateUncheckedCreateWithoutAssessmentInput>
-    connectOrCreate?: TemplateCreateOrConnectWithoutAssessmentInput
-    connect?: TemplateWhereUniqueInput
+  export type OrganisationTemplateCreateNestedOneWithoutAssessmentInput = {
+    create?: XOR<OrganisationTemplateCreateWithoutAssessmentInput, OrganisationTemplateUncheckedCreateWithoutAssessmentInput>
+    connectOrCreate?: OrganisationTemplateCreateOrConnectWithoutAssessmentInput
+    connect?: OrganisationTemplateWhereUniqueInput
   }
 
   export type AssessmentAssignUncheckedCreateNestedManyWithoutAssessmentInput = {
@@ -26802,14 +28317,14 @@ export namespace Prisma {
     deleteMany?: AssessmentQuestionScalarWhereInput | AssessmentQuestionScalarWhereInput[]
   }
 
-  export type TemplateUpdateOneWithoutAssessmentNestedInput = {
-    create?: XOR<TemplateCreateWithoutAssessmentInput, TemplateUncheckedCreateWithoutAssessmentInput>
-    connectOrCreate?: TemplateCreateOrConnectWithoutAssessmentInput
-    upsert?: TemplateUpsertWithoutAssessmentInput
-    disconnect?: TemplateWhereInput | boolean
-    delete?: TemplateWhereInput | boolean
-    connect?: TemplateWhereUniqueInput
-    update?: XOR<XOR<TemplateUpdateToOneWithWhereWithoutAssessmentInput, TemplateUpdateWithoutAssessmentInput>, TemplateUncheckedUpdateWithoutAssessmentInput>
+  export type OrganisationTemplateUpdateOneWithoutAssessmentNestedInput = {
+    create?: XOR<OrganisationTemplateCreateWithoutAssessmentInput, OrganisationTemplateUncheckedCreateWithoutAssessmentInput>
+    connectOrCreate?: OrganisationTemplateCreateOrConnectWithoutAssessmentInput
+    upsert?: OrganisationTemplateUpsertWithoutAssessmentInput
+    disconnect?: OrganisationTemplateWhereInput | boolean
+    delete?: OrganisationTemplateWhereInput | boolean
+    connect?: OrganisationTemplateWhereUniqueInput
+    update?: XOR<XOR<OrganisationTemplateUpdateToOneWithWhereWithoutAssessmentInput, OrganisationTemplateUpdateWithoutAssessmentInput>, OrganisationTemplateUncheckedUpdateWithoutAssessmentInput>
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -27176,6 +28691,13 @@ export namespace Prisma {
     connect?: TeamWhereUniqueInput | TeamWhereUniqueInput[]
   }
 
+  export type OrganisationTemplateCreateNestedManyWithoutOrganisationInput = {
+    create?: XOR<OrganisationTemplateCreateWithoutOrganisationInput, OrganisationTemplateUncheckedCreateWithoutOrganisationInput> | OrganisationTemplateCreateWithoutOrganisationInput[] | OrganisationTemplateUncheckedCreateWithoutOrganisationInput[]
+    connectOrCreate?: OrganisationTemplateCreateOrConnectWithoutOrganisationInput | OrganisationTemplateCreateOrConnectWithoutOrganisationInput[]
+    createMany?: OrganisationTemplateCreateManyOrganisationInputEnvelope
+    connect?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+  }
+
   export type AssessmentUncheckedCreateNestedManyWithoutOrganisationInput = {
     create?: XOR<AssessmentCreateWithoutOrganisationInput, AssessmentUncheckedCreateWithoutOrganisationInput> | AssessmentCreateWithoutOrganisationInput[] | AssessmentUncheckedCreateWithoutOrganisationInput[]
     connectOrCreate?: AssessmentCreateOrConnectWithoutOrganisationInput | AssessmentCreateOrConnectWithoutOrganisationInput[]
@@ -27188,6 +28710,13 @@ export namespace Prisma {
     connectOrCreate?: TeamCreateOrConnectWithoutOrganisationInput | TeamCreateOrConnectWithoutOrganisationInput[]
     createMany?: TeamCreateManyOrganisationInputEnvelope
     connect?: TeamWhereUniqueInput | TeamWhereUniqueInput[]
+  }
+
+  export type OrganisationTemplateUncheckedCreateNestedManyWithoutOrganisationInput = {
+    create?: XOR<OrganisationTemplateCreateWithoutOrganisationInput, OrganisationTemplateUncheckedCreateWithoutOrganisationInput> | OrganisationTemplateCreateWithoutOrganisationInput[] | OrganisationTemplateUncheckedCreateWithoutOrganisationInput[]
+    connectOrCreate?: OrganisationTemplateCreateOrConnectWithoutOrganisationInput | OrganisationTemplateCreateOrConnectWithoutOrganisationInput[]
+    createMany?: OrganisationTemplateCreateManyOrganisationInputEnvelope
+    connect?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
   }
 
   export type NullableBoolFieldUpdateOperationsInput = {
@@ -27232,6 +28761,20 @@ export namespace Prisma {
     deleteMany?: TeamScalarWhereInput | TeamScalarWhereInput[]
   }
 
+  export type OrganisationTemplateUpdateManyWithoutOrganisationNestedInput = {
+    create?: XOR<OrganisationTemplateCreateWithoutOrganisationInput, OrganisationTemplateUncheckedCreateWithoutOrganisationInput> | OrganisationTemplateCreateWithoutOrganisationInput[] | OrganisationTemplateUncheckedCreateWithoutOrganisationInput[]
+    connectOrCreate?: OrganisationTemplateCreateOrConnectWithoutOrganisationInput | OrganisationTemplateCreateOrConnectWithoutOrganisationInput[]
+    upsert?: OrganisationTemplateUpsertWithWhereUniqueWithoutOrganisationInput | OrganisationTemplateUpsertWithWhereUniqueWithoutOrganisationInput[]
+    createMany?: OrganisationTemplateCreateManyOrganisationInputEnvelope
+    set?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    disconnect?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    delete?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    connect?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    update?: OrganisationTemplateUpdateWithWhereUniqueWithoutOrganisationInput | OrganisationTemplateUpdateWithWhereUniqueWithoutOrganisationInput[]
+    updateMany?: OrganisationTemplateUpdateManyWithWhereWithoutOrganisationInput | OrganisationTemplateUpdateManyWithWhereWithoutOrganisationInput[]
+    deleteMany?: OrganisationTemplateScalarWhereInput | OrganisationTemplateScalarWhereInput[]
+  }
+
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -27266,6 +28809,20 @@ export namespace Prisma {
     update?: TeamUpdateWithWhereUniqueWithoutOrganisationInput | TeamUpdateWithWhereUniqueWithoutOrganisationInput[]
     updateMany?: TeamUpdateManyWithWhereWithoutOrganisationInput | TeamUpdateManyWithWhereWithoutOrganisationInput[]
     deleteMany?: TeamScalarWhereInput | TeamScalarWhereInput[]
+  }
+
+  export type OrganisationTemplateUncheckedUpdateManyWithoutOrganisationNestedInput = {
+    create?: XOR<OrganisationTemplateCreateWithoutOrganisationInput, OrganisationTemplateUncheckedCreateWithoutOrganisationInput> | OrganisationTemplateCreateWithoutOrganisationInput[] | OrganisationTemplateUncheckedCreateWithoutOrganisationInput[]
+    connectOrCreate?: OrganisationTemplateCreateOrConnectWithoutOrganisationInput | OrganisationTemplateCreateOrConnectWithoutOrganisationInput[]
+    upsert?: OrganisationTemplateUpsertWithWhereUniqueWithoutOrganisationInput | OrganisationTemplateUpsertWithWhereUniqueWithoutOrganisationInput[]
+    createMany?: OrganisationTemplateCreateManyOrganisationInputEnvelope
+    set?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    disconnect?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    delete?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    connect?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    update?: OrganisationTemplateUpdateWithWhereUniqueWithoutOrganisationInput | OrganisationTemplateUpdateWithWhereUniqueWithoutOrganisationInput[]
+    updateMany?: OrganisationTemplateUpdateManyWithWhereWithoutOrganisationInput | OrganisationTemplateUpdateManyWithWhereWithoutOrganisationInput[]
+    deleteMany?: OrganisationTemplateScalarWhereInput | OrganisationTemplateScalarWhereInput[]
   }
 
   export type OrganisationStructureCreateNestedOneWithoutOrganisationRoleInput = {
@@ -27366,6 +28923,78 @@ export namespace Prisma {
     update?: OrganisationRoleUpdateWithWhereUniqueWithoutOrganisationStructureInput | OrganisationRoleUpdateWithWhereUniqueWithoutOrganisationStructureInput[]
     updateMany?: OrganisationRoleUpdateManyWithWhereWithoutOrganisationStructureInput | OrganisationRoleUpdateManyWithWhereWithoutOrganisationStructureInput[]
     deleteMany?: OrganisationRoleScalarWhereInput | OrganisationRoleScalarWhereInput[]
+  }
+
+  export type OrganisationCreateNestedOneWithoutOrganisationTemplateInput = {
+    create?: XOR<OrganisationCreateWithoutOrganisationTemplateInput, OrganisationUncheckedCreateWithoutOrganisationTemplateInput>
+    connectOrCreate?: OrganisationCreateOrConnectWithoutOrganisationTemplateInput
+    connect?: OrganisationWhereUniqueInput
+  }
+
+  export type TemplateCreateNestedOneWithoutOrganisationTemplateInput = {
+    create?: XOR<TemplateCreateWithoutOrganisationTemplateInput, TemplateUncheckedCreateWithoutOrganisationTemplateInput>
+    connectOrCreate?: TemplateCreateOrConnectWithoutOrganisationTemplateInput
+    connect?: TemplateWhereUniqueInput
+  }
+
+  export type AssessmentCreateNestedManyWithoutOrganisationTemplateInput = {
+    create?: XOR<AssessmentCreateWithoutOrganisationTemplateInput, AssessmentUncheckedCreateWithoutOrganisationTemplateInput> | AssessmentCreateWithoutOrganisationTemplateInput[] | AssessmentUncheckedCreateWithoutOrganisationTemplateInput[]
+    connectOrCreate?: AssessmentCreateOrConnectWithoutOrganisationTemplateInput | AssessmentCreateOrConnectWithoutOrganisationTemplateInput[]
+    createMany?: AssessmentCreateManyOrganisationTemplateInputEnvelope
+    connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+  }
+
+  export type AssessmentUncheckedCreateNestedManyWithoutOrganisationTemplateInput = {
+    create?: XOR<AssessmentCreateWithoutOrganisationTemplateInput, AssessmentUncheckedCreateWithoutOrganisationTemplateInput> | AssessmentCreateWithoutOrganisationTemplateInput[] | AssessmentUncheckedCreateWithoutOrganisationTemplateInput[]
+    connectOrCreate?: AssessmentCreateOrConnectWithoutOrganisationTemplateInput | AssessmentCreateOrConnectWithoutOrganisationTemplateInput[]
+    createMany?: AssessmentCreateManyOrganisationTemplateInputEnvelope
+    connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+  }
+
+  export type OrganisationUpdateOneRequiredWithoutOrganisationTemplateNestedInput = {
+    create?: XOR<OrganisationCreateWithoutOrganisationTemplateInput, OrganisationUncheckedCreateWithoutOrganisationTemplateInput>
+    connectOrCreate?: OrganisationCreateOrConnectWithoutOrganisationTemplateInput
+    upsert?: OrganisationUpsertWithoutOrganisationTemplateInput
+    connect?: OrganisationWhereUniqueInput
+    update?: XOR<XOR<OrganisationUpdateToOneWithWhereWithoutOrganisationTemplateInput, OrganisationUpdateWithoutOrganisationTemplateInput>, OrganisationUncheckedUpdateWithoutOrganisationTemplateInput>
+  }
+
+  export type TemplateUpdateOneWithoutOrganisationTemplateNestedInput = {
+    create?: XOR<TemplateCreateWithoutOrganisationTemplateInput, TemplateUncheckedCreateWithoutOrganisationTemplateInput>
+    connectOrCreate?: TemplateCreateOrConnectWithoutOrganisationTemplateInput
+    upsert?: TemplateUpsertWithoutOrganisationTemplateInput
+    disconnect?: TemplateWhereInput | boolean
+    delete?: TemplateWhereInput | boolean
+    connect?: TemplateWhereUniqueInput
+    update?: XOR<XOR<TemplateUpdateToOneWithWhereWithoutOrganisationTemplateInput, TemplateUpdateWithoutOrganisationTemplateInput>, TemplateUncheckedUpdateWithoutOrganisationTemplateInput>
+  }
+
+  export type AssessmentUpdateManyWithoutOrganisationTemplateNestedInput = {
+    create?: XOR<AssessmentCreateWithoutOrganisationTemplateInput, AssessmentUncheckedCreateWithoutOrganisationTemplateInput> | AssessmentCreateWithoutOrganisationTemplateInput[] | AssessmentUncheckedCreateWithoutOrganisationTemplateInput[]
+    connectOrCreate?: AssessmentCreateOrConnectWithoutOrganisationTemplateInput | AssessmentCreateOrConnectWithoutOrganisationTemplateInput[]
+    upsert?: AssessmentUpsertWithWhereUniqueWithoutOrganisationTemplateInput | AssessmentUpsertWithWhereUniqueWithoutOrganisationTemplateInput[]
+    createMany?: AssessmentCreateManyOrganisationTemplateInputEnvelope
+    set?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    disconnect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    delete?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    update?: AssessmentUpdateWithWhereUniqueWithoutOrganisationTemplateInput | AssessmentUpdateWithWhereUniqueWithoutOrganisationTemplateInput[]
+    updateMany?: AssessmentUpdateManyWithWhereWithoutOrganisationTemplateInput | AssessmentUpdateManyWithWhereWithoutOrganisationTemplateInput[]
+    deleteMany?: AssessmentScalarWhereInput | AssessmentScalarWhereInput[]
+  }
+
+  export type AssessmentUncheckedUpdateManyWithoutOrganisationTemplateNestedInput = {
+    create?: XOR<AssessmentCreateWithoutOrganisationTemplateInput, AssessmentUncheckedCreateWithoutOrganisationTemplateInput> | AssessmentCreateWithoutOrganisationTemplateInput[] | AssessmentUncheckedCreateWithoutOrganisationTemplateInput[]
+    connectOrCreate?: AssessmentCreateOrConnectWithoutOrganisationTemplateInput | AssessmentCreateOrConnectWithoutOrganisationTemplateInput[]
+    upsert?: AssessmentUpsertWithWhereUniqueWithoutOrganisationTemplateInput | AssessmentUpsertWithWhereUniqueWithoutOrganisationTemplateInput[]
+    createMany?: AssessmentCreateManyOrganisationTemplateInputEnvelope
+    set?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    disconnect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    delete?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    update?: AssessmentUpdateWithWhereUniqueWithoutOrganisationTemplateInput | AssessmentUpdateWithWhereUniqueWithoutOrganisationTemplateInput[]
+    updateMany?: AssessmentUpdateManyWithWhereWithoutOrganisationTemplateInput | AssessmentUpdateManyWithWhereWithoutOrganisationTemplateInput[]
+    deleteMany?: AssessmentScalarWhereInput | AssessmentScalarWhereInput[]
   }
 
   export type AssessmentQuestionCreateNestedManyWithoutQuestionInput = {
@@ -27845,11 +29474,11 @@ export namespace Prisma {
     connect?: TemplateStageWhereUniqueInput | TemplateStageWhereUniqueInput[]
   }
 
-  export type AssessmentCreateNestedManyWithoutTemplateInput = {
-    create?: XOR<AssessmentCreateWithoutTemplateInput, AssessmentUncheckedCreateWithoutTemplateInput> | AssessmentCreateWithoutTemplateInput[] | AssessmentUncheckedCreateWithoutTemplateInput[]
-    connectOrCreate?: AssessmentCreateOrConnectWithoutTemplateInput | AssessmentCreateOrConnectWithoutTemplateInput[]
-    createMany?: AssessmentCreateManyTemplateInputEnvelope
-    connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+  export type OrganisationTemplateCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<OrganisationTemplateCreateWithoutTemplateInput, OrganisationTemplateUncheckedCreateWithoutTemplateInput> | OrganisationTemplateCreateWithoutTemplateInput[] | OrganisationTemplateUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: OrganisationTemplateCreateOrConnectWithoutTemplateInput | OrganisationTemplateCreateOrConnectWithoutTemplateInput[]
+    createMany?: OrganisationTemplateCreateManyTemplateInputEnvelope
+    connect?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
   }
 
   export type TemplateStageUncheckedCreateNestedManyWithoutTemplateInput = {
@@ -27859,11 +29488,11 @@ export namespace Prisma {
     connect?: TemplateStageWhereUniqueInput | TemplateStageWhereUniqueInput[]
   }
 
-  export type AssessmentUncheckedCreateNestedManyWithoutTemplateInput = {
-    create?: XOR<AssessmentCreateWithoutTemplateInput, AssessmentUncheckedCreateWithoutTemplateInput> | AssessmentCreateWithoutTemplateInput[] | AssessmentUncheckedCreateWithoutTemplateInput[]
-    connectOrCreate?: AssessmentCreateOrConnectWithoutTemplateInput | AssessmentCreateOrConnectWithoutTemplateInput[]
-    createMany?: AssessmentCreateManyTemplateInputEnvelope
-    connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+  export type OrganisationTemplateUncheckedCreateNestedManyWithoutTemplateInput = {
+    create?: XOR<OrganisationTemplateCreateWithoutTemplateInput, OrganisationTemplateUncheckedCreateWithoutTemplateInput> | OrganisationTemplateCreateWithoutTemplateInput[] | OrganisationTemplateUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: OrganisationTemplateCreateOrConnectWithoutTemplateInput | OrganisationTemplateCreateOrConnectWithoutTemplateInput[]
+    createMany?: OrganisationTemplateCreateManyTemplateInputEnvelope
+    connect?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
   }
 
   export type TemplateStageUpdateManyWithoutTemplateNestedInput = {
@@ -27880,18 +29509,18 @@ export namespace Prisma {
     deleteMany?: TemplateStageScalarWhereInput | TemplateStageScalarWhereInput[]
   }
 
-  export type AssessmentUpdateManyWithoutTemplateNestedInput = {
-    create?: XOR<AssessmentCreateWithoutTemplateInput, AssessmentUncheckedCreateWithoutTemplateInput> | AssessmentCreateWithoutTemplateInput[] | AssessmentUncheckedCreateWithoutTemplateInput[]
-    connectOrCreate?: AssessmentCreateOrConnectWithoutTemplateInput | AssessmentCreateOrConnectWithoutTemplateInput[]
-    upsert?: AssessmentUpsertWithWhereUniqueWithoutTemplateInput | AssessmentUpsertWithWhereUniqueWithoutTemplateInput[]
-    createMany?: AssessmentCreateManyTemplateInputEnvelope
-    set?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
-    disconnect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
-    delete?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
-    connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
-    update?: AssessmentUpdateWithWhereUniqueWithoutTemplateInput | AssessmentUpdateWithWhereUniqueWithoutTemplateInput[]
-    updateMany?: AssessmentUpdateManyWithWhereWithoutTemplateInput | AssessmentUpdateManyWithWhereWithoutTemplateInput[]
-    deleteMany?: AssessmentScalarWhereInput | AssessmentScalarWhereInput[]
+  export type OrganisationTemplateUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<OrganisationTemplateCreateWithoutTemplateInput, OrganisationTemplateUncheckedCreateWithoutTemplateInput> | OrganisationTemplateCreateWithoutTemplateInput[] | OrganisationTemplateUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: OrganisationTemplateCreateOrConnectWithoutTemplateInput | OrganisationTemplateCreateOrConnectWithoutTemplateInput[]
+    upsert?: OrganisationTemplateUpsertWithWhereUniqueWithoutTemplateInput | OrganisationTemplateUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: OrganisationTemplateCreateManyTemplateInputEnvelope
+    set?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    disconnect?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    delete?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    connect?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    update?: OrganisationTemplateUpdateWithWhereUniqueWithoutTemplateInput | OrganisationTemplateUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: OrganisationTemplateUpdateManyWithWhereWithoutTemplateInput | OrganisationTemplateUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: OrganisationTemplateScalarWhereInput | OrganisationTemplateScalarWhereInput[]
   }
 
   export type TemplateStageUncheckedUpdateManyWithoutTemplateNestedInput = {
@@ -27908,18 +29537,18 @@ export namespace Prisma {
     deleteMany?: TemplateStageScalarWhereInput | TemplateStageScalarWhereInput[]
   }
 
-  export type AssessmentUncheckedUpdateManyWithoutTemplateNestedInput = {
-    create?: XOR<AssessmentCreateWithoutTemplateInput, AssessmentUncheckedCreateWithoutTemplateInput> | AssessmentCreateWithoutTemplateInput[] | AssessmentUncheckedCreateWithoutTemplateInput[]
-    connectOrCreate?: AssessmentCreateOrConnectWithoutTemplateInput | AssessmentCreateOrConnectWithoutTemplateInput[]
-    upsert?: AssessmentUpsertWithWhereUniqueWithoutTemplateInput | AssessmentUpsertWithWhereUniqueWithoutTemplateInput[]
-    createMany?: AssessmentCreateManyTemplateInputEnvelope
-    set?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
-    disconnect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
-    delete?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
-    connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
-    update?: AssessmentUpdateWithWhereUniqueWithoutTemplateInput | AssessmentUpdateWithWhereUniqueWithoutTemplateInput[]
-    updateMany?: AssessmentUpdateManyWithWhereWithoutTemplateInput | AssessmentUpdateManyWithWhereWithoutTemplateInput[]
-    deleteMany?: AssessmentScalarWhereInput | AssessmentScalarWhereInput[]
+  export type OrganisationTemplateUncheckedUpdateManyWithoutTemplateNestedInput = {
+    create?: XOR<OrganisationTemplateCreateWithoutTemplateInput, OrganisationTemplateUncheckedCreateWithoutTemplateInput> | OrganisationTemplateCreateWithoutTemplateInput[] | OrganisationTemplateUncheckedCreateWithoutTemplateInput[]
+    connectOrCreate?: OrganisationTemplateCreateOrConnectWithoutTemplateInput | OrganisationTemplateCreateOrConnectWithoutTemplateInput[]
+    upsert?: OrganisationTemplateUpsertWithWhereUniqueWithoutTemplateInput | OrganisationTemplateUpsertWithWhereUniqueWithoutTemplateInput[]
+    createMany?: OrganisationTemplateCreateManyTemplateInputEnvelope
+    set?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    disconnect?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    delete?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    connect?: OrganisationTemplateWhereUniqueInput | OrganisationTemplateWhereUniqueInput[]
+    update?: OrganisationTemplateUpdateWithWhereUniqueWithoutTemplateInput | OrganisationTemplateUpdateWithWhereUniqueWithoutTemplateInput[]
+    updateMany?: OrganisationTemplateUpdateManyWithWhereWithoutTemplateInput | OrganisationTemplateUpdateManyWithWhereWithoutTemplateInput[]
+    deleteMany?: OrganisationTemplateScalarWhereInput | OrganisationTemplateScalarWhereInput[]
   }
 
   export type TemplateCreateNestedOneWithoutTemplateStageInput = {
@@ -28494,6 +30123,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     Owner?: UserCreateNestedOneWithoutOrganisationInput
     Team?: TeamCreateNestedManyWithoutOrganisationInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedManyWithoutOrganisationInput
   }
 
   export type OrganisationUncheckedCreateWithoutAssessmentInput = {
@@ -28505,6 +30135,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Team?: TeamUncheckedCreateNestedManyWithoutOrganisationInput
+    OrganisationTemplate?: OrganisationTemplateUncheckedCreateNestedManyWithoutOrganisationInput
   }
 
   export type OrganisationCreateOrConnectWithoutAssessmentInput = {
@@ -28619,28 +30250,40 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type TemplateCreateWithoutAssessmentInput = {
+  export type OrganisationTemplateCreateWithoutAssessmentInput = {
     name: string
     description?: string | null
+    logo?: string | null
+    password?: string | null
+    rememberToken?: string | null
     isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    TemplateStage?: TemplateStageCreateNestedManyWithoutTemplateInput
+    Organisation: OrganisationCreateNestedOneWithoutOrganisationTemplateInput
+    Template?: TemplateCreateNestedOneWithoutOrganisationTemplateInput
   }
 
-  export type TemplateUncheckedCreateWithoutAssessmentInput = {
+  export type OrganisationTemplateUncheckedCreateWithoutAssessmentInput = {
     id?: number
     name: string
     description?: string | null
+    logo?: string | null
+    organisationId: number
+    password?: string | null
+    rememberToken?: string | null
     isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    TemplateStage?: TemplateStageUncheckedCreateNestedManyWithoutTemplateInput
+    templateId: number
   }
 
-  export type TemplateCreateOrConnectWithoutAssessmentInput = {
-    where: TemplateWhereUniqueInput
-    create: XOR<TemplateCreateWithoutAssessmentInput, TemplateUncheckedCreateWithoutAssessmentInput>
+  export type OrganisationTemplateCreateOrConnectWithoutAssessmentInput = {
+    where: OrganisationTemplateWhereUniqueInput
+    create: XOR<OrganisationTemplateCreateWithoutAssessmentInput, OrganisationTemplateUncheckedCreateWithoutAssessmentInput>
   }
 
   export type OrganisationUpsertWithoutAssessmentInput = {
@@ -28662,6 +30305,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Owner?: UserUpdateOneWithoutOrganisationNestedInput
     Team?: TeamUpdateManyWithoutOrganisationNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateManyWithoutOrganisationNestedInput
   }
 
   export type OrganisationUncheckedUpdateWithoutAssessmentInput = {
@@ -28673,6 +30317,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Team?: TeamUncheckedUpdateManyWithoutOrganisationNestedInput
+    OrganisationTemplate?: OrganisationTemplateUncheckedUpdateManyWithoutOrganisationNestedInput
   }
 
   export type AssessmentAssignUpsertWithWhereUniqueWithoutAssessmentInput = {
@@ -28772,34 +30417,46 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"AssessmentQuestion"> | Date | string
   }
 
-  export type TemplateUpsertWithoutAssessmentInput = {
-    update: XOR<TemplateUpdateWithoutAssessmentInput, TemplateUncheckedUpdateWithoutAssessmentInput>
-    create: XOR<TemplateCreateWithoutAssessmentInput, TemplateUncheckedCreateWithoutAssessmentInput>
-    where?: TemplateWhereInput
+  export type OrganisationTemplateUpsertWithoutAssessmentInput = {
+    update: XOR<OrganisationTemplateUpdateWithoutAssessmentInput, OrganisationTemplateUncheckedUpdateWithoutAssessmentInput>
+    create: XOR<OrganisationTemplateCreateWithoutAssessmentInput, OrganisationTemplateUncheckedCreateWithoutAssessmentInput>
+    where?: OrganisationTemplateWhereInput
   }
 
-  export type TemplateUpdateToOneWithWhereWithoutAssessmentInput = {
-    where?: TemplateWhereInput
-    data: XOR<TemplateUpdateWithoutAssessmentInput, TemplateUncheckedUpdateWithoutAssessmentInput>
+  export type OrganisationTemplateUpdateToOneWithWhereWithoutAssessmentInput = {
+    where?: OrganisationTemplateWhereInput
+    data: XOR<OrganisationTemplateUpdateWithoutAssessmentInput, OrganisationTemplateUncheckedUpdateWithoutAssessmentInput>
   }
 
-  export type TemplateUpdateWithoutAssessmentInput = {
+  export type OrganisationTemplateUpdateWithoutAssessmentInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    TemplateStage?: TemplateStageUpdateManyWithoutTemplateNestedInput
+    Organisation?: OrganisationUpdateOneRequiredWithoutOrganisationTemplateNestedInput
+    Template?: TemplateUpdateOneWithoutOrganisationTemplateNestedInput
   }
 
-  export type TemplateUncheckedUpdateWithoutAssessmentInput = {
+  export type OrganisationTemplateUncheckedUpdateWithoutAssessmentInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    organisationId?: IntFieldUpdateOperationsInput | number
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    TemplateStage?: TemplateStageUncheckedUpdateManyWithoutTemplateNestedInput
+    templateId?: IntFieldUpdateOperationsInput | number
   }
 
   export type AssessmentCreateWithoutAssessmentAssignInput = {
@@ -28816,7 +30473,7 @@ export namespace Prisma {
     Organisation: OrganisationCreateNestedOneWithoutAssessmentInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignCreateNestedManyWithoutAssessmentInput
     AssessmentQuestion?: AssessmentQuestionCreateNestedManyWithoutAssessmentInput
-    Template?: TemplateCreateNestedOneWithoutAssessmentInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutAssessmentAssignInput = {
@@ -28832,7 +30489,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    templateId: number
+    organisationTemplateId: number
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
   }
@@ -28978,7 +30635,7 @@ export namespace Prisma {
     Organisation?: OrganisationUpdateOneRequiredWithoutAssessmentNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestion?: AssessmentQuestionUpdateManyWithoutAssessmentNestedInput
-    Template?: TemplateUpdateOneWithoutAssessmentNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutAssessmentAssignInput = {
@@ -28994,7 +30651,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    templateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: IntFieldUpdateOperationsInput | number
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
   }
@@ -29111,7 +30768,7 @@ export namespace Prisma {
     Organisation: OrganisationCreateNestedOneWithoutAssessmentInput
     AssessmentAssign?: AssessmentAssignCreateNestedManyWithoutAssessmentInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignCreateNestedManyWithoutAssessmentInput
-    Template?: TemplateCreateNestedOneWithoutAssessmentInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutAssessmentQuestionInput = {
@@ -29127,7 +30784,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    templateId: number
+    organisationTemplateId: number
     AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutAssessmentInput
   }
@@ -29229,7 +30886,7 @@ export namespace Prisma {
     Organisation?: OrganisationUpdateOneRequiredWithoutAssessmentNestedInput
     AssessmentAssign?: AssessmentAssignUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUpdateManyWithoutAssessmentNestedInput
-    Template?: TemplateUpdateOneWithoutAssessmentNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutAssessmentQuestionInput = {
@@ -29245,7 +30902,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    templateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: IntFieldUpdateOperationsInput | number
     AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutAssessmentNestedInput
   }
@@ -29444,7 +31101,7 @@ export namespace Prisma {
     Organisation: OrganisationCreateNestedOneWithoutAssessmentInput
     AssessmentAssign?: AssessmentAssignCreateNestedManyWithoutAssessmentInput
     AssessmentQuestion?: AssessmentQuestionCreateNestedManyWithoutAssessmentInput
-    Template?: TemplateCreateNestedOneWithoutAssessmentInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutAssessmentQuestionAssignInput = {
@@ -29460,7 +31117,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    templateId: number
+    organisationTemplateId: number
     AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
   }
@@ -29644,7 +31301,7 @@ export namespace Prisma {
     Organisation?: OrganisationUpdateOneRequiredWithoutAssessmentNestedInput
     AssessmentAssign?: AssessmentAssignUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestion?: AssessmentQuestionUpdateManyWithoutAssessmentNestedInput
-    Template?: TemplateUpdateOneWithoutAssessmentNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutAssessmentQuestionAssignInput = {
@@ -29660,7 +31317,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    templateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: IntFieldUpdateOperationsInput | number
     AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
   }
@@ -29914,7 +31571,7 @@ export namespace Prisma {
     AssessmentAssign?: AssessmentAssignCreateNestedManyWithoutAssessmentInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignCreateNestedManyWithoutAssessmentInput
     AssessmentQuestion?: AssessmentQuestionCreateNestedManyWithoutAssessmentInput
-    Template?: TemplateCreateNestedOneWithoutAssessmentInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutOrganisationInput = {
@@ -29929,7 +31586,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    templateId: number
+    organisationTemplateId: number
     AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
@@ -29985,6 +31642,47 @@ export namespace Prisma {
 
   export type TeamCreateManyOrganisationInputEnvelope = {
     data: TeamCreateManyOrganisationInput | TeamCreateManyOrganisationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type OrganisationTemplateCreateWithoutOrganisationInput = {
+    name: string
+    description?: string | null
+    logo?: string | null
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Template?: TemplateCreateNestedOneWithoutOrganisationTemplateInput
+    Assessment?: AssessmentCreateNestedManyWithoutOrganisationTemplateInput
+  }
+
+  export type OrganisationTemplateUncheckedCreateWithoutOrganisationInput = {
+    id?: number
+    name: string
+    description?: string | null
+    logo?: string | null
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId: number
+    Assessment?: AssessmentUncheckedCreateNestedManyWithoutOrganisationTemplateInput
+  }
+
+  export type OrganisationTemplateCreateOrConnectWithoutOrganisationInput = {
+    where: OrganisationTemplateWhereUniqueInput
+    create: XOR<OrganisationTemplateCreateWithoutOrganisationInput, OrganisationTemplateUncheckedCreateWithoutOrganisationInput>
+  }
+
+  export type OrganisationTemplateCreateManyOrganisationInputEnvelope = {
+    data: OrganisationTemplateCreateManyOrganisationInput | OrganisationTemplateCreateManyOrganisationInput[]
     skipDuplicates?: boolean
   }
 
@@ -30084,7 +31782,7 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"Assessment"> | string | null
     createdAt?: DateTimeFilter<"Assessment"> | Date | string
     updatedAt?: DateTimeFilter<"Assessment"> | Date | string
-    templateId?: IntFilter<"Assessment"> | number
+    organisationTemplateId?: IntFilter<"Assessment"> | number
   }
 
   export type TeamUpsertWithWhereUniqueWithoutOrganisationInput = {
@@ -30119,6 +31817,41 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"Team"> | string | null
     createdAt?: DateTimeFilter<"Team"> | Date | string
     updatedAt?: DateTimeFilter<"Team"> | Date | string
+  }
+
+  export type OrganisationTemplateUpsertWithWhereUniqueWithoutOrganisationInput = {
+    where: OrganisationTemplateWhereUniqueInput
+    update: XOR<OrganisationTemplateUpdateWithoutOrganisationInput, OrganisationTemplateUncheckedUpdateWithoutOrganisationInput>
+    create: XOR<OrganisationTemplateCreateWithoutOrganisationInput, OrganisationTemplateUncheckedCreateWithoutOrganisationInput>
+  }
+
+  export type OrganisationTemplateUpdateWithWhereUniqueWithoutOrganisationInput = {
+    where: OrganisationTemplateWhereUniqueInput
+    data: XOR<OrganisationTemplateUpdateWithoutOrganisationInput, OrganisationTemplateUncheckedUpdateWithoutOrganisationInput>
+  }
+
+  export type OrganisationTemplateUpdateManyWithWhereWithoutOrganisationInput = {
+    where: OrganisationTemplateScalarWhereInput
+    data: XOR<OrganisationTemplateUpdateManyMutationInput, OrganisationTemplateUncheckedUpdateManyWithoutOrganisationInput>
+  }
+
+  export type OrganisationTemplateScalarWhereInput = {
+    AND?: OrganisationTemplateScalarWhereInput | OrganisationTemplateScalarWhereInput[]
+    OR?: OrganisationTemplateScalarWhereInput[]
+    NOT?: OrganisationTemplateScalarWhereInput | OrganisationTemplateScalarWhereInput[]
+    id?: IntFilter<"OrganisationTemplate"> | number
+    name?: StringFilter<"OrganisationTemplate"> | string
+    description?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    logo?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    organisationId?: IntFilter<"OrganisationTemplate"> | number
+    password?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    rememberToken?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    isActive?: BoolFilter<"OrganisationTemplate"> | boolean
+    secretToken?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    tfaToken?: StringNullableFilter<"OrganisationTemplate"> | string | null
+    createdAt?: DateTimeFilter<"OrganisationTemplate"> | Date | string
+    updatedAt?: DateTimeFilter<"OrganisationTemplate"> | Date | string
+    templateId?: IntFilter<"OrganisationTemplate"> | number
   }
 
   export type OrganisationStructureCreateWithoutOrganisationRoleInput = {
@@ -30479,6 +32212,183 @@ export namespace Prisma {
     TeamMember?: TeamMemberUncheckedUpdateManyWithoutMemberNestedInput
   }
 
+  export type OrganisationCreateWithoutOrganisationTemplateInput = {
+    name: string
+    description?: string | null
+    isActive?: boolean | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Owner?: UserCreateNestedOneWithoutOrganisationInput
+    Assessment?: AssessmentCreateNestedManyWithoutOrganisationInput
+    Team?: TeamCreateNestedManyWithoutOrganisationInput
+  }
+
+  export type OrganisationUncheckedCreateWithoutOrganisationTemplateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    isActive?: boolean | null
+    ownerId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Assessment?: AssessmentUncheckedCreateNestedManyWithoutOrganisationInput
+    Team?: TeamUncheckedCreateNestedManyWithoutOrganisationInput
+  }
+
+  export type OrganisationCreateOrConnectWithoutOrganisationTemplateInput = {
+    where: OrganisationWhereUniqueInput
+    create: XOR<OrganisationCreateWithoutOrganisationTemplateInput, OrganisationUncheckedCreateWithoutOrganisationTemplateInput>
+  }
+
+  export type TemplateCreateWithoutOrganisationTemplateInput = {
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    TemplateStage?: TemplateStageCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TemplateUncheckedCreateWithoutOrganisationTemplateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    TemplateStage?: TemplateStageUncheckedCreateNestedManyWithoutTemplateInput
+  }
+
+  export type TemplateCreateOrConnectWithoutOrganisationTemplateInput = {
+    where: TemplateWhereUniqueInput
+    create: XOR<TemplateCreateWithoutOrganisationTemplateInput, TemplateUncheckedCreateWithoutOrganisationTemplateInput>
+  }
+
+  export type AssessmentCreateWithoutOrganisationTemplateInput = {
+    name: string
+    description?: string | null
+    logo?: string | null
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Organisation: OrganisationCreateNestedOneWithoutAssessmentInput
+    AssessmentAssign?: AssessmentAssignCreateNestedManyWithoutAssessmentInput
+    AssessmentQuestionAssign?: AssessmentQuestionAssignCreateNestedManyWithoutAssessmentInput
+    AssessmentQuestion?: AssessmentQuestionCreateNestedManyWithoutAssessmentInput
+  }
+
+  export type AssessmentUncheckedCreateWithoutOrganisationTemplateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    logo?: string | null
+    organisationId: number
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
+  }
+
+  export type AssessmentCreateOrConnectWithoutOrganisationTemplateInput = {
+    where: AssessmentWhereUniqueInput
+    create: XOR<AssessmentCreateWithoutOrganisationTemplateInput, AssessmentUncheckedCreateWithoutOrganisationTemplateInput>
+  }
+
+  export type AssessmentCreateManyOrganisationTemplateInputEnvelope = {
+    data: AssessmentCreateManyOrganisationTemplateInput | AssessmentCreateManyOrganisationTemplateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type OrganisationUpsertWithoutOrganisationTemplateInput = {
+    update: XOR<OrganisationUpdateWithoutOrganisationTemplateInput, OrganisationUncheckedUpdateWithoutOrganisationTemplateInput>
+    create: XOR<OrganisationCreateWithoutOrganisationTemplateInput, OrganisationUncheckedCreateWithoutOrganisationTemplateInput>
+    where?: OrganisationWhereInput
+  }
+
+  export type OrganisationUpdateToOneWithWhereWithoutOrganisationTemplateInput = {
+    where?: OrganisationWhereInput
+    data: XOR<OrganisationUpdateWithoutOrganisationTemplateInput, OrganisationUncheckedUpdateWithoutOrganisationTemplateInput>
+  }
+
+  export type OrganisationUpdateWithoutOrganisationTemplateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Owner?: UserUpdateOneWithoutOrganisationNestedInput
+    Assessment?: AssessmentUpdateManyWithoutOrganisationNestedInput
+    Team?: TeamUpdateManyWithoutOrganisationNestedInput
+  }
+
+  export type OrganisationUncheckedUpdateWithoutOrganisationTemplateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    ownerId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Assessment?: AssessmentUncheckedUpdateManyWithoutOrganisationNestedInput
+    Team?: TeamUncheckedUpdateManyWithoutOrganisationNestedInput
+  }
+
+  export type TemplateUpsertWithoutOrganisationTemplateInput = {
+    update: XOR<TemplateUpdateWithoutOrganisationTemplateInput, TemplateUncheckedUpdateWithoutOrganisationTemplateInput>
+    create: XOR<TemplateCreateWithoutOrganisationTemplateInput, TemplateUncheckedCreateWithoutOrganisationTemplateInput>
+    where?: TemplateWhereInput
+  }
+
+  export type TemplateUpdateToOneWithWhereWithoutOrganisationTemplateInput = {
+    where?: TemplateWhereInput
+    data: XOR<TemplateUpdateWithoutOrganisationTemplateInput, TemplateUncheckedUpdateWithoutOrganisationTemplateInput>
+  }
+
+  export type TemplateUpdateWithoutOrganisationTemplateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    TemplateStage?: TemplateStageUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type TemplateUncheckedUpdateWithoutOrganisationTemplateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    TemplateStage?: TemplateStageUncheckedUpdateManyWithoutTemplateNestedInput
+  }
+
+  export type AssessmentUpsertWithWhereUniqueWithoutOrganisationTemplateInput = {
+    where: AssessmentWhereUniqueInput
+    update: XOR<AssessmentUpdateWithoutOrganisationTemplateInput, AssessmentUncheckedUpdateWithoutOrganisationTemplateInput>
+    create: XOR<AssessmentCreateWithoutOrganisationTemplateInput, AssessmentUncheckedCreateWithoutOrganisationTemplateInput>
+  }
+
+  export type AssessmentUpdateWithWhereUniqueWithoutOrganisationTemplateInput = {
+    where: AssessmentWhereUniqueInput
+    data: XOR<AssessmentUpdateWithoutOrganisationTemplateInput, AssessmentUncheckedUpdateWithoutOrganisationTemplateInput>
+  }
+
+  export type AssessmentUpdateManyWithWhereWithoutOrganisationTemplateInput = {
+    where: AssessmentScalarWhereInput
+    data: XOR<AssessmentUpdateManyMutationInput, AssessmentUncheckedUpdateManyWithoutOrganisationTemplateInput>
+  }
+
   export type AssessmentQuestionCreateWithoutQuestionInput = {
     questionId_: number
     isActive?: boolean
@@ -30776,6 +32686,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     Owner?: UserCreateNestedOneWithoutOrganisationInput
     Assessment?: AssessmentCreateNestedManyWithoutOrganisationInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedManyWithoutOrganisationInput
   }
 
   export type OrganisationUncheckedCreateWithoutTeamInput = {
@@ -30787,6 +32698,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Assessment?: AssessmentUncheckedCreateNestedManyWithoutOrganisationInput
+    OrganisationTemplate?: OrganisationTemplateUncheckedCreateNestedManyWithoutOrganisationInput
   }
 
   export type OrganisationCreateOrConnectWithoutTeamInput = {
@@ -30918,6 +32830,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Owner?: UserUpdateOneWithoutOrganisationNestedInput
     Assessment?: AssessmentUpdateManyWithoutOrganisationNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateManyWithoutOrganisationNestedInput
   }
 
   export type OrganisationUncheckedUpdateWithoutTeamInput = {
@@ -30929,6 +32842,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUncheckedUpdateManyWithoutOrganisationNestedInput
+    OrganisationTemplate?: OrganisationTemplateUncheckedUpdateManyWithoutOrganisationNestedInput
   }
 
   export type AssessmentAssignUpsertWithWhereUniqueWithoutTeamInput = {
@@ -31252,7 +33166,7 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type AssessmentCreateWithoutTemplateInput = {
+  export type OrganisationTemplateCreateWithoutTemplateInput = {
     name: string
     description?: string | null
     logo?: string | null
@@ -31263,13 +33177,11 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    Organisation: OrganisationCreateNestedOneWithoutAssessmentInput
-    AssessmentAssign?: AssessmentAssignCreateNestedManyWithoutAssessmentInput
-    AssessmentQuestionAssign?: AssessmentQuestionAssignCreateNestedManyWithoutAssessmentInput
-    AssessmentQuestion?: AssessmentQuestionCreateNestedManyWithoutAssessmentInput
+    Organisation: OrganisationCreateNestedOneWithoutOrganisationTemplateInput
+    Assessment?: AssessmentCreateNestedManyWithoutOrganisationTemplateInput
   }
 
-  export type AssessmentUncheckedCreateWithoutTemplateInput = {
+  export type OrganisationTemplateUncheckedCreateWithoutTemplateInput = {
     id?: number
     name: string
     description?: string | null
@@ -31282,18 +33194,16 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    AssessmentAssign?: AssessmentAssignUncheckedCreateNestedManyWithoutAssessmentInput
-    AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedCreateNestedManyWithoutAssessmentInput
-    AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
+    Assessment?: AssessmentUncheckedCreateNestedManyWithoutOrganisationTemplateInput
   }
 
-  export type AssessmentCreateOrConnectWithoutTemplateInput = {
-    where: AssessmentWhereUniqueInput
-    create: XOR<AssessmentCreateWithoutTemplateInput, AssessmentUncheckedCreateWithoutTemplateInput>
+  export type OrganisationTemplateCreateOrConnectWithoutTemplateInput = {
+    where: OrganisationTemplateWhereUniqueInput
+    create: XOR<OrganisationTemplateCreateWithoutTemplateInput, OrganisationTemplateUncheckedCreateWithoutTemplateInput>
   }
 
-  export type AssessmentCreateManyTemplateInputEnvelope = {
-    data: AssessmentCreateManyTemplateInput | AssessmentCreateManyTemplateInput[]
+  export type OrganisationTemplateCreateManyTemplateInputEnvelope = {
+    data: OrganisationTemplateCreateManyTemplateInput | OrganisationTemplateCreateManyTemplateInput[]
     skipDuplicates?: boolean
   }
 
@@ -31326,20 +33236,20 @@ export namespace Prisma {
     templateId?: IntFilter<"TemplateStage"> | number
   }
 
-  export type AssessmentUpsertWithWhereUniqueWithoutTemplateInput = {
-    where: AssessmentWhereUniqueInput
-    update: XOR<AssessmentUpdateWithoutTemplateInput, AssessmentUncheckedUpdateWithoutTemplateInput>
-    create: XOR<AssessmentCreateWithoutTemplateInput, AssessmentUncheckedCreateWithoutTemplateInput>
+  export type OrganisationTemplateUpsertWithWhereUniqueWithoutTemplateInput = {
+    where: OrganisationTemplateWhereUniqueInput
+    update: XOR<OrganisationTemplateUpdateWithoutTemplateInput, OrganisationTemplateUncheckedUpdateWithoutTemplateInput>
+    create: XOR<OrganisationTemplateCreateWithoutTemplateInput, OrganisationTemplateUncheckedCreateWithoutTemplateInput>
   }
 
-  export type AssessmentUpdateWithWhereUniqueWithoutTemplateInput = {
-    where: AssessmentWhereUniqueInput
-    data: XOR<AssessmentUpdateWithoutTemplateInput, AssessmentUncheckedUpdateWithoutTemplateInput>
+  export type OrganisationTemplateUpdateWithWhereUniqueWithoutTemplateInput = {
+    where: OrganisationTemplateWhereUniqueInput
+    data: XOR<OrganisationTemplateUpdateWithoutTemplateInput, OrganisationTemplateUncheckedUpdateWithoutTemplateInput>
   }
 
-  export type AssessmentUpdateManyWithWhereWithoutTemplateInput = {
-    where: AssessmentScalarWhereInput
-    data: XOR<AssessmentUpdateManyMutationInput, AssessmentUncheckedUpdateManyWithoutTemplateInput>
+  export type OrganisationTemplateUpdateManyWithWhereWithoutTemplateInput = {
+    where: OrganisationTemplateScalarWhereInput
+    data: XOR<OrganisationTemplateUpdateManyMutationInput, OrganisationTemplateUncheckedUpdateManyWithoutTemplateInput>
   }
 
   export type TemplateCreateWithoutTemplateStageInput = {
@@ -31348,7 +33258,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    Assessment?: AssessmentCreateNestedManyWithoutTemplateInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedManyWithoutTemplateInput
   }
 
   export type TemplateUncheckedCreateWithoutTemplateStageInput = {
@@ -31358,7 +33268,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    Assessment?: AssessmentUncheckedCreateNestedManyWithoutTemplateInput
+    OrganisationTemplate?: OrganisationTemplateUncheckedCreateNestedManyWithoutTemplateInput
   }
 
   export type TemplateCreateOrConnectWithoutTemplateStageInput = {
@@ -31414,7 +33324,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Assessment?: AssessmentUpdateManyWithoutTemplateNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateManyWithoutTemplateNestedInput
   }
 
   export type TemplateUncheckedUpdateWithoutTemplateStageInput = {
@@ -31424,7 +33334,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Assessment?: AssessmentUncheckedUpdateManyWithoutTemplateNestedInput
+    OrganisationTemplate?: OrganisationTemplateUncheckedUpdateManyWithoutTemplateNestedInput
   }
 
   export type TemplateQuestionUpsertWithWhereUniqueWithoutTemplateStageInput = {
@@ -31633,6 +33543,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     Assessment?: AssessmentCreateNestedManyWithoutOrganisationInput
     Team?: TeamCreateNestedManyWithoutOrganisationInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedManyWithoutOrganisationInput
   }
 
   export type OrganisationUncheckedCreateWithoutOwnerInput = {
@@ -31644,6 +33555,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     Assessment?: AssessmentUncheckedCreateNestedManyWithoutOrganisationInput
     Team?: TeamUncheckedCreateNestedManyWithoutOrganisationInput
+    OrganisationTemplate?: OrganisationTemplateUncheckedCreateNestedManyWithoutOrganisationInput
   }
 
   export type OrganisationCreateOrConnectWithoutOwnerInput = {
@@ -31757,6 +33669,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUpdateManyWithoutOrganisationNestedInput
     Team?: TeamUpdateManyWithoutOrganisationNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateManyWithoutOrganisationNestedInput
   }
 
   export type OrganisationUncheckedUpdateWithoutOwnerInput = {
@@ -31768,6 +33681,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUncheckedUpdateManyWithoutOrganisationNestedInput
     Team?: TeamUncheckedUpdateManyWithoutOrganisationNestedInput
+    OrganisationTemplate?: OrganisationTemplateUncheckedUpdateManyWithoutOrganisationNestedInput
   }
 
   export type UserRoleUpsertWithWhereUniqueWithoutUserInput = {
@@ -32322,7 +34236,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    templateId: number
+    organisationTemplateId: number
   }
 
   export type TeamCreateManyOrganisationInput = {
@@ -32339,6 +34253,21 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type OrganisationTemplateCreateManyOrganisationInput = {
+    id?: number
+    name: string
+    description?: string | null
+    logo?: string | null
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    templateId: number
+  }
+
   export type AssessmentUpdateWithoutOrganisationInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32353,7 +34282,7 @@ export namespace Prisma {
     AssessmentAssign?: AssessmentAssignUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestion?: AssessmentQuestionUpdateManyWithoutAssessmentNestedInput
-    Template?: TemplateUpdateOneWithoutAssessmentNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutOrganisationInput = {
@@ -32368,7 +34297,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    templateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: IntFieldUpdateOperationsInput | number
     AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
@@ -32386,7 +34315,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    templateId?: IntFieldUpdateOperationsInput | number
+    organisationTemplateId?: IntFieldUpdateOperationsInput | number
   }
 
   export type TeamUpdateWithoutOrganisationInput = {
@@ -32436,6 +34365,52 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type OrganisationTemplateUpdateWithoutOrganisationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Template?: TemplateUpdateOneWithoutOrganisationTemplateNestedInput
+    Assessment?: AssessmentUpdateManyWithoutOrganisationTemplateNestedInput
+  }
+
+  export type OrganisationTemplateUncheckedUpdateWithoutOrganisationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: IntFieldUpdateOperationsInput | number
+    Assessment?: AssessmentUncheckedUpdateManyWithoutOrganisationTemplateNestedInput
+  }
+
+  export type OrganisationTemplateUncheckedUpdateManyWithoutOrganisationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    templateId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type OrganisationRoleCreateManyOrganisationStructureInput = {
     id?: number
     roleId: number
@@ -32459,6 +34434,71 @@ export namespace Prisma {
   export type OrganisationRoleUncheckedUpdateManyWithoutOrganisationStructureInput = {
     id?: IntFieldUpdateOperationsInput | number
     roleId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AssessmentCreateManyOrganisationTemplateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    logo?: string | null
+    organisationId: number
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AssessmentUpdateWithoutOrganisationTemplateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Organisation?: OrganisationUpdateOneRequiredWithoutAssessmentNestedInput
+    AssessmentAssign?: AssessmentAssignUpdateManyWithoutAssessmentNestedInput
+    AssessmentQuestionAssign?: AssessmentQuestionAssignUpdateManyWithoutAssessmentNestedInput
+    AssessmentQuestion?: AssessmentQuestionUpdateManyWithoutAssessmentNestedInput
+  }
+
+  export type AssessmentUncheckedUpdateWithoutOrganisationTemplateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    organisationId?: IntFieldUpdateOperationsInput | number
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
+  }
+
+  export type AssessmentUncheckedUpdateManyWithoutOrganisationTemplateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    organisationId?: IntFieldUpdateOperationsInput | number
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -32888,7 +34928,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type AssessmentCreateManyTemplateInput = {
+  export type OrganisationTemplateCreateManyTemplateInput = {
     id?: number
     name: string
     description?: string | null
@@ -32931,7 +34971,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AssessmentUpdateWithoutTemplateInput = {
+  export type OrganisationTemplateUpdateWithoutTemplateInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32942,13 +34982,11 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Organisation?: OrganisationUpdateOneRequiredWithoutAssessmentNestedInput
-    AssessmentAssign?: AssessmentAssignUpdateManyWithoutAssessmentNestedInput
-    AssessmentQuestionAssign?: AssessmentQuestionAssignUpdateManyWithoutAssessmentNestedInput
-    AssessmentQuestion?: AssessmentQuestionUpdateManyWithoutAssessmentNestedInput
+    Organisation?: OrganisationUpdateOneRequiredWithoutOrganisationTemplateNestedInput
+    Assessment?: AssessmentUpdateManyWithoutOrganisationTemplateNestedInput
   }
 
-  export type AssessmentUncheckedUpdateWithoutTemplateInput = {
+  export type OrganisationTemplateUncheckedUpdateWithoutTemplateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32961,12 +34999,10 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    AssessmentAssign?: AssessmentAssignUncheckedUpdateManyWithoutAssessmentNestedInput
-    AssessmentQuestionAssign?: AssessmentQuestionAssignUncheckedUpdateManyWithoutAssessmentNestedInput
-    AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
+    Assessment?: AssessmentUncheckedUpdateManyWithoutOrganisationTemplateNestedInput
   }
 
-  export type AssessmentUncheckedUpdateManyWithoutTemplateInput = {
+  export type OrganisationTemplateUncheckedUpdateManyWithoutTemplateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33198,6 +35234,10 @@ export namespace Prisma {
      */
     export type OrganisationStructureCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = OrganisationStructureCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use OrganisationTemplateCountOutputTypeDefaultArgs instead
+     */
+    export type OrganisationTemplateCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = OrganisationTemplateCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use QuestionCountOutputTypeDefaultArgs instead
      */
     export type QuestionCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = QuestionCountOutputTypeDefaultArgs<ExtArgs>
@@ -33265,6 +35305,10 @@ export namespace Prisma {
      * @deprecated Use OrganisationStructureDefaultArgs instead
      */
     export type OrganisationStructureArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = OrganisationStructureDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use OrganisationTemplateDefaultArgs instead
+     */
+    export type OrganisationTemplateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = OrganisationTemplateDefaultArgs<ExtArgs>
     /**
      * @deprecated Use QuestionDefaultArgs instead
      */

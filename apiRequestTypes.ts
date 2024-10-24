@@ -37,3 +37,7 @@ export interface ITemplateListReq {
 export interface IOrganisationAssessmentDetailReq {
   id?: number;
 }
+
+export interface IAssessmentDetailReq {
+  id?: number;
+}
