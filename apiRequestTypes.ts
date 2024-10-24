@@ -41,3 +41,7 @@ export interface IOrganisationAssessmentDetailReq {
 export interface IAssessmentDetailReq {
   id?: number;
 }
+
+export interface IAssessmentCreateReq {
+  name: string;
+}
