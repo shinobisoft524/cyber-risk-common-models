@@ -13,3 +13,25 @@ export interface IFiterType {
   icon?: any;
   devider?: boolean;
 }
+
+export interface IQuestionMongo {
+  cyberkey: string;
+  cyberId: string;
+  templateInfo: {
+    templateId: number;
+    stageId: string; // stage1
+  };
+
+  nId: number;
+  question: string;
+  answers: {
+    id: number;
+    label: string;
+    value?: string;
+  }[];
+  date1: string;
+  date2: string;
+  _ref?: {
+    [key: string]: any;
+  };
+}
