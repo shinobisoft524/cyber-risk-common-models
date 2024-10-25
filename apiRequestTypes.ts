@@ -44,4 +44,5 @@ export interface IAssessmentDetailReq {
 
 export interface IAssessmentCreateReq {
   name: string;
+  description?: string;
 }
