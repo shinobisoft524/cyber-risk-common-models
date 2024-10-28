@@ -1,8 +1,6 @@
-import { Organisation, User } from './build';
-
 export interface IStandardReq<T> {
-  reqUser?: User;
-  reqOrg?: Organisation;
+  reqUser?: any;
+  reqOrg?: any;
   reqType?: 'list' | 'detail' | 'create' | 'update' | 'delete';
   info?: T;
 }
