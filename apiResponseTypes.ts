@@ -4,6 +4,10 @@ export interface IStandardRes<T> {
   statusCode: number;
 }
 
+export interface IAuthReq {
+  email: string;
+  password: string;
+}
 export interface IOrganisationDetailRes {
   id: number;
   name: string;
