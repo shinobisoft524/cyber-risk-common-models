@@ -1,5 +1,10 @@
 export const CyberError = {
   validation: 'Validation error',
+  request: {
+    incorrect: 'Incorrect request',
+    duplicated: 'Duplicated data',
+    duplicatedOrgUser: 'Organisation name or Email address already exists',
+  },
   unknown: 'Unknown error',
   notfound: 'User doesn`t exist',
   password: {
