@@ -6721,6 +6721,7 @@ export namespace Prisma {
 
   export type OrganisationRoleMinAggregateOutputType = {
     id: number | null
+    isActive: boolean | null
     organisationStructureId: number | null
     roleId: number | null
     createdAt: Date | null
@@ -6729,6 +6730,7 @@ export namespace Prisma {
 
   export type OrganisationRoleMaxAggregateOutputType = {
     id: number | null
+    isActive: boolean | null
     organisationStructureId: number | null
     roleId: number | null
     createdAt: Date | null
@@ -6737,6 +6739,7 @@ export namespace Prisma {
 
   export type OrganisationRoleCountAggregateOutputType = {
     id: number
+    isActive: number
     organisationStructureId: number
     roleId: number
     createdAt: number
@@ -6759,6 +6762,7 @@ export namespace Prisma {
 
   export type OrganisationRoleMinAggregateInputType = {
     id?: true
+    isActive?: true
     organisationStructureId?: true
     roleId?: true
     createdAt?: true
@@ -6767,6 +6771,7 @@ export namespace Prisma {
 
   export type OrganisationRoleMaxAggregateInputType = {
     id?: true
+    isActive?: true
     organisationStructureId?: true
     roleId?: true
     createdAt?: true
@@ -6775,6 +6780,7 @@ export namespace Prisma {
 
   export type OrganisationRoleCountAggregateInputType = {
     id?: true
+    isActive?: true
     organisationStructureId?: true
     roleId?: true
     createdAt?: true
@@ -6870,6 +6876,7 @@ export namespace Prisma {
 
   export type OrganisationRoleGroupByOutputType = {
     id: number
+    isActive: boolean | null
     organisationStructureId: number
     roleId: number
     createdAt: Date
@@ -6897,6 +6904,7 @@ export namespace Prisma {
 
   export type OrganisationRoleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    isActive?: boolean
     organisationStructureId?: boolean
     roleId?: boolean
     createdAt?: boolean
@@ -6908,6 +6916,7 @@ export namespace Prisma {
 
   export type OrganisationRoleSelectScalar = {
     id?: boolean
+    isActive?: boolean
     organisationStructureId?: boolean
     roleId?: boolean
     createdAt?: boolean
@@ -6927,6 +6936,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      isActive: boolean | null
       organisationStructureId: number
       roleId: number
       createdAt: Date
@@ -7303,6 +7313,7 @@ export namespace Prisma {
    */ 
   interface OrganisationRoleFieldRefs {
     readonly id: FieldRef<"OrganisationRole", 'Int'>
+    readonly isActive: FieldRef<"OrganisationRole", 'Boolean'>
     readonly organisationStructureId: FieldRef<"OrganisationRole", 'Int'>
     readonly roleId: FieldRef<"OrganisationRole", 'Int'>
     readonly createdAt: FieldRef<"OrganisationRole", 'DateTime'>
@@ -7651,6 +7662,7 @@ export namespace Prisma {
     organisationId: number | null
     teamId: number | null
     userId: number | null
+    isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7660,6 +7672,7 @@ export namespace Prisma {
     organisationId: number | null
     teamId: number | null
     userId: number | null
+    isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7669,6 +7682,7 @@ export namespace Prisma {
     organisationId: number
     teamId: number
     userId: number
+    isActive: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -7694,6 +7708,7 @@ export namespace Prisma {
     organisationId?: true
     teamId?: true
     userId?: true
+    isActive?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7703,6 +7718,7 @@ export namespace Prisma {
     organisationId?: true
     teamId?: true
     userId?: true
+    isActive?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7712,6 +7728,7 @@ export namespace Prisma {
     organisationId?: true
     teamId?: true
     userId?: true
+    isActive?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -7808,6 +7825,7 @@ export namespace Prisma {
     organisationId: number
     teamId: number | null
     userId: number
+    isActive: boolean | null
     createdAt: Date
     updatedAt: Date
     _count: OrganisationStructureCountAggregateOutputType | null
@@ -7836,6 +7854,7 @@ export namespace Prisma {
     organisationId?: boolean
     teamId?: boolean
     userId?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     Team?: boolean | OrganisationStructure$TeamArgs<ExtArgs>
@@ -7851,6 +7870,7 @@ export namespace Prisma {
     organisationId?: boolean
     teamId?: boolean
     userId?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -7876,6 +7896,7 @@ export namespace Prisma {
       organisationId: number
       teamId: number | null
       userId: number
+      isActive: boolean | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["organisationStructure"]>
@@ -8255,6 +8276,7 @@ export namespace Prisma {
     readonly organisationId: FieldRef<"OrganisationStructure", 'Int'>
     readonly teamId: FieldRef<"OrganisationStructure", 'Int'>
     readonly userId: FieldRef<"OrganisationStructure", 'Int'>
+    readonly isActive: FieldRef<"OrganisationStructure", 'Boolean'>
     readonly createdAt: FieldRef<"OrganisationStructure", 'DateTime'>
     readonly updatedAt: FieldRef<"OrganisationStructure", 'DateTime'>
   }
@@ -16779,6 +16801,7 @@ export namespace Prisma {
     company: string | null
     password: string | null
     rememberToken: string | null
+    logo: string | null
     isActive: boolean | null
     disabled: boolean | null
     tfaSecret: string | null
@@ -16804,6 +16827,7 @@ export namespace Prisma {
     company: string | null
     password: string | null
     rememberToken: string | null
+    logo: string | null
     isActive: boolean | null
     disabled: boolean | null
     tfaSecret: string | null
@@ -16829,6 +16853,7 @@ export namespace Prisma {
     company: number
     password: number
     rememberToken: number
+    logo: number
     isActive: number
     disabled: number
     tfaSecret: number
@@ -16864,6 +16889,7 @@ export namespace Prisma {
     company?: true
     password?: true
     rememberToken?: true
+    logo?: true
     isActive?: true
     disabled?: true
     tfaSecret?: true
@@ -16889,6 +16915,7 @@ export namespace Prisma {
     company?: true
     password?: true
     rememberToken?: true
+    logo?: true
     isActive?: true
     disabled?: true
     tfaSecret?: true
@@ -16914,6 +16941,7 @@ export namespace Prisma {
     company?: true
     password?: true
     rememberToken?: true
+    logo?: true
     isActive?: true
     disabled?: true
     tfaSecret?: true
@@ -17026,6 +17054,7 @@ export namespace Prisma {
     company: string | null
     password: string
     rememberToken: string | null
+    logo: string | null
     isActive: boolean
     disabled: boolean
     tfaSecret: string | null
@@ -17070,6 +17099,7 @@ export namespace Prisma {
     company?: boolean
     password?: boolean
     rememberToken?: boolean
+    logo?: boolean
     isActive?: boolean
     disabled?: boolean
     tfaSecret?: boolean
@@ -17100,6 +17130,7 @@ export namespace Prisma {
     company?: boolean
     password?: boolean
     rememberToken?: boolean
+    logo?: boolean
     isActive?: boolean
     disabled?: boolean
     tfaSecret?: boolean
@@ -17139,6 +17170,7 @@ export namespace Prisma {
       company: string | null
       password: string
       rememberToken: string | null
+      logo: string | null
       isActive: boolean
       disabled: boolean
       tfaSecret: string | null
@@ -17533,6 +17565,7 @@ export namespace Prisma {
     readonly company: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly rememberToken: FieldRef<"User", 'String'>
+    readonly logo: FieldRef<"User", 'String'>
     readonly isActive: FieldRef<"User", 'Boolean'>
     readonly disabled: FieldRef<"User", 'Boolean'>
     readonly tfaSecret: FieldRef<"User", 'String'>
@@ -18931,6 +18964,7 @@ export namespace Prisma {
 
   export const OrganisationRoleScalarFieldEnum: {
     id: 'id',
+    isActive: 'isActive',
     organisationStructureId: 'organisationStructureId',
     roleId: 'roleId',
     createdAt: 'createdAt',
@@ -18945,6 +18979,7 @@ export namespace Prisma {
     organisationId: 'organisationId',
     teamId: 'teamId',
     userId: 'userId',
+    isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -19085,6 +19120,7 @@ export namespace Prisma {
     company: 'company',
     password: 'password',
     rememberToken: 'rememberToken',
+    logo: 'logo',
     isActive: 'isActive',
     disabled: 'disabled',
     tfaSecret: 'tfaSecret',
@@ -19541,6 +19577,7 @@ export namespace Prisma {
     OR?: OrganisationRoleWhereInput[]
     NOT?: OrganisationRoleWhereInput | OrganisationRoleWhereInput[]
     id?: IntFilter<"OrganisationRole"> | number
+    isActive?: BoolNullableFilter<"OrganisationRole"> | boolean | null
     organisationStructureId?: IntFilter<"OrganisationRole"> | number
     roleId?: IntFilter<"OrganisationRole"> | number
     createdAt?: DateTimeFilter<"OrganisationRole"> | Date | string
@@ -19551,6 +19588,7 @@ export namespace Prisma {
 
   export type OrganisationRoleOrderByWithRelationInput = {
     id?: SortOrder
+    isActive?: SortOrderInput | SortOrder
     organisationStructureId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
@@ -19564,6 +19602,7 @@ export namespace Prisma {
     AND?: OrganisationRoleWhereInput | OrganisationRoleWhereInput[]
     OR?: OrganisationRoleWhereInput[]
     NOT?: OrganisationRoleWhereInput | OrganisationRoleWhereInput[]
+    isActive?: BoolNullableFilter<"OrganisationRole"> | boolean | null
     organisationStructureId?: IntFilter<"OrganisationRole"> | number
     roleId?: IntFilter<"OrganisationRole"> | number
     createdAt?: DateTimeFilter<"OrganisationRole"> | Date | string
@@ -19574,6 +19613,7 @@ export namespace Prisma {
 
   export type OrganisationRoleOrderByWithAggregationInput = {
     id?: SortOrder
+    isActive?: SortOrderInput | SortOrder
     organisationStructureId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
@@ -19590,6 +19630,7 @@ export namespace Prisma {
     OR?: OrganisationRoleScalarWhereWithAggregatesInput[]
     NOT?: OrganisationRoleScalarWhereWithAggregatesInput | OrganisationRoleScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"OrganisationRole"> | number
+    isActive?: BoolNullableWithAggregatesFilter<"OrganisationRole"> | boolean | null
     organisationStructureId?: IntWithAggregatesFilter<"OrganisationRole"> | number
     roleId?: IntWithAggregatesFilter<"OrganisationRole"> | number
     createdAt?: DateTimeWithAggregatesFilter<"OrganisationRole"> | Date | string
@@ -19604,6 +19645,7 @@ export namespace Prisma {
     organisationId?: IntFilter<"OrganisationStructure"> | number
     teamId?: IntNullableFilter<"OrganisationStructure"> | number | null
     userId?: IntFilter<"OrganisationStructure"> | number
+    isActive?: BoolNullableFilter<"OrganisationStructure"> | boolean | null
     createdAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
     updatedAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
     Team?: XOR<TeamNullableRelationFilter, TeamWhereInput> | null
@@ -19617,6 +19659,7 @@ export namespace Prisma {
     organisationId?: SortOrder
     teamId?: SortOrderInput | SortOrder
     userId?: SortOrder
+    isActive?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     Team?: TeamOrderByWithRelationInput
@@ -19633,6 +19676,7 @@ export namespace Prisma {
     organisationId?: IntFilter<"OrganisationStructure"> | number
     teamId?: IntNullableFilter<"OrganisationStructure"> | number | null
     userId?: IntFilter<"OrganisationStructure"> | number
+    isActive?: BoolNullableFilter<"OrganisationStructure"> | boolean | null
     createdAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
     updatedAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
     Team?: XOR<TeamNullableRelationFilter, TeamWhereInput> | null
@@ -19646,6 +19690,7 @@ export namespace Prisma {
     organisationId?: SortOrder
     teamId?: SortOrderInput | SortOrder
     userId?: SortOrder
+    isActive?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: OrganisationStructureCountOrderByAggregateInput
@@ -19663,6 +19708,7 @@ export namespace Prisma {
     organisationId?: IntWithAggregatesFilter<"OrganisationStructure"> | number
     teamId?: IntNullableWithAggregatesFilter<"OrganisationStructure"> | number | null
     userId?: IntWithAggregatesFilter<"OrganisationStructure"> | number
+    isActive?: BoolNullableWithAggregatesFilter<"OrganisationStructure"> | boolean | null
     createdAt?: DateTimeWithAggregatesFilter<"OrganisationStructure"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"OrganisationStructure"> | Date | string
   }
@@ -20357,6 +20403,7 @@ export namespace Prisma {
     company?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
     rememberToken?: StringNullableFilter<"User"> | string | null
+    logo?: StringNullableFilter<"User"> | string | null
     isActive?: BoolFilter<"User"> | boolean
     disabled?: BoolFilter<"User"> | boolean
     tfaSecret?: StringNullableFilter<"User"> | string | null
@@ -20385,6 +20432,7 @@ export namespace Prisma {
     company?: SortOrderInput | SortOrder
     password?: SortOrder
     rememberToken?: SortOrderInput | SortOrder
+    logo?: SortOrderInput | SortOrder
     isActive?: SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrderInput | SortOrder
@@ -20416,6 +20464,7 @@ export namespace Prisma {
     company?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
     rememberToken?: StringNullableFilter<"User"> | string | null
+    logo?: StringNullableFilter<"User"> | string | null
     isActive?: BoolFilter<"User"> | boolean
     disabled?: BoolFilter<"User"> | boolean
     tfaSecret?: StringNullableFilter<"User"> | string | null
@@ -20444,6 +20493,7 @@ export namespace Prisma {
     company?: SortOrderInput | SortOrder
     password?: SortOrder
     rememberToken?: SortOrderInput | SortOrder
+    logo?: SortOrderInput | SortOrder
     isActive?: SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrderInput | SortOrder
@@ -20477,6 +20527,7 @@ export namespace Prisma {
     company?: StringNullableWithAggregatesFilter<"User"> | string | null
     password?: StringWithAggregatesFilter<"User"> | string
     rememberToken?: StringNullableWithAggregatesFilter<"User"> | string | null
+    logo?: StringNullableWithAggregatesFilter<"User"> | string | null
     isActive?: BoolWithAggregatesFilter<"User"> | boolean
     disabled?: BoolWithAggregatesFilter<"User"> | boolean
     tfaSecret?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -20941,6 +20992,7 @@ export namespace Prisma {
   }
 
   export type OrganisationRoleCreateInput = {
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     OrganisationStructure: OrganisationStructureCreateNestedOneWithoutOrganisationRoleInput
@@ -20949,6 +21001,7 @@ export namespace Prisma {
 
   export type OrganisationRoleUncheckedCreateInput = {
     id?: number
+    isActive?: boolean | null
     organisationStructureId: number
     roleId: number
     createdAt?: Date | string
@@ -20956,6 +21009,7 @@ export namespace Prisma {
   }
 
   export type OrganisationRoleUpdateInput = {
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrganisationStructure?: OrganisationStructureUpdateOneRequiredWithoutOrganisationRoleNestedInput
@@ -20964,6 +21018,7 @@ export namespace Prisma {
 
   export type OrganisationRoleUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     organisationStructureId?: IntFieldUpdateOperationsInput | number
     roleId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20972,6 +21027,7 @@ export namespace Prisma {
 
   export type OrganisationRoleCreateManyInput = {
     id?: number
+    isActive?: boolean | null
     organisationStructureId: number
     roleId: number
     createdAt?: Date | string
@@ -20979,12 +21035,14 @@ export namespace Prisma {
   }
 
   export type OrganisationRoleUpdateManyMutationInput = {
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrganisationRoleUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     organisationStructureId?: IntFieldUpdateOperationsInput | number
     roleId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20993,6 +21051,7 @@ export namespace Prisma {
 
   export type OrganisationStructureCreateInput = {
     organisationId: number
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Team?: TeamCreateNestedOneWithoutOrganisationStructureInput
@@ -21006,6 +21065,7 @@ export namespace Prisma {
     organisationId: number
     teamId?: number | null
     userId: number
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     OrganisationRole?: OrganisationRoleUncheckedCreateNestedManyWithoutOrganisationStructureInput
@@ -21014,6 +21074,7 @@ export namespace Prisma {
 
   export type OrganisationStructureUpdateInput = {
     organisationId?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Team?: TeamUpdateOneWithoutOrganisationStructureNestedInput
@@ -21027,6 +21088,7 @@ export namespace Prisma {
     organisationId?: IntFieldUpdateOperationsInput | number
     teamId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrganisationRole?: OrganisationRoleUncheckedUpdateManyWithoutOrganisationStructureNestedInput
@@ -21038,12 +21100,14 @@ export namespace Prisma {
     organisationId: number
     teamId?: number | null
     userId: number
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type OrganisationStructureUpdateManyMutationInput = {
     organisationId?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21053,6 +21117,7 @@ export namespace Prisma {
     organisationId?: IntFieldUpdateOperationsInput | number
     teamId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21769,6 +21834,7 @@ export namespace Prisma {
     company?: string | null
     password: string
     rememberToken?: string | null
+    logo?: string | null
     isActive?: boolean
     disabled?: boolean
     tfaSecret?: string | null
@@ -21797,6 +21863,7 @@ export namespace Prisma {
     company?: string | null
     password: string
     rememberToken?: string | null
+    logo?: string | null
     isActive?: boolean
     disabled?: boolean
     tfaSecret?: string | null
@@ -21824,6 +21891,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21852,6 +21920,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21880,6 +21949,7 @@ export namespace Prisma {
     company?: string | null
     password: string
     rememberToken?: string | null
+    logo?: string | null
     isActive?: boolean
     disabled?: boolean
     tfaSecret?: string | null
@@ -21904,6 +21974,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21929,6 +22000,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22472,6 +22544,7 @@ export namespace Prisma {
 
   export type OrganisationRoleCountOrderByAggregateInput = {
     id?: SortOrder
+    isActive?: SortOrder
     organisationStructureId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
@@ -22486,6 +22559,7 @@ export namespace Prisma {
 
   export type OrganisationRoleMaxOrderByAggregateInput = {
     id?: SortOrder
+    isActive?: SortOrder
     organisationStructureId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
@@ -22494,6 +22568,7 @@ export namespace Prisma {
 
   export type OrganisationRoleMinOrderByAggregateInput = {
     id?: SortOrder
+    isActive?: SortOrder
     organisationStructureId?: SortOrder
     roleId?: SortOrder
     createdAt?: SortOrder
@@ -22531,6 +22606,7 @@ export namespace Prisma {
     organisationId?: SortOrder
     teamId?: SortOrder
     userId?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -22547,6 +22623,7 @@ export namespace Prisma {
     organisationId?: SortOrder
     teamId?: SortOrder
     userId?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -22556,6 +22633,7 @@ export namespace Prisma {
     organisationId?: SortOrder
     teamId?: SortOrder
     userId?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -23072,6 +23150,7 @@ export namespace Prisma {
     company?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
+    logo?: SortOrder
     isActive?: SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrder
@@ -23101,6 +23180,7 @@ export namespace Prisma {
     company?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
+    logo?: SortOrder
     isActive?: SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrder
@@ -23126,6 +23206,7 @@ export namespace Prisma {
     company?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
+    logo?: SortOrder
     isActive?: SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrder
@@ -25562,6 +25643,7 @@ export namespace Prisma {
     company?: string | null
     password: string
     rememberToken?: string | null
+    logo?: string | null
     isActive?: boolean
     disabled?: boolean
     tfaSecret?: string | null
@@ -25589,6 +25671,7 @@ export namespace Prisma {
     company?: string | null
     password: string
     rememberToken?: string | null
+    logo?: string | null
     isActive?: boolean
     disabled?: boolean
     tfaSecret?: string | null
@@ -25807,6 +25890,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
@@ -25834,6 +25918,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
@@ -25974,6 +26059,7 @@ export namespace Prisma {
 
   export type OrganisationStructureCreateWithoutOrganisationRoleInput = {
     organisationId: number
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Team?: TeamCreateNestedOneWithoutOrganisationStructureInput
@@ -25986,6 +26072,7 @@ export namespace Prisma {
     organisationId: number
     teamId?: number | null
     userId: number
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutOrganisationStructureInput
@@ -26033,6 +26120,7 @@ export namespace Prisma {
 
   export type OrganisationStructureUpdateWithoutOrganisationRoleInput = {
     organisationId?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Team?: TeamUpdateOneWithoutOrganisationStructureNestedInput
@@ -26045,6 +26133,7 @@ export namespace Prisma {
     organisationId?: IntFieldUpdateOperationsInput | number
     teamId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutOrganisationStructureNestedInput
@@ -26119,6 +26208,7 @@ export namespace Prisma {
   }
 
   export type OrganisationRoleCreateWithoutOrganisationStructureInput = {
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Role: RoleCreateNestedOneWithoutOrganisationRoleInput
@@ -26126,6 +26216,7 @@ export namespace Prisma {
 
   export type OrganisationRoleUncheckedCreateWithoutOrganisationStructureInput = {
     id?: number
+    isActive?: boolean | null
     roleId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26149,6 +26240,7 @@ export namespace Prisma {
     company?: string | null
     password: string
     rememberToken?: string | null
+    logo?: string | null
     isActive?: boolean
     disabled?: boolean
     tfaSecret?: string | null
@@ -26176,6 +26268,7 @@ export namespace Prisma {
     company?: string | null
     password: string
     rememberToken?: string | null
+    logo?: string | null
     isActive?: boolean
     disabled?: boolean
     tfaSecret?: string | null
@@ -26311,6 +26404,7 @@ export namespace Prisma {
     OR?: OrganisationRoleScalarWhereInput[]
     NOT?: OrganisationRoleScalarWhereInput | OrganisationRoleScalarWhereInput[]
     id?: IntFilter<"OrganisationRole"> | number
+    isActive?: BoolNullableFilter<"OrganisationRole"> | boolean | null
     organisationStructureId?: IntFilter<"OrganisationRole"> | number
     roleId?: IntFilter<"OrganisationRole"> | number
     createdAt?: DateTimeFilter<"OrganisationRole"> | Date | string
@@ -26336,6 +26430,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26363,6 +26458,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26628,6 +26724,7 @@ export namespace Prisma {
 
   export type OrganisationStructureCreateWithoutQuestionAnswerInput = {
     organisationId: number
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Team?: TeamCreateNestedOneWithoutOrganisationStructureInput
@@ -26640,6 +26737,7 @@ export namespace Prisma {
     organisationId: number
     teamId?: number | null
     userId: number
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     OrganisationRole?: OrganisationRoleUncheckedCreateNestedManyWithoutOrganisationStructureInput
@@ -26837,6 +26935,7 @@ export namespace Prisma {
 
   export type OrganisationStructureUpdateWithoutQuestionAnswerInput = {
     organisationId?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Team?: TeamUpdateOneWithoutOrganisationStructureNestedInput
@@ -26849,6 +26948,7 @@ export namespace Prisma {
     organisationId?: IntFieldUpdateOperationsInput | number
     teamId?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrganisationRole?: OrganisationRoleUncheckedUpdateManyWithoutOrganisationStructureNestedInput
@@ -27036,6 +27136,7 @@ export namespace Prisma {
   }
 
   export type OrganisationRoleCreateWithoutRoleInput = {
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     OrganisationStructure: OrganisationStructureCreateNestedOneWithoutOrganisationRoleInput
@@ -27043,6 +27144,7 @@ export namespace Prisma {
 
   export type OrganisationRoleUncheckedCreateWithoutRoleInput = {
     id?: number
+    isActive?: boolean | null
     organisationStructureId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27140,6 +27242,7 @@ export namespace Prisma {
 
   export type OrganisationStructureCreateWithoutTeamInput = {
     organisationId: number
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     OrganisationRole?: OrganisationRoleCreateNestedManyWithoutOrganisationStructureInput
@@ -27151,6 +27254,7 @@ export namespace Prisma {
     id?: number
     organisationId: number
     userId: number
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     OrganisationRole?: OrganisationRoleUncheckedCreateNestedManyWithoutOrganisationStructureInput
@@ -27315,6 +27419,7 @@ export namespace Prisma {
     organisationId?: IntFilter<"OrganisationStructure"> | number
     teamId?: IntNullableFilter<"OrganisationStructure"> | number | null
     userId?: IntFilter<"OrganisationStructure"> | number
+    isActive?: BoolNullableFilter<"OrganisationStructure"> | boolean | null
     createdAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
     updatedAt?: DateTimeFilter<"OrganisationStructure"> | Date | string
   }
@@ -27812,6 +27917,7 @@ export namespace Prisma {
 
   export type OrganisationStructureCreateWithoutUserInput = {
     organisationId: number
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     Team?: TeamCreateNestedOneWithoutOrganisationStructureInput
@@ -27823,6 +27929,7 @@ export namespace Prisma {
     id?: number
     organisationId: number
     teamId?: number | null
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
     OrganisationRole?: OrganisationRoleUncheckedCreateNestedManyWithoutOrganisationStructureInput
@@ -27921,6 +28028,7 @@ export namespace Prisma {
     company?: string | null
     password: string
     rememberToken?: string | null
+    logo?: string | null
     isActive?: boolean
     disabled?: boolean
     tfaSecret?: string | null
@@ -27948,6 +28056,7 @@ export namespace Prisma {
     company?: string | null
     password: string
     rememberToken?: string | null
+    logo?: string | null
     isActive?: boolean
     disabled?: boolean
     tfaSecret?: string | null
@@ -28014,6 +28123,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28041,6 +28151,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28664,6 +28775,7 @@ export namespace Prisma {
 
   export type OrganisationRoleCreateManyOrganisationStructureInput = {
     id?: number
+    isActive?: boolean | null
     roleId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28689,6 +28801,7 @@ export namespace Prisma {
   }
 
   export type OrganisationRoleUpdateWithoutOrganisationStructureInput = {
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Role?: RoleUpdateOneRequiredWithoutOrganisationRoleNestedInput
@@ -28696,6 +28809,7 @@ export namespace Prisma {
 
   export type OrganisationRoleUncheckedUpdateWithoutOrganisationStructureInput = {
     id?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     roleId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28703,6 +28817,7 @@ export namespace Prisma {
 
   export type OrganisationRoleUncheckedUpdateManyWithoutOrganisationStructureInput = {
     id?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     roleId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28839,6 +28954,7 @@ export namespace Prisma {
 
   export type OrganisationRoleCreateManyRoleInput = {
     id?: number
+    isActive?: boolean | null
     organisationStructureId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28868,6 +28984,7 @@ export namespace Prisma {
   }
 
   export type OrganisationRoleUpdateWithoutRoleInput = {
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrganisationStructure?: OrganisationStructureUpdateOneRequiredWithoutOrganisationRoleNestedInput
@@ -28875,6 +28992,7 @@ export namespace Prisma {
 
   export type OrganisationRoleUncheckedUpdateWithoutRoleInput = {
     id?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     organisationStructureId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28882,6 +29000,7 @@ export namespace Prisma {
 
   export type OrganisationRoleUncheckedUpdateManyWithoutRoleInput = {
     id?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     organisationStructureId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28891,6 +29010,7 @@ export namespace Prisma {
     id?: number
     organisationId: number
     userId: number
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -28928,6 +29048,7 @@ export namespace Prisma {
 
   export type OrganisationStructureUpdateWithoutTeamInput = {
     organisationId?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrganisationRole?: OrganisationRoleUpdateManyWithoutOrganisationStructureNestedInput
@@ -28939,6 +29060,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrganisationRole?: OrganisationRoleUncheckedUpdateManyWithoutOrganisationStructureNestedInput
@@ -28949,6 +29071,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -29232,6 +29355,7 @@ export namespace Prisma {
     id?: number
     organisationId: number
     teamId?: number | null
+    isActive?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -29261,6 +29385,7 @@ export namespace Prisma {
 
   export type OrganisationStructureUpdateWithoutUserInput = {
     organisationId?: IntFieldUpdateOperationsInput | number
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Team?: TeamUpdateOneWithoutOrganisationStructureNestedInput
@@ -29272,6 +29397,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
     teamId?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     OrganisationRole?: OrganisationRoleUncheckedUpdateManyWithoutOrganisationStructureNestedInput
@@ -29282,6 +29408,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
     teamId?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

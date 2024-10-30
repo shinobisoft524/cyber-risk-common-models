@@ -5,6 +5,9 @@ export const CyberError = {
     duplicated: 'Duplicated data',
     duplicatedOrgUser: 'Organisation name or Email address already exists',
   },
+  result: {
+    noData: 'The data doesn`t exist',
+  },
   unknown: 'Unknown error',
   notfound: 'User doesn`t exist',
   password: {
@@ -18,5 +21,14 @@ export const CyberError = {
     not: {
       dislabled: '',
     },
+  },
+  worker: {
+    noPermission: 'You do not have worker privileges',
+    not: {
+      dislabled: '',
+    },
+  },
+  user: {
+    isExistedEmail: 'Email address already exists',
   },
 };

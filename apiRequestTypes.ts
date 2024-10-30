@@ -1,7 +1,7 @@
 export interface IStandardReq<T> {
   reqUser?: any;
   reqOrg?: any;
-  reqType?: 'list' | 'detail' | 'create' | 'update' | 'delete';
+  reqType?: 'list' | 'detail' | 'create' | 'update' | 'delete' | 'read';
   info?: T;
 }
 
