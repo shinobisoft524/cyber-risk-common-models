@@ -11,6 +11,7 @@ export interface IAuthReq {
 export interface IOrganisationDetailRes {
   id: number;
   name: string;
+  logo?: string;
   Owner?: { id: number; name: string; email: string };
 }
 
