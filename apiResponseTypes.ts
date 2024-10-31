@@ -44,3 +44,31 @@ export interface IOrganisationAssessmentRes {
   isActive: boolean;
   organisationTemplateId: number;
 }
+
+export interface ITeamUser {
+  id: number;
+  isActive: boolean;
+  name: string;
+  email: string;
+  logo: string;
+}
+export interface ITeamInfo {
+  managers: ITeamUser[];
+  teamUsers: ITeamUser[];
+  organisationUsers: ITeamUser[];
+}
+
+export interface ITeamDetailRes {
+  team: {
+    id: number;
+    name: string;
+    description: string;
+    organisationId: number;
+    isActive: boolean;
+    Organisation: {
+      id: number;
+      name: string;
+    };
+  };
+  info: ITeamInfo;
+}
