@@ -45,3 +45,26 @@ export interface IAssessmentCreateReq {
   name: string;
   description?: string;
 }
+
+
+export interface IAssignWorker {
+  organisationStructureId: number;
+  User: { id: number; name: string; email: string };
+  Team: { id: number; name: string };
+  isSelected?: boolean;
+}
+
+export interface IAssignWorkerTeam {
+  Team: {
+    id: number;
+    name: string;
+    OrganisationStructure: {
+      id: number;
+      User: {
+        id: number;
+        name: string;
+        email: string;
+      };
+    }[];
+  };
+}
