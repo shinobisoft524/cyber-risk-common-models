@@ -93,6 +93,7 @@ export interface IWorkQuestion {
         };
       };
     }[];
+    questionMongoId: string;
   };
   teams: {
     Team: {
