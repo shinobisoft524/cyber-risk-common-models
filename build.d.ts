@@ -19471,6 +19471,7 @@ export namespace Prisma {
   export type AssessmentQuestionWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     questionMongoId?: string
+    assessmentId_questionMongoId?: AssessmentQuestionAssessmentIdQuestionMongoIdCompoundUniqueInput
     AND?: AssessmentQuestionWhereInput | AssessmentQuestionWhereInput[]
     OR?: AssessmentQuestionWhereInput[]
     NOT?: AssessmentQuestionWhereInput | AssessmentQuestionWhereInput[]
@@ -19481,7 +19482,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"AssessmentQuestion"> | Date | string
     Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
     QuestionAnswer?: QuestionAnswerListRelationFilter
-  }, "id" | "id" | "questionMongoId">
+  }, "id" | "id" | "questionMongoId" | "assessmentId_questionMongoId">
 
   export type AssessmentQuestionOrderByWithAggregationInput = {
     id?: SortOrder
@@ -19552,6 +19553,7 @@ export namespace Prisma {
 
   export type AssessmentTeamWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    assessmentId_teamId?: AssessmentTeamAssessmentIdTeamIdCompoundUniqueInput
     AND?: AssessmentTeamWhereInput | AssessmentTeamWhereInput[]
     OR?: AssessmentTeamWhereInput[]
     NOT?: AssessmentTeamWhereInput | AssessmentTeamWhereInput[]
@@ -19569,7 +19571,7 @@ export namespace Prisma {
     Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
     Team?: XOR<TeamRelationFilter, TeamWhereInput>
     QuestionAnswer?: QuestionAnswerListRelationFilter
-  }, "id" | "id">
+  }, "id" | "id" | "assessmentId_teamId">
 
   export type AssessmentTeamOrderByWithAggregationInput = {
     id?: SortOrder
@@ -19731,6 +19733,7 @@ export namespace Prisma {
 
   export type OrganisationRoleWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    organisationStructureId_roleId?: OrganisationRoleOrganisationStructureIdRoleIdCompoundUniqueInput
     AND?: OrganisationRoleWhereInput | OrganisationRoleWhereInput[]
     OR?: OrganisationRoleWhereInput[]
     NOT?: OrganisationRoleWhereInput | OrganisationRoleWhereInput[]
@@ -19741,7 +19744,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"OrganisationRole"> | Date | string
     OrganisationStructure?: XOR<OrganisationStructureRelationFilter, OrganisationStructureWhereInput>
     Role?: XOR<RoleRelationFilter, RoleWhereInput>
-  }, "id" | "id">
+  }, "id" | "id" | "organisationStructureId_roleId">
 
   export type OrganisationRoleOrderByWithAggregationInput = {
     id?: SortOrder
@@ -19802,6 +19805,7 @@ export namespace Prisma {
 
   export type OrganisationStructureWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    teamId_userId?: OrganisationStructureTeamIdUserIdCompoundUniqueInput
     AND?: OrganisationStructureWhereInput | OrganisationStructureWhereInput[]
     OR?: OrganisationStructureWhereInput[]
     NOT?: OrganisationStructureWhereInput | OrganisationStructureWhereInput[]
@@ -19815,7 +19819,7 @@ export namespace Prisma {
     OrganisationRole?: OrganisationRoleListRelationFilter
     User?: XOR<UserRelationFilter, UserWhereInput>
     QuestionAnswer?: QuestionAnswerListRelationFilter
-  }, "id" | "id">
+  }, "id" | "id" | "teamId_userId">
 
   export type OrganisationStructureOrderByWithAggregationInput = {
     id?: SortOrder
@@ -19888,6 +19892,7 @@ export namespace Prisma {
 
   export type OrganisationTemplateWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    organisationId_templateId?: OrganisationTemplateOrganisationIdTemplateIdCompoundUniqueInput
     AND?: OrganisationTemplateWhereInput | OrganisationTemplateWhereInput[]
     OR?: OrganisationTemplateWhereInput[]
     NOT?: OrganisationTemplateWhereInput | OrganisationTemplateWhereInput[]
@@ -19906,7 +19911,7 @@ export namespace Prisma {
     Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
     Template?: XOR<TemplateNullableRelationFilter, TemplateWhereInput> | null
     Assessment?: AssessmentListRelationFilter
-  }, "id" | "id">
+  }, "id" | "id" | "organisationId_templateId">
 
   export type OrganisationTemplateOrderByWithAggregationInput = {
     id?: SortOrder
@@ -20009,6 +20014,7 @@ export namespace Prisma {
 
   export type QuestionAnswerWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    organisationStructureId_assessmentQuestionId?: QuestionAnswerOrganisationStructureIdAssessmentQuestionIdCompoundUniqueInput
     AND?: QuestionAnswerWhereInput | QuestionAnswerWhereInput[]
     OR?: QuestionAnswerWhereInput[]
     NOT?: QuestionAnswerWhereInput | QuestionAnswerWhereInput[]
@@ -20036,7 +20042,7 @@ export namespace Prisma {
     AssessmentTeam?: XOR<AssessmentTeamNullableRelationFilter, AssessmentTeamWhereInput> | null
     Assessment?: XOR<AssessmentNullableRelationFilter, AssessmentWhereInput> | null
     AssessmentQuestion?: XOR<AssessmentQuestionNullableRelationFilter, AssessmentQuestionWhereInput> | null
-  }, "id" | "id">
+  }, "id" | "id" | "organisationStructureId_assessmentQuestionId">
 
   export type QuestionAnswerOrderByWithAggregationInput = {
     id?: SortOrder
@@ -22502,6 +22508,11 @@ export namespace Prisma {
     isNot?: AssessmentWhereInput
   }
 
+  export type AssessmentQuestionAssessmentIdQuestionMongoIdCompoundUniqueInput = {
+    assessmentId: number
+    questionMongoId: string
+  }
+
   export type AssessmentQuestionCountOrderByAggregateInput = {
     id?: SortOrder
     assessmentId?: SortOrder
@@ -22545,6 +22556,11 @@ export namespace Prisma {
   export type TeamRelationFilter = {
     is?: TeamWhereInput
     isNot?: TeamWhereInput
+  }
+
+  export type AssessmentTeamAssessmentIdTeamIdCompoundUniqueInput = {
+    assessmentId: number
+    teamId: number
   }
 
   export type AssessmentTeamCountOrderByAggregateInput = {
@@ -22710,6 +22726,11 @@ export namespace Prisma {
     isNot?: RoleWhereInput
   }
 
+  export type OrganisationRoleOrganisationStructureIdRoleIdCompoundUniqueInput = {
+    organisationStructureId: number
+    roleId: number
+  }
+
   export type OrganisationRoleCountOrderByAggregateInput = {
     id?: SortOrder
     isActive?: SortOrder
@@ -22769,6 +22790,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type OrganisationStructureTeamIdUserIdCompoundUniqueInput = {
+    teamId: number
+    userId: number
+  }
+
   export type OrganisationStructureCountOrderByAggregateInput = {
     id?: SortOrder
     organisationId?: SortOrder
@@ -22816,6 +22842,11 @@ export namespace Prisma {
   export type TemplateNullableRelationFilter = {
     is?: TemplateWhereInput | null
     isNot?: TemplateWhereInput | null
+  }
+
+  export type OrganisationTemplateOrganisationIdTemplateIdCompoundUniqueInput = {
+    organisationId: number
+    templateId: number
   }
 
   export type OrganisationTemplateCountOrderByAggregateInput = {
@@ -22901,6 +22932,11 @@ export namespace Prisma {
   export type AssessmentQuestionNullableRelationFilter = {
     is?: AssessmentQuestionWhereInput | null
     isNot?: AssessmentQuestionWhereInput | null
+  }
+
+  export type QuestionAnswerOrganisationStructureIdAssessmentQuestionIdCompoundUniqueInput = {
+    organisationStructureId: number
+    assessmentQuestionId: number
   }
 
   export type QuestionAnswerCountOrderByAggregateInput = {
