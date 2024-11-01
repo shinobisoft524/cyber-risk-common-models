@@ -1,3 +1,5 @@
+import { IQuestionMongo } from './assessment';
+
 export interface IStandardRes<T> {
   data: T;
   message?: string;
@@ -71,4 +73,39 @@ export interface ITeamDetailRes {
     };
   };
   info: ITeamInfo;
+}
+
+export interface IWorkQuestion {
+  question: IQuestionMongo;
+  assign: {
+    id: number;
+    QuestionAnswer: {
+      OrganisationStructure: {
+        id: number;
+        Team: {
+          id: number;
+          name: string;
+        };
+        User: {
+          id: number;
+          name: string;
+          email: string;
+        };
+      };
+    }[];
+  };
+  teams: {
+    Team: {
+      id: number;
+      name: string;
+      OrganisationStructure: {
+        id: number;
+        User: {
+          id: number;
+          name: string;
+          email: string;
+        };
+      }[];
+    };
+  }[];
 }
