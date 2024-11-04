@@ -95,6 +95,24 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 export type UserRole = $Result.DefaultSelection<Prisma.$UserRolePayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const AnswerType: {
+  Confirmed: 'Confirmed',
+  Delayed: 'Delayed',
+  Unknown: 'Unknown'
+};
+
+export type AnswerType = (typeof AnswerType)[keyof typeof AnswerType]
+
+}
+
+export type AnswerType = $Enums.AnswerType
+
+export const AnswerType: typeof $Enums.AnswerType
+
+/**
  * ##  Prisma Client ʲˢ
  * 
  * Type-safe database client for TypeScript & Node.js
@@ -3672,11 +3690,13 @@ export namespace Prisma {
   export type AssessmentQuestionAvgAggregateOutputType = {
     id: number | null
     assessmentId: number | null
+    confimredAnswerId: number | null
   }
 
   export type AssessmentQuestionSumAggregateOutputType = {
     id: number | null
     assessmentId: number | null
+    confimredAnswerId: number | null
   }
 
   export type AssessmentQuestionMinAggregateOutputType = {
@@ -3687,6 +3707,8 @@ export namespace Prisma {
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    confimredAnswerId: number | null
+    answerType: $Enums.AnswerType | null
   }
 
   export type AssessmentQuestionMaxAggregateOutputType = {
@@ -3697,6 +3719,8 @@ export namespace Prisma {
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    confimredAnswerId: number | null
+    answerType: $Enums.AnswerType | null
   }
 
   export type AssessmentQuestionCountAggregateOutputType = {
@@ -3707,6 +3731,8 @@ export namespace Prisma {
     isActive: number
     createdAt: number
     updatedAt: number
+    confimredAnswerId: number
+    answerType: number
     _all: number
   }
 
@@ -3714,11 +3740,13 @@ export namespace Prisma {
   export type AssessmentQuestionAvgAggregateInputType = {
     id?: true
     assessmentId?: true
+    confimredAnswerId?: true
   }
 
   export type AssessmentQuestionSumAggregateInputType = {
     id?: true
     assessmentId?: true
+    confimredAnswerId?: true
   }
 
   export type AssessmentQuestionMinAggregateInputType = {
@@ -3729,6 +3757,8 @@ export namespace Prisma {
     isActive?: true
     createdAt?: true
     updatedAt?: true
+    confimredAnswerId?: true
+    answerType?: true
   }
 
   export type AssessmentQuestionMaxAggregateInputType = {
@@ -3739,6 +3769,8 @@ export namespace Prisma {
     isActive?: true
     createdAt?: true
     updatedAt?: true
+    confimredAnswerId?: true
+    answerType?: true
   }
 
   export type AssessmentQuestionCountAggregateInputType = {
@@ -3749,6 +3781,8 @@ export namespace Prisma {
     isActive?: true
     createdAt?: true
     updatedAt?: true
+    confimredAnswerId?: true
+    answerType?: true
     _all?: true
   }
 
@@ -3846,6 +3880,8 @@ export namespace Prisma {
     isActive: boolean
     createdAt: Date
     updatedAt: Date
+    confimredAnswerId: number | null
+    answerType: $Enums.AnswerType | null
     _count: AssessmentQuestionCountAggregateOutputType | null
     _avg: AssessmentQuestionAvgAggregateOutputType | null
     _sum: AssessmentQuestionSumAggregateOutputType | null
@@ -3875,6 +3911,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    confimredAnswerId?: boolean
+    answerType?: boolean
     Assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
     QuestionAnswer?: boolean | AssessmentQuestion$QuestionAnswerArgs<ExtArgs>
     _count?: boolean | AssessmentQuestionCountOutputTypeDefaultArgs<ExtArgs>
@@ -3889,6 +3927,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    confimredAnswerId?: boolean
+    answerType?: boolean
   }
 
   export type AssessmentQuestionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3911,6 +3951,8 @@ export namespace Prisma {
       isActive: boolean
       createdAt: Date
       updatedAt: Date
+      confimredAnswerId: number | null
+      answerType: $Enums.AnswerType | null
     }, ExtArgs["result"]["assessmentQuestion"]>
     composites: {}
   }
@@ -4289,6 +4331,8 @@ export namespace Prisma {
     readonly isActive: FieldRef<"AssessmentQuestion", 'Boolean'>
     readonly createdAt: FieldRef<"AssessmentQuestion", 'DateTime'>
     readonly updatedAt: FieldRef<"AssessmentQuestion", 'DateTime'>
+    readonly confimredAnswerId: FieldRef<"AssessmentQuestion", 'Int'>
+    readonly answerType: FieldRef<"AssessmentQuestion", 'AnswerType'>
   }
     
 
@@ -9783,6 +9827,7 @@ export namespace Prisma {
     assessmentTeamId: number | null
     assessmentId: number | null
     assessmentQuestionId: number | null
+    confimredAnswerId: number | null
   }
 
   export type QuestionAnswerSumAggregateOutputType = {
@@ -9794,6 +9839,7 @@ export namespace Prisma {
     assessmentTeamId: number | null
     assessmentId: number | null
     assessmentQuestionId: number | null
+    confimredAnswerId: number | null
   }
 
   export type QuestionAnswerMinAggregateOutputType = {
@@ -9807,6 +9853,9 @@ export namespace Prisma {
     assessmentStage: string | null
     questionMongoId: string | null
     assessmentQuestionId: number | null
+    confimredAnswerId: number | null
+    answer: string | null
+    answerType: $Enums.AnswerType | null
     password: string | null
     rememberToken: string | null
     notes: string | null
@@ -9828,6 +9877,9 @@ export namespace Prisma {
     assessmentStage: string | null
     questionMongoId: string | null
     assessmentQuestionId: number | null
+    confimredAnswerId: number | null
+    answer: string | null
+    answerType: $Enums.AnswerType | null
     password: string | null
     rememberToken: string | null
     notes: string | null
@@ -9849,6 +9901,9 @@ export namespace Prisma {
     assessmentStage: number
     questionMongoId: number
     assessmentQuestionId: number
+    confimredAnswerId: number
+    answer: number
+    answerType: number
     password: number
     rememberToken: number
     notes: number
@@ -9870,6 +9925,7 @@ export namespace Prisma {
     assessmentTeamId?: true
     assessmentId?: true
     assessmentQuestionId?: true
+    confimredAnswerId?: true
   }
 
   export type QuestionAnswerSumAggregateInputType = {
@@ -9881,6 +9937,7 @@ export namespace Prisma {
     assessmentTeamId?: true
     assessmentId?: true
     assessmentQuestionId?: true
+    confimredAnswerId?: true
   }
 
   export type QuestionAnswerMinAggregateInputType = {
@@ -9894,6 +9951,9 @@ export namespace Prisma {
     assessmentStage?: true
     questionMongoId?: true
     assessmentQuestionId?: true
+    confimredAnswerId?: true
+    answer?: true
+    answerType?: true
     password?: true
     rememberToken?: true
     notes?: true
@@ -9915,6 +9975,9 @@ export namespace Prisma {
     assessmentStage?: true
     questionMongoId?: true
     assessmentQuestionId?: true
+    confimredAnswerId?: true
+    answer?: true
+    answerType?: true
     password?: true
     rememberToken?: true
     notes?: true
@@ -9936,6 +9999,9 @@ export namespace Prisma {
     assessmentStage?: true
     questionMongoId?: true
     assessmentQuestionId?: true
+    confimredAnswerId?: true
+    answer?: true
+    answerType?: true
     password?: true
     rememberToken?: true
     notes?: true
@@ -10044,6 +10110,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId: number | null
+    confimredAnswerId: number | null
+    answer: string | null
+    answerType: $Enums.AnswerType | null
     password: string | null
     rememberToken: string | null
     notes: string | null
@@ -10084,6 +10153,9 @@ export namespace Prisma {
     assessmentStage?: boolean
     questionMongoId?: boolean
     assessmentQuestionId?: boolean
+    confimredAnswerId?: boolean
+    answer?: boolean
+    answerType?: boolean
     password?: boolean
     rememberToken?: boolean
     notes?: boolean
@@ -10113,6 +10185,9 @@ export namespace Prisma {
     assessmentStage?: boolean
     questionMongoId?: boolean
     assessmentQuestionId?: boolean
+    confimredAnswerId?: boolean
+    answer?: boolean
+    answerType?: boolean
     password?: boolean
     rememberToken?: boolean
     notes?: boolean
@@ -10155,6 +10230,9 @@ export namespace Prisma {
       assessmentStage: string
       questionMongoId: string
       assessmentQuestionId: number | null
+      confimredAnswerId: number | null
+      answer: string | null
+      answerType: $Enums.AnswerType | null
       password: string | null
       rememberToken: string | null
       notes: string | null
@@ -10549,6 +10627,9 @@ export namespace Prisma {
     readonly assessmentStage: FieldRef<"QuestionAnswer", 'String'>
     readonly questionMongoId: FieldRef<"QuestionAnswer", 'String'>
     readonly assessmentQuestionId: FieldRef<"QuestionAnswer", 'Int'>
+    readonly confimredAnswerId: FieldRef<"QuestionAnswer", 'Int'>
+    readonly answer: FieldRef<"QuestionAnswer", 'String'>
+    readonly answerType: FieldRef<"QuestionAnswer", 'AnswerType'>
     readonly password: FieldRef<"QuestionAnswer", 'String'>
     readonly rememberToken: FieldRef<"QuestionAnswer", 'String'>
     readonly notes: FieldRef<"QuestionAnswer", 'String'>
@@ -19043,7 +19124,9 @@ export namespace Prisma {
     questionMongoId: 'questionMongoId',
     isActive: 'isActive',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    confimredAnswerId: 'confimredAnswerId',
+    answerType: 'answerType'
   };
 
   export type AssessmentQuestionScalarFieldEnum = (typeof AssessmentQuestionScalarFieldEnum)[keyof typeof AssessmentQuestionScalarFieldEnum]
@@ -19137,6 +19220,9 @@ export namespace Prisma {
     assessmentStage: 'assessmentStage',
     questionMongoId: 'questionMongoId',
     assessmentQuestionId: 'assessmentQuestionId',
+    confimredAnswerId: 'confimredAnswerId',
+    answer: 'answer',
+    answerType: 'answerType',
     password: 'password',
     rememberToken: 'rememberToken',
     notes: 'notes',
@@ -19323,6 +19409,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'AnswerType'
+   */
+  export type EnumAnswerTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnswerType'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -19452,6 +19545,8 @@ export namespace Prisma {
     isActive?: BoolFilter<"AssessmentQuestion"> | boolean
     createdAt?: DateTimeFilter<"AssessmentQuestion"> | Date | string
     updatedAt?: DateTimeFilter<"AssessmentQuestion"> | Date | string
+    confimredAnswerId?: IntNullableFilter<"AssessmentQuestion"> | number | null
+    answerType?: EnumAnswerTypeNullableFilter<"AssessmentQuestion"> | $Enums.AnswerType | null
     Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
     QuestionAnswer?: QuestionAnswerListRelationFilter
   }
@@ -19464,6 +19559,8 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    confimredAnswerId?: SortOrderInput | SortOrder
+    answerType?: SortOrderInput | SortOrder
     Assessment?: AssessmentOrderByWithRelationInput
     QuestionAnswer?: QuestionAnswerOrderByRelationAggregateInput
   }
@@ -19471,6 +19568,7 @@ export namespace Prisma {
   export type AssessmentQuestionWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     questionMongoId?: string
+    confimredAnswerId?: number
     assessmentId_questionMongoId?: AssessmentQuestionAssessmentIdQuestionMongoIdCompoundUniqueInput
     AND?: AssessmentQuestionWhereInput | AssessmentQuestionWhereInput[]
     OR?: AssessmentQuestionWhereInput[]
@@ -19480,9 +19578,10 @@ export namespace Prisma {
     isActive?: BoolFilter<"AssessmentQuestion"> | boolean
     createdAt?: DateTimeFilter<"AssessmentQuestion"> | Date | string
     updatedAt?: DateTimeFilter<"AssessmentQuestion"> | Date | string
+    answerType?: EnumAnswerTypeNullableFilter<"AssessmentQuestion"> | $Enums.AnswerType | null
     Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
     QuestionAnswer?: QuestionAnswerListRelationFilter
-  }, "id" | "id" | "questionMongoId" | "assessmentId_questionMongoId">
+  }, "id" | "id" | "questionMongoId" | "confimredAnswerId" | "assessmentId_questionMongoId">
 
   export type AssessmentQuestionOrderByWithAggregationInput = {
     id?: SortOrder
@@ -19492,6 +19591,8 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    confimredAnswerId?: SortOrderInput | SortOrder
+    answerType?: SortOrderInput | SortOrder
     _count?: AssessmentQuestionCountOrderByAggregateInput
     _avg?: AssessmentQuestionAvgOrderByAggregateInput
     _max?: AssessmentQuestionMaxOrderByAggregateInput
@@ -19510,6 +19611,8 @@ export namespace Prisma {
     isActive?: BoolWithAggregatesFilter<"AssessmentQuestion"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"AssessmentQuestion"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AssessmentQuestion"> | Date | string
+    confimredAnswerId?: IntNullableWithAggregatesFilter<"AssessmentQuestion"> | number | null
+    answerType?: EnumAnswerTypeNullableWithAggregatesFilter<"AssessmentQuestion"> | $Enums.AnswerType | null
   }
 
   export type AssessmentTeamWhereInput = {
@@ -19967,6 +20070,9 @@ export namespace Prisma {
     assessmentStage?: StringFilter<"QuestionAnswer"> | string
     questionMongoId?: StringFilter<"QuestionAnswer"> | string
     assessmentQuestionId?: IntNullableFilter<"QuestionAnswer"> | number | null
+    confimredAnswerId?: IntNullableFilter<"QuestionAnswer"> | number | null
+    answer?: StringNullableFilter<"QuestionAnswer"> | string | null
+    answerType?: EnumAnswerTypeNullableFilter<"QuestionAnswer"> | $Enums.AnswerType | null
     password?: StringNullableFilter<"QuestionAnswer"> | string | null
     rememberToken?: StringNullableFilter<"QuestionAnswer"> | string | null
     notes?: StringNullableFilter<"QuestionAnswer"> | string | null
@@ -19995,6 +20101,9 @@ export namespace Prisma {
     assessmentStage?: SortOrder
     questionMongoId?: SortOrder
     assessmentQuestionId?: SortOrderInput | SortOrder
+    confimredAnswerId?: SortOrderInput | SortOrder
+    answer?: SortOrderInput | SortOrder
+    answerType?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
     rememberToken?: SortOrderInput | SortOrder
     notes?: SortOrderInput | SortOrder
@@ -20014,6 +20123,7 @@ export namespace Prisma {
 
   export type QuestionAnswerWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    confimredAnswerId?: number
     organisationStructureId_assessmentQuestionId?: QuestionAnswerOrganisationStructureIdAssessmentQuestionIdCompoundUniqueInput
     AND?: QuestionAnswerWhereInput | QuestionAnswerWhereInput[]
     OR?: QuestionAnswerWhereInput[]
@@ -20027,6 +20137,8 @@ export namespace Prisma {
     assessmentStage?: StringFilter<"QuestionAnswer"> | string
     questionMongoId?: StringFilter<"QuestionAnswer"> | string
     assessmentQuestionId?: IntNullableFilter<"QuestionAnswer"> | number | null
+    answer?: StringNullableFilter<"QuestionAnswer"> | string | null
+    answerType?: EnumAnswerTypeNullableFilter<"QuestionAnswer"> | $Enums.AnswerType | null
     password?: StringNullableFilter<"QuestionAnswer"> | string | null
     rememberToken?: StringNullableFilter<"QuestionAnswer"> | string | null
     notes?: StringNullableFilter<"QuestionAnswer"> | string | null
@@ -20042,7 +20154,7 @@ export namespace Prisma {
     AssessmentTeam?: XOR<AssessmentTeamNullableRelationFilter, AssessmentTeamWhereInput> | null
     Assessment?: XOR<AssessmentNullableRelationFilter, AssessmentWhereInput> | null
     AssessmentQuestion?: XOR<AssessmentQuestionNullableRelationFilter, AssessmentQuestionWhereInput> | null
-  }, "id" | "id" | "organisationStructureId_assessmentQuestionId">
+  }, "id" | "id" | "confimredAnswerId" | "organisationStructureId_assessmentQuestionId">
 
   export type QuestionAnswerOrderByWithAggregationInput = {
     id?: SortOrder
@@ -20055,6 +20167,9 @@ export namespace Prisma {
     assessmentStage?: SortOrder
     questionMongoId?: SortOrder
     assessmentQuestionId?: SortOrderInput | SortOrder
+    confimredAnswerId?: SortOrderInput | SortOrder
+    answer?: SortOrderInput | SortOrder
+    answerType?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
     rememberToken?: SortOrderInput | SortOrder
     notes?: SortOrderInput | SortOrder
@@ -20084,6 +20199,9 @@ export namespace Prisma {
     assessmentStage?: StringWithAggregatesFilter<"QuestionAnswer"> | string
     questionMongoId?: StringWithAggregatesFilter<"QuestionAnswer"> | string
     assessmentQuestionId?: IntNullableWithAggregatesFilter<"QuestionAnswer"> | number | null
+    confimredAnswerId?: IntNullableWithAggregatesFilter<"QuestionAnswer"> | number | null
+    answer?: StringNullableWithAggregatesFilter<"QuestionAnswer"> | string | null
+    answerType?: EnumAnswerTypeNullableWithAggregatesFilter<"QuestionAnswer"> | $Enums.AnswerType | null
     password?: StringNullableWithAggregatesFilter<"QuestionAnswer"> | string | null
     rememberToken?: StringNullableWithAggregatesFilter<"QuestionAnswer"> | string | null
     notes?: StringNullableWithAggregatesFilter<"QuestionAnswer"> | string | null
@@ -20883,6 +21001,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    confimredAnswerId?: number | null
+    answerType?: $Enums.AnswerType | null
     Assessment: AssessmentCreateNestedOneWithoutAssessmentQuestionInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentQuestionInput
   }
@@ -20895,6 +21015,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    confimredAnswerId?: number | null
+    answerType?: $Enums.AnswerType | null
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentQuestionInput
   }
 
@@ -20904,6 +21026,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     Assessment?: AssessmentUpdateOneRequiredWithoutAssessmentQuestionNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentQuestionNestedInput
   }
@@ -20916,6 +21040,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentQuestionNestedInput
   }
 
@@ -20927,6 +21053,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    confimredAnswerId?: number | null
+    answerType?: $Enums.AnswerType | null
   }
 
   export type AssessmentQuestionUpdateManyMutationInput = {
@@ -20935,6 +21063,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
   }
 
   export type AssessmentQuestionUncheckedUpdateManyInput = {
@@ -20945,6 +21075,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
   }
 
   export type AssessmentTeamCreateInput = {
@@ -21395,6 +21527,9 @@ export namespace Prisma {
   export type QuestionAnswerCreateInput = {
     assessmentStage: string
     questionMongoId: string
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -21423,6 +21558,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -21436,6 +21574,9 @@ export namespace Prisma {
   export type QuestionAnswerUpdateInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21464,6 +21605,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21485,6 +21629,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -21498,6 +21645,9 @@ export namespace Prisma {
   export type QuestionAnswerUpdateManyMutationInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21519,6 +21669,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22503,6 +22656,13 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type EnumAnswerTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnswerType | EnumAnswerTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AnswerType[] | null
+    notIn?: $Enums.AnswerType[] | null
+    not?: NestedEnumAnswerTypeNullableFilter<$PrismaModel> | $Enums.AnswerType | null
+  }
+
   export type AssessmentRelationFilter = {
     is?: AssessmentWhereInput
     isNot?: AssessmentWhereInput
@@ -22521,11 +22681,14 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    confimredAnswerId?: SortOrder
+    answerType?: SortOrder
   }
 
   export type AssessmentQuestionAvgOrderByAggregateInput = {
     id?: SortOrder
     assessmentId?: SortOrder
+    confimredAnswerId?: SortOrder
   }
 
   export type AssessmentQuestionMaxOrderByAggregateInput = {
@@ -22536,6 +22699,8 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    confimredAnswerId?: SortOrder
+    answerType?: SortOrder
   }
 
   export type AssessmentQuestionMinOrderByAggregateInput = {
@@ -22546,11 +22711,24 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    confimredAnswerId?: SortOrder
+    answerType?: SortOrder
   }
 
   export type AssessmentQuestionSumOrderByAggregateInput = {
     id?: SortOrder
     assessmentId?: SortOrder
+    confimredAnswerId?: SortOrder
+  }
+
+  export type EnumAnswerTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnswerType | EnumAnswerTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AnswerType[] | null
+    notIn?: $Enums.AnswerType[] | null
+    not?: NestedEnumAnswerTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.AnswerType | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumAnswerTypeNullableFilter<$PrismaModel>
+    _max?: NestedEnumAnswerTypeNullableFilter<$PrismaModel>
   }
 
   export type TeamRelationFilter = {
@@ -22950,6 +23128,9 @@ export namespace Prisma {
     assessmentStage?: SortOrder
     questionMongoId?: SortOrder
     assessmentQuestionId?: SortOrder
+    confimredAnswerId?: SortOrder
+    answer?: SortOrder
+    answerType?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
     notes?: SortOrder
@@ -22969,6 +23150,7 @@ export namespace Prisma {
     assessmentTeamId?: SortOrder
     assessmentId?: SortOrder
     assessmentQuestionId?: SortOrder
+    confimredAnswerId?: SortOrder
   }
 
   export type QuestionAnswerMaxOrderByAggregateInput = {
@@ -22982,6 +23164,9 @@ export namespace Prisma {
     assessmentStage?: SortOrder
     questionMongoId?: SortOrder
     assessmentQuestionId?: SortOrder
+    confimredAnswerId?: SortOrder
+    answer?: SortOrder
+    answerType?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
     notes?: SortOrder
@@ -23003,6 +23188,9 @@ export namespace Prisma {
     assessmentStage?: SortOrder
     questionMongoId?: SortOrder
     assessmentQuestionId?: SortOrder
+    confimredAnswerId?: SortOrder
+    answer?: SortOrder
+    answerType?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
     notes?: SortOrder
@@ -23022,6 +23210,7 @@ export namespace Prisma {
     assessmentTeamId?: SortOrder
     assessmentId?: SortOrder
     assessmentQuestionId?: SortOrder
+    confimredAnswerId?: SortOrder
   }
 
   export type UserRoleListRelationFilter = {
@@ -23695,6 +23884,10 @@ export namespace Prisma {
     connectOrCreate?: QuestionAnswerCreateOrConnectWithoutAssessmentQuestionInput | QuestionAnswerCreateOrConnectWithoutAssessmentQuestionInput[]
     createMany?: QuestionAnswerCreateManyAssessmentQuestionInputEnvelope
     connect?: QuestionAnswerWhereUniqueInput | QuestionAnswerWhereUniqueInput[]
+  }
+
+  export type NullableEnumAnswerTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AnswerType | null
   }
 
   export type AssessmentUpdateOneRequiredWithoutAssessmentQuestionNestedInput = {
@@ -25173,6 +25366,23 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedEnumAnswerTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnswerType | EnumAnswerTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AnswerType[] | null
+    notIn?: $Enums.AnswerType[] | null
+    not?: NestedEnumAnswerTypeNullableFilter<$PrismaModel> | $Enums.AnswerType | null
+  }
+
+  export type NestedEnumAnswerTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnswerType | EnumAnswerTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AnswerType[] | null
+    notIn?: $Enums.AnswerType[] | null
+    not?: NestedEnumAnswerTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.AnswerType | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumAnswerTypeNullableFilter<$PrismaModel>
+    _max?: NestedEnumAnswerTypeNullableFilter<$PrismaModel>
+  }
+
   export type NestedBoolNullableFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
@@ -25255,6 +25465,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    confimredAnswerId?: number | null
+    answerType?: $Enums.AnswerType | null
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentQuestionInput
   }
 
@@ -25265,6 +25477,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    confimredAnswerId?: number | null
+    answerType?: $Enums.AnswerType | null
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentQuestionInput
   }
 
@@ -25354,6 +25568,9 @@ export namespace Prisma {
   export type QuestionAnswerCreateWithoutAssessmentInput = {
     assessmentStage: string
     questionMongoId: string
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -25380,6 +25597,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -25471,6 +25691,8 @@ export namespace Prisma {
     isActive?: BoolFilter<"AssessmentQuestion"> | boolean
     createdAt?: DateTimeFilter<"AssessmentQuestion"> | Date | string
     updatedAt?: DateTimeFilter<"AssessmentQuestion"> | Date | string
+    confimredAnswerId?: IntNullableFilter<"AssessmentQuestion"> | number | null
+    answerType?: EnumAnswerTypeNullableFilter<"AssessmentQuestion"> | $Enums.AnswerType | null
   }
 
   export type OrganisationTemplateUpsertWithoutAssessmentInput = {
@@ -25578,6 +25800,9 @@ export namespace Prisma {
     assessmentStage?: StringFilter<"QuestionAnswer"> | string
     questionMongoId?: StringFilter<"QuestionAnswer"> | string
     assessmentQuestionId?: IntNullableFilter<"QuestionAnswer"> | number | null
+    confimredAnswerId?: IntNullableFilter<"QuestionAnswer"> | number | null
+    answer?: StringNullableFilter<"QuestionAnswer"> | string | null
+    answerType?: EnumAnswerTypeNullableFilter<"QuestionAnswer"> | $Enums.AnswerType | null
     password?: StringNullableFilter<"QuestionAnswer"> | string | null
     rememberToken?: StringNullableFilter<"QuestionAnswer"> | string | null
     notes?: StringNullableFilter<"QuestionAnswer"> | string | null
@@ -25631,6 +25856,9 @@ export namespace Prisma {
   export type QuestionAnswerCreateWithoutAssessmentQuestionInput = {
     assessmentStage: string
     questionMongoId: string
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -25657,6 +25885,9 @@ export namespace Prisma {
     assessmentId?: number | null
     assessmentStage: string
     questionMongoId: string
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -25858,6 +26089,9 @@ export namespace Prisma {
   export type QuestionAnswerCreateWithoutAssessmentTeamInput = {
     assessmentStage: string
     questionMongoId: string
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -25884,6 +26118,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -26248,6 +26485,9 @@ export namespace Prisma {
   export type QuestionAnswerCreateWithoutOrganisationInput = {
     assessmentStage: string
     questionMongoId: string
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -26274,6 +26514,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -26775,6 +27018,9 @@ export namespace Prisma {
   export type QuestionAnswerCreateWithoutOrganisationStructureInput = {
     assessmentStage: string
     questionMongoId: string
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -26801,6 +27047,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -27416,6 +27665,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    confimredAnswerId?: number | null
+    answerType?: $Enums.AnswerType | null
     Assessment: AssessmentCreateNestedOneWithoutAssessmentQuestionInput
   }
 
@@ -27427,6 +27678,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    confimredAnswerId?: number | null
+    answerType?: $Enums.AnswerType | null
   }
 
   export type AssessmentQuestionCreateOrConnectWithoutQuestionAnswerInput = {
@@ -27723,6 +27976,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     Assessment?: AssessmentUpdateOneRequiredWithoutAssessmentQuestionNestedInput
   }
 
@@ -27734,6 +27989,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
   }
 
   export type UserRoleCreateWithoutRoleInput = {
@@ -27939,6 +28196,9 @@ export namespace Prisma {
   export type QuestionAnswerCreateWithoutTeamInput = {
     assessmentStage: string
     questionMongoId: string
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -27965,6 +28225,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -28585,6 +28848,9 @@ export namespace Prisma {
   export type QuestionAnswerCreateWithoutUserInput = {
     assessmentStage: string
     questionMongoId: string
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -28611,6 +28877,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -28914,6 +29183,8 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    confimredAnswerId?: number | null
+    answerType?: $Enums.AnswerType | null
   }
 
   export type AssessmentTeamCreateManyAssessmentInput = {
@@ -28939,6 +29210,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -28955,6 +29229,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentQuestionNestedInput
   }
 
@@ -28965,6 +29241,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentQuestionNestedInput
   }
 
@@ -28975,6 +29253,8 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
   }
 
   export type AssessmentTeamUpdateWithoutAssessmentInput = {
@@ -29020,6 +29300,9 @@ export namespace Prisma {
   export type QuestionAnswerUpdateWithoutAssessmentInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29046,6 +29329,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29066,6 +29352,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29086,6 +29375,9 @@ export namespace Prisma {
     assessmentId?: number | null
     assessmentStage: string
     questionMongoId: string
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -29099,6 +29391,9 @@ export namespace Prisma {
   export type QuestionAnswerUpdateWithoutAssessmentQuestionInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29125,6 +29420,9 @@ export namespace Prisma {
     assessmentId?: NullableIntFieldUpdateOperationsInput | number | null
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29145,6 +29443,9 @@ export namespace Prisma {
     assessmentId?: NullableIntFieldUpdateOperationsInput | number | null
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29165,6 +29466,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -29178,6 +29482,9 @@ export namespace Prisma {
   export type QuestionAnswerUpdateWithoutAssessmentTeamInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29204,6 +29511,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29224,6 +29534,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29288,6 +29601,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -29457,6 +29773,9 @@ export namespace Prisma {
   export type QuestionAnswerUpdateWithoutOrganisationInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29483,6 +29802,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29503,6 +29825,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29571,6 +29896,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -29607,6 +29935,9 @@ export namespace Prisma {
   export type QuestionAnswerUpdateWithoutOrganisationStructureInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29633,6 +29964,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29653,6 +29987,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29822,6 +30159,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -29905,6 +30245,9 @@ export namespace Prisma {
   export type QuestionAnswerUpdateWithoutTeamInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29931,6 +30274,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29951,6 +30297,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30162,6 +30511,9 @@ export namespace Prisma {
     assessmentStage: string
     questionMongoId: string
     assessmentQuestionId?: number | null
+    confimredAnswerId?: number | null
+    answer?: string | null
+    answerType?: $Enums.AnswerType | null
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -30228,6 +30580,9 @@ export namespace Prisma {
   export type QuestionAnswerUpdateWithoutUserInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30254,6 +30609,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30274,6 +30632,9 @@ export namespace Prisma {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
     assessmentQuestionId?: NullableIntFieldUpdateOperationsInput | number | null
+    confimredAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
+    answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null

@@ -77,7 +77,7 @@ export interface ITeamDetailRes {
 
 export interface IWorkQuestion {
   question: IQuestionMongo;
-  assign: {
+  assign?: {
     id: number;
     QuestionAnswer: {
       OrganisationStructure: {
@@ -93,9 +93,8 @@ export interface IWorkQuestion {
         };
       };
     }[];
-    questionMongoId: string;
   };
-  teams: {
+  teams?: {
     Team: {
       id: number;
       name: string;
