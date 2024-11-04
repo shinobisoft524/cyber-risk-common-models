@@ -80,6 +80,8 @@ export interface IWorkQuestion {
   assign: {
     id: number;
     questionMongoId: string;
+    confimredAnswerId?: number;
+    answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
     QuestionAnswer: {
       OrganisationStructure: {
         id: number;
