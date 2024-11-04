@@ -79,6 +79,7 @@ export interface IWorkQuestion {
   question: IQuestionMongo;
   assign: {
     id: number;
+    questionMongoId: string;
     QuestionAnswer: {
       OrganisationStructure: {
         id: number;
