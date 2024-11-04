@@ -76,7 +76,10 @@ export interface ITeamDetailRes {
 }
 
 export interface IWorkQuestion {
-  question: IQuestionMongo;
+  question: IQuestionMongo & {
+    confimredAnswerId?: number;
+    answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
+  };
   assign: {
     id: number;
     questionMongoId: string;
