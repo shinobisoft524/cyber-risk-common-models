@@ -44,6 +44,10 @@ export interface IOrganisationAssessmentRes {
   description: string;
   logo: string;
   isActive: boolean;
+  isOwner?: boolean;
+  isManager?: boolean;
+  isWorker?: boolean;
+  isGuest?: boolean;
   organisationTemplateId: number;
 }
 
