@@ -19568,7 +19568,6 @@ export namespace Prisma {
   export type AssessmentQuestionWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     questionMongoId?: string
-    confimredAnswerId?: number
     assessmentId_questionMongoId?: AssessmentQuestionAssessmentIdQuestionMongoIdCompoundUniqueInput
     AND?: AssessmentQuestionWhereInput | AssessmentQuestionWhereInput[]
     OR?: AssessmentQuestionWhereInput[]
@@ -19578,10 +19577,11 @@ export namespace Prisma {
     isActive?: BoolFilter<"AssessmentQuestion"> | boolean
     createdAt?: DateTimeFilter<"AssessmentQuestion"> | Date | string
     updatedAt?: DateTimeFilter<"AssessmentQuestion"> | Date | string
+    confimredAnswerId?: IntNullableFilter<"AssessmentQuestion"> | number | null
     answerType?: EnumAnswerTypeNullableFilter<"AssessmentQuestion"> | $Enums.AnswerType | null
     Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
     QuestionAnswer?: QuestionAnswerListRelationFilter
-  }, "id" | "id" | "questionMongoId" | "confimredAnswerId" | "assessmentId_questionMongoId">
+  }, "id" | "id" | "questionMongoId" | "assessmentId_questionMongoId">
 
   export type AssessmentQuestionOrderByWithAggregationInput = {
     id?: SortOrder
@@ -20123,7 +20123,6 @@ export namespace Prisma {
 
   export type QuestionAnswerWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    confimredAnswerId?: number
     organisationStructureId_assessmentQuestionId?: QuestionAnswerOrganisationStructureIdAssessmentQuestionIdCompoundUniqueInput
     AND?: QuestionAnswerWhereInput | QuestionAnswerWhereInput[]
     OR?: QuestionAnswerWhereInput[]
@@ -20137,6 +20136,7 @@ export namespace Prisma {
     assessmentStage?: StringFilter<"QuestionAnswer"> | string
     questionMongoId?: StringFilter<"QuestionAnswer"> | string
     assessmentQuestionId?: IntNullableFilter<"QuestionAnswer"> | number | null
+    confimredAnswerId?: IntNullableFilter<"QuestionAnswer"> | number | null
     answer?: StringNullableFilter<"QuestionAnswer"> | string | null
     answerType?: EnumAnswerTypeNullableFilter<"QuestionAnswer"> | $Enums.AnswerType | null
     password?: StringNullableFilter<"QuestionAnswer"> | string | null
@@ -20154,7 +20154,7 @@ export namespace Prisma {
     AssessmentTeam?: XOR<AssessmentTeamNullableRelationFilter, AssessmentTeamWhereInput> | null
     Assessment?: XOR<AssessmentNullableRelationFilter, AssessmentWhereInput> | null
     AssessmentQuestion?: XOR<AssessmentQuestionNullableRelationFilter, AssessmentQuestionWhereInput> | null
-  }, "id" | "id" | "confimredAnswerId" | "organisationStructureId_assessmentQuestionId">
+  }, "id" | "id" | "organisationStructureId_assessmentQuestionId">
 
   export type QuestionAnswerOrderByWithAggregationInput = {
     id?: SortOrder
