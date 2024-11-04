@@ -110,3 +110,19 @@ export interface IWorkQuestion {
     };
   }[];
 }
+
+export interface IWorkAssessmentRes {
+  role?: 'isOwner' | 'isManager' | 'isWorker' | 'isGuest' | undefined;
+  teamMembers: {
+    Team: {
+      id: number;
+      name: string;
+      OrganisationStructure: {
+        id: number;
+        isActive: boolean;
+        User: { id: number; isActive: boolean; name: string; email: string };
+      }[];
+    };
+  }[];
+  workQuestions: IWorkQuestion[];
+}
