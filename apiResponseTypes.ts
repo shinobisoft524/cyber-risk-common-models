@@ -86,6 +86,9 @@ export interface IWorkQuestion {
     confimredAnswerId?: number;
     answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
     QuestionAnswer: {
+      id: number;
+      confimredAnswerId?: number;
+      answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
       OrganisationStructure: {
         id: number;
         Team: {
