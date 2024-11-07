@@ -30,5 +30,6 @@ export const CyberError = {
   },
   user: {
     isExistedEmail: 'Email address already exists',
+    sentVerification: 'Sent verification email into your account',
   },
 };
