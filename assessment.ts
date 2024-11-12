@@ -21,17 +21,21 @@ export interface IQuestionMongo {
     templateId: number;
     stageId: string; // stage1
   };
-
+  stageId: string;
   nId: number;
   question: string;
   answers: {
     id: number;
-    label: string;
+    label: string | null;
     value?: string;
+    keyId: number;
+    answerType: 'Confirmed' | 'Delayed';
   }[];
   date1: string;
   date2: string;
   _ref?: {
-    [key: string]: any;
-  };
+    key: string;
+    value: string;
+  }[];
+  _info?: any;
 }
