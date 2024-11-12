@@ -96,11 +96,25 @@ export namespace $Enums {
 
 export type AnswerType = (typeof AnswerType)[keyof typeof AnswerType]
 
+
+export const AnswerMode: {
+  Owner: 'Owner',
+  Manager: 'Manager',
+  Worker: 'Worker',
+  Viewer: 'Viewer'
+};
+
+export type AnswerMode = (typeof AnswerMode)[keyof typeof AnswerMode]
+
 }
 
 export type AnswerType = $Enums.AnswerType
 
 export const AnswerType: typeof $Enums.AnswerType
+
+export type AnswerMode = $Enums.AnswerMode
+
+export const AnswerMode: typeof $Enums.AnswerMode
 
 /**
  * ##  Prisma Client ʲˢ
@@ -9630,6 +9644,7 @@ export namespace Prisma {
     confirmedAnswerId: number | null
     answer: string | null
     answerType: $Enums.AnswerType | null
+    answerMode: $Enums.AnswerMode | null
     password: string | null
     rememberToken: string | null
     notes: string | null
@@ -9654,6 +9669,7 @@ export namespace Prisma {
     confirmedAnswerId: number | null
     answer: string | null
     answerType: $Enums.AnswerType | null
+    answerMode: $Enums.AnswerMode | null
     password: string | null
     rememberToken: string | null
     notes: string | null
@@ -9678,6 +9694,7 @@ export namespace Prisma {
     confirmedAnswerId: number
     answer: number
     answerType: number
+    answerMode: number
     password: number
     rememberToken: number
     notes: number
@@ -9728,6 +9745,7 @@ export namespace Prisma {
     confirmedAnswerId?: true
     answer?: true
     answerType?: true
+    answerMode?: true
     password?: true
     rememberToken?: true
     notes?: true
@@ -9752,6 +9770,7 @@ export namespace Prisma {
     confirmedAnswerId?: true
     answer?: true
     answerType?: true
+    answerMode?: true
     password?: true
     rememberToken?: true
     notes?: true
@@ -9776,6 +9795,7 @@ export namespace Prisma {
     confirmedAnswerId?: true
     answer?: true
     answerType?: true
+    answerMode?: true
     password?: true
     rememberToken?: true
     notes?: true
@@ -9887,6 +9907,7 @@ export namespace Prisma {
     confirmedAnswerId: number | null
     answer: string | null
     answerType: $Enums.AnswerType | null
+    answerMode: $Enums.AnswerMode
     password: string | null
     rememberToken: string | null
     notes: string | null
@@ -9930,6 +9951,7 @@ export namespace Prisma {
     confirmedAnswerId?: boolean
     answer?: boolean
     answerType?: boolean
+    answerMode?: boolean
     password?: boolean
     rememberToken?: boolean
     notes?: boolean
@@ -9962,6 +9984,7 @@ export namespace Prisma {
     confirmedAnswerId?: boolean
     answer?: boolean
     answerType?: boolean
+    answerMode?: boolean
     password?: boolean
     rememberToken?: boolean
     notes?: boolean
@@ -10007,6 +10030,7 @@ export namespace Prisma {
       confirmedAnswerId: number | null
       answer: string | null
       answerType: $Enums.AnswerType | null
+      answerMode: $Enums.AnswerMode
       password: string | null
       rememberToken: string | null
       notes: string | null
@@ -10404,6 +10428,7 @@ export namespace Prisma {
     readonly confirmedAnswerId: FieldRef<"QuestionAnswer", 'Int'>
     readonly answer: FieldRef<"QuestionAnswer", 'String'>
     readonly answerType: FieldRef<"QuestionAnswer", 'AnswerType'>
+    readonly answerMode: FieldRef<"QuestionAnswer", 'AnswerMode'>
     readonly password: FieldRef<"QuestionAnswer", 'String'>
     readonly rememberToken: FieldRef<"QuestionAnswer", 'String'>
     readonly notes: FieldRef<"QuestionAnswer", 'String'>
@@ -17052,6 +17077,7 @@ export namespace Prisma {
     confirmedAnswerId: 'confirmedAnswerId',
     answer: 'answer',
     answerType: 'answerType',
+    answerMode: 'answerMode',
     password: 'password',
     rememberToken: 'rememberToken',
     notes: 'notes',
@@ -17214,6 +17240,13 @@ export namespace Prisma {
    * Reference to a field of type 'AnswerType'
    */
   export type EnumAnswerTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnswerType'>
+    
+
+
+  /**
+   * Reference to a field of type 'AnswerMode'
+   */
+  export type EnumAnswerModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnswerMode'>
     
 
 
@@ -17875,6 +17908,7 @@ export namespace Prisma {
     confirmedAnswerId?: IntNullableFilter<"QuestionAnswer"> | number | null
     answer?: StringNullableFilter<"QuestionAnswer"> | string | null
     answerType?: EnumAnswerTypeNullableFilter<"QuestionAnswer"> | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFilter<"QuestionAnswer"> | $Enums.AnswerMode
     password?: StringNullableFilter<"QuestionAnswer"> | string | null
     rememberToken?: StringNullableFilter<"QuestionAnswer"> | string | null
     notes?: StringNullableFilter<"QuestionAnswer"> | string | null
@@ -17906,6 +17940,7 @@ export namespace Prisma {
     confirmedAnswerId?: SortOrderInput | SortOrder
     answer?: SortOrderInput | SortOrder
     answerType?: SortOrderInput | SortOrder
+    answerMode?: SortOrder
     password?: SortOrderInput | SortOrder
     rememberToken?: SortOrderInput | SortOrder
     notes?: SortOrderInput | SortOrder
@@ -17941,6 +17976,7 @@ export namespace Prisma {
     confirmedAnswerId?: IntNullableFilter<"QuestionAnswer"> | number | null
     answer?: StringNullableFilter<"QuestionAnswer"> | string | null
     answerType?: EnumAnswerTypeNullableFilter<"QuestionAnswer"> | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFilter<"QuestionAnswer"> | $Enums.AnswerMode
     password?: StringNullableFilter<"QuestionAnswer"> | string | null
     rememberToken?: StringNullableFilter<"QuestionAnswer"> | string | null
     notes?: StringNullableFilter<"QuestionAnswer"> | string | null
@@ -17972,6 +18008,7 @@ export namespace Prisma {
     confirmedAnswerId?: SortOrderInput | SortOrder
     answer?: SortOrderInput | SortOrder
     answerType?: SortOrderInput | SortOrder
+    answerMode?: SortOrder
     password?: SortOrderInput | SortOrder
     rememberToken?: SortOrderInput | SortOrder
     notes?: SortOrderInput | SortOrder
@@ -18004,6 +18041,7 @@ export namespace Prisma {
     confirmedAnswerId?: IntNullableWithAggregatesFilter<"QuestionAnswer"> | number | null
     answer?: StringNullableWithAggregatesFilter<"QuestionAnswer"> | string | null
     answerType?: EnumAnswerTypeNullableWithAggregatesFilter<"QuestionAnswer"> | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeWithAggregatesFilter<"QuestionAnswer"> | $Enums.AnswerMode
     password?: StringNullableWithAggregatesFilter<"QuestionAnswer"> | string | null
     rememberToken?: StringNullableWithAggregatesFilter<"QuestionAnswer"> | string | null
     notes?: StringNullableWithAggregatesFilter<"QuestionAnswer"> | string | null
@@ -19187,6 +19225,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -19218,6 +19257,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -19234,6 +19274,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19265,6 +19306,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19289,6 +19331,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -19305,6 +19348,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19329,6 +19373,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20597,6 +20642,13 @@ export namespace Prisma {
     templateId?: SortOrder
   }
 
+  export type EnumAnswerModeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnswerMode | EnumAnswerModeFieldRefInput<$PrismaModel>
+    in?: $Enums.AnswerMode[]
+    notIn?: $Enums.AnswerMode[]
+    not?: NestedEnumAnswerModeFilter<$PrismaModel> | $Enums.AnswerMode
+  }
+
   export type OrganisationNullableRelationFilter = {
     is?: OrganisationWhereInput | null
     isNot?: OrganisationWhereInput | null
@@ -20641,6 +20693,7 @@ export namespace Prisma {
     confirmedAnswerId?: SortOrder
     answer?: SortOrder
     answerType?: SortOrder
+    answerMode?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
     notes?: SortOrder
@@ -20677,6 +20730,7 @@ export namespace Prisma {
     confirmedAnswerId?: SortOrder
     answer?: SortOrder
     answerType?: SortOrder
+    answerMode?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
     notes?: SortOrder
@@ -20701,6 +20755,7 @@ export namespace Prisma {
     confirmedAnswerId?: SortOrder
     answer?: SortOrder
     answerType?: SortOrder
+    answerMode?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
     notes?: SortOrder
@@ -20721,6 +20776,16 @@ export namespace Prisma {
     assessmentId?: SortOrder
     assessmentQuestionId?: SortOrder
     confirmedAnswerId?: SortOrder
+  }
+
+  export type EnumAnswerModeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnswerMode | EnumAnswerModeFieldRefInput<$PrismaModel>
+    in?: $Enums.AnswerMode[]
+    notIn?: $Enums.AnswerMode[]
+    not?: NestedEnumAnswerModeWithAggregatesFilter<$PrismaModel> | $Enums.AnswerMode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAnswerModeFilter<$PrismaModel>
+    _max?: NestedEnumAnswerModeFilter<$PrismaModel>
   }
 
   export type UserRoleListRelationFilter = {
@@ -21891,6 +21956,10 @@ export namespace Prisma {
     connect?: AssessmentQuestionWhereUniqueInput
   }
 
+  export type EnumAnswerModeFieldUpdateOperationsInput = {
+    set?: $Enums.AnswerMode
+  }
+
   export type OrganisationUpdateOneWithoutQuestionAnswerNestedInput = {
     create?: XOR<OrganisationCreateWithoutQuestionAnswerInput, OrganisationUncheckedCreateWithoutQuestionAnswerInput>
     connectOrCreate?: OrganisationCreateOrConnectWithoutQuestionAnswerInput
@@ -22679,6 +22748,23 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumAnswerModeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnswerMode | EnumAnswerModeFieldRefInput<$PrismaModel>
+    in?: $Enums.AnswerMode[]
+    notIn?: $Enums.AnswerMode[]
+    not?: NestedEnumAnswerModeFilter<$PrismaModel> | $Enums.AnswerMode
+  }
+
+  export type NestedEnumAnswerModeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnswerMode | EnumAnswerModeFieldRefInput<$PrismaModel>
+    in?: $Enums.AnswerMode[]
+    notIn?: $Enums.AnswerMode[]
+    not?: NestedEnumAnswerModeWithAggregatesFilter<$PrismaModel> | $Enums.AnswerMode
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAnswerModeFilter<$PrismaModel>
+    _max?: NestedEnumAnswerModeFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | null
@@ -22854,6 +22940,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -22883,6 +22970,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -23086,6 +23174,7 @@ export namespace Prisma {
     confirmedAnswerId?: IntNullableFilter<"QuestionAnswer"> | number | null
     answer?: StringNullableFilter<"QuestionAnswer"> | string | null
     answerType?: EnumAnswerTypeNullableFilter<"QuestionAnswer"> | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFilter<"QuestionAnswer"> | $Enums.AnswerMode
     password?: StringNullableFilter<"QuestionAnswer"> | string | null
     rememberToken?: StringNullableFilter<"QuestionAnswer"> | string | null
     notes?: StringNullableFilter<"QuestionAnswer"> | string | null
@@ -23142,6 +23231,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -23171,6 +23261,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -23375,6 +23466,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -23404,6 +23496,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -23771,6 +23864,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -23800,6 +23894,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -24304,6 +24399,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -24333,6 +24429,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -25482,6 +25579,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -25511,6 +25609,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -25903,6 +26002,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -25932,6 +26032,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -26265,6 +26366,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -26355,6 +26457,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26384,6 +26487,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26407,6 +26511,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26430,6 +26535,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -26446,6 +26552,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26475,6 +26582,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26498,6 +26606,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26521,6 +26630,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -26537,6 +26647,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26566,6 +26677,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26589,6 +26701,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26656,6 +26769,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -26828,6 +26942,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26857,6 +26972,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26880,6 +26996,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26951,6 +27068,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -26990,6 +27108,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27019,6 +27138,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27042,6 +27162,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27214,6 +27335,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -27300,6 +27422,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27329,6 +27452,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27352,6 +27476,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27488,6 +27613,7 @@ export namespace Prisma {
     confirmedAnswerId?: number | null
     answer?: string | null
     answerType?: $Enums.AnswerType | null
+    answerMode?: $Enums.AnswerMode
     password?: string | null
     rememberToken?: string | null
     notes?: string | null
@@ -27557,6 +27683,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27586,6 +27713,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27609,6 +27737,7 @@ export namespace Prisma {
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answer?: NullableStringFieldUpdateOperationsInput | string | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+    answerMode?: EnumAnswerModeFieldUpdateOperationsInput | $Enums.AnswerMode
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
