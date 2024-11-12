@@ -97,6 +97,16 @@ export namespace $Enums {
 export type AnswerType = (typeof AnswerType)[keyof typeof AnswerType]
 
 
+export const TeamType: {
+  Owner: 'Owner',
+  Manager: 'Manager',
+  Worker: 'Worker',
+  Viewer: 'Viewer'
+};
+
+export type TeamType = (typeof TeamType)[keyof typeof TeamType]
+
+
 export const AnswerMode: {
   Owner: 'Owner',
   Manager: 'Manager',
@@ -111,6 +121,10 @@ export type AnswerMode = (typeof AnswerMode)[keyof typeof AnswerMode]
 export type AnswerType = $Enums.AnswerType
 
 export const AnswerType: typeof $Enums.AnswerType
+
+export type TeamType = $Enums.TeamType
+
+export const TeamType: typeof $Enums.TeamType
 
 export type AnswerMode = $Enums.AnswerMode
 
@@ -4485,6 +4499,7 @@ export namespace Prisma {
     assessmentId: number | null
     organisationId: number | null
     teamId: number | null
+    teamType: $Enums.TeamType | null
     password: string | null
     rememberToken: string | null
     isActive: boolean | null
@@ -4499,6 +4514,7 @@ export namespace Prisma {
     assessmentId: number | null
     organisationId: number | null
     teamId: number | null
+    teamType: $Enums.TeamType | null
     password: string | null
     rememberToken: string | null
     isActive: boolean | null
@@ -4513,6 +4529,7 @@ export namespace Prisma {
     assessmentId: number
     organisationId: number
     teamId: number
+    teamType: number
     password: number
     rememberToken: number
     isActive: number
@@ -4543,6 +4560,7 @@ export namespace Prisma {
     assessmentId?: true
     organisationId?: true
     teamId?: true
+    teamType?: true
     password?: true
     rememberToken?: true
     isActive?: true
@@ -4557,6 +4575,7 @@ export namespace Prisma {
     assessmentId?: true
     organisationId?: true
     teamId?: true
+    teamType?: true
     password?: true
     rememberToken?: true
     isActive?: true
@@ -4571,6 +4590,7 @@ export namespace Prisma {
     assessmentId?: true
     organisationId?: true
     teamId?: true
+    teamType?: true
     password?: true
     rememberToken?: true
     isActive?: true
@@ -4672,6 +4692,7 @@ export namespace Prisma {
     assessmentId: number
     organisationId: number
     teamId: number
+    teamType: $Enums.TeamType
     password: string | null
     rememberToken: string | null
     isActive: boolean
@@ -4705,6 +4726,7 @@ export namespace Prisma {
     assessmentId?: boolean
     organisationId?: boolean
     teamId?: boolean
+    teamType?: boolean
     password?: boolean
     rememberToken?: boolean
     isActive?: boolean
@@ -4725,6 +4747,7 @@ export namespace Prisma {
     assessmentId?: boolean
     organisationId?: boolean
     teamId?: boolean
+    teamType?: boolean
     password?: boolean
     rememberToken?: boolean
     isActive?: boolean
@@ -4755,6 +4778,7 @@ export namespace Prisma {
       assessmentId: number
       organisationId: number
       teamId: number
+      teamType: $Enums.TeamType
       password: string | null
       rememberToken: string | null
       isActive: boolean
@@ -5139,6 +5163,7 @@ export namespace Prisma {
     readonly assessmentId: FieldRef<"AssessmentTeam", 'Int'>
     readonly organisationId: FieldRef<"AssessmentTeam", 'Int'>
     readonly teamId: FieldRef<"AssessmentTeam", 'Int'>
+    readonly teamType: FieldRef<"AssessmentTeam", 'TeamType'>
     readonly password: FieldRef<"AssessmentTeam", 'String'>
     readonly rememberToken: FieldRef<"AssessmentTeam", 'String'>
     readonly isActive: FieldRef<"AssessmentTeam", 'Boolean'>
@@ -11853,6 +11878,7 @@ export namespace Prisma {
     description: string | null
     logo: string | null
     organisationId: number | null
+    teamType: $Enums.TeamType | null
     password: string | null
     rememberToken: string | null
     isActive: boolean | null
@@ -11868,6 +11894,7 @@ export namespace Prisma {
     description: string | null
     logo: string | null
     organisationId: number | null
+    teamType: $Enums.TeamType | null
     password: string | null
     rememberToken: string | null
     isActive: boolean | null
@@ -11883,6 +11910,7 @@ export namespace Prisma {
     description: number
     logo: number
     organisationId: number
+    teamType: number
     password: number
     rememberToken: number
     isActive: number
@@ -11910,6 +11938,7 @@ export namespace Prisma {
     description?: true
     logo?: true
     organisationId?: true
+    teamType?: true
     password?: true
     rememberToken?: true
     isActive?: true
@@ -11925,6 +11954,7 @@ export namespace Prisma {
     description?: true
     logo?: true
     organisationId?: true
+    teamType?: true
     password?: true
     rememberToken?: true
     isActive?: true
@@ -11940,6 +11970,7 @@ export namespace Prisma {
     description?: true
     logo?: true
     organisationId?: true
+    teamType?: true
     password?: true
     rememberToken?: true
     isActive?: true
@@ -12042,6 +12073,7 @@ export namespace Prisma {
     description: string | null
     logo: string | null
     organisationId: number
+    teamType: $Enums.TeamType
     password: string | null
     rememberToken: string | null
     isActive: boolean
@@ -12076,6 +12108,7 @@ export namespace Prisma {
     description?: boolean
     logo?: boolean
     organisationId?: boolean
+    teamType?: boolean
     password?: boolean
     rememberToken?: boolean
     isActive?: boolean
@@ -12097,6 +12130,7 @@ export namespace Prisma {
     description?: boolean
     logo?: boolean
     organisationId?: boolean
+    teamType?: boolean
     password?: boolean
     rememberToken?: boolean
     isActive?: boolean
@@ -12128,6 +12162,7 @@ export namespace Prisma {
       description: string | null
       logo: string | null
       organisationId: number
+      teamType: $Enums.TeamType
       password: string | null
       rememberToken: string | null
       isActive: boolean
@@ -12513,6 +12548,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Team", 'String'>
     readonly logo: FieldRef<"Team", 'String'>
     readonly organisationId: FieldRef<"Team", 'Int'>
+    readonly teamType: FieldRef<"Team", 'TeamType'>
     readonly password: FieldRef<"Team", 'String'>
     readonly rememberToken: FieldRef<"Team", 'String'>
     readonly isActive: FieldRef<"Team", 'Boolean'>
@@ -16991,6 +17027,7 @@ export namespace Prisma {
     assessmentId: 'assessmentId',
     organisationId: 'organisationId',
     teamId: 'teamId',
+    teamType: 'teamType',
     password: 'password',
     rememberToken: 'rememberToken',
     isActive: 'isActive',
@@ -17109,6 +17146,7 @@ export namespace Prisma {
     description: 'description',
     logo: 'logo',
     organisationId: 'organisationId',
+    teamType: 'teamType',
     password: 'password',
     rememberToken: 'rememberToken',
     isActive: 'isActive',
@@ -17240,6 +17278,13 @@ export namespace Prisma {
    * Reference to a field of type 'AnswerType'
    */
   export type EnumAnswerTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnswerType'>
+    
+
+
+  /**
+   * Reference to a field of type 'TeamType'
+   */
+  export type EnumTeamTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TeamType'>
     
 
 
@@ -17458,6 +17503,7 @@ export namespace Prisma {
     assessmentId?: IntFilter<"AssessmentTeam"> | number
     organisationId?: IntFilter<"AssessmentTeam"> | number
     teamId?: IntFilter<"AssessmentTeam"> | number
+    teamType?: EnumTeamTypeFilter<"AssessmentTeam"> | $Enums.TeamType
     password?: StringNullableFilter<"AssessmentTeam"> | string | null
     rememberToken?: StringNullableFilter<"AssessmentTeam"> | string | null
     isActive?: BoolFilter<"AssessmentTeam"> | boolean
@@ -17476,6 +17522,7 @@ export namespace Prisma {
     assessmentId?: SortOrder
     organisationId?: SortOrder
     teamId?: SortOrder
+    teamType?: SortOrder
     password?: SortOrderInput | SortOrder
     rememberToken?: SortOrderInput | SortOrder
     isActive?: SortOrder
@@ -17498,6 +17545,7 @@ export namespace Prisma {
     assessmentId?: IntFilter<"AssessmentTeam"> | number
     organisationId?: IntFilter<"AssessmentTeam"> | number
     teamId?: IntFilter<"AssessmentTeam"> | number
+    teamType?: EnumTeamTypeFilter<"AssessmentTeam"> | $Enums.TeamType
     password?: StringNullableFilter<"AssessmentTeam"> | string | null
     rememberToken?: StringNullableFilter<"AssessmentTeam"> | string | null
     isActive?: BoolFilter<"AssessmentTeam"> | boolean
@@ -17516,6 +17564,7 @@ export namespace Prisma {
     assessmentId?: SortOrder
     organisationId?: SortOrder
     teamId?: SortOrder
+    teamType?: SortOrder
     password?: SortOrderInput | SortOrder
     rememberToken?: SortOrderInput | SortOrder
     isActive?: SortOrder
@@ -17538,6 +17587,7 @@ export namespace Prisma {
     assessmentId?: IntWithAggregatesFilter<"AssessmentTeam"> | number
     organisationId?: IntWithAggregatesFilter<"AssessmentTeam"> | number
     teamId?: IntWithAggregatesFilter<"AssessmentTeam"> | number
+    teamType?: EnumTeamTypeWithAggregatesFilter<"AssessmentTeam"> | $Enums.TeamType
     password?: StringNullableWithAggregatesFilter<"AssessmentTeam"> | string | null
     rememberToken?: StringNullableWithAggregatesFilter<"AssessmentTeam"> | string | null
     isActive?: BoolWithAggregatesFilter<"AssessmentTeam"> | boolean
@@ -18126,6 +18176,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Team"> | string | null
     logo?: StringNullableFilter<"Team"> | string | null
     organisationId?: IntFilter<"Team"> | number
+    teamType?: EnumTeamTypeFilter<"Team"> | $Enums.TeamType
     password?: StringNullableFilter<"Team"> | string | null
     rememberToken?: StringNullableFilter<"Team"> | string | null
     isActive?: BoolFilter<"Team"> | boolean
@@ -18145,6 +18196,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     logo?: SortOrderInput | SortOrder
     organisationId?: SortOrder
+    teamType?: SortOrder
     password?: SortOrderInput | SortOrder
     rememberToken?: SortOrderInput | SortOrder
     isActive?: SortOrder
@@ -18167,6 +18219,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Team"> | string | null
     logo?: StringNullableFilter<"Team"> | string | null
     organisationId?: IntFilter<"Team"> | number
+    teamType?: EnumTeamTypeFilter<"Team"> | $Enums.TeamType
     password?: StringNullableFilter<"Team"> | string | null
     rememberToken?: StringNullableFilter<"Team"> | string | null
     isActive?: BoolFilter<"Team"> | boolean
@@ -18186,6 +18239,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     logo?: SortOrderInput | SortOrder
     organisationId?: SortOrder
+    teamType?: SortOrder
     password?: SortOrderInput | SortOrder
     rememberToken?: SortOrderInput | SortOrder
     isActive?: SortOrder
@@ -18209,6 +18263,7 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Team"> | string | null
     logo?: StringNullableWithAggregatesFilter<"Team"> | string | null
     organisationId?: IntWithAggregatesFilter<"Team"> | number
+    teamType?: EnumTeamTypeWithAggregatesFilter<"Team"> | $Enums.TeamType
     password?: StringNullableWithAggregatesFilter<"Team"> | string | null
     rememberToken?: StringNullableWithAggregatesFilter<"Team"> | string | null
     isActive?: BoolWithAggregatesFilter<"Team"> | boolean
@@ -18775,6 +18830,7 @@ export namespace Prisma {
   }
 
   export type AssessmentTeamCreateInput = {
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -18793,6 +18849,7 @@ export namespace Prisma {
     assessmentId: number
     organisationId: number
     teamId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -18804,6 +18861,7 @@ export namespace Prisma {
   }
 
   export type AssessmentTeamUpdateInput = {
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -18822,6 +18880,7 @@ export namespace Prisma {
     assessmentId?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
     teamId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -18837,6 +18896,7 @@ export namespace Prisma {
     assessmentId: number
     organisationId: number
     teamId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -18847,6 +18907,7 @@ export namespace Prisma {
   }
 
   export type AssessmentTeamUpdateManyMutationInput = {
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -18861,6 +18922,7 @@ export namespace Prisma {
     assessmentId?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
     teamId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -19456,6 +19518,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -19475,6 +19538,7 @@ export namespace Prisma {
     description?: string | null
     logo?: string | null
     organisationId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -19491,6 +19555,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -19510,6 +19575,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     organisationId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -19528,6 +19594,7 @@ export namespace Prisma {
     description?: string | null
     logo?: string | null
     organisationId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -19541,6 +19608,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -19556,6 +19624,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     organisationId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -20286,6 +20355,13 @@ export namespace Prisma {
     _max?: NestedEnumAnswerTypeNullableFilter<$PrismaModel>
   }
 
+  export type EnumTeamTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeamType | EnumTeamTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.TeamType[]
+    notIn?: $Enums.TeamType[]
+    not?: NestedEnumTeamTypeFilter<$PrismaModel> | $Enums.TeamType
+  }
+
   export type TeamRelationFilter = {
     is?: TeamWhereInput
     isNot?: TeamWhereInput
@@ -20301,6 +20377,7 @@ export namespace Prisma {
     assessmentId?: SortOrder
     organisationId?: SortOrder
     teamId?: SortOrder
+    teamType?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
     isActive?: SortOrder
@@ -20322,6 +20399,7 @@ export namespace Prisma {
     assessmentId?: SortOrder
     organisationId?: SortOrder
     teamId?: SortOrder
+    teamType?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
     isActive?: SortOrder
@@ -20336,6 +20414,7 @@ export namespace Prisma {
     assessmentId?: SortOrder
     organisationId?: SortOrder
     teamId?: SortOrder
+    teamType?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
     isActive?: SortOrder
@@ -20350,6 +20429,16 @@ export namespace Prisma {
     assessmentId?: SortOrder
     organisationId?: SortOrder
     teamId?: SortOrder
+  }
+
+  export type EnumTeamTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeamType | EnumTeamTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.TeamType[]
+    notIn?: $Enums.TeamType[]
+    not?: NestedEnumTeamTypeWithAggregatesFilter<$PrismaModel> | $Enums.TeamType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTeamTypeFilter<$PrismaModel>
+    _max?: NestedEnumTeamTypeFilter<$PrismaModel>
   }
 
   export type BoolNullableFilter<$PrismaModel = never> = {
@@ -20849,6 +20938,7 @@ export namespace Prisma {
     description?: SortOrder
     logo?: SortOrder
     organisationId?: SortOrder
+    teamType?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
     isActive?: SortOrder
@@ -20869,6 +20959,7 @@ export namespace Prisma {
     description?: SortOrder
     logo?: SortOrder
     organisationId?: SortOrder
+    teamType?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
     isActive?: SortOrder
@@ -20884,6 +20975,7 @@ export namespace Prisma {
     description?: SortOrder
     logo?: SortOrder
     organisationId?: SortOrder
+    teamType?: SortOrder
     password?: SortOrder
     rememberToken?: SortOrder
     isActive?: SortOrder
@@ -21416,6 +21508,10 @@ export namespace Prisma {
     connectOrCreate?: QuestionAnswerCreateOrConnectWithoutAssessmentTeamInput | QuestionAnswerCreateOrConnectWithoutAssessmentTeamInput[]
     createMany?: QuestionAnswerCreateManyAssessmentTeamInputEnvelope
     connect?: QuestionAnswerWhereUniqueInput | QuestionAnswerWhereUniqueInput[]
+  }
+
+  export type EnumTeamTypeFieldUpdateOperationsInput = {
+    set?: $Enums.TeamType
   }
 
   export type AssessmentUpdateOneRequiredWithoutAssessmentTeamNestedInput = {
@@ -22735,6 +22831,23 @@ export namespace Prisma {
     _max?: NestedEnumAnswerTypeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumTeamTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeamType | EnumTeamTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.TeamType[]
+    notIn?: $Enums.TeamType[]
+    not?: NestedEnumTeamTypeFilter<$PrismaModel> | $Enums.TeamType
+  }
+
+  export type NestedEnumTeamTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TeamType | EnumTeamTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.TeamType[]
+    notIn?: $Enums.TeamType[]
+    not?: NestedEnumTeamTypeWithAggregatesFilter<$PrismaModel> | $Enums.TeamType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTeamTypeFilter<$PrismaModel>
+    _max?: NestedEnumTeamTypeFilter<$PrismaModel>
+  }
+
   export type NestedBoolNullableFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
@@ -22898,6 +23011,7 @@ export namespace Prisma {
   }
 
   export type AssessmentTeamCreateWithoutAssessmentInput = {
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -22914,6 +23028,7 @@ export namespace Prisma {
     id?: number
     organisationId: number
     teamId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -23132,6 +23247,7 @@ export namespace Prisma {
     assessmentId?: IntFilter<"AssessmentTeam"> | number
     organisationId?: IntFilter<"AssessmentTeam"> | number
     teamId?: IntFilter<"AssessmentTeam"> | number
+    teamType?: EnumTeamTypeFilter<"AssessmentTeam"> | $Enums.TeamType
     password?: StringNullableFilter<"AssessmentTeam"> | string | null
     rememberToken?: StringNullableFilter<"AssessmentTeam"> | string | null
     isActive?: BoolFilter<"AssessmentTeam"> | boolean
@@ -23426,6 +23542,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -23444,6 +23561,7 @@ export namespace Prisma {
     description?: string | null
     logo?: string | null
     organisationId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -23622,6 +23740,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -23640,6 +23759,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     organisationId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -23778,6 +23898,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -23795,6 +23916,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -23916,6 +24038,7 @@ export namespace Prisma {
   }
 
   export type AssessmentTeamCreateWithoutOrganisationInput = {
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -23932,6 +24055,7 @@ export namespace Prisma {
     id?: number
     assessmentId: number
     teamId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -24080,6 +24204,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Team"> | string | null
     logo?: StringNullableFilter<"Team"> | string | null
     organisationId?: IntFilter<"Team"> | number
+    teamType?: EnumTeamTypeFilter<"Team"> | $Enums.TeamType
     password?: StringNullableFilter<"Team"> | string | null
     rememberToken?: StringNullableFilter<"Team"> | string | null
     isActive?: BoolFilter<"Team"> | boolean
@@ -24272,6 +24397,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -24290,6 +24416,7 @@ export namespace Prisma {
     description?: string | null
     logo?: string | null
     organisationId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -24465,6 +24592,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -24483,6 +24611,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     organisationId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -24871,6 +25000,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -24889,6 +25019,7 @@ export namespace Prisma {
     description?: string | null
     logo?: string | null
     organisationId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -24968,6 +25099,7 @@ export namespace Prisma {
   }
 
   export type AssessmentTeamCreateWithoutQuestionAnswerInput = {
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -24985,6 +25117,7 @@ export namespace Prisma {
     assessmentId: number
     organisationId: number
     teamId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -25158,6 +25291,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -25176,6 +25310,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     organisationId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -25267,6 +25402,7 @@ export namespace Prisma {
   }
 
   export type AssessmentTeamUpdateWithoutQuestionAnswerInput = {
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -25284,6 +25420,7 @@ export namespace Prisma {
     assessmentId?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
     teamId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -25537,6 +25674,7 @@ export namespace Prisma {
   }
 
   export type AssessmentTeamCreateWithoutTeamInput = {
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -25553,6 +25691,7 @@ export namespace Prisma {
     id?: number
     assessmentId: number
     organisationId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -26344,6 +26483,7 @@ export namespace Prisma {
     id?: number
     organisationId: number
     teamId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -26412,6 +26552,7 @@ export namespace Prisma {
   }
 
   export type AssessmentTeamUpdateWithoutAssessmentInput = {
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -26428,6 +26569,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
     teamId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -26442,6 +26584,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
     teamId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -26732,6 +26875,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -26784,6 +26928,7 @@ export namespace Prisma {
     id?: number
     assessmentId: number
     teamId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -26847,6 +26992,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -26864,6 +27010,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -26881,6 +27028,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -27008,6 +27156,7 @@ export namespace Prisma {
   }
 
   export type AssessmentTeamUpdateWithoutOrganisationInput = {
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -27024,6 +27173,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     assessmentId?: IntFieldUpdateOperationsInput | number
     teamId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -27038,6 +27188,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     assessmentId?: IntFieldUpdateOperationsInput | number
     teamId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -27313,6 +27464,7 @@ export namespace Prisma {
     id?: number
     assessmentId: number
     organisationId: number
+    teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
     isActive?: boolean
@@ -27377,6 +27529,7 @@ export namespace Prisma {
   }
 
   export type AssessmentTeamUpdateWithoutTeamInput = {
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -27393,6 +27546,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     assessmentId?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -27407,6 +27561,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     assessmentId?: IntFieldUpdateOperationsInput | number
     organisationId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean

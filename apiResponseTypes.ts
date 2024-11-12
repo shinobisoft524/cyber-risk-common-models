@@ -93,6 +93,7 @@ export interface IWorkQuestion {
       id: number;
       confirmedAnswerId?: number;
       answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
+      answerMode: 'Owner' | 'Manager' | 'Worker' | 'Viewer';
       OrganisationStructure: {
         id: number;
         Team: {
