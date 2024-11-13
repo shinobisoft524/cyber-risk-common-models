@@ -47,7 +47,7 @@ export interface IOrganisationAssessmentRes {
   isOwner?: boolean;
   isManager?: boolean;
   isWorker?: boolean;
-  isGuest?: boolean;
+  isViewer?: boolean;
   organisationTemplateId: number;
 }
 
@@ -139,7 +139,7 @@ export interface IWorkQuestion {
 }
 
 export interface IWorkAssessmentRes {
-  role?: 'isOwner' | 'isManager' | 'isWorker' | 'isGuest' | undefined;
+  role?: 'isOwner' | 'isManager' | 'isWorker' | 'isViewer' | undefined;
   teamMembers: {
     Team: {
       id: number;
