@@ -122,6 +122,20 @@ export interface IWorkQuestion {
       }[];
     };
   }[];
+  views?: {
+    Team: {
+      id: number;
+      name: string;
+      OrganisationStructure: {
+        id: number;
+        User: {
+          id: number;
+          name: string;
+          email: string;
+        };
+      }[];
+    };
+  }[];
 }
 
 export interface IWorkAssessmentRes {
