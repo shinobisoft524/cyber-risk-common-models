@@ -1,4 +1,5 @@
 import { IQuestionMongo } from './assessment';
+import { RoleTitles } from './commonStatic';
 
 export interface IStandardRes<T> {
   data: T;
@@ -170,4 +171,5 @@ export interface IteamDetail {
       isUnlock: boolean;
     };
   }[];
+  role?: RoleTitles;
 }
