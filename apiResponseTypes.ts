@@ -153,3 +153,21 @@ export interface IWorkAssessmentRes {
   }[];
   workQuestions: IWorkQuestion[];
 }
+
+export interface IteamDetail {
+  name: string;
+  id: number;
+  description: string;
+  organisationId: number;
+  isActive: boolean;
+  Organisation: { name: string; id: number };
+  AssessmentTeam: {
+    id: number;
+    Assessment: {
+      name: string;
+      id: number;
+      isActive: boolean;
+      isUnlock: boolean;
+    };
+  }[];
+}
