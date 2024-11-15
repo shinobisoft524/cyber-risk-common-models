@@ -1,3 +1,5 @@
+import { IRole } from './structure';
+
 export interface IAuthUser {
   name: string;
   password: string;
@@ -9,12 +11,6 @@ export interface IBaseUser {
   emailVerified?: Date;
   password: string;
   name: string;
-}
-
-export interface IRole {
-  id: number;
-  name: string;
-  description: string;
 }
 
 export interface IFullUser extends IBaseUser {

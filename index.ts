@@ -4,3 +4,4 @@ export * from './apiResponseTypes';
 export * from './apiRequestTypes';
 export * from './commonErrors';
 export * from './sharedUser';
+export * from './structure';

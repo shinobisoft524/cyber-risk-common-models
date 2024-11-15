@@ -1,3 +1,5 @@
+import { IRoleTitle } from './structure';
+
 export interface IAdminUser {
   name: string;
   id: number;
@@ -51,4 +53,8 @@ export interface IUserListIteam {
     };
     teamId: number;
   }[];
+}
+
+export interface IUserDetail extends IUserListIteam {
+  roleTitles: IRoleTitle[];
 }
