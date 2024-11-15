@@ -1,3 +1,5 @@
+import { RoleTitles } from './commonStatic';
+
 export interface ITeam {
   name: string;
   id: number;
@@ -18,7 +20,7 @@ export interface IOrganisationRole {
 }
 
 export interface IRoleTitle {
-  title: string;
+  title: RoleTitles;
   id: number;
   isActive: boolean;
   organisationId: number;
