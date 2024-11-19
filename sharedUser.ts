@@ -41,6 +41,13 @@ export interface IUserListIteam {
   firstName: string;
   lastName: string;
   email: string;
+  creatorId?: number;
+  Creator?: {
+    id: number;
+    name: string;
+    email: string;
+    isActive: boolean;
+  };
   lastLoginAt: Date;
   OrganisationStructure: {
     id: number;
