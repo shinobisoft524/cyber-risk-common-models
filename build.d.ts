@@ -2330,12 +2330,14 @@ export namespace Prisma {
     UserRole: number
     OrganisationStructure: number
     QuestionAnswer: number
+    Members: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     UserRole?: boolean | UserCountOutputTypeCountUserRoleArgs
     OrganisationStructure?: boolean | UserCountOutputTypeCountOrganisationStructureArgs
     QuestionAnswer?: boolean | UserCountOutputTypeCountQuestionAnswerArgs
+    Members?: boolean | UserCountOutputTypeCountMembersArgs
   }
 
   // Custom InputTypes
@@ -2368,6 +2370,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountQuestionAnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: QuestionAnswerWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
   }
 
 
@@ -14973,10 +14982,12 @@ export namespace Prisma {
 
   export type UserAvgAggregateOutputType = {
     id: number | null
+    creatorId: number | null
   }
 
   export type UserSumAggregateOutputType = {
     id: number | null
+    creatorId: number | null
   }
 
   export type UserMinAggregateOutputType = {
@@ -15004,6 +15015,7 @@ export namespace Prisma {
     lastLoginAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    creatorId: number | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -15031,6 +15043,7 @@ export namespace Prisma {
     lastLoginAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    creatorId: number | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -15058,16 +15071,19 @@ export namespace Prisma {
     lastLoginAt: number
     createdAt: number
     updatedAt: number
+    creatorId: number
     _all: number
   }
 
 
   export type UserAvgAggregateInputType = {
     id?: true
+    creatorId?: true
   }
 
   export type UserSumAggregateInputType = {
     id?: true
+    creatorId?: true
   }
 
   export type UserMinAggregateInputType = {
@@ -15095,6 +15111,7 @@ export namespace Prisma {
     lastLoginAt?: true
     createdAt?: true
     updatedAt?: true
+    creatorId?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -15122,6 +15139,7 @@ export namespace Prisma {
     lastLoginAt?: true
     createdAt?: true
     updatedAt?: true
+    creatorId?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -15149,6 +15167,7 @@ export namespace Prisma {
     lastLoginAt?: true
     createdAt?: true
     updatedAt?: true
+    creatorId?: true
     _all?: true
   }
 
@@ -15263,6 +15282,7 @@ export namespace Prisma {
     lastLoginAt: Date | null
     createdAt: Date
     updatedAt: Date
+    creatorId: number | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -15309,10 +15329,13 @@ export namespace Prisma {
     lastLoginAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    creatorId?: boolean
     Organisation?: boolean | User$OrganisationArgs<ExtArgs>
     UserRole?: boolean | User$UserRoleArgs<ExtArgs>
     OrganisationStructure?: boolean | User$OrganisationStructureArgs<ExtArgs>
     QuestionAnswer?: boolean | User$QuestionAnswerArgs<ExtArgs>
+    Creator?: boolean | User$CreatorArgs<ExtArgs>
+    Members?: boolean | User$MembersArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -15342,6 +15365,7 @@ export namespace Prisma {
     lastLoginAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    creatorId?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15349,6 +15373,8 @@ export namespace Prisma {
     UserRole?: boolean | User$UserRoleArgs<ExtArgs>
     OrganisationStructure?: boolean | User$OrganisationStructureArgs<ExtArgs>
     QuestionAnswer?: boolean | User$QuestionAnswerArgs<ExtArgs>
+    Creator?: boolean | User$CreatorArgs<ExtArgs>
+    Members?: boolean | User$MembersArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -15359,6 +15385,8 @@ export namespace Prisma {
       UserRole: Prisma.$UserRolePayload<ExtArgs>[]
       OrganisationStructure: Prisma.$OrganisationStructurePayload<ExtArgs>[]
       QuestionAnswer: Prisma.$QuestionAnswerPayload<ExtArgs>[]
+      Creator: Prisma.$UserPayload<ExtArgs> | null
+      Members: Prisma.$UserPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -15385,6 +15413,7 @@ export namespace Prisma {
       lastLoginAt: Date | null
       createdAt: Date
       updatedAt: Date
+      creatorId: number | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -15729,6 +15758,8 @@ export namespace Prisma {
     UserRole<T extends User$UserRoleArgs<ExtArgs> = {}>(args?: Subset<T, User$UserRoleArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, "findMany"> | Null>
     OrganisationStructure<T extends User$OrganisationStructureArgs<ExtArgs> = {}>(args?: Subset<T, User$OrganisationStructureArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganisationStructurePayload<ExtArgs>, T, "findMany"> | Null>
     QuestionAnswer<T extends User$QuestionAnswerArgs<ExtArgs> = {}>(args?: Subset<T, User$QuestionAnswerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuestionAnswerPayload<ExtArgs>, T, "findMany"> | Null>
+    Creator<T extends User$CreatorArgs<ExtArgs> = {}>(args?: Subset<T, User$CreatorArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    Members<T extends User$MembersArgs<ExtArgs> = {}>(args?: Subset<T, User$MembersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15782,6 +15813,7 @@ export namespace Prisma {
     readonly lastLoginAt: FieldRef<"User", 'DateTime'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly creatorId: FieldRef<"User", 'Int'>
   }
     
 
@@ -16153,6 +16185,41 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: QuestionAnswerScalarFieldEnum | QuestionAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * User.Creator
+   */
+  export type User$CreatorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * User.Members
+   */
+  export type User$MembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    cursor?: UserWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
 
   /**
@@ -17362,7 +17429,8 @@ export namespace Prisma {
     deletedAt: 'deletedAt',
     lastLoginAt: 'lastLoginAt',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    creatorId: 'creatorId'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -18644,10 +18712,13 @@ export namespace Prisma {
     lastLoginAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    creatorId?: IntNullableFilter<"User"> | number | null
     Organisation?: XOR<OrganisationNullableRelationFilter, OrganisationWhereInput> | null
     UserRole?: UserRoleListRelationFilter
     OrganisationStructure?: OrganisationStructureListRelationFilter
     QuestionAnswer?: QuestionAnswerListRelationFilter
+    Creator?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    Members?: UserListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -18675,10 +18746,13 @@ export namespace Prisma {
     lastLoginAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    creatorId?: SortOrderInput | SortOrder
     Organisation?: OrganisationOrderByWithRelationInput
     UserRole?: UserRoleOrderByRelationAggregateInput
     OrganisationStructure?: OrganisationStructureOrderByRelationAggregateInput
     QuestionAnswer?: QuestionAnswerOrderByRelationAggregateInput
+    Creator?: UserOrderByWithRelationInput
+    Members?: UserOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -18709,10 +18783,13 @@ export namespace Prisma {
     lastLoginAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    creatorId?: IntNullableFilter<"User"> | number | null
     Organisation?: XOR<OrganisationNullableRelationFilter, OrganisationWhereInput> | null
     UserRole?: UserRoleListRelationFilter
     OrganisationStructure?: OrganisationStructureListRelationFilter
     QuestionAnswer?: QuestionAnswerListRelationFilter
+    Creator?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    Members?: UserListRelationFilter
   }, "id" | "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -18740,6 +18817,7 @@ export namespace Prisma {
     lastLoginAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    creatorId?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -18775,6 +18853,7 @@ export namespace Prisma {
     lastLoginAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    creatorId?: IntNullableWithAggregatesFilter<"User"> | number | null
   }
 
   export type UserRoleWhereInput = {
@@ -20094,6 +20173,8 @@ export namespace Prisma {
     UserRole?: UserRoleCreateNestedManyWithoutUserInput
     OrganisationStructure?: OrganisationStructureCreateNestedManyWithoutUserInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutUserInput
+    Creator?: UserCreateNestedOneWithoutMembersInput
+    Members?: UserCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -20121,10 +20202,12 @@ export namespace Prisma {
     lastLoginAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    creatorId?: number | null
     Organisation?: OrganisationUncheckedCreateNestedOneWithoutOwnerInput
     UserRole?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     OrganisationStructure?: OrganisationStructureUncheckedCreateNestedManyWithoutUserInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutUserInput
+    Members?: UserUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUpdateInput = {
@@ -20155,6 +20238,8 @@ export namespace Prisma {
     UserRole?: UserRoleUpdateManyWithoutUserNestedInput
     OrganisationStructure?: OrganisationStructureUpdateManyWithoutUserNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutUserNestedInput
+    Creator?: UserUpdateOneWithoutMembersNestedInput
+    Members?: UserUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -20182,10 +20267,12 @@ export namespace Prisma {
     lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
     Organisation?: OrganisationUncheckedUpdateOneWithoutOwnerNestedInput
     UserRole?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     OrganisationStructure?: OrganisationStructureUncheckedUpdateManyWithoutUserNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutUserNestedInput
+    Members?: UserUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -20213,6 +20300,7 @@ export namespace Prisma {
     lastLoginAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    creatorId?: number | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -20266,6 +20354,7 @@ export namespace Prisma {
     lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type UserRoleCreateInput = {
@@ -21436,6 +21525,16 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type UserListRelationFilter = {
+    every?: UserWhereInput
+    some?: UserWhereInput
+    none?: UserWhereInput
+  }
+
+  export type UserOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -21461,10 +21560,12 @@ export namespace Prisma {
     lastLoginAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    creatorId?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
     id?: SortOrder
+    creatorId?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -21492,6 +21593,7 @@ export namespace Prisma {
     lastLoginAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    creatorId?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -21519,10 +21621,12 @@ export namespace Prisma {
     lastLoginAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    creatorId?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
     id?: SortOrder
+    creatorId?: SortOrder
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -22826,6 +22930,19 @@ export namespace Prisma {
     connect?: QuestionAnswerWhereUniqueInput | QuestionAnswerWhereUniqueInput[]
   }
 
+  export type UserCreateNestedOneWithoutMembersInput = {
+    create?: XOR<UserCreateWithoutMembersInput, UserUncheckedCreateWithoutMembersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMembersInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<UserCreateWithoutCreatorInput, UserUncheckedCreateWithoutCreatorInput> | UserCreateWithoutCreatorInput[] | UserUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutCreatorInput | UserCreateOrConnectWithoutCreatorInput[]
+    createMany?: UserCreateManyCreatorInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
   export type OrganisationUncheckedCreateNestedOneWithoutOwnerInput = {
     create?: XOR<OrganisationCreateWithoutOwnerInput, OrganisationUncheckedCreateWithoutOwnerInput>
     connectOrCreate?: OrganisationCreateOrConnectWithoutOwnerInput
@@ -22851,6 +22968,13 @@ export namespace Prisma {
     connectOrCreate?: QuestionAnswerCreateOrConnectWithoutUserInput | QuestionAnswerCreateOrConnectWithoutUserInput[]
     createMany?: QuestionAnswerCreateManyUserInputEnvelope
     connect?: QuestionAnswerWhereUniqueInput | QuestionAnswerWhereUniqueInput[]
+  }
+
+  export type UserUncheckedCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<UserCreateWithoutCreatorInput, UserUncheckedCreateWithoutCreatorInput> | UserCreateWithoutCreatorInput[] | UserUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutCreatorInput | UserCreateOrConnectWithoutCreatorInput[]
+    createMany?: UserCreateManyCreatorInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -22909,6 +23033,30 @@ export namespace Prisma {
     deleteMany?: QuestionAnswerScalarWhereInput | QuestionAnswerScalarWhereInput[]
   }
 
+  export type UserUpdateOneWithoutMembersNestedInput = {
+    create?: XOR<UserCreateWithoutMembersInput, UserUncheckedCreateWithoutMembersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMembersInput
+    upsert?: UserUpsertWithoutMembersInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMembersInput, UserUpdateWithoutMembersInput>, UserUncheckedUpdateWithoutMembersInput>
+  }
+
+  export type UserUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<UserCreateWithoutCreatorInput, UserUncheckedCreateWithoutCreatorInput> | UserCreateWithoutCreatorInput[] | UserUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutCreatorInput | UserCreateOrConnectWithoutCreatorInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutCreatorInput | UserUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: UserCreateManyCreatorInputEnvelope
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutCreatorInput | UserUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutCreatorInput | UserUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
   export type OrganisationUncheckedUpdateOneWithoutOwnerNestedInput = {
     create?: XOR<OrganisationCreateWithoutOwnerInput, OrganisationUncheckedCreateWithoutOwnerInput>
     connectOrCreate?: OrganisationCreateOrConnectWithoutOwnerInput
@@ -22959,6 +23107,20 @@ export namespace Prisma {
     update?: QuestionAnswerUpdateWithWhereUniqueWithoutUserInput | QuestionAnswerUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: QuestionAnswerUpdateManyWithWhereWithoutUserInput | QuestionAnswerUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: QuestionAnswerScalarWhereInput | QuestionAnswerScalarWhereInput[]
+  }
+
+  export type UserUncheckedUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<UserCreateWithoutCreatorInput, UserUncheckedCreateWithoutCreatorInput> | UserCreateWithoutCreatorInput[] | UserUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutCreatorInput | UserCreateOrConnectWithoutCreatorInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutCreatorInput | UserUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: UserCreateManyCreatorInputEnvelope
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutCreatorInput | UserUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutCreatorInput | UserUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutUserRoleInput = {
@@ -24202,6 +24364,8 @@ export namespace Prisma {
     UserRole?: UserRoleCreateNestedManyWithoutUserInput
     OrganisationStructure?: OrganisationStructureCreateNestedManyWithoutUserInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutUserInput
+    Creator?: UserCreateNestedOneWithoutMembersInput
+    Members?: UserCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutOrganisationInput = {
@@ -24229,9 +24393,11 @@ export namespace Prisma {
     lastLoginAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    creatorId?: number | null
     UserRole?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     OrganisationStructure?: OrganisationStructureUncheckedCreateNestedManyWithoutUserInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutUserInput
+    Members?: UserUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutOrganisationInput = {
@@ -24514,6 +24680,8 @@ export namespace Prisma {
     UserRole?: UserRoleUpdateManyWithoutUserNestedInput
     OrganisationStructure?: OrganisationStructureUpdateManyWithoutUserNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutUserNestedInput
+    Creator?: UserUpdateOneWithoutMembersNestedInput
+    Members?: UserUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutOrganisationInput = {
@@ -24541,9 +24709,11 @@ export namespace Prisma {
     lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
     UserRole?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     OrganisationStructure?: OrganisationStructureUncheckedUpdateManyWithoutUserNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutUserNestedInput
+    Members?: UserUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type AssessmentUpsertWithWhereUniqueWithoutOrganisationInput = {
@@ -24902,6 +25072,8 @@ export namespace Prisma {
     Organisation?: OrganisationCreateNestedOneWithoutOwnerInput
     UserRole?: UserRoleCreateNestedManyWithoutUserInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutUserInput
+    Creator?: UserCreateNestedOneWithoutMembersInput
+    Members?: UserCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutOrganisationStructureInput = {
@@ -24929,9 +25101,11 @@ export namespace Prisma {
     lastLoginAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    creatorId?: number | null
     Organisation?: OrganisationUncheckedCreateNestedOneWithoutOwnerInput
     UserRole?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutUserInput
+    Members?: UserUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutOrganisationStructureInput = {
@@ -25113,6 +25287,8 @@ export namespace Prisma {
     Organisation?: OrganisationUpdateOneWithoutOwnerNestedInput
     UserRole?: UserRoleUpdateManyWithoutUserNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutUserNestedInput
+    Creator?: UserUpdateOneWithoutMembersNestedInput
+    Members?: UserUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutOrganisationStructureInput = {
@@ -25140,9 +25316,11 @@ export namespace Prisma {
     lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
     Organisation?: OrganisationUncheckedUpdateOneWithoutOwnerNestedInput
     UserRole?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutUserNestedInput
+    Members?: UserUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type QuestionAnswerUpsertWithWhereUniqueWithoutOrganisationStructureInput = {
@@ -25505,6 +25683,8 @@ export namespace Prisma {
     Organisation?: OrganisationCreateNestedOneWithoutOwnerInput
     UserRole?: UserRoleCreateNestedManyWithoutUserInput
     OrganisationStructure?: OrganisationStructureCreateNestedManyWithoutUserInput
+    Creator?: UserCreateNestedOneWithoutMembersInput
+    Members?: UserCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutQuestionAnswerInput = {
@@ -25532,9 +25712,11 @@ export namespace Prisma {
     lastLoginAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    creatorId?: number | null
     Organisation?: OrganisationUncheckedCreateNestedOneWithoutOwnerInput
     UserRole?: UserRoleUncheckedCreateNestedManyWithoutUserInput
     OrganisationStructure?: OrganisationStructureUncheckedCreateNestedManyWithoutUserInput
+    Members?: UserUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutQuestionAnswerInput = {
@@ -25816,6 +25998,8 @@ export namespace Prisma {
     Organisation?: OrganisationUpdateOneWithoutOwnerNestedInput
     UserRole?: UserRoleUpdateManyWithoutUserNestedInput
     OrganisationStructure?: OrganisationStructureUpdateManyWithoutUserNestedInput
+    Creator?: UserUpdateOneWithoutMembersNestedInput
+    Members?: UserUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutQuestionAnswerInput = {
@@ -25843,9 +26027,11 @@ export namespace Prisma {
     lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
     Organisation?: OrganisationUncheckedUpdateOneWithoutOwnerNestedInput
     UserRole?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
     OrganisationStructure?: OrganisationStructureUncheckedUpdateManyWithoutUserNestedInput
+    Members?: UserUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type AssessmentTeamUpsertWithoutQuestionAnswerInput = {
@@ -26686,6 +26872,147 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserCreateWithoutMembersInput = {
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    email: string
+    company?: string | null
+    password: string
+    rememberToken?: string | null
+    logo?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    disabled?: boolean
+    tfaSecret?: string | null
+    fpwToken?: string | null
+    qrCodeVisibility?: boolean
+    isDureation?: boolean
+    tfaStatus?: boolean
+    emailVerifiedAt?: Date | string | null
+    startDate?: Date | string | null
+    endDate?: Date | string | null
+    deletedAt?: Date | string | null
+    lastLoginAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Organisation?: OrganisationCreateNestedOneWithoutOwnerInput
+    UserRole?: UserRoleCreateNestedManyWithoutUserInput
+    OrganisationStructure?: OrganisationStructureCreateNestedManyWithoutUserInput
+    QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutUserInput
+    Creator?: UserCreateNestedOneWithoutMembersInput
+  }
+
+  export type UserUncheckedCreateWithoutMembersInput = {
+    id?: number
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    email: string
+    company?: string | null
+    password: string
+    rememberToken?: string | null
+    logo?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    disabled?: boolean
+    tfaSecret?: string | null
+    fpwToken?: string | null
+    qrCodeVisibility?: boolean
+    isDureation?: boolean
+    tfaStatus?: boolean
+    emailVerifiedAt?: Date | string | null
+    startDate?: Date | string | null
+    endDate?: Date | string | null
+    deletedAt?: Date | string | null
+    lastLoginAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    creatorId?: number | null
+    Organisation?: OrganisationUncheckedCreateNestedOneWithoutOwnerInput
+    UserRole?: UserRoleUncheckedCreateNestedManyWithoutUserInput
+    OrganisationStructure?: OrganisationStructureUncheckedCreateNestedManyWithoutUserInput
+    QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutMembersInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutMembersInput, UserUncheckedCreateWithoutMembersInput>
+  }
+
+  export type UserCreateWithoutCreatorInput = {
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    email: string
+    company?: string | null
+    password: string
+    rememberToken?: string | null
+    logo?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    disabled?: boolean
+    tfaSecret?: string | null
+    fpwToken?: string | null
+    qrCodeVisibility?: boolean
+    isDureation?: boolean
+    tfaStatus?: boolean
+    emailVerifiedAt?: Date | string | null
+    startDate?: Date | string | null
+    endDate?: Date | string | null
+    deletedAt?: Date | string | null
+    lastLoginAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Organisation?: OrganisationCreateNestedOneWithoutOwnerInput
+    UserRole?: UserRoleCreateNestedManyWithoutUserInput
+    OrganisationStructure?: OrganisationStructureCreateNestedManyWithoutUserInput
+    QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutUserInput
+    Members?: UserCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutCreatorInput = {
+    id?: number
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    email: string
+    company?: string | null
+    password: string
+    rememberToken?: string | null
+    logo?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    disabled?: boolean
+    tfaSecret?: string | null
+    fpwToken?: string | null
+    qrCodeVisibility?: boolean
+    isDureation?: boolean
+    tfaStatus?: boolean
+    emailVerifiedAt?: Date | string | null
+    startDate?: Date | string | null
+    endDate?: Date | string | null
+    deletedAt?: Date | string | null
+    lastLoginAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Organisation?: OrganisationUncheckedCreateNestedOneWithoutOwnerInput
+    UserRole?: UserRoleUncheckedCreateNestedManyWithoutUserInput
+    OrganisationStructure?: OrganisationStructureUncheckedCreateNestedManyWithoutUserInput
+    QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutUserInput
+    Members?: UserUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutCreatorInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCreatorInput, UserUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type UserCreateManyCreatorInputEnvelope = {
+    data: UserCreateManyCreatorInput | UserCreateManyCreatorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type OrganisationUpsertWithoutOwnerInput = {
     update: XOR<OrganisationUpdateWithoutOwnerInput, OrganisationUncheckedUpdateWithoutOwnerInput>
     create: XOR<OrganisationCreateWithoutOwnerInput, OrganisationUncheckedCreateWithoutOwnerInput>
@@ -26780,6 +27107,127 @@ export namespace Prisma {
     data: XOR<QuestionAnswerUpdateManyMutationInput, QuestionAnswerUncheckedUpdateManyWithoutUserInput>
   }
 
+  export type UserUpsertWithoutMembersInput = {
+    update: XOR<UserUpdateWithoutMembersInput, UserUncheckedUpdateWithoutMembersInput>
+    create: XOR<UserCreateWithoutMembersInput, UserUncheckedCreateWithoutMembersInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutMembersInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutMembersInput, UserUncheckedUpdateWithoutMembersInput>
+  }
+
+  export type UserUpdateWithoutMembersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
+    qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
+    isDureation?: BoolFieldUpdateOperationsInput | boolean
+    tfaStatus?: BoolFieldUpdateOperationsInput | boolean
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Organisation?: OrganisationUpdateOneWithoutOwnerNestedInput
+    UserRole?: UserRoleUpdateManyWithoutUserNestedInput
+    OrganisationStructure?: OrganisationStructureUpdateManyWithoutUserNestedInput
+    QuestionAnswer?: QuestionAnswerUpdateManyWithoutUserNestedInput
+    Creator?: UserUpdateOneWithoutMembersNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutMembersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
+    qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
+    isDureation?: BoolFieldUpdateOperationsInput | boolean
+    tfaStatus?: BoolFieldUpdateOperationsInput | boolean
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
+    Organisation?: OrganisationUncheckedUpdateOneWithoutOwnerNestedInput
+    UserRole?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
+    OrganisationStructure?: OrganisationStructureUncheckedUpdateManyWithoutUserNestedInput
+    QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUpsertWithWhereUniqueWithoutCreatorInput = {
+    where: UserWhereUniqueInput
+    update: XOR<UserUpdateWithoutCreatorInput, UserUncheckedUpdateWithoutCreatorInput>
+    create: XOR<UserCreateWithoutCreatorInput, UserUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type UserUpdateWithWhereUniqueWithoutCreatorInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutCreatorInput, UserUncheckedUpdateWithoutCreatorInput>
+  }
+
+  export type UserUpdateManyWithWhereWithoutCreatorInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutCreatorInput>
+  }
+
+  export type UserScalarWhereInput = {
+    AND?: UserScalarWhereInput | UserScalarWhereInput[]
+    OR?: UserScalarWhereInput[]
+    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
+    id?: IntFilter<"User"> | number
+    name?: StringFilter<"User"> | string
+    firstName?: StringNullableFilter<"User"> | string | null
+    lastName?: StringNullableFilter<"User"> | string | null
+    email?: StringFilter<"User"> | string
+    company?: StringNullableFilter<"User"> | string | null
+    password?: StringFilter<"User"> | string
+    rememberToken?: StringNullableFilter<"User"> | string | null
+    logo?: StringNullableFilter<"User"> | string | null
+    isActive?: BoolFilter<"User"> | boolean
+    isUnlock?: BoolFilter<"User"> | boolean
+    disabled?: BoolFilter<"User"> | boolean
+    tfaSecret?: StringNullableFilter<"User"> | string | null
+    fpwToken?: StringNullableFilter<"User"> | string | null
+    qrCodeVisibility?: BoolFilter<"User"> | boolean
+    isDureation?: BoolFilter<"User"> | boolean
+    tfaStatus?: BoolFilter<"User"> | boolean
+    emailVerifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    startDate?: DateTimeNullableFilter<"User"> | Date | string | null
+    endDate?: DateTimeNullableFilter<"User"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    lastLoginAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
+    creatorId?: IntNullableFilter<"User"> | number | null
+  }
+
   export type UserCreateWithoutUserRoleInput = {
     name: string
     firstName?: string | null
@@ -26807,6 +27255,8 @@ export namespace Prisma {
     Organisation?: OrganisationCreateNestedOneWithoutOwnerInput
     OrganisationStructure?: OrganisationStructureCreateNestedManyWithoutUserInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutUserInput
+    Creator?: UserCreateNestedOneWithoutMembersInput
+    Members?: UserCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutUserRoleInput = {
@@ -26834,9 +27284,11 @@ export namespace Prisma {
     lastLoginAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    creatorId?: number | null
     Organisation?: OrganisationUncheckedCreateNestedOneWithoutOwnerInput
     OrganisationStructure?: OrganisationStructureUncheckedCreateNestedManyWithoutUserInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutUserInput
+    Members?: UserUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutUserRoleInput = {
@@ -26908,6 +27360,8 @@ export namespace Prisma {
     Organisation?: OrganisationUpdateOneWithoutOwnerNestedInput
     OrganisationStructure?: OrganisationStructureUpdateManyWithoutUserNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutUserNestedInput
+    Creator?: UserUpdateOneWithoutMembersNestedInput
+    Members?: UserUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUserRoleInput = {
@@ -26935,9 +27389,11 @@ export namespace Prisma {
     lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatorId?: NullableIntFieldUpdateOperationsInput | number | null
     Organisation?: OrganisationUncheckedUpdateOneWithoutOwnerNestedInput
     OrganisationStructure?: OrganisationStructureUncheckedUpdateManyWithoutUserNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutUserNestedInput
+    Members?: UserUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type RoleUpsertWithoutUserRoleInput = {
@@ -28362,6 +28818,33 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type UserCreateManyCreatorInput = {
+    id?: number
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    email: string
+    company?: string | null
+    password: string
+    rememberToken?: string | null
+    logo?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    disabled?: boolean
+    tfaSecret?: string | null
+    fpwToken?: string | null
+    qrCodeVisibility?: boolean
+    isDureation?: boolean
+    tfaStatus?: boolean
+    emailVerifiedAt?: Date | string | null
+    startDate?: Date | string | null
+    endDate?: Date | string | null
+    deletedAt?: Date | string | null
+    lastLoginAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type UserRoleUpdateWithoutUserInput = {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
@@ -28491,6 +28974,96 @@ export namespace Prisma {
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     secretToken?: NullableStringFieldUpdateOperationsInput | string | null
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpdateWithoutCreatorInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
+    qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
+    isDureation?: BoolFieldUpdateOperationsInput | boolean
+    tfaStatus?: BoolFieldUpdateOperationsInput | boolean
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Organisation?: OrganisationUpdateOneWithoutOwnerNestedInput
+    UserRole?: UserRoleUpdateManyWithoutUserNestedInput
+    OrganisationStructure?: OrganisationStructureUpdateManyWithoutUserNestedInput
+    QuestionAnswer?: QuestionAnswerUpdateManyWithoutUserNestedInput
+    Members?: UserUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCreatorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
+    qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
+    isDureation?: BoolFieldUpdateOperationsInput | boolean
+    tfaStatus?: BoolFieldUpdateOperationsInput | boolean
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Organisation?: OrganisationUncheckedUpdateOneWithoutOwnerNestedInput
+    UserRole?: UserRoleUncheckedUpdateManyWithoutUserNestedInput
+    OrganisationStructure?: OrganisationStructureUncheckedUpdateManyWithoutUserNestedInput
+    QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutUserNestedInput
+    Members?: UserUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutCreatorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
+    qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
+    isDureation?: BoolFieldUpdateOperationsInput | boolean
+    tfaStatus?: BoolFieldUpdateOperationsInput | boolean
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
