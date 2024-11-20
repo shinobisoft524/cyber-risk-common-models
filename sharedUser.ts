@@ -64,4 +64,5 @@ export interface IUserListIteam {
 
 export interface IUserDetail extends IUserListIteam {
   roleTitles: IRoleTitle[];
+  password?: string;
 }
