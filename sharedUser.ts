@@ -49,6 +49,7 @@ export interface IUserListIteam {
     isActive: boolean;
   };
   lastLoginAt: Date;
+  endDate: Date;
   OrganisationStructure: {
     id: number;
     organisationId: number;
