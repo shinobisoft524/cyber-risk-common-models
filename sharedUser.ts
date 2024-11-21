@@ -50,6 +50,8 @@ export interface IUserListIteam {
   };
   lastLoginAt: Date;
   endDate: Date;
+  isActive: boolean;
+  isUnlock: boolean;
   OrganisationStructure: {
     id: number;
     organisationId: number;
