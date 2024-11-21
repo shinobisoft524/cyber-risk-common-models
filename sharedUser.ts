@@ -53,7 +53,7 @@ export interface IUserListIteam {
     id: number;
     organisationId: number;
     isActive: boolean;
-    Team: {
+    Team?: {
       id: number;
       name: string;
       isActive: boolean;
