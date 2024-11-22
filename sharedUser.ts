@@ -1,3 +1,4 @@
+import { RoleTitles } from '@/cmodels';
 import { IRoleTitle } from './structure';
 
 export interface IAdminUser {
@@ -68,4 +69,5 @@ export interface IUserListIteam {
 export interface IUserDetail extends IUserListIteam {
   roleTitles: IRoleTitle[];
   password?: string;
+  workerTitle?: RoleTitles;
 }
