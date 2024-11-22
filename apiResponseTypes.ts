@@ -170,6 +170,8 @@ export interface IteamDetail {
       isActive: boolean;
       isUnlock: boolean;
     };
+    isSelected?: boolean;
+    action?: 'Non' | 'Everything' | 'Nothing';
   }[];
   role?: RoleTitles;
 }
