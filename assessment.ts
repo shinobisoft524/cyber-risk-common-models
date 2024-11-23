@@ -39,3 +39,19 @@ export interface IQuestionMongo {
   }[];
   _info?: any;
 }
+
+export enum AssessmentConfig {
+  ViewMode = 'ViewMode',
+  SaveMode = 'SaveMode',
+}
+
+export enum ViewMode {
+  Full = 'Full',
+  Single = 'Single',
+  Page = 'Page',
+  Five = 'Five',
+  Ten = 'Ten',
+  Twenty = 'Twenty',
+  Fifty = 'Fifty',
+  Hundred = 'Hundred',
+}
