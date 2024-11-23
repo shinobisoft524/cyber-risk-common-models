@@ -24,6 +24,11 @@ export type Assessment = $Result.DefaultSelection<Prisma.$AssessmentPayload>
  */
 export type AssessmentQuestion = $Result.DefaultSelection<Prisma.$AssessmentQuestionPayload>
 /**
+ * Model AssessmentSetting
+ * 
+ */
+export type AssessmentSetting = $Result.DefaultSelection<Prisma.$AssessmentSettingPayload>
+/**
  * Model AssessmentTeam
  * 
  */
@@ -97,6 +102,14 @@ export namespace $Enums {
 export type AnswerType = (typeof AnswerType)[keyof typeof AnswerType]
 
 
+export const AssessmentConfig: {
+  ViewMode: 'ViewMode',
+  SaveMode: 'SaveMode'
+};
+
+export type AssessmentConfig = (typeof AssessmentConfig)[keyof typeof AssessmentConfig]
+
+
 export const TeamType: {
   Owner: 'Owner',
   Manager: 'Manager',
@@ -121,6 +134,10 @@ export type AnswerMode = (typeof AnswerMode)[keyof typeof AnswerMode]
 export type AnswerType = $Enums.AnswerType
 
 export const AnswerType: typeof $Enums.AnswerType
+
+export type AssessmentConfig = $Enums.AssessmentConfig
+
+export const AssessmentConfig: typeof $Enums.AssessmentConfig
 
 export type TeamType = $Enums.TeamType
 
@@ -272,6 +289,16 @@ export class PrismaClient<
     * ```
     */
   get assessmentQuestion(): Prisma.AssessmentQuestionDelegate<ExtArgs>;
+
+  /**
+   * `prisma.assessmentSetting`: Exposes CRUD operations for the **AssessmentSetting** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AssessmentSettings
+    * const assessmentSettings = await prisma.assessmentSetting.findMany()
+    * ```
+    */
+  get assessmentSetting(): Prisma.AssessmentSettingDelegate<ExtArgs>;
 
   /**
    * `prisma.assessmentTeam`: Exposes CRUD operations for the **AssessmentTeam** model.
@@ -833,6 +860,7 @@ export namespace Prisma {
   export const ModelName: {
     Assessment: 'Assessment',
     AssessmentQuestion: 'AssessmentQuestion',
+    AssessmentSetting: 'AssessmentSetting',
     AssessmentTeam: 'AssessmentTeam',
     Organisation: 'Organisation',
     OrganisationRole: 'OrganisationRole',
@@ -860,7 +888,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "assessment" | "assessmentQuestion" | "assessmentTeam" | "organisation" | "organisationRole" | "organisationStructure" | "organisationTemplate" | "questionAnswer" | "role" | "team" | "template" | "templateStage" | "user" | "userRole"
+      modelProps: "assessment" | "assessmentQuestion" | "assessmentSetting" | "assessmentTeam" | "organisation" | "organisationRole" | "organisationStructure" | "organisationTemplate" | "questionAnswer" | "role" | "team" | "template" | "templateStage" | "user" | "userRole"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -993,6 +1021,72 @@ export namespace Prisma {
           count: {
             args: Prisma.AssessmentQuestionCountArgs<ExtArgs>
             result: $Utils.Optional<AssessmentQuestionCountAggregateOutputType> | number
+          }
+        }
+      }
+      AssessmentSetting: {
+        payload: Prisma.$AssessmentSettingPayload<ExtArgs>
+        fields: Prisma.AssessmentSettingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AssessmentSettingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentSettingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AssessmentSettingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentSettingPayload>
+          }
+          findFirst: {
+            args: Prisma.AssessmentSettingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentSettingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AssessmentSettingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentSettingPayload>
+          }
+          findMany: {
+            args: Prisma.AssessmentSettingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentSettingPayload>[]
+          }
+          create: {
+            args: Prisma.AssessmentSettingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentSettingPayload>
+          }
+          createMany: {
+            args: Prisma.AssessmentSettingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.AssessmentSettingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentSettingPayload>
+          }
+          update: {
+            args: Prisma.AssessmentSettingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentSettingPayload>
+          }
+          deleteMany: {
+            args: Prisma.AssessmentSettingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AssessmentSettingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AssessmentSettingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentSettingPayload>
+          }
+          aggregate: {
+            args: Prisma.AssessmentSettingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAssessmentSetting>
+          }
+          groupBy: {
+            args: Prisma.AssessmentSettingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AssessmentSettingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AssessmentSettingCountArgs<ExtArgs>
+            result: $Utils.Optional<AssessmentSettingCountAggregateOutputType> | number
           }
         }
       }
@@ -1952,12 +2046,14 @@ export namespace Prisma {
     AssessmentQuestion: number
     AssessmentTeam: number
     QuestionAnswer: number
+    AssessmentSetting: number
   }
 
   export type AssessmentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     AssessmentQuestion?: boolean | AssessmentCountOutputTypeCountAssessmentQuestionArgs
     AssessmentTeam?: boolean | AssessmentCountOutputTypeCountAssessmentTeamArgs
     QuestionAnswer?: boolean | AssessmentCountOutputTypeCountQuestionAnswerArgs
+    AssessmentSetting?: boolean | AssessmentCountOutputTypeCountAssessmentSettingArgs
   }
 
   // Custom InputTypes
@@ -1990,6 +2086,13 @@ export namespace Prisma {
    */
   export type AssessmentCountOutputTypeCountQuestionAnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: QuestionAnswerWhereInput
+  }
+
+  /**
+   * AssessmentCountOutputType without action
+   */
+  export type AssessmentCountOutputTypeCountAssessmentSettingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AssessmentSettingWhereInput
   }
 
 
@@ -2667,6 +2770,7 @@ export namespace Prisma {
     OrganisationTemplate?: boolean | Assessment$OrganisationTemplateArgs<ExtArgs>
     AssessmentTeam?: boolean | Assessment$AssessmentTeamArgs<ExtArgs>
     QuestionAnswer?: boolean | Assessment$QuestionAnswerArgs<ExtArgs>
+    AssessmentSetting?: boolean | Assessment$AssessmentSettingArgs<ExtArgs>
     _count?: boolean | AssessmentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["assessment"]>
 
@@ -2694,6 +2798,7 @@ export namespace Prisma {
     OrganisationTemplate?: boolean | Assessment$OrganisationTemplateArgs<ExtArgs>
     AssessmentTeam?: boolean | Assessment$AssessmentTeamArgs<ExtArgs>
     QuestionAnswer?: boolean | Assessment$QuestionAnswerArgs<ExtArgs>
+    AssessmentSetting?: boolean | Assessment$AssessmentSettingArgs<ExtArgs>
     _count?: boolean | AssessmentCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2705,6 +2810,7 @@ export namespace Prisma {
       OrganisationTemplate: Prisma.$OrganisationTemplatePayload<ExtArgs> | null
       AssessmentTeam: Prisma.$AssessmentTeamPayload<ExtArgs>[]
       QuestionAnswer: Prisma.$QuestionAnswerPayload<ExtArgs>[]
+      AssessmentSetting: Prisma.$AssessmentSettingPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3066,6 +3172,7 @@ export namespace Prisma {
     OrganisationTemplate<T extends Assessment$OrganisationTemplateArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$OrganisationTemplateArgs<ExtArgs>>): Prisma__OrganisationTemplateClient<$Result.GetResult<Prisma.$OrganisationTemplatePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     AssessmentTeam<T extends Assessment$AssessmentTeamArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$AssessmentTeamArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentTeamPayload<ExtArgs>, T, "findMany"> | Null>
     QuestionAnswer<T extends Assessment$QuestionAnswerArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$QuestionAnswerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuestionAnswerPayload<ExtArgs>, T, "findMany"> | Null>
+    AssessmentSetting<T extends Assessment$AssessmentSettingArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$AssessmentSettingArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentSettingPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3480,6 +3587,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: QuestionAnswerScalarFieldEnum | QuestionAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * Assessment.AssessmentSetting
+   */
+  export type Assessment$AssessmentSettingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentSetting
+     */
+    select?: AssessmentSettingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentSettingInclude<ExtArgs> | null
+    where?: AssessmentSettingWhereInput
+    orderBy?: AssessmentSettingOrderByWithRelationInput | AssessmentSettingOrderByWithRelationInput[]
+    cursor?: AssessmentSettingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AssessmentSettingScalarFieldEnum | AssessmentSettingScalarFieldEnum[]
   }
 
   /**
@@ -4496,6 +4623,1000 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: AssessmentQuestionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AssessmentSetting
+   */
+
+  export type AggregateAssessmentSetting = {
+    _count: AssessmentSettingCountAggregateOutputType | null
+    _avg: AssessmentSettingAvgAggregateOutputType | null
+    _sum: AssessmentSettingSumAggregateOutputType | null
+    _min: AssessmentSettingMinAggregateOutputType | null
+    _max: AssessmentSettingMaxAggregateOutputType | null
+  }
+
+  export type AssessmentSettingAvgAggregateOutputType = {
+    id: number | null
+    assessmentId: number | null
+  }
+
+  export type AssessmentSettingSumAggregateOutputType = {
+    id: number | null
+    assessmentId: number | null
+  }
+
+  export type AssessmentSettingMinAggregateOutputType = {
+    id: number | null
+    name: $Enums.AssessmentConfig | null
+    value: string | null
+    assessmentId: number | null
+    password: string | null
+    rememberToken: string | null
+    isActive: boolean | null
+    isUnlock: boolean | null
+    secretToken: string | null
+    tfaToken: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AssessmentSettingMaxAggregateOutputType = {
+    id: number | null
+    name: $Enums.AssessmentConfig | null
+    value: string | null
+    assessmentId: number | null
+    password: string | null
+    rememberToken: string | null
+    isActive: boolean | null
+    isUnlock: boolean | null
+    secretToken: string | null
+    tfaToken: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AssessmentSettingCountAggregateOutputType = {
+    id: number
+    name: number
+    value: number
+    assessmentId: number
+    password: number
+    rememberToken: number
+    isActive: number
+    isUnlock: number
+    secretToken: number
+    tfaToken: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AssessmentSettingAvgAggregateInputType = {
+    id?: true
+    assessmentId?: true
+  }
+
+  export type AssessmentSettingSumAggregateInputType = {
+    id?: true
+    assessmentId?: true
+  }
+
+  export type AssessmentSettingMinAggregateInputType = {
+    id?: true
+    name?: true
+    value?: true
+    assessmentId?: true
+    password?: true
+    rememberToken?: true
+    isActive?: true
+    isUnlock?: true
+    secretToken?: true
+    tfaToken?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AssessmentSettingMaxAggregateInputType = {
+    id?: true
+    name?: true
+    value?: true
+    assessmentId?: true
+    password?: true
+    rememberToken?: true
+    isActive?: true
+    isUnlock?: true
+    secretToken?: true
+    tfaToken?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AssessmentSettingCountAggregateInputType = {
+    id?: true
+    name?: true
+    value?: true
+    assessmentId?: true
+    password?: true
+    rememberToken?: true
+    isActive?: true
+    isUnlock?: true
+    secretToken?: true
+    tfaToken?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AssessmentSettingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AssessmentSetting to aggregate.
+     */
+    where?: AssessmentSettingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AssessmentSettings to fetch.
+     */
+    orderBy?: AssessmentSettingOrderByWithRelationInput | AssessmentSettingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AssessmentSettingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AssessmentSettings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AssessmentSettings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AssessmentSettings
+    **/
+    _count?: true | AssessmentSettingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AssessmentSettingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AssessmentSettingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AssessmentSettingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AssessmentSettingMaxAggregateInputType
+  }
+
+  export type GetAssessmentSettingAggregateType<T extends AssessmentSettingAggregateArgs> = {
+        [P in keyof T & keyof AggregateAssessmentSetting]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAssessmentSetting[P]>
+      : GetScalarType<T[P], AggregateAssessmentSetting[P]>
+  }
+
+
+
+
+  export type AssessmentSettingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AssessmentSettingWhereInput
+    orderBy?: AssessmentSettingOrderByWithAggregationInput | AssessmentSettingOrderByWithAggregationInput[]
+    by: AssessmentSettingScalarFieldEnum[] | AssessmentSettingScalarFieldEnum
+    having?: AssessmentSettingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AssessmentSettingCountAggregateInputType | true
+    _avg?: AssessmentSettingAvgAggregateInputType
+    _sum?: AssessmentSettingSumAggregateInputType
+    _min?: AssessmentSettingMinAggregateInputType
+    _max?: AssessmentSettingMaxAggregateInputType
+  }
+
+  export type AssessmentSettingGroupByOutputType = {
+    id: number
+    name: $Enums.AssessmentConfig
+    value: string
+    assessmentId: number
+    password: string | null
+    rememberToken: string | null
+    isActive: boolean
+    isUnlock: boolean
+    secretToken: string | null
+    tfaToken: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: AssessmentSettingCountAggregateOutputType | null
+    _avg: AssessmentSettingAvgAggregateOutputType | null
+    _sum: AssessmentSettingSumAggregateOutputType | null
+    _min: AssessmentSettingMinAggregateOutputType | null
+    _max: AssessmentSettingMaxAggregateOutputType | null
+  }
+
+  type GetAssessmentSettingGroupByPayload<T extends AssessmentSettingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AssessmentSettingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AssessmentSettingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AssessmentSettingGroupByOutputType[P]>
+            : GetScalarType<T[P], AssessmentSettingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AssessmentSettingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    value?: boolean
+    assessmentId?: boolean
+    password?: boolean
+    rememberToken?: boolean
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: boolean
+    tfaToken?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    Assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["assessmentSetting"]>
+
+
+  export type AssessmentSettingSelectScalar = {
+    id?: boolean
+    name?: boolean
+    value?: boolean
+    assessmentId?: boolean
+    password?: boolean
+    rememberToken?: boolean
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: boolean
+    tfaToken?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type AssessmentSettingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
+  }
+
+  export type $AssessmentSettingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AssessmentSetting"
+    objects: {
+      Assessment: Prisma.$AssessmentPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: $Enums.AssessmentConfig
+      value: string
+      assessmentId: number
+      password: string | null
+      rememberToken: string | null
+      isActive: boolean
+      isUnlock: boolean
+      secretToken: string | null
+      tfaToken: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["assessmentSetting"]>
+    composites: {}
+  }
+
+  type AssessmentSettingGetPayload<S extends boolean | null | undefined | AssessmentSettingDefaultArgs> = $Result.GetResult<Prisma.$AssessmentSettingPayload, S>
+
+  type AssessmentSettingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<AssessmentSettingFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: AssessmentSettingCountAggregateInputType | true
+    }
+
+  export interface AssessmentSettingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AssessmentSetting'], meta: { name: 'AssessmentSetting' } }
+    /**
+     * Find zero or one AssessmentSetting that matches the filter.
+     * @param {AssessmentSettingFindUniqueArgs} args - Arguments to find a AssessmentSetting
+     * @example
+     * // Get one AssessmentSetting
+     * const assessmentSetting = await prisma.assessmentSetting.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AssessmentSettingFindUniqueArgs>(args: SelectSubset<T, AssessmentSettingFindUniqueArgs<ExtArgs>>): Prisma__AssessmentSettingClient<$Result.GetResult<Prisma.$AssessmentSettingPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one AssessmentSetting that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {AssessmentSettingFindUniqueOrThrowArgs} args - Arguments to find a AssessmentSetting
+     * @example
+     * // Get one AssessmentSetting
+     * const assessmentSetting = await prisma.assessmentSetting.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AssessmentSettingFindUniqueOrThrowArgs>(args: SelectSubset<T, AssessmentSettingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AssessmentSettingClient<$Result.GetResult<Prisma.$AssessmentSettingPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first AssessmentSetting that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentSettingFindFirstArgs} args - Arguments to find a AssessmentSetting
+     * @example
+     * // Get one AssessmentSetting
+     * const assessmentSetting = await prisma.assessmentSetting.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AssessmentSettingFindFirstArgs>(args?: SelectSubset<T, AssessmentSettingFindFirstArgs<ExtArgs>>): Prisma__AssessmentSettingClient<$Result.GetResult<Prisma.$AssessmentSettingPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first AssessmentSetting that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentSettingFindFirstOrThrowArgs} args - Arguments to find a AssessmentSetting
+     * @example
+     * // Get one AssessmentSetting
+     * const assessmentSetting = await prisma.assessmentSetting.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AssessmentSettingFindFirstOrThrowArgs>(args?: SelectSubset<T, AssessmentSettingFindFirstOrThrowArgs<ExtArgs>>): Prisma__AssessmentSettingClient<$Result.GetResult<Prisma.$AssessmentSettingPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more AssessmentSettings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentSettingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AssessmentSettings
+     * const assessmentSettings = await prisma.assessmentSetting.findMany()
+     * 
+     * // Get first 10 AssessmentSettings
+     * const assessmentSettings = await prisma.assessmentSetting.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const assessmentSettingWithIdOnly = await prisma.assessmentSetting.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AssessmentSettingFindManyArgs>(args?: SelectSubset<T, AssessmentSettingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentSettingPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a AssessmentSetting.
+     * @param {AssessmentSettingCreateArgs} args - Arguments to create a AssessmentSetting.
+     * @example
+     * // Create one AssessmentSetting
+     * const AssessmentSetting = await prisma.assessmentSetting.create({
+     *   data: {
+     *     // ... data to create a AssessmentSetting
+     *   }
+     * })
+     * 
+     */
+    create<T extends AssessmentSettingCreateArgs>(args: SelectSubset<T, AssessmentSettingCreateArgs<ExtArgs>>): Prisma__AssessmentSettingClient<$Result.GetResult<Prisma.$AssessmentSettingPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many AssessmentSettings.
+     * @param {AssessmentSettingCreateManyArgs} args - Arguments to create many AssessmentSettings.
+     * @example
+     * // Create many AssessmentSettings
+     * const assessmentSetting = await prisma.assessmentSetting.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AssessmentSettingCreateManyArgs>(args?: SelectSubset<T, AssessmentSettingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a AssessmentSetting.
+     * @param {AssessmentSettingDeleteArgs} args - Arguments to delete one AssessmentSetting.
+     * @example
+     * // Delete one AssessmentSetting
+     * const AssessmentSetting = await prisma.assessmentSetting.delete({
+     *   where: {
+     *     // ... filter to delete one AssessmentSetting
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AssessmentSettingDeleteArgs>(args: SelectSubset<T, AssessmentSettingDeleteArgs<ExtArgs>>): Prisma__AssessmentSettingClient<$Result.GetResult<Prisma.$AssessmentSettingPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one AssessmentSetting.
+     * @param {AssessmentSettingUpdateArgs} args - Arguments to update one AssessmentSetting.
+     * @example
+     * // Update one AssessmentSetting
+     * const assessmentSetting = await prisma.assessmentSetting.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AssessmentSettingUpdateArgs>(args: SelectSubset<T, AssessmentSettingUpdateArgs<ExtArgs>>): Prisma__AssessmentSettingClient<$Result.GetResult<Prisma.$AssessmentSettingPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more AssessmentSettings.
+     * @param {AssessmentSettingDeleteManyArgs} args - Arguments to filter AssessmentSettings to delete.
+     * @example
+     * // Delete a few AssessmentSettings
+     * const { count } = await prisma.assessmentSetting.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AssessmentSettingDeleteManyArgs>(args?: SelectSubset<T, AssessmentSettingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AssessmentSettings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentSettingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AssessmentSettings
+     * const assessmentSetting = await prisma.assessmentSetting.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AssessmentSettingUpdateManyArgs>(args: SelectSubset<T, AssessmentSettingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one AssessmentSetting.
+     * @param {AssessmentSettingUpsertArgs} args - Arguments to update or create a AssessmentSetting.
+     * @example
+     * // Update or create a AssessmentSetting
+     * const assessmentSetting = await prisma.assessmentSetting.upsert({
+     *   create: {
+     *     // ... data to create a AssessmentSetting
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AssessmentSetting we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AssessmentSettingUpsertArgs>(args: SelectSubset<T, AssessmentSettingUpsertArgs<ExtArgs>>): Prisma__AssessmentSettingClient<$Result.GetResult<Prisma.$AssessmentSettingPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of AssessmentSettings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentSettingCountArgs} args - Arguments to filter AssessmentSettings to count.
+     * @example
+     * // Count the number of AssessmentSettings
+     * const count = await prisma.assessmentSetting.count({
+     *   where: {
+     *     // ... the filter for the AssessmentSettings we want to count
+     *   }
+     * })
+    **/
+    count<T extends AssessmentSettingCountArgs>(
+      args?: Subset<T, AssessmentSettingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AssessmentSettingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AssessmentSetting.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentSettingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AssessmentSettingAggregateArgs>(args: Subset<T, AssessmentSettingAggregateArgs>): Prisma.PrismaPromise<GetAssessmentSettingAggregateType<T>>
+
+    /**
+     * Group by AssessmentSetting.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentSettingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AssessmentSettingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AssessmentSettingGroupByArgs['orderBy'] }
+        : { orderBy?: AssessmentSettingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AssessmentSettingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAssessmentSettingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AssessmentSetting model
+   */
+  readonly fields: AssessmentSettingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AssessmentSetting.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AssessmentSettingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Assessment<T extends AssessmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AssessmentDefaultArgs<ExtArgs>>): Prisma__AssessmentClient<$Result.GetResult<Prisma.$AssessmentPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AssessmentSetting model
+   */ 
+  interface AssessmentSettingFieldRefs {
+    readonly id: FieldRef<"AssessmentSetting", 'Int'>
+    readonly name: FieldRef<"AssessmentSetting", 'AssessmentConfig'>
+    readonly value: FieldRef<"AssessmentSetting", 'String'>
+    readonly assessmentId: FieldRef<"AssessmentSetting", 'Int'>
+    readonly password: FieldRef<"AssessmentSetting", 'String'>
+    readonly rememberToken: FieldRef<"AssessmentSetting", 'String'>
+    readonly isActive: FieldRef<"AssessmentSetting", 'Boolean'>
+    readonly isUnlock: FieldRef<"AssessmentSetting", 'Boolean'>
+    readonly secretToken: FieldRef<"AssessmentSetting", 'String'>
+    readonly tfaToken: FieldRef<"AssessmentSetting", 'String'>
+    readonly createdAt: FieldRef<"AssessmentSetting", 'DateTime'>
+    readonly updatedAt: FieldRef<"AssessmentSetting", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AssessmentSetting findUnique
+   */
+  export type AssessmentSettingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentSetting
+     */
+    select?: AssessmentSettingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentSettingInclude<ExtArgs> | null
+    /**
+     * Filter, which AssessmentSetting to fetch.
+     */
+    where: AssessmentSettingWhereUniqueInput
+  }
+
+  /**
+   * AssessmentSetting findUniqueOrThrow
+   */
+  export type AssessmentSettingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentSetting
+     */
+    select?: AssessmentSettingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentSettingInclude<ExtArgs> | null
+    /**
+     * Filter, which AssessmentSetting to fetch.
+     */
+    where: AssessmentSettingWhereUniqueInput
+  }
+
+  /**
+   * AssessmentSetting findFirst
+   */
+  export type AssessmentSettingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentSetting
+     */
+    select?: AssessmentSettingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentSettingInclude<ExtArgs> | null
+    /**
+     * Filter, which AssessmentSetting to fetch.
+     */
+    where?: AssessmentSettingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AssessmentSettings to fetch.
+     */
+    orderBy?: AssessmentSettingOrderByWithRelationInput | AssessmentSettingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AssessmentSettings.
+     */
+    cursor?: AssessmentSettingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AssessmentSettings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AssessmentSettings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AssessmentSettings.
+     */
+    distinct?: AssessmentSettingScalarFieldEnum | AssessmentSettingScalarFieldEnum[]
+  }
+
+  /**
+   * AssessmentSetting findFirstOrThrow
+   */
+  export type AssessmentSettingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentSetting
+     */
+    select?: AssessmentSettingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentSettingInclude<ExtArgs> | null
+    /**
+     * Filter, which AssessmentSetting to fetch.
+     */
+    where?: AssessmentSettingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AssessmentSettings to fetch.
+     */
+    orderBy?: AssessmentSettingOrderByWithRelationInput | AssessmentSettingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AssessmentSettings.
+     */
+    cursor?: AssessmentSettingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AssessmentSettings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AssessmentSettings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AssessmentSettings.
+     */
+    distinct?: AssessmentSettingScalarFieldEnum | AssessmentSettingScalarFieldEnum[]
+  }
+
+  /**
+   * AssessmentSetting findMany
+   */
+  export type AssessmentSettingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentSetting
+     */
+    select?: AssessmentSettingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentSettingInclude<ExtArgs> | null
+    /**
+     * Filter, which AssessmentSettings to fetch.
+     */
+    where?: AssessmentSettingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AssessmentSettings to fetch.
+     */
+    orderBy?: AssessmentSettingOrderByWithRelationInput | AssessmentSettingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AssessmentSettings.
+     */
+    cursor?: AssessmentSettingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AssessmentSettings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AssessmentSettings.
+     */
+    skip?: number
+    distinct?: AssessmentSettingScalarFieldEnum | AssessmentSettingScalarFieldEnum[]
+  }
+
+  /**
+   * AssessmentSetting create
+   */
+  export type AssessmentSettingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentSetting
+     */
+    select?: AssessmentSettingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentSettingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AssessmentSetting.
+     */
+    data: XOR<AssessmentSettingCreateInput, AssessmentSettingUncheckedCreateInput>
+  }
+
+  /**
+   * AssessmentSetting createMany
+   */
+  export type AssessmentSettingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AssessmentSettings.
+     */
+    data: AssessmentSettingCreateManyInput | AssessmentSettingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AssessmentSetting update
+   */
+  export type AssessmentSettingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentSetting
+     */
+    select?: AssessmentSettingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentSettingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AssessmentSetting.
+     */
+    data: XOR<AssessmentSettingUpdateInput, AssessmentSettingUncheckedUpdateInput>
+    /**
+     * Choose, which AssessmentSetting to update.
+     */
+    where: AssessmentSettingWhereUniqueInput
+  }
+
+  /**
+   * AssessmentSetting updateMany
+   */
+  export type AssessmentSettingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AssessmentSettings.
+     */
+    data: XOR<AssessmentSettingUpdateManyMutationInput, AssessmentSettingUncheckedUpdateManyInput>
+    /**
+     * Filter which AssessmentSettings to update
+     */
+    where?: AssessmentSettingWhereInput
+  }
+
+  /**
+   * AssessmentSetting upsert
+   */
+  export type AssessmentSettingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentSetting
+     */
+    select?: AssessmentSettingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentSettingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AssessmentSetting to update in case it exists.
+     */
+    where: AssessmentSettingWhereUniqueInput
+    /**
+     * In case the AssessmentSetting found by the `where` argument doesn't exist, create a new AssessmentSetting with this data.
+     */
+    create: XOR<AssessmentSettingCreateInput, AssessmentSettingUncheckedCreateInput>
+    /**
+     * In case the AssessmentSetting was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AssessmentSettingUpdateInput, AssessmentSettingUncheckedUpdateInput>
+  }
+
+  /**
+   * AssessmentSetting delete
+   */
+  export type AssessmentSettingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentSetting
+     */
+    select?: AssessmentSettingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentSettingInclude<ExtArgs> | null
+    /**
+     * Filter which AssessmentSetting to delete.
+     */
+    where: AssessmentSettingWhereUniqueInput
+  }
+
+  /**
+   * AssessmentSetting deleteMany
+   */
+  export type AssessmentSettingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AssessmentSettings to delete
+     */
+    where?: AssessmentSettingWhereInput
+  }
+
+  /**
+   * AssessmentSetting without action
+   */
+  export type AssessmentSettingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentSetting
+     */
+    select?: AssessmentSettingSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentSettingInclude<ExtArgs> | null
   }
 
 
@@ -17234,6 +18355,24 @@ export namespace Prisma {
   export type AssessmentQuestionScalarFieldEnum = (typeof AssessmentQuestionScalarFieldEnum)[keyof typeof AssessmentQuestionScalarFieldEnum]
 
 
+  export const AssessmentSettingScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    value: 'value',
+    assessmentId: 'assessmentId',
+    password: 'password',
+    rememberToken: 'rememberToken',
+    isActive: 'isActive',
+    isUnlock: 'isUnlock',
+    secretToken: 'secretToken',
+    tfaToken: 'tfaToken',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AssessmentSettingScalarFieldEnum = (typeof AssessmentSettingScalarFieldEnum)[keyof typeof AssessmentSettingScalarFieldEnum]
+
+
   export const AssessmentTeamScalarFieldEnum: {
     id: 'id',
     assessmentId: 'assessmentId',
@@ -17506,6 +18645,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'AssessmentConfig'
+   */
+  export type EnumAssessmentConfigFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AssessmentConfig'>
+    
+
+
+  /**
    * Reference to a field of type 'TeamType'
    */
   export type EnumTeamTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TeamType'>
@@ -17552,6 +18698,7 @@ export namespace Prisma {
     OrganisationTemplate?: XOR<OrganisationTemplateNullableRelationFilter, OrganisationTemplateWhereInput> | null
     AssessmentTeam?: AssessmentTeamListRelationFilter
     QuestionAnswer?: QuestionAnswerListRelationFilter
+    AssessmentSetting?: AssessmentSettingListRelationFilter
   }
 
   export type AssessmentOrderByWithRelationInput = {
@@ -17574,6 +18721,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateOrderByWithRelationInput
     AssessmentTeam?: AssessmentTeamOrderByRelationAggregateInput
     QuestionAnswer?: QuestionAnswerOrderByRelationAggregateInput
+    AssessmentSetting?: AssessmentSettingOrderByRelationAggregateInput
   }
 
   export type AssessmentWhereUniqueInput = Prisma.AtLeast<{
@@ -17599,6 +18747,7 @@ export namespace Prisma {
     OrganisationTemplate?: XOR<OrganisationTemplateNullableRelationFilter, OrganisationTemplateWhereInput> | null
     AssessmentTeam?: AssessmentTeamListRelationFilter
     QuestionAnswer?: QuestionAnswerListRelationFilter
+    AssessmentSetting?: AssessmentSettingListRelationFilter
   }, "id" | "id">
 
   export type AssessmentOrderByWithAggregationInput = {
@@ -17727,6 +18876,98 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"AssessmentQuestion"> | Date | string
     confirmedAnswerId?: IntNullableWithAggregatesFilter<"AssessmentQuestion"> | number | null
     answerType?: EnumAnswerTypeNullableWithAggregatesFilter<"AssessmentQuestion"> | $Enums.AnswerType | null
+  }
+
+  export type AssessmentSettingWhereInput = {
+    AND?: AssessmentSettingWhereInput | AssessmentSettingWhereInput[]
+    OR?: AssessmentSettingWhereInput[]
+    NOT?: AssessmentSettingWhereInput | AssessmentSettingWhereInput[]
+    id?: IntFilter<"AssessmentSetting"> | number
+    name?: EnumAssessmentConfigFilter<"AssessmentSetting"> | $Enums.AssessmentConfig
+    value?: StringFilter<"AssessmentSetting"> | string
+    assessmentId?: IntFilter<"AssessmentSetting"> | number
+    password?: StringNullableFilter<"AssessmentSetting"> | string | null
+    rememberToken?: StringNullableFilter<"AssessmentSetting"> | string | null
+    isActive?: BoolFilter<"AssessmentSetting"> | boolean
+    isUnlock?: BoolFilter<"AssessmentSetting"> | boolean
+    secretToken?: StringNullableFilter<"AssessmentSetting"> | string | null
+    tfaToken?: StringNullableFilter<"AssessmentSetting"> | string | null
+    createdAt?: DateTimeFilter<"AssessmentSetting"> | Date | string
+    updatedAt?: DateTimeFilter<"AssessmentSetting"> | Date | string
+    Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
+  }
+
+  export type AssessmentSettingOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    assessmentId?: SortOrder
+    password?: SortOrderInput | SortOrder
+    rememberToken?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    isUnlock?: SortOrder
+    secretToken?: SortOrderInput | SortOrder
+    tfaToken?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    Assessment?: AssessmentOrderByWithRelationInput
+  }
+
+  export type AssessmentSettingWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: AssessmentSettingWhereInput | AssessmentSettingWhereInput[]
+    OR?: AssessmentSettingWhereInput[]
+    NOT?: AssessmentSettingWhereInput | AssessmentSettingWhereInput[]
+    name?: EnumAssessmentConfigFilter<"AssessmentSetting"> | $Enums.AssessmentConfig
+    value?: StringFilter<"AssessmentSetting"> | string
+    assessmentId?: IntFilter<"AssessmentSetting"> | number
+    password?: StringNullableFilter<"AssessmentSetting"> | string | null
+    rememberToken?: StringNullableFilter<"AssessmentSetting"> | string | null
+    isActive?: BoolFilter<"AssessmentSetting"> | boolean
+    isUnlock?: BoolFilter<"AssessmentSetting"> | boolean
+    secretToken?: StringNullableFilter<"AssessmentSetting"> | string | null
+    tfaToken?: StringNullableFilter<"AssessmentSetting"> | string | null
+    createdAt?: DateTimeFilter<"AssessmentSetting"> | Date | string
+    updatedAt?: DateTimeFilter<"AssessmentSetting"> | Date | string
+    Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
+  }, "id" | "id">
+
+  export type AssessmentSettingOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    assessmentId?: SortOrder
+    password?: SortOrderInput | SortOrder
+    rememberToken?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    isUnlock?: SortOrder
+    secretToken?: SortOrderInput | SortOrder
+    tfaToken?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AssessmentSettingCountOrderByAggregateInput
+    _avg?: AssessmentSettingAvgOrderByAggregateInput
+    _max?: AssessmentSettingMaxOrderByAggregateInput
+    _min?: AssessmentSettingMinOrderByAggregateInput
+    _sum?: AssessmentSettingSumOrderByAggregateInput
+  }
+
+  export type AssessmentSettingScalarWhereWithAggregatesInput = {
+    AND?: AssessmentSettingScalarWhereWithAggregatesInput | AssessmentSettingScalarWhereWithAggregatesInput[]
+    OR?: AssessmentSettingScalarWhereWithAggregatesInput[]
+    NOT?: AssessmentSettingScalarWhereWithAggregatesInput | AssessmentSettingScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"AssessmentSetting"> | number
+    name?: EnumAssessmentConfigWithAggregatesFilter<"AssessmentSetting"> | $Enums.AssessmentConfig
+    value?: StringWithAggregatesFilter<"AssessmentSetting"> | string
+    assessmentId?: IntWithAggregatesFilter<"AssessmentSetting"> | number
+    password?: StringNullableWithAggregatesFilter<"AssessmentSetting"> | string | null
+    rememberToken?: StringNullableWithAggregatesFilter<"AssessmentSetting"> | string | null
+    isActive?: BoolWithAggregatesFilter<"AssessmentSetting"> | boolean
+    isUnlock?: BoolWithAggregatesFilter<"AssessmentSetting"> | boolean
+    secretToken?: StringNullableWithAggregatesFilter<"AssessmentSetting"> | string | null
+    tfaToken?: StringNullableWithAggregatesFilter<"AssessmentSetting"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"AssessmentSetting"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AssessmentSetting"> | Date | string
   }
 
   export type AssessmentTeamWhereInput = {
@@ -18943,6 +20184,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateInput = {
@@ -18963,6 +20205,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUpdateInput = {
@@ -18982,6 +20225,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateInput = {
@@ -19002,6 +20246,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentCreateManyInput = {
@@ -19141,6 +20386,107 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     confirmedAnswerId?: NullableIntFieldUpdateOperationsInput | number | null
     answerType?: NullableEnumAnswerTypeFieldUpdateOperationsInput | $Enums.AnswerType | null
+  }
+
+  export type AssessmentSettingCreateInput = {
+    name: $Enums.AssessmentConfig
+    value: string
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Assessment: AssessmentCreateNestedOneWithoutAssessmentSettingInput
+  }
+
+  export type AssessmentSettingUncheckedCreateInput = {
+    id?: number
+    name: $Enums.AssessmentConfig
+    value: string
+    assessmentId: number
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AssessmentSettingUpdateInput = {
+    name?: EnumAssessmentConfigFieldUpdateOperationsInput | $Enums.AssessmentConfig
+    value?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Assessment?: AssessmentUpdateOneRequiredWithoutAssessmentSettingNestedInput
+  }
+
+  export type AssessmentSettingUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: EnumAssessmentConfigFieldUpdateOperationsInput | $Enums.AssessmentConfig
+    value?: StringFieldUpdateOperationsInput | string
+    assessmentId?: IntFieldUpdateOperationsInput | number
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AssessmentSettingCreateManyInput = {
+    id?: number
+    name: $Enums.AssessmentConfig
+    value: string
+    assessmentId: number
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AssessmentSettingUpdateManyMutationInput = {
+    name?: EnumAssessmentConfigFieldUpdateOperationsInput | $Enums.AssessmentConfig
+    value?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AssessmentSettingUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: EnumAssessmentConfigFieldUpdateOperationsInput | $Enums.AssessmentConfig
+    value?: StringFieldUpdateOperationsInput | string
+    assessmentId?: IntFieldUpdateOperationsInput | number
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AssessmentTeamCreateInput = {
@@ -20516,6 +21862,12 @@ export namespace Prisma {
     none?: QuestionAnswerWhereInput
   }
 
+  export type AssessmentSettingListRelationFilter = {
+    every?: AssessmentSettingWhereInput
+    some?: AssessmentSettingWhereInput
+    none?: AssessmentSettingWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -20530,6 +21882,10 @@ export namespace Prisma {
   }
 
   export type QuestionAnswerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AssessmentSettingOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -20760,6 +22116,78 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumAnswerTypeNullableFilter<$PrismaModel>
     _max?: NestedEnumAnswerTypeNullableFilter<$PrismaModel>
+  }
+
+  export type EnumAssessmentConfigFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssessmentConfig | EnumAssessmentConfigFieldRefInput<$PrismaModel>
+    in?: $Enums.AssessmentConfig[]
+    notIn?: $Enums.AssessmentConfig[]
+    not?: NestedEnumAssessmentConfigFilter<$PrismaModel> | $Enums.AssessmentConfig
+  }
+
+  export type AssessmentSettingCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    assessmentId?: SortOrder
+    password?: SortOrder
+    rememberToken?: SortOrder
+    isActive?: SortOrder
+    isUnlock?: SortOrder
+    secretToken?: SortOrder
+    tfaToken?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AssessmentSettingAvgOrderByAggregateInput = {
+    id?: SortOrder
+    assessmentId?: SortOrder
+  }
+
+  export type AssessmentSettingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    assessmentId?: SortOrder
+    password?: SortOrder
+    rememberToken?: SortOrder
+    isActive?: SortOrder
+    isUnlock?: SortOrder
+    secretToken?: SortOrder
+    tfaToken?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AssessmentSettingMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    value?: SortOrder
+    assessmentId?: SortOrder
+    password?: SortOrder
+    rememberToken?: SortOrder
+    isActive?: SortOrder
+    isUnlock?: SortOrder
+    secretToken?: SortOrder
+    tfaToken?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AssessmentSettingSumOrderByAggregateInput = {
+    id?: SortOrder
+    assessmentId?: SortOrder
+  }
+
+  export type EnumAssessmentConfigWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssessmentConfig | EnumAssessmentConfigFieldRefInput<$PrismaModel>
+    in?: $Enums.AssessmentConfig[]
+    notIn?: $Enums.AssessmentConfig[]
+    not?: NestedEnumAssessmentConfigWithAggregatesFilter<$PrismaModel> | $Enums.AssessmentConfig
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAssessmentConfigFilter<$PrismaModel>
+    _max?: NestedEnumAssessmentConfigFilter<$PrismaModel>
   }
 
   export type EnumTeamTypeFilter<$PrismaModel = never> = {
@@ -21718,6 +23146,13 @@ export namespace Prisma {
     connect?: QuestionAnswerWhereUniqueInput | QuestionAnswerWhereUniqueInput[]
   }
 
+  export type AssessmentSettingCreateNestedManyWithoutAssessmentInput = {
+    create?: XOR<AssessmentSettingCreateWithoutAssessmentInput, AssessmentSettingUncheckedCreateWithoutAssessmentInput> | AssessmentSettingCreateWithoutAssessmentInput[] | AssessmentSettingUncheckedCreateWithoutAssessmentInput[]
+    connectOrCreate?: AssessmentSettingCreateOrConnectWithoutAssessmentInput | AssessmentSettingCreateOrConnectWithoutAssessmentInput[]
+    createMany?: AssessmentSettingCreateManyAssessmentInputEnvelope
+    connect?: AssessmentSettingWhereUniqueInput | AssessmentSettingWhereUniqueInput[]
+  }
+
   export type AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput = {
     create?: XOR<AssessmentQuestionCreateWithoutAssessmentInput, AssessmentQuestionUncheckedCreateWithoutAssessmentInput> | AssessmentQuestionCreateWithoutAssessmentInput[] | AssessmentQuestionUncheckedCreateWithoutAssessmentInput[]
     connectOrCreate?: AssessmentQuestionCreateOrConnectWithoutAssessmentInput | AssessmentQuestionCreateOrConnectWithoutAssessmentInput[]
@@ -21737,6 +23172,13 @@ export namespace Prisma {
     connectOrCreate?: QuestionAnswerCreateOrConnectWithoutAssessmentInput | QuestionAnswerCreateOrConnectWithoutAssessmentInput[]
     createMany?: QuestionAnswerCreateManyAssessmentInputEnvelope
     connect?: QuestionAnswerWhereUniqueInput | QuestionAnswerWhereUniqueInput[]
+  }
+
+  export type AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput = {
+    create?: XOR<AssessmentSettingCreateWithoutAssessmentInput, AssessmentSettingUncheckedCreateWithoutAssessmentInput> | AssessmentSettingCreateWithoutAssessmentInput[] | AssessmentSettingUncheckedCreateWithoutAssessmentInput[]
+    connectOrCreate?: AssessmentSettingCreateOrConnectWithoutAssessmentInput | AssessmentSettingCreateOrConnectWithoutAssessmentInput[]
+    createMany?: AssessmentSettingCreateManyAssessmentInputEnvelope
+    connect?: AssessmentSettingWhereUniqueInput | AssessmentSettingWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -21815,6 +23257,20 @@ export namespace Prisma {
     deleteMany?: QuestionAnswerScalarWhereInput | QuestionAnswerScalarWhereInput[]
   }
 
+  export type AssessmentSettingUpdateManyWithoutAssessmentNestedInput = {
+    create?: XOR<AssessmentSettingCreateWithoutAssessmentInput, AssessmentSettingUncheckedCreateWithoutAssessmentInput> | AssessmentSettingCreateWithoutAssessmentInput[] | AssessmentSettingUncheckedCreateWithoutAssessmentInput[]
+    connectOrCreate?: AssessmentSettingCreateOrConnectWithoutAssessmentInput | AssessmentSettingCreateOrConnectWithoutAssessmentInput[]
+    upsert?: AssessmentSettingUpsertWithWhereUniqueWithoutAssessmentInput | AssessmentSettingUpsertWithWhereUniqueWithoutAssessmentInput[]
+    createMany?: AssessmentSettingCreateManyAssessmentInputEnvelope
+    set?: AssessmentSettingWhereUniqueInput | AssessmentSettingWhereUniqueInput[]
+    disconnect?: AssessmentSettingWhereUniqueInput | AssessmentSettingWhereUniqueInput[]
+    delete?: AssessmentSettingWhereUniqueInput | AssessmentSettingWhereUniqueInput[]
+    connect?: AssessmentSettingWhereUniqueInput | AssessmentSettingWhereUniqueInput[]
+    update?: AssessmentSettingUpdateWithWhereUniqueWithoutAssessmentInput | AssessmentSettingUpdateWithWhereUniqueWithoutAssessmentInput[]
+    updateMany?: AssessmentSettingUpdateManyWithWhereWithoutAssessmentInput | AssessmentSettingUpdateManyWithWhereWithoutAssessmentInput[]
+    deleteMany?: AssessmentSettingScalarWhereInput | AssessmentSettingScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -21871,6 +23327,20 @@ export namespace Prisma {
     update?: QuestionAnswerUpdateWithWhereUniqueWithoutAssessmentInput | QuestionAnswerUpdateWithWhereUniqueWithoutAssessmentInput[]
     updateMany?: QuestionAnswerUpdateManyWithWhereWithoutAssessmentInput | QuestionAnswerUpdateManyWithWhereWithoutAssessmentInput[]
     deleteMany?: QuestionAnswerScalarWhereInput | QuestionAnswerScalarWhereInput[]
+  }
+
+  export type AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput = {
+    create?: XOR<AssessmentSettingCreateWithoutAssessmentInput, AssessmentSettingUncheckedCreateWithoutAssessmentInput> | AssessmentSettingCreateWithoutAssessmentInput[] | AssessmentSettingUncheckedCreateWithoutAssessmentInput[]
+    connectOrCreate?: AssessmentSettingCreateOrConnectWithoutAssessmentInput | AssessmentSettingCreateOrConnectWithoutAssessmentInput[]
+    upsert?: AssessmentSettingUpsertWithWhereUniqueWithoutAssessmentInput | AssessmentSettingUpsertWithWhereUniqueWithoutAssessmentInput[]
+    createMany?: AssessmentSettingCreateManyAssessmentInputEnvelope
+    set?: AssessmentSettingWhereUniqueInput | AssessmentSettingWhereUniqueInput[]
+    disconnect?: AssessmentSettingWhereUniqueInput | AssessmentSettingWhereUniqueInput[]
+    delete?: AssessmentSettingWhereUniqueInput | AssessmentSettingWhereUniqueInput[]
+    connect?: AssessmentSettingWhereUniqueInput | AssessmentSettingWhereUniqueInput[]
+    update?: AssessmentSettingUpdateWithWhereUniqueWithoutAssessmentInput | AssessmentSettingUpdateWithWhereUniqueWithoutAssessmentInput[]
+    updateMany?: AssessmentSettingUpdateManyWithWhereWithoutAssessmentInput | AssessmentSettingUpdateManyWithWhereWithoutAssessmentInput[]
+    deleteMany?: AssessmentSettingScalarWhereInput | AssessmentSettingScalarWhereInput[]
   }
 
   export type AssessmentCreateNestedOneWithoutAssessmentQuestionInput = {
@@ -21931,6 +23401,24 @@ export namespace Prisma {
     update?: QuestionAnswerUpdateWithWhereUniqueWithoutAssessmentQuestionInput | QuestionAnswerUpdateWithWhereUniqueWithoutAssessmentQuestionInput[]
     updateMany?: QuestionAnswerUpdateManyWithWhereWithoutAssessmentQuestionInput | QuestionAnswerUpdateManyWithWhereWithoutAssessmentQuestionInput[]
     deleteMany?: QuestionAnswerScalarWhereInput | QuestionAnswerScalarWhereInput[]
+  }
+
+  export type AssessmentCreateNestedOneWithoutAssessmentSettingInput = {
+    create?: XOR<AssessmentCreateWithoutAssessmentSettingInput, AssessmentUncheckedCreateWithoutAssessmentSettingInput>
+    connectOrCreate?: AssessmentCreateOrConnectWithoutAssessmentSettingInput
+    connect?: AssessmentWhereUniqueInput
+  }
+
+  export type EnumAssessmentConfigFieldUpdateOperationsInput = {
+    set?: $Enums.AssessmentConfig
+  }
+
+  export type AssessmentUpdateOneRequiredWithoutAssessmentSettingNestedInput = {
+    create?: XOR<AssessmentCreateWithoutAssessmentSettingInput, AssessmentUncheckedCreateWithoutAssessmentSettingInput>
+    connectOrCreate?: AssessmentCreateOrConnectWithoutAssessmentSettingInput
+    upsert?: AssessmentUpsertWithoutAssessmentSettingInput
+    connect?: AssessmentWhereUniqueInput
+    update?: XOR<XOR<AssessmentUpdateToOneWithWhereWithoutAssessmentSettingInput, AssessmentUpdateWithoutAssessmentSettingInput>, AssessmentUncheckedUpdateWithoutAssessmentSettingInput>
   }
 
   export type AssessmentCreateNestedOneWithoutAssessmentTeamInput = {
@@ -23344,6 +24832,23 @@ export namespace Prisma {
     _max?: NestedEnumAnswerTypeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumAssessmentConfigFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssessmentConfig | EnumAssessmentConfigFieldRefInput<$PrismaModel>
+    in?: $Enums.AssessmentConfig[]
+    notIn?: $Enums.AssessmentConfig[]
+    not?: NestedEnumAssessmentConfigFilter<$PrismaModel> | $Enums.AssessmentConfig
+  }
+
+  export type NestedEnumAssessmentConfigWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssessmentConfig | EnumAssessmentConfigFieldRefInput<$PrismaModel>
+    in?: $Enums.AssessmentConfig[]
+    notIn?: $Enums.AssessmentConfig[]
+    not?: NestedEnumAssessmentConfigWithAggregatesFilter<$PrismaModel> | $Enums.AssessmentConfig
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAssessmentConfigFilter<$PrismaModel>
+    _max?: NestedEnumAssessmentConfigFilter<$PrismaModel>
+  }
+
   export type NestedEnumTeamTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.TeamType | EnumTeamTypeFieldRefInput<$PrismaModel>
     in?: $Enums.TeamType[]
@@ -23629,6 +25134,43 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AssessmentSettingCreateWithoutAssessmentInput = {
+    name: $Enums.AssessmentConfig
+    value: string
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AssessmentSettingUncheckedCreateWithoutAssessmentInput = {
+    id?: number
+    name: $Enums.AssessmentConfig
+    value: string
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AssessmentSettingCreateOrConnectWithoutAssessmentInput = {
+    where: AssessmentSettingWhereUniqueInput
+    create: XOR<AssessmentSettingCreateWithoutAssessmentInput, AssessmentSettingUncheckedCreateWithoutAssessmentInput>
+  }
+
+  export type AssessmentSettingCreateManyAssessmentInputEnvelope = {
+    data: AssessmentSettingCreateManyAssessmentInput | AssessmentSettingCreateManyAssessmentInput[]
+    skipDuplicates?: boolean
+  }
+
   export type OrganisationUpsertWithoutAssessmentInput = {
     update: XOR<OrganisationUpdateWithoutAssessmentInput, OrganisationUncheckedUpdateWithoutAssessmentInput>
     create: XOR<OrganisationCreateWithoutAssessmentInput, OrganisationUncheckedCreateWithoutAssessmentInput>
@@ -23831,6 +25373,40 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"QuestionAnswer"> | Date | string
   }
 
+  export type AssessmentSettingUpsertWithWhereUniqueWithoutAssessmentInput = {
+    where: AssessmentSettingWhereUniqueInput
+    update: XOR<AssessmentSettingUpdateWithoutAssessmentInput, AssessmentSettingUncheckedUpdateWithoutAssessmentInput>
+    create: XOR<AssessmentSettingCreateWithoutAssessmentInput, AssessmentSettingUncheckedCreateWithoutAssessmentInput>
+  }
+
+  export type AssessmentSettingUpdateWithWhereUniqueWithoutAssessmentInput = {
+    where: AssessmentSettingWhereUniqueInput
+    data: XOR<AssessmentSettingUpdateWithoutAssessmentInput, AssessmentSettingUncheckedUpdateWithoutAssessmentInput>
+  }
+
+  export type AssessmentSettingUpdateManyWithWhereWithoutAssessmentInput = {
+    where: AssessmentSettingScalarWhereInput
+    data: XOR<AssessmentSettingUpdateManyMutationInput, AssessmentSettingUncheckedUpdateManyWithoutAssessmentInput>
+  }
+
+  export type AssessmentSettingScalarWhereInput = {
+    AND?: AssessmentSettingScalarWhereInput | AssessmentSettingScalarWhereInput[]
+    OR?: AssessmentSettingScalarWhereInput[]
+    NOT?: AssessmentSettingScalarWhereInput | AssessmentSettingScalarWhereInput[]
+    id?: IntFilter<"AssessmentSetting"> | number
+    name?: EnumAssessmentConfigFilter<"AssessmentSetting"> | $Enums.AssessmentConfig
+    value?: StringFilter<"AssessmentSetting"> | string
+    assessmentId?: IntFilter<"AssessmentSetting"> | number
+    password?: StringNullableFilter<"AssessmentSetting"> | string | null
+    rememberToken?: StringNullableFilter<"AssessmentSetting"> | string | null
+    isActive?: BoolFilter<"AssessmentSetting"> | boolean
+    isUnlock?: BoolFilter<"AssessmentSetting"> | boolean
+    secretToken?: StringNullableFilter<"AssessmentSetting"> | string | null
+    tfaToken?: StringNullableFilter<"AssessmentSetting"> | string | null
+    createdAt?: DateTimeFilter<"AssessmentSetting"> | Date | string
+    updatedAt?: DateTimeFilter<"AssessmentSetting"> | Date | string
+  }
+
   export type AssessmentCreateWithoutAssessmentQuestionInput = {
     name: string
     description?: string | null
@@ -23847,6 +25423,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutAssessmentQuestionInput = {
@@ -23866,6 +25443,7 @@ export namespace Prisma {
     organisationTemplateId?: number | null
     AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentCreateOrConnectWithoutAssessmentQuestionInput = {
@@ -23959,6 +25537,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutAssessmentQuestionInput = {
@@ -23978,6 +25557,7 @@ export namespace Prisma {
     organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
     AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type QuestionAnswerUpsertWithWhereUniqueWithoutAssessmentQuestionInput = {
@@ -23996,6 +25576,100 @@ export namespace Prisma {
     data: XOR<QuestionAnswerUpdateManyMutationInput, QuestionAnswerUncheckedUpdateManyWithoutAssessmentQuestionInput>
   }
 
+  export type AssessmentCreateWithoutAssessmentSettingInput = {
+    name: string
+    description?: string | null
+    logo?: string | null
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Organisation: OrganisationCreateNestedOneWithoutAssessmentInput
+    AssessmentQuestion?: AssessmentQuestionCreateNestedManyWithoutAssessmentInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
+    AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
+    QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
+  }
+
+  export type AssessmentUncheckedCreateWithoutAssessmentSettingInput = {
+    id?: number
+    name: string
+    description?: string | null
+    logo?: string | null
+    organisationId: number
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    organisationTemplateId?: number | null
+    AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
+    QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
+  }
+
+  export type AssessmentCreateOrConnectWithoutAssessmentSettingInput = {
+    where: AssessmentWhereUniqueInput
+    create: XOR<AssessmentCreateWithoutAssessmentSettingInput, AssessmentUncheckedCreateWithoutAssessmentSettingInput>
+  }
+
+  export type AssessmentUpsertWithoutAssessmentSettingInput = {
+    update: XOR<AssessmentUpdateWithoutAssessmentSettingInput, AssessmentUncheckedUpdateWithoutAssessmentSettingInput>
+    create: XOR<AssessmentCreateWithoutAssessmentSettingInput, AssessmentUncheckedCreateWithoutAssessmentSettingInput>
+    where?: AssessmentWhereInput
+  }
+
+  export type AssessmentUpdateToOneWithWhereWithoutAssessmentSettingInput = {
+    where?: AssessmentWhereInput
+    data: XOR<AssessmentUpdateWithoutAssessmentSettingInput, AssessmentUncheckedUpdateWithoutAssessmentSettingInput>
+  }
+
+  export type AssessmentUpdateWithoutAssessmentSettingInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Organisation?: OrganisationUpdateOneRequiredWithoutAssessmentNestedInput
+    AssessmentQuestion?: AssessmentQuestionUpdateManyWithoutAssessmentNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
+    AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
+    QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
+  }
+
+  export type AssessmentUncheckedUpdateWithoutAssessmentSettingInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    organisationId?: IntFieldUpdateOperationsInput | number
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
+    AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
+    QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
+  }
+
   export type AssessmentCreateWithoutAssessmentTeamInput = {
     name: string
     description?: string | null
@@ -24012,6 +25686,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionCreateNestedManyWithoutAssessmentInput
     OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutAssessmentTeamInput = {
@@ -24031,6 +25706,7 @@ export namespace Prisma {
     organisationTemplateId?: number | null
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentCreateOrConnectWithoutAssessmentTeamInput = {
@@ -24206,6 +25882,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUpdateManyWithoutAssessmentNestedInput
     OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutAssessmentTeamInput = {
@@ -24225,6 +25902,7 @@ export namespace Prisma {
     organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type OrganisationUpsertWithoutAssessmentTeamInput = {
@@ -24421,6 +26099,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutOrganisationInput = {
@@ -24440,6 +26119,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentCreateOrConnectWithoutOrganisationInput = {
@@ -25421,6 +27101,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionCreateNestedManyWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutOrganisationTemplateInput = {
@@ -25440,6 +27121,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentCreateOrConnectWithoutOrganisationTemplateInput = {
@@ -25776,6 +27458,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionCreateNestedManyWithoutAssessmentInput
     OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutQuestionAnswerInput = {
@@ -25795,6 +27478,7 @@ export namespace Prisma {
     organisationTemplateId?: number | null
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentCreateOrConnectWithoutQuestionAnswerInput = {
@@ -26103,6 +27787,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUpdateManyWithoutAssessmentNestedInput
     OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutQuestionAnswerInput = {
@@ -26122,6 +27807,7 @@ export namespace Prisma {
     organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentQuestionUpsertWithoutQuestionAnswerInput = {
@@ -27480,6 +29166,20 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type AssessmentSettingCreateManyAssessmentInput = {
+    id?: number
+    name: $Enums.AssessmentConfig
+    value: string
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type AssessmentQuestionUpdateWithoutAssessmentInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     questionMongoId?: StringFieldUpdateOperationsInput | string
@@ -27629,6 +29329,47 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AssessmentSettingUpdateWithoutAssessmentInput = {
+    name?: EnumAssessmentConfigFieldUpdateOperationsInput | $Enums.AssessmentConfig
+    value?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AssessmentSettingUncheckedUpdateWithoutAssessmentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: EnumAssessmentConfigFieldUpdateOperationsInput | $Enums.AssessmentConfig
+    value?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AssessmentSettingUncheckedUpdateManyWithoutAssessmentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: EnumAssessmentConfigFieldUpdateOperationsInput | $Enums.AssessmentConfig
+    value?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     secretToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27939,6 +29680,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutOrganisationInput = {
@@ -27958,6 +29700,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateManyWithoutOrganisationInput = {
@@ -28364,6 +30107,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUpdateManyWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutOrganisationTemplateInput = {
@@ -28383,6 +30127,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateManyWithoutOrganisationTemplateInput = {
@@ -29121,6 +30866,10 @@ export namespace Prisma {
      * @deprecated Use AssessmentQuestionDefaultArgs instead
      */
     export type AssessmentQuestionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AssessmentQuestionDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use AssessmentSettingDefaultArgs instead
+     */
+    export type AssessmentSettingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AssessmentSettingDefaultArgs<ExtArgs>
     /**
      * @deprecated Use AssessmentTeamDefaultArgs instead
      */
