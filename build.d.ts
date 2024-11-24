@@ -18915,6 +18915,7 @@ export namespace Prisma {
 
   export type AssessmentSettingWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    assessmentId_name?: AssessmentSettingAssessmentIdNameCompoundUniqueInput
     AND?: AssessmentSettingWhereInput | AssessmentSettingWhereInput[]
     OR?: AssessmentSettingWhereInput[]
     NOT?: AssessmentSettingWhereInput | AssessmentSettingWhereInput[]
@@ -18930,7 +18931,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"AssessmentSetting"> | Date | string
     updatedAt?: DateTimeFilter<"AssessmentSetting"> | Date | string
     Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
-  }, "id" | "id">
+  }, "id" | "id" | "assessmentId_name">
 
   export type AssessmentSettingOrderByWithAggregationInput = {
     id?: SortOrder
@@ -22123,6 +22124,11 @@ export namespace Prisma {
     in?: $Enums.AssessmentConfig[]
     notIn?: $Enums.AssessmentConfig[]
     not?: NestedEnumAssessmentConfigFilter<$PrismaModel> | $Enums.AssessmentConfig
+  }
+
+  export type AssessmentSettingAssessmentIdNameCompoundUniqueInput = {
+    assessmentId: number
+    name: $Enums.AssessmentConfig
   }
 
   export type AssessmentSettingCountOrderByAggregateInput = {
