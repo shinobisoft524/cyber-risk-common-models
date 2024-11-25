@@ -1,3 +1,7 @@
+import { IOrganisationTemplateRes } from './apiResponseTypes';
+import { RoleTitles } from './commonStatic';
+import { ITeamBase, ITeamBaseDetail } from './structure';
+
 export interface IAssessment {
   entity: string;
   scope?: string;
@@ -54,4 +58,58 @@ export enum ViewMode {
   Twenty = 'Twenty',
   Fifty = 'Fifty',
   Hundred = 'Hundred',
+}
+
+export interface IAssessmentBase {
+  id?: number;
+  name: string;
+  description?: string;
+  logo?: string;
+
+  isActive: boolean;
+  isUnlock: boolean;
+
+  createdAt: Date;
+  updatedAt: Date;
+  organisationTemplateId?: number;
+  organisationId: number;
+}
+
+export interface IAssessmentSetting {
+  id?: number;
+  assessmentId: number;
+  name: string;
+  value: string;
+}
+
+export interface IAssessmentDetail extends IAssessmentBase {
+  password?: string;
+  secretToken?: string;
+  roleTitle?: RoleTitles;
+  AssessmentSetting?: IAssessmentSetting[];
+}
+
+export interface IAssessmentDetailWithTeamInfo extends IAssessmentDetail {
+  AssessmentTeam: {
+    id: number;
+    assessmentId: number;
+    Team: ITeamBase;
+  }[];
+}
+
+export interface IAssessmentFullData {
+  workTitle: RoleTitles;
+  assessment: IAssessmentDetailWithTeamInfo;
+  teamInfo: {
+    remainTeams: ITeamBaseDetail[];
+    workerTeams: ITeamBaseDetail[];
+    viewerTeams: ITeamBaseDetail[];
+    assessmentTeams: ITeamBaseDetail[];
+
+    remianTeamIds: number[];
+    workerTeamIds: number[];
+    viewerTeamIds: number[];
+    assessmentTeamIds: number[];
+  };
+  templatesInfo?: IOrganisationTemplateRes[];
 }

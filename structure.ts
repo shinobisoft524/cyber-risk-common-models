@@ -1,10 +1,20 @@
 import { RoleTitles } from './commonStatic';
 
-export interface ITeam {
+export interface ITeamBase {
+  id?: number;
   name: string;
-  id: number;
-  logo: string;
+  description?: string;
+  logo?: string;
+}
+
+export interface ITeamBaseDetail extends ITeamBase {
+  organisationId: number;
+
   isActive: boolean;
+  isUnlock: boolean;
+
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface IRole {
@@ -24,6 +34,6 @@ export interface IRoleTitle {
   id: number;
   isActive: boolean;
   organisationId: number;
-  Team: ITeam;
+  Team: ITeamBase;
   OrganisationRole: IOrganisationRole[];
 }
