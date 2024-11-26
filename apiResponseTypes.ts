@@ -80,6 +80,25 @@ export interface ITeamDetailRes {
   info: ITeamInfo;
 }
 
+export interface IQuestionAnswerDetailBase {
+  id: number;
+  confirmedAnswerId?: number;
+  answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
+  answerMode: 'Owner' | 'Manager' | 'Worker' | 'Viewer';
+  OrganisationStructure: {
+    id: number;
+    Team: {
+      id: number;
+      name: string;
+    };
+    User: {
+      id: number;
+      name: string;
+      email: string;
+    };
+  };
+}
+
 export interface IWorkQuestion {
   question: IQuestionMongo & {
     confirmedAnswerId?: number;
@@ -90,53 +109,10 @@ export interface IWorkQuestion {
     questionMongoId: string;
     confirmedAnswerId?: number;
     answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
-    QuestionAnswer: {
-      id: number;
-      confirmedAnswerId?: number;
-      answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
-      answerMode: 'Owner' | 'Manager' | 'Worker' | 'Viewer';
-      OrganisationStructure: {
-        id: number;
-        Team: {
-          id: number;
-          name: string;
-        };
-        User: {
-          id: number;
-          name: string;
-          email: string;
-        };
-      };
-    }[];
+    QuestionAnswer: IQuestionAnswerDetailBase[];
   };
-  teams?: {
-    Team: {
-      id: number;
-      name: string;
-      OrganisationStructure: {
-        id: number;
-        User: {
-          id: number;
-          name: string;
-          email: string;
-        };
-      }[];
-    };
-  }[];
-  views?: {
-    Team: {
-      id: number;
-      name: string;
-      OrganisationStructure: {
-        id: number;
-        User: {
-          id: number;
-          name: string;
-          email: string;
-        };
-      }[];
-    };
-  }[];
+  works?: IQuestionAnswerDetailBase[];
+  views?: IQuestionAnswerDetailBase[];
 }
 
 export interface IQuestionUserDetailWithRole {
