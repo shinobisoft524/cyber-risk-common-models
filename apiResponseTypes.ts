@@ -139,9 +139,17 @@ export interface IWorkQuestion {
   }[];
 }
 
+export interface IQuestionUserDetailWithRole {
+  id: number;
+  isActive: boolean;
+  OrganisationRole: { id: number; Role: { name: string } }[];
+  User: { id: number; isActive: boolean; name: string; email: string };
+  roleTitle: RoleTitles;
+}
+
 export interface IWorkAssessmentRes {
-  role?: 'isOwner' | 'isManager' | 'isWorker' | 'isViewer' | undefined;
-  teamMembers: {
+  roleTitle?: RoleTitles;
+  teamMembers?: {
     Team: {
       id: number;
       name: string;
@@ -153,9 +161,11 @@ export interface IWorkAssessmentRes {
     };
   }[];
   workQuestions: IWorkQuestion[];
+  workers?: IQuestionUserDetailWithRole[];
+  viewers?: IQuestionUserDetailWithRole[];
 }
 
-export interface IteamDetail {
+export interface ITeamDetail {
   name: string;
   id: number;
   description: string;

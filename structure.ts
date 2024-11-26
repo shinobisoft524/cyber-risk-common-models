@@ -37,3 +37,21 @@ export interface IRoleTitle {
   Team: ITeamBase;
   OrganisationRole: IOrganisationRole[];
 }
+
+export interface IAssessmentTeamBase {
+  id?: number;
+  assessmentId: number;
+  organisationId: number;
+  teamId: number;
+  teamType: 'Worker' | 'Viewer';
+
+  isActive: boolean;
+  isUnlock: boolean;
+
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// export interface IAssessmentTeamDetail extends IAssessmentTeamBase {
+//   Team?:
+// }
