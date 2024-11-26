@@ -145,6 +145,10 @@ export interface IQuestionUserDetailWithRole {
   OrganisationRole: { id: number; Role: { name: string } }[];
   User: { id: number; isActive: boolean; name: string; email: string };
   roleTitle: RoleTitles;
+  Team: {
+    id: number;
+    name: string;
+  };
 }
 
 export interface IWorkAssessmentRes {
