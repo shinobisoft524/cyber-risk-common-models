@@ -3639,12 +3639,14 @@ export namespace Prisma {
   export type AssessmentQuestionAvgAggregateOutputType = {
     id: number | null
     assessmentId: number | null
+    level: number | null
     confirmedAnswerId: number | null
   }
 
   export type AssessmentQuestionSumAggregateOutputType = {
     id: number | null
     assessmentId: number | null
+    level: number | null
     confirmedAnswerId: number | null
   }
 
@@ -3652,6 +3654,7 @@ export namespace Prisma {
     id: number | null
     assessmentId: number | null
     assessmentStage: string | null
+    level: number | null
     questionMongoId: string | null
     isActive: boolean | null
     isUnlock: boolean | null
@@ -3665,6 +3668,7 @@ export namespace Prisma {
     id: number | null
     assessmentId: number | null
     assessmentStage: string | null
+    level: number | null
     questionMongoId: string | null
     isActive: boolean | null
     isUnlock: boolean | null
@@ -3678,6 +3682,7 @@ export namespace Prisma {
     id: number
     assessmentId: number
     assessmentStage: number
+    level: number
     questionMongoId: number
     isActive: number
     isUnlock: number
@@ -3692,12 +3697,14 @@ export namespace Prisma {
   export type AssessmentQuestionAvgAggregateInputType = {
     id?: true
     assessmentId?: true
+    level?: true
     confirmedAnswerId?: true
   }
 
   export type AssessmentQuestionSumAggregateInputType = {
     id?: true
     assessmentId?: true
+    level?: true
     confirmedAnswerId?: true
   }
 
@@ -3705,6 +3712,7 @@ export namespace Prisma {
     id?: true
     assessmentId?: true
     assessmentStage?: true
+    level?: true
     questionMongoId?: true
     isActive?: true
     isUnlock?: true
@@ -3718,6 +3726,7 @@ export namespace Prisma {
     id?: true
     assessmentId?: true
     assessmentStage?: true
+    level?: true
     questionMongoId?: true
     isActive?: true
     isUnlock?: true
@@ -3731,6 +3740,7 @@ export namespace Prisma {
     id?: true
     assessmentId?: true
     assessmentStage?: true
+    level?: true
     questionMongoId?: true
     isActive?: true
     isUnlock?: true
@@ -3831,6 +3841,7 @@ export namespace Prisma {
     id: number
     assessmentId: number
     assessmentStage: string
+    level: number
     questionMongoId: string
     isActive: boolean
     isUnlock: boolean
@@ -3863,6 +3874,7 @@ export namespace Prisma {
     id?: boolean
     assessmentId?: boolean
     assessmentStage?: boolean
+    level?: boolean
     questionMongoId?: boolean
     isActive?: boolean
     isUnlock?: boolean
@@ -3880,6 +3892,7 @@ export namespace Prisma {
     id?: boolean
     assessmentId?: boolean
     assessmentStage?: boolean
+    level?: boolean
     questionMongoId?: boolean
     isActive?: boolean
     isUnlock?: boolean
@@ -3905,6 +3918,7 @@ export namespace Prisma {
       id: number
       assessmentId: number
       assessmentStage: string
+      level: number
       questionMongoId: string
       isActive: boolean
       isUnlock: boolean
@@ -4286,6 +4300,7 @@ export namespace Prisma {
     readonly id: FieldRef<"AssessmentQuestion", 'Int'>
     readonly assessmentId: FieldRef<"AssessmentQuestion", 'Int'>
     readonly assessmentStage: FieldRef<"AssessmentQuestion", 'String'>
+    readonly level: FieldRef<"AssessmentQuestion", 'Int'>
     readonly questionMongoId: FieldRef<"AssessmentQuestion", 'String'>
     readonly isActive: FieldRef<"AssessmentQuestion", 'Boolean'>
     readonly isUnlock: FieldRef<"AssessmentQuestion", 'Boolean'>
@@ -18343,6 +18358,7 @@ export namespace Prisma {
     id: 'id',
     assessmentId: 'assessmentId',
     assessmentStage: 'assessmentStage',
+    level: 'level',
     questionMongoId: 'questionMongoId',
     isActive: 'isActive',
     isUnlock: 'isUnlock',
@@ -18799,6 +18815,7 @@ export namespace Prisma {
     id?: IntFilter<"AssessmentQuestion"> | number
     assessmentId?: IntFilter<"AssessmentQuestion"> | number
     assessmentStage?: StringFilter<"AssessmentQuestion"> | string
+    level?: IntFilter<"AssessmentQuestion"> | number
     questionMongoId?: StringFilter<"AssessmentQuestion"> | string
     isActive?: BoolFilter<"AssessmentQuestion"> | boolean
     isUnlock?: BoolFilter<"AssessmentQuestion"> | boolean
@@ -18814,6 +18831,7 @@ export namespace Prisma {
     id?: SortOrder
     assessmentId?: SortOrder
     assessmentStage?: SortOrder
+    level?: SortOrder
     questionMongoId?: SortOrder
     isActive?: SortOrder
     isUnlock?: SortOrder
@@ -18834,6 +18852,7 @@ export namespace Prisma {
     NOT?: AssessmentQuestionWhereInput | AssessmentQuestionWhereInput[]
     assessmentId?: IntFilter<"AssessmentQuestion"> | number
     assessmentStage?: StringFilter<"AssessmentQuestion"> | string
+    level?: IntFilter<"AssessmentQuestion"> | number
     isActive?: BoolFilter<"AssessmentQuestion"> | boolean
     isUnlock?: BoolFilter<"AssessmentQuestion"> | boolean
     createdAt?: DateTimeFilter<"AssessmentQuestion"> | Date | string
@@ -18848,6 +18867,7 @@ export namespace Prisma {
     id?: SortOrder
     assessmentId?: SortOrder
     assessmentStage?: SortOrder
+    level?: SortOrder
     questionMongoId?: SortOrder
     isActive?: SortOrder
     isUnlock?: SortOrder
@@ -18869,6 +18889,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"AssessmentQuestion"> | number
     assessmentId?: IntWithAggregatesFilter<"AssessmentQuestion"> | number
     assessmentStage?: StringWithAggregatesFilter<"AssessmentQuestion"> | string
+    level?: IntWithAggregatesFilter<"AssessmentQuestion"> | number
     questionMongoId?: StringWithAggregatesFilter<"AssessmentQuestion"> | string
     isActive?: BoolWithAggregatesFilter<"AssessmentQuestion"> | boolean
     isUnlock?: BoolWithAggregatesFilter<"AssessmentQuestion"> | boolean
@@ -20300,6 +20321,7 @@ export namespace Prisma {
 
   export type AssessmentQuestionCreateInput = {
     assessmentStage: string
+    level?: number
     questionMongoId: string
     isActive?: boolean
     isUnlock?: boolean
@@ -20315,6 +20337,7 @@ export namespace Prisma {
     id?: number
     assessmentId: number
     assessmentStage: string
+    level?: number
     questionMongoId: string
     isActive?: boolean
     isUnlock?: boolean
@@ -20327,6 +20350,7 @@ export namespace Prisma {
 
   export type AssessmentQuestionUpdateInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
+    level?: IntFieldUpdateOperationsInput | number
     questionMongoId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
@@ -20342,6 +20366,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     assessmentId?: IntFieldUpdateOperationsInput | number
     assessmentStage?: StringFieldUpdateOperationsInput | string
+    level?: IntFieldUpdateOperationsInput | number
     questionMongoId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
@@ -20356,6 +20381,7 @@ export namespace Prisma {
     id?: number
     assessmentId: number
     assessmentStage: string
+    level?: number
     questionMongoId: string
     isActive?: boolean
     isUnlock?: boolean
@@ -20367,6 +20393,7 @@ export namespace Prisma {
 
   export type AssessmentQuestionUpdateManyMutationInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
+    level?: IntFieldUpdateOperationsInput | number
     questionMongoId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
@@ -20380,6 +20407,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     assessmentId?: IntFieldUpdateOperationsInput | number
     assessmentStage?: StringFieldUpdateOperationsInput | string
+    level?: IntFieldUpdateOperationsInput | number
     questionMongoId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
@@ -22062,6 +22090,7 @@ export namespace Prisma {
     id?: SortOrder
     assessmentId?: SortOrder
     assessmentStage?: SortOrder
+    level?: SortOrder
     questionMongoId?: SortOrder
     isActive?: SortOrder
     isUnlock?: SortOrder
@@ -22074,6 +22103,7 @@ export namespace Prisma {
   export type AssessmentQuestionAvgOrderByAggregateInput = {
     id?: SortOrder
     assessmentId?: SortOrder
+    level?: SortOrder
     confirmedAnswerId?: SortOrder
   }
 
@@ -22081,6 +22111,7 @@ export namespace Prisma {
     id?: SortOrder
     assessmentId?: SortOrder
     assessmentStage?: SortOrder
+    level?: SortOrder
     questionMongoId?: SortOrder
     isActive?: SortOrder
     isUnlock?: SortOrder
@@ -22094,6 +22125,7 @@ export namespace Prisma {
     id?: SortOrder
     assessmentId?: SortOrder
     assessmentStage?: SortOrder
+    level?: SortOrder
     questionMongoId?: SortOrder
     isActive?: SortOrder
     isUnlock?: SortOrder
@@ -22106,6 +22138,7 @@ export namespace Prisma {
   export type AssessmentQuestionSumOrderByAggregateInput = {
     id?: SortOrder
     assessmentId?: SortOrder
+    level?: SortOrder
     confirmedAnswerId?: SortOrder
   }
 
@@ -24969,6 +25002,7 @@ export namespace Prisma {
 
   export type AssessmentQuestionCreateWithoutAssessmentInput = {
     assessmentStage: string
+    level?: number
     questionMongoId: string
     isActive?: boolean
     isUnlock?: boolean
@@ -24982,6 +25016,7 @@ export namespace Prisma {
   export type AssessmentQuestionUncheckedCreateWithoutAssessmentInput = {
     id?: number
     assessmentStage: string
+    level?: number
     questionMongoId: string
     isActive?: boolean
     isUnlock?: boolean
@@ -25246,6 +25281,7 @@ export namespace Prisma {
     id?: IntFilter<"AssessmentQuestion"> | number
     assessmentId?: IntFilter<"AssessmentQuestion"> | number
     assessmentStage?: StringFilter<"AssessmentQuestion"> | string
+    level?: IntFilter<"AssessmentQuestion"> | number
     questionMongoId?: StringFilter<"AssessmentQuestion"> | string
     isActive?: BoolFilter<"AssessmentQuestion"> | boolean
     isUnlock?: BoolFilter<"AssessmentQuestion"> | boolean
@@ -27494,6 +27530,7 @@ export namespace Prisma {
 
   export type AssessmentQuestionCreateWithoutQuestionAnswerInput = {
     assessmentStage: string
+    level?: number
     questionMongoId: string
     isActive?: boolean
     isUnlock?: boolean
@@ -27508,6 +27545,7 @@ export namespace Prisma {
     id?: number
     assessmentId: number
     assessmentStage: string
+    level?: number
     questionMongoId: string
     isActive?: boolean
     isUnlock?: boolean
@@ -27829,6 +27867,7 @@ export namespace Prisma {
 
   export type AssessmentQuestionUpdateWithoutQuestionAnswerInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
+    level?: IntFieldUpdateOperationsInput | number
     questionMongoId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
@@ -27843,6 +27882,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     assessmentId?: IntFieldUpdateOperationsInput | number
     assessmentStage?: StringFieldUpdateOperationsInput | string
+    level?: IntFieldUpdateOperationsInput | number
     questionMongoId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
@@ -29123,6 +29163,7 @@ export namespace Prisma {
   export type AssessmentQuestionCreateManyAssessmentInput = {
     id?: number
     assessmentStage: string
+    level?: number
     questionMongoId: string
     isActive?: boolean
     isUnlock?: boolean
@@ -29188,6 +29229,7 @@ export namespace Prisma {
 
   export type AssessmentQuestionUpdateWithoutAssessmentInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
+    level?: IntFieldUpdateOperationsInput | number
     questionMongoId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
@@ -29201,6 +29243,7 @@ export namespace Prisma {
   export type AssessmentQuestionUncheckedUpdateWithoutAssessmentInput = {
     id?: IntFieldUpdateOperationsInput | number
     assessmentStage?: StringFieldUpdateOperationsInput | string
+    level?: IntFieldUpdateOperationsInput | number
     questionMongoId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
@@ -29214,6 +29257,7 @@ export namespace Prisma {
   export type AssessmentQuestionUncheckedUpdateManyWithoutAssessmentInput = {
     id?: IntFieldUpdateOperationsInput | number
     assessmentStage?: StringFieldUpdateOperationsInput | string
+    level?: IntFieldUpdateOperationsInput | number
     questionMongoId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean

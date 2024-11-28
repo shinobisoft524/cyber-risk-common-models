@@ -6,3 +6,4 @@ export * from './commonErrors';
 export * from './sharedUser';
 export * from './structure';
 export * from './commonStatic';
+export * from './result';
