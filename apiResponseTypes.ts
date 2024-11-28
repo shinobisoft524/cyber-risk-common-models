@@ -99,7 +99,7 @@ export interface IQuestionAnswerDetailBase {
   };
 }
 
-export interface IWorkQuestion {
+export interface IWorkQuestionBase {
   question: IQuestionMongo & {
     confirmedAnswerId?: number;
     answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
@@ -111,6 +111,9 @@ export interface IWorkQuestion {
     answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
     QuestionAnswer: IQuestionAnswerDetailBase[];
   };
+}
+
+export interface IWorkQuestion extends IWorkQuestionBase {
   works?: IQuestionAnswerDetailBase[];
   views?: IQuestionAnswerDetailBase[];
 }
