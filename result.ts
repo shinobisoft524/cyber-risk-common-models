@@ -44,4 +44,7 @@ export interface ISortResult {
 export interface IScoreValueDetail {
   tierLevelResults: ITierLevelResult[];
   sortResults: ISortResult[];
+  profiling: {
+    targetTierLevel: number;
+  };
 }
