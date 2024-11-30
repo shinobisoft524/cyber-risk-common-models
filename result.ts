@@ -41,7 +41,21 @@ export interface ISortResult {
   }[];
 }
 
+export interface IFunctionCatResult {
+  name: string;
+  count: number;
+  values: {
+    name: string;
+    count: number;
+    scores: {
+      name: number;
+      count: number;
+    }[];
+  }[];
+}
+
 export interface IScoreValueDetail {
   tierLevelResults: ITierLevelResult[];
   sortResults: ISortResult[];
+  functionCatResults: IFunctionCatResult[];
 }
