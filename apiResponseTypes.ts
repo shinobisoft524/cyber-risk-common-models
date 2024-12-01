@@ -1,5 +1,6 @@
 import { IQuestionMongo } from './assessment';
 import { RoleTitles } from './commonStatic';
+import { IScoreValueDetail } from './result';
 
 export interface IStandardRes<T> {
   data: T;
@@ -146,6 +147,7 @@ export interface IWorkAssessmentRes {
   workQuestions: IWorkQuestion[];
   workers?: IQuestionUserDetailWithRole[];
   viewers?: IQuestionUserDetailWithRole[];
+  category?: IScoreValueDetail;
 }
 
 export interface ITeamDetail {
