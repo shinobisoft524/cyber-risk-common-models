@@ -21,8 +21,10 @@ export interface IWorker {
   email: string;
   logo: string;
   isActive: boolean;
+  is2FA?: boolean;
   createdAt: Date;
   updatedAt: Date;
+  tfaSecret?: string;
   OrganisationStructure: {
     id: number;
     isActive: boolean;

@@ -16142,6 +16142,7 @@ export namespace Prisma {
     tfaToken: string | null
     disabled: boolean | null
     tfaSecret: string | null
+    tfaSecret2: string | null
     fpwToken: string | null
     qrCodeVisibility: boolean | null
     isDureation: boolean | null
@@ -16172,6 +16173,7 @@ export namespace Prisma {
     tfaToken: string | null
     disabled: boolean | null
     tfaSecret: string | null
+    tfaSecret2: string | null
     fpwToken: string | null
     qrCodeVisibility: boolean | null
     isDureation: boolean | null
@@ -16202,6 +16204,7 @@ export namespace Prisma {
     tfaToken: number
     disabled: number
     tfaSecret: number
+    tfaSecret2: number
     fpwToken: number
     qrCodeVisibility: number
     isDureation: number
@@ -16244,6 +16247,7 @@ export namespace Prisma {
     tfaToken?: true
     disabled?: true
     tfaSecret?: true
+    tfaSecret2?: true
     fpwToken?: true
     qrCodeVisibility?: true
     isDureation?: true
@@ -16274,6 +16278,7 @@ export namespace Prisma {
     tfaToken?: true
     disabled?: true
     tfaSecret?: true
+    tfaSecret2?: true
     fpwToken?: true
     qrCodeVisibility?: true
     isDureation?: true
@@ -16304,6 +16309,7 @@ export namespace Prisma {
     tfaToken?: true
     disabled?: true
     tfaSecret?: true
+    tfaSecret2?: true
     fpwToken?: true
     qrCodeVisibility?: true
     isDureation?: true
@@ -16421,6 +16427,7 @@ export namespace Prisma {
     tfaToken: string | null
     disabled: boolean
     tfaSecret: string | null
+    tfaSecret2: string | null
     fpwToken: string | null
     qrCodeVisibility: boolean
     isDureation: boolean
@@ -16470,6 +16477,7 @@ export namespace Prisma {
     tfaToken?: boolean
     disabled?: boolean
     tfaSecret?: boolean
+    tfaSecret2?: boolean
     fpwToken?: boolean
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -16508,6 +16516,7 @@ export namespace Prisma {
     tfaToken?: boolean
     disabled?: boolean
     tfaSecret?: boolean
+    tfaSecret2?: boolean
     fpwToken?: boolean
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -16558,6 +16567,7 @@ export namespace Prisma {
       tfaToken: string | null
       disabled: boolean
       tfaSecret: string | null
+      tfaSecret2: string | null
       fpwToken: string | null
       qrCodeVisibility: boolean
       isDureation: boolean
@@ -16960,6 +16970,7 @@ export namespace Prisma {
     readonly tfaToken: FieldRef<"User", 'String'>
     readonly disabled: FieldRef<"User", 'Boolean'>
     readonly tfaSecret: FieldRef<"User", 'String'>
+    readonly tfaSecret2: FieldRef<"User", 'String'>
     readonly fpwToken: FieldRef<"User", 'String'>
     readonly qrCodeVisibility: FieldRef<"User", 'Boolean'>
     readonly isDureation: FieldRef<"User", 'Boolean'>
@@ -18598,6 +18609,7 @@ export namespace Prisma {
     tfaToken: 'tfaToken',
     disabled: 'disabled',
     tfaSecret: 'tfaSecret',
+    tfaSecret2: 'tfaSecret2',
     fpwToken: 'fpwToken',
     qrCodeVisibility: 'qrCodeVisibility',
     isDureation: 'isDureation',
@@ -19990,6 +20002,7 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"User"> | string | null
     disabled?: BoolFilter<"User"> | boolean
     tfaSecret?: StringNullableFilter<"User"> | string | null
+    tfaSecret2?: StringNullableFilter<"User"> | string | null
     fpwToken?: StringNullableFilter<"User"> | string | null
     qrCodeVisibility?: BoolFilter<"User"> | boolean
     isDureation?: BoolFilter<"User"> | boolean
@@ -20026,6 +20039,7 @@ export namespace Prisma {
     tfaToken?: SortOrderInput | SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrderInput | SortOrder
+    tfaSecret2?: SortOrderInput | SortOrder
     fpwToken?: SortOrderInput | SortOrder
     qrCodeVisibility?: SortOrder
     isDureation?: SortOrder
@@ -20065,6 +20079,7 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"User"> | string | null
     disabled?: BoolFilter<"User"> | boolean
     tfaSecret?: StringNullableFilter<"User"> | string | null
+    tfaSecret2?: StringNullableFilter<"User"> | string | null
     fpwToken?: StringNullableFilter<"User"> | string | null
     qrCodeVisibility?: BoolFilter<"User"> | boolean
     isDureation?: BoolFilter<"User"> | boolean
@@ -20101,6 +20116,7 @@ export namespace Prisma {
     tfaToken?: SortOrderInput | SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrderInput | SortOrder
+    tfaSecret2?: SortOrderInput | SortOrder
     fpwToken?: SortOrderInput | SortOrder
     qrCodeVisibility?: SortOrder
     isDureation?: SortOrder
@@ -20139,6 +20155,7 @@ export namespace Prisma {
     tfaToken?: StringNullableWithAggregatesFilter<"User"> | string | null
     disabled?: BoolWithAggregatesFilter<"User"> | boolean
     tfaSecret?: StringNullableWithAggregatesFilter<"User"> | string | null
+    tfaSecret2?: StringNullableWithAggregatesFilter<"User"> | string | null
     fpwToken?: StringNullableWithAggregatesFilter<"User"> | string | null
     qrCodeVisibility?: BoolWithAggregatesFilter<"User"> | boolean
     isDureation?: BoolWithAggregatesFilter<"User"> | boolean
@@ -21569,6 +21586,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -21604,6 +21622,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -21638,6 +21657,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -21673,6 +21693,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -21708,6 +21729,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -21737,6 +21759,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -21766,6 +21789,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -23066,6 +23090,7 @@ export namespace Prisma {
     tfaToken?: SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrder
+    tfaSecret2?: SortOrder
     fpwToken?: SortOrder
     qrCodeVisibility?: SortOrder
     isDureation?: SortOrder
@@ -23101,6 +23126,7 @@ export namespace Prisma {
     tfaToken?: SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrder
+    tfaSecret2?: SortOrder
     fpwToken?: SortOrder
     qrCodeVisibility?: SortOrder
     isDureation?: SortOrder
@@ -23131,6 +23157,7 @@ export namespace Prisma {
     tfaToken?: SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrder
+    tfaSecret2?: SortOrder
     fpwToken?: SortOrder
     qrCodeVisibility?: SortOrder
     isDureation?: SortOrder
@@ -26126,6 +26153,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -26160,6 +26188,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -26448,6 +26477,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -26482,6 +26512,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -26844,6 +26875,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -26878,6 +26910,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -27063,6 +27096,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -27097,6 +27131,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -27465,6 +27500,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -27499,6 +27535,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -27788,6 +27825,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -27822,6 +27860,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -28697,6 +28736,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -28731,6 +28771,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -28769,6 +28810,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -28803,6 +28845,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -28951,6 +28994,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -28985,6 +29029,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -29038,6 +29083,7 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"User"> | string | null
     disabled?: BoolFilter<"User"> | boolean
     tfaSecret?: StringNullableFilter<"User"> | string | null
+    tfaSecret2?: StringNullableFilter<"User"> | string | null
     fpwToken?: StringNullableFilter<"User"> | string | null
     qrCodeVisibility?: BoolFilter<"User"> | boolean
     isDureation?: BoolFilter<"User"> | boolean
@@ -29067,6 +29113,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -29101,6 +29148,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -29176,6 +29224,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -29210,6 +29259,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -30729,6 +30779,7 @@ export namespace Prisma {
     tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
+    tfaSecret2?: string | null
     fpwToken?: string | null
     qrCodeVisibility?: boolean
     isDureation?: boolean
@@ -30890,6 +30941,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -30924,6 +30976,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean
@@ -30958,6 +31011,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaSecret2?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
     qrCodeVisibility?: BoolFieldUpdateOperationsInput | boolean
     isDureation?: BoolFieldUpdateOperationsInput | boolean

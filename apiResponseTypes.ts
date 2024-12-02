@@ -11,6 +11,7 @@ export interface IStandardRes<T> {
 export interface IAuthReq {
   email: string;
   password: string;
+  code?: string;
 }
 export interface IOrganisationDetailRes {
   id: number;
