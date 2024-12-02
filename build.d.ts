@@ -16138,6 +16138,8 @@ export namespace Prisma {
     logo: string | null
     isActive: boolean | null
     isUnlock: boolean | null
+    is2FA: boolean | null
+    tfaToken: string | null
     disabled: boolean | null
     tfaSecret: string | null
     fpwToken: string | null
@@ -16166,6 +16168,8 @@ export namespace Prisma {
     logo: string | null
     isActive: boolean | null
     isUnlock: boolean | null
+    is2FA: boolean | null
+    tfaToken: string | null
     disabled: boolean | null
     tfaSecret: string | null
     fpwToken: string | null
@@ -16194,6 +16198,8 @@ export namespace Prisma {
     logo: number
     isActive: number
     isUnlock: number
+    is2FA: number
+    tfaToken: number
     disabled: number
     tfaSecret: number
     fpwToken: number
@@ -16234,6 +16240,8 @@ export namespace Prisma {
     logo?: true
     isActive?: true
     isUnlock?: true
+    is2FA?: true
+    tfaToken?: true
     disabled?: true
     tfaSecret?: true
     fpwToken?: true
@@ -16262,6 +16270,8 @@ export namespace Prisma {
     logo?: true
     isActive?: true
     isUnlock?: true
+    is2FA?: true
+    tfaToken?: true
     disabled?: true
     tfaSecret?: true
     fpwToken?: true
@@ -16290,6 +16300,8 @@ export namespace Prisma {
     logo?: true
     isActive?: true
     isUnlock?: true
+    is2FA?: true
+    tfaToken?: true
     disabled?: true
     tfaSecret?: true
     fpwToken?: true
@@ -16405,6 +16417,8 @@ export namespace Prisma {
     logo: string | null
     isActive: boolean
     isUnlock: boolean
+    is2FA: boolean
+    tfaToken: string | null
     disabled: boolean
     tfaSecret: string | null
     fpwToken: string | null
@@ -16452,6 +16466,8 @@ export namespace Prisma {
     logo?: boolean
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: boolean
     disabled?: boolean
     tfaSecret?: boolean
     fpwToken?: boolean
@@ -16488,6 +16504,8 @@ export namespace Prisma {
     logo?: boolean
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: boolean
     disabled?: boolean
     tfaSecret?: boolean
     fpwToken?: boolean
@@ -16536,6 +16554,8 @@ export namespace Prisma {
       logo: string | null
       isActive: boolean
       isUnlock: boolean
+      is2FA: boolean
+      tfaToken: string | null
       disabled: boolean
       tfaSecret: string | null
       fpwToken: string | null
@@ -16936,6 +16956,8 @@ export namespace Prisma {
     readonly logo: FieldRef<"User", 'String'>
     readonly isActive: FieldRef<"User", 'Boolean'>
     readonly isUnlock: FieldRef<"User", 'Boolean'>
+    readonly is2FA: FieldRef<"User", 'Boolean'>
+    readonly tfaToken: FieldRef<"User", 'String'>
     readonly disabled: FieldRef<"User", 'Boolean'>
     readonly tfaSecret: FieldRef<"User", 'String'>
     readonly fpwToken: FieldRef<"User", 'String'>
@@ -18572,6 +18594,8 @@ export namespace Prisma {
     logo: 'logo',
     isActive: 'isActive',
     isUnlock: 'isUnlock',
+    is2FA: 'is2FA',
+    tfaToken: 'tfaToken',
     disabled: 'disabled',
     tfaSecret: 'tfaSecret',
     fpwToken: 'fpwToken',
@@ -19962,6 +19986,8 @@ export namespace Prisma {
     logo?: StringNullableFilter<"User"> | string | null
     isActive?: BoolFilter<"User"> | boolean
     isUnlock?: BoolFilter<"User"> | boolean
+    is2FA?: BoolFilter<"User"> | boolean
+    tfaToken?: StringNullableFilter<"User"> | string | null
     disabled?: BoolFilter<"User"> | boolean
     tfaSecret?: StringNullableFilter<"User"> | string | null
     fpwToken?: StringNullableFilter<"User"> | string | null
@@ -19996,6 +20022,8 @@ export namespace Prisma {
     logo?: SortOrderInput | SortOrder
     isActive?: SortOrder
     isUnlock?: SortOrder
+    is2FA?: SortOrder
+    tfaToken?: SortOrderInput | SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrderInput | SortOrder
     fpwToken?: SortOrderInput | SortOrder
@@ -20033,6 +20061,8 @@ export namespace Prisma {
     logo?: StringNullableFilter<"User"> | string | null
     isActive?: BoolFilter<"User"> | boolean
     isUnlock?: BoolFilter<"User"> | boolean
+    is2FA?: BoolFilter<"User"> | boolean
+    tfaToken?: StringNullableFilter<"User"> | string | null
     disabled?: BoolFilter<"User"> | boolean
     tfaSecret?: StringNullableFilter<"User"> | string | null
     fpwToken?: StringNullableFilter<"User"> | string | null
@@ -20067,6 +20097,8 @@ export namespace Prisma {
     logo?: SortOrderInput | SortOrder
     isActive?: SortOrder
     isUnlock?: SortOrder
+    is2FA?: SortOrder
+    tfaToken?: SortOrderInput | SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrderInput | SortOrder
     fpwToken?: SortOrderInput | SortOrder
@@ -20103,6 +20135,8 @@ export namespace Prisma {
     logo?: StringNullableWithAggregatesFilter<"User"> | string | null
     isActive?: BoolWithAggregatesFilter<"User"> | boolean
     isUnlock?: BoolWithAggregatesFilter<"User"> | boolean
+    is2FA?: BoolWithAggregatesFilter<"User"> | boolean
+    tfaToken?: StringNullableWithAggregatesFilter<"User"> | string | null
     disabled?: BoolWithAggregatesFilter<"User"> | boolean
     tfaSecret?: StringNullableWithAggregatesFilter<"User"> | string | null
     fpwToken?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -21531,6 +21565,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -21564,6 +21600,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -21596,6 +21634,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21629,6 +21669,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21662,6 +21704,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -21689,6 +21733,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21716,6 +21762,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23014,6 +23062,8 @@ export namespace Prisma {
     logo?: SortOrder
     isActive?: SortOrder
     isUnlock?: SortOrder
+    is2FA?: SortOrder
+    tfaToken?: SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrder
     fpwToken?: SortOrder
@@ -23047,6 +23097,8 @@ export namespace Prisma {
     logo?: SortOrder
     isActive?: SortOrder
     isUnlock?: SortOrder
+    is2FA?: SortOrder
+    tfaToken?: SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrder
     fpwToken?: SortOrder
@@ -23075,6 +23127,8 @@ export namespace Prisma {
     logo?: SortOrder
     isActive?: SortOrder
     isUnlock?: SortOrder
+    is2FA?: SortOrder
+    tfaToken?: SortOrder
     disabled?: SortOrder
     tfaSecret?: SortOrder
     fpwToken?: SortOrder
@@ -26068,6 +26122,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -26100,6 +26156,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -26386,6 +26444,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26418,6 +26478,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26778,6 +26840,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -26810,6 +26874,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -26993,6 +27059,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27025,6 +27093,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27391,6 +27461,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -27423,6 +27495,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -27710,6 +27784,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27742,6 +27818,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28615,6 +28693,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -28647,6 +28727,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -28683,6 +28765,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -28715,6 +28799,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -28861,6 +28947,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28893,6 +28981,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28944,6 +29034,8 @@ export namespace Prisma {
     logo?: StringNullableFilter<"User"> | string | null
     isActive?: BoolFilter<"User"> | boolean
     isUnlock?: BoolFilter<"User"> | boolean
+    is2FA?: BoolFilter<"User"> | boolean
+    tfaToken?: StringNullableFilter<"User"> | string | null
     disabled?: BoolFilter<"User"> | boolean
     tfaSecret?: StringNullableFilter<"User"> | string | null
     fpwToken?: StringNullableFilter<"User"> | string | null
@@ -28971,6 +29063,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -29003,6 +29097,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -29076,6 +29172,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29108,6 +29206,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30625,6 +30725,8 @@ export namespace Prisma {
     logo?: string | null
     isActive?: boolean
     isUnlock?: boolean
+    is2FA?: boolean
+    tfaToken?: string | null
     disabled?: boolean
     tfaSecret?: string | null
     fpwToken?: string | null
@@ -30784,6 +30886,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30816,6 +30920,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30848,6 +30954,8 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    is2FA?: BoolFieldUpdateOperationsInput | boolean
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     disabled?: BoolFieldUpdateOperationsInput | boolean
     tfaSecret?: NullableStringFieldUpdateOperationsInput | string | null
     fpwToken?: NullableStringFieldUpdateOperationsInput | string | null

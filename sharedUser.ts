@@ -53,6 +53,7 @@ export interface IUserListIteam {
   endDate: Date;
   isActive: boolean;
   isUnlock: boolean;
+  is2FA?: boolean;
   OrganisationStructure: {
     id: number;
     organisationId: number;
