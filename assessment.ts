@@ -47,6 +47,7 @@ export interface IQuestionMongo {
 export enum AssessmentConfig {
   ViewMode = 'ViewMode',
   SaveMode = 'SaveMode',
+  AssignMode = 'AssignMode',
 }
 
 export enum ViewMode {
