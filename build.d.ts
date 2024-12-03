@@ -104,7 +104,8 @@ export type AnswerType = (typeof AnswerType)[keyof typeof AnswerType]
 
 export const AssessmentConfig: {
   ViewMode: 'ViewMode',
-  SaveMode: 'SaveMode'
+  SaveMode: 'SaveMode',
+  AssignMode: 'AssignMode'
 };
 
 export type AssessmentConfig = (typeof AssessmentConfig)[keyof typeof AssessmentConfig]
