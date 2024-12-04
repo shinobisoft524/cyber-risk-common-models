@@ -6,3 +6,16 @@ export enum RoleTitles {
   Viewer = 'Viewer',
   Guest = 'Guest',
 }
+
+export enum AnswerType {
+  Confirmed = 'Confirmed',
+  Delayed = 'Delayed',
+  Unknown = 'Unknown',
+}
+
+export enum AnswerMode {
+  Owner = 'Owner',
+  Manager = 'Manager',
+  Worker = 'Worker',
+  Viewer = 'Viewer',
+}

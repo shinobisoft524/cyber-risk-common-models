@@ -1,5 +1,6 @@
 import { IWorkQuestionBase } from './apiResponseTypes';
 import { IAssessmentDetailWithTeamInfo } from './assessment';
+import { AnswerMode, AnswerType } from './commonStatic';
 
 export interface IRiskScoreSummary {
   Ir_Score: number;
@@ -61,4 +62,20 @@ export interface IScoreValueDetail {
     targetTierLevel: number;
   };
   functionCatResults: IFunctionCatResult[];
+}
+
+export interface IReCalculateData {
+  id: number;
+  questionMongoId: string;
+  confirmedAnswerId: number;
+  answerType: AnswerType;
+  QuestionAnswer: {
+    id: number;
+    updatedAt: Date;
+    confirmedAnswerId: number;
+    answerType: AnswerType;
+    OrganisationStructure: any;
+    answer: string;
+    answerMode: AnswerMode;
+  }[];
 }

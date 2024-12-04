@@ -1,5 +1,5 @@
 import { IQuestionMongo } from './assessment';
-import { RoleTitles } from './commonStatic';
+import { AnswerMode, AnswerType, RoleTitles } from './commonStatic';
 import { IScoreValueDetail } from './result';
 
 export interface IStandardRes<T> {
@@ -85,8 +85,8 @@ export interface ITeamDetailRes {
 export interface IQuestionAnswerDetailBase {
   id: number;
   confirmedAnswerId?: number;
-  answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
-  answerMode: 'Owner' | 'Manager' | 'Worker' | 'Viewer';
+  answerType?: AnswerType;
+  answerMode: AnswerMode;
   OrganisationStructure: {
     id: number;
     Team: {
@@ -104,13 +104,13 @@ export interface IQuestionAnswerDetailBase {
 export interface IWorkQuestionBase {
   question: IQuestionMongo & {
     confirmedAnswerId?: number;
-    answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
+    answerType?: AnswerType;
   };
   assign: {
     id: number;
     questionMongoId: string;
     confirmedAnswerId?: number;
-    answerType?: 'Confirmed' | 'Delayed' | 'Unknown';
+    answerType?: AnswerType;
     QuestionAnswer: IQuestionAnswerDetailBase[];
   };
 }
