@@ -8,6 +8,8 @@ export interface IAdminUser {
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
+  is2FA?: boolean;
+  tfaSecret?: string;
   UserRole: {
     id: number;
     isActive: boolean;

@@ -17,6 +17,8 @@ export interface IOrganisationDetailRes {
   id: number;
   name: string;
   logo?: string;
+  isActive: boolean;
+  isUnlock: boolean;
   Owner?: { id: number; name: string; email: string };
 }
 
