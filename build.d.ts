@@ -19,6 +19,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type Assessment = $Result.DefaultSelection<Prisma.$AssessmentPayload>
 /**
+ * Model AssessmentStage
+ * 
+ */
+export type AssessmentStage = $Result.DefaultSelection<Prisma.$AssessmentStagePayload>
+/**
  * Model AssessmentQuestion
  * 
  */
@@ -93,7 +98,17 @@ export type UserRole = $Result.DefaultSelection<Prisma.$UserRolePayload>
  * Enums
  */
 export namespace $Enums {
-  export const AnswerType: {
+  export const StageState: {
+  Pending: 'Pending',
+  Working: 'Working',
+  Complete: 'Complete',
+  Lock: 'Lock'
+};
+
+export type StageState = (typeof StageState)[keyof typeof StageState]
+
+
+export const AnswerType: {
   Confirmed: 'Confirmed',
   Delayed: 'Delayed',
   Unknown: 'Unknown'
@@ -131,6 +146,10 @@ export const AnswerMode: {
 export type AnswerMode = (typeof AnswerMode)[keyof typeof AnswerMode]
 
 }
+
+export type StageState = $Enums.StageState
+
+export const StageState: typeof $Enums.StageState
 
 export type AnswerType = $Enums.AnswerType
 
@@ -280,6 +299,16 @@ export class PrismaClient<
     * ```
     */
   get assessment(): Prisma.AssessmentDelegate<ExtArgs>;
+
+  /**
+   * `prisma.assessmentStage`: Exposes CRUD operations for the **AssessmentStage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AssessmentStages
+    * const assessmentStages = await prisma.assessmentStage.findMany()
+    * ```
+    */
+  get assessmentStage(): Prisma.AssessmentStageDelegate<ExtArgs>;
 
   /**
    * `prisma.assessmentQuestion`: Exposes CRUD operations for the **AssessmentQuestion** model.
@@ -860,6 +889,7 @@ export namespace Prisma {
 
   export const ModelName: {
     Assessment: 'Assessment',
+    AssessmentStage: 'AssessmentStage',
     AssessmentQuestion: 'AssessmentQuestion',
     AssessmentSetting: 'AssessmentSetting',
     AssessmentTeam: 'AssessmentTeam',
@@ -889,7 +919,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "assessment" | "assessmentQuestion" | "assessmentSetting" | "assessmentTeam" | "organisation" | "organisationRole" | "organisationStructure" | "organisationTemplate" | "questionAnswer" | "role" | "team" | "template" | "templateStage" | "user" | "userRole"
+      modelProps: "assessment" | "assessmentStage" | "assessmentQuestion" | "assessmentSetting" | "assessmentTeam" | "organisation" | "organisationRole" | "organisationStructure" | "organisationTemplate" | "questionAnswer" | "role" | "team" | "template" | "templateStage" | "user" | "userRole"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -956,6 +986,72 @@ export namespace Prisma {
           count: {
             args: Prisma.AssessmentCountArgs<ExtArgs>
             result: $Utils.Optional<AssessmentCountAggregateOutputType> | number
+          }
+        }
+      }
+      AssessmentStage: {
+        payload: Prisma.$AssessmentStagePayload<ExtArgs>
+        fields: Prisma.AssessmentStageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AssessmentStageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentStagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AssessmentStageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentStagePayload>
+          }
+          findFirst: {
+            args: Prisma.AssessmentStageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentStagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AssessmentStageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentStagePayload>
+          }
+          findMany: {
+            args: Prisma.AssessmentStageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentStagePayload>[]
+          }
+          create: {
+            args: Prisma.AssessmentStageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentStagePayload>
+          }
+          createMany: {
+            args: Prisma.AssessmentStageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.AssessmentStageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentStagePayload>
+          }
+          update: {
+            args: Prisma.AssessmentStageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentStagePayload>
+          }
+          deleteMany: {
+            args: Prisma.AssessmentStageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AssessmentStageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AssessmentStageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AssessmentStagePayload>
+          }
+          aggregate: {
+            args: Prisma.AssessmentStageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAssessmentStage>
+          }
+          groupBy: {
+            args: Prisma.AssessmentStageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AssessmentStageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AssessmentStageCountArgs<ExtArgs>
+            result: $Utils.Optional<AssessmentStageCountAggregateOutputType> | number
           }
         }
       }
@@ -2048,6 +2144,7 @@ export namespace Prisma {
     AssessmentTeam: number
     QuestionAnswer: number
     AssessmentSetting: number
+    AssessmentStage: number
   }
 
   export type AssessmentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2055,6 +2152,7 @@ export namespace Prisma {
     AssessmentTeam?: boolean | AssessmentCountOutputTypeCountAssessmentTeamArgs
     QuestionAnswer?: boolean | AssessmentCountOutputTypeCountQuestionAnswerArgs
     AssessmentSetting?: boolean | AssessmentCountOutputTypeCountAssessmentSettingArgs
+    AssessmentStage?: boolean | AssessmentCountOutputTypeCountAssessmentStageArgs
   }
 
   // Custom InputTypes
@@ -2094,6 +2192,13 @@ export namespace Prisma {
    */
   export type AssessmentCountOutputTypeCountAssessmentSettingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AssessmentSettingWhereInput
+  }
+
+  /**
+   * AssessmentCountOutputType without action
+   */
+  export type AssessmentCountOutputTypeCountAssessmentStageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AssessmentStageWhereInput
   }
 
 
@@ -2772,6 +2877,7 @@ export namespace Prisma {
     AssessmentTeam?: boolean | Assessment$AssessmentTeamArgs<ExtArgs>
     QuestionAnswer?: boolean | Assessment$QuestionAnswerArgs<ExtArgs>
     AssessmentSetting?: boolean | Assessment$AssessmentSettingArgs<ExtArgs>
+    AssessmentStage?: boolean | Assessment$AssessmentStageArgs<ExtArgs>
     _count?: boolean | AssessmentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["assessment"]>
 
@@ -2800,6 +2906,7 @@ export namespace Prisma {
     AssessmentTeam?: boolean | Assessment$AssessmentTeamArgs<ExtArgs>
     QuestionAnswer?: boolean | Assessment$QuestionAnswerArgs<ExtArgs>
     AssessmentSetting?: boolean | Assessment$AssessmentSettingArgs<ExtArgs>
+    AssessmentStage?: boolean | Assessment$AssessmentStageArgs<ExtArgs>
     _count?: boolean | AssessmentCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2812,6 +2919,7 @@ export namespace Prisma {
       AssessmentTeam: Prisma.$AssessmentTeamPayload<ExtArgs>[]
       QuestionAnswer: Prisma.$QuestionAnswerPayload<ExtArgs>[]
       AssessmentSetting: Prisma.$AssessmentSettingPayload<ExtArgs>[]
+      AssessmentStage: Prisma.$AssessmentStagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3174,6 +3282,7 @@ export namespace Prisma {
     AssessmentTeam<T extends Assessment$AssessmentTeamArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$AssessmentTeamArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentTeamPayload<ExtArgs>, T, "findMany"> | Null>
     QuestionAnswer<T extends Assessment$QuestionAnswerArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$QuestionAnswerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuestionAnswerPayload<ExtArgs>, T, "findMany"> | Null>
     AssessmentSetting<T extends Assessment$AssessmentSettingArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$AssessmentSettingArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentSettingPayload<ExtArgs>, T, "findMany"> | Null>
+    AssessmentStage<T extends Assessment$AssessmentStageArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$AssessmentStageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentStagePayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3611,6 +3720,26 @@ export namespace Prisma {
   }
 
   /**
+   * Assessment.AssessmentStage
+   */
+  export type Assessment$AssessmentStageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentStage
+     */
+    select?: AssessmentStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentStageInclude<ExtArgs> | null
+    where?: AssessmentStageWhereInput
+    orderBy?: AssessmentStageOrderByWithRelationInput | AssessmentStageOrderByWithRelationInput[]
+    cursor?: AssessmentStageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AssessmentStageScalarFieldEnum | AssessmentStageScalarFieldEnum[]
+  }
+
+  /**
    * Assessment without action
    */
   export type AssessmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3622,6 +3751,956 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: AssessmentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AssessmentStage
+   */
+
+  export type AggregateAssessmentStage = {
+    _count: AssessmentStageCountAggregateOutputType | null
+    _avg: AssessmentStageAvgAggregateOutputType | null
+    _sum: AssessmentStageSumAggregateOutputType | null
+    _min: AssessmentStageMinAggregateOutputType | null
+    _max: AssessmentStageMaxAggregateOutputType | null
+  }
+
+  export type AssessmentStageAvgAggregateOutputType = {
+    id: number | null
+    assessmentId: number | null
+  }
+
+  export type AssessmentStageSumAggregateOutputType = {
+    id: number | null
+    assessmentId: number | null
+  }
+
+  export type AssessmentStageMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    StageState: $Enums.StageState | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    assessmentId: number | null
+  }
+
+  export type AssessmentStageMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    StageState: $Enums.StageState | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    assessmentId: number | null
+  }
+
+  export type AssessmentStageCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    StageState: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    assessmentId: number
+    _all: number
+  }
+
+
+  export type AssessmentStageAvgAggregateInputType = {
+    id?: true
+    assessmentId?: true
+  }
+
+  export type AssessmentStageSumAggregateInputType = {
+    id?: true
+    assessmentId?: true
+  }
+
+  export type AssessmentStageMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    StageState?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    assessmentId?: true
+  }
+
+  export type AssessmentStageMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    StageState?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    assessmentId?: true
+  }
+
+  export type AssessmentStageCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    StageState?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    assessmentId?: true
+    _all?: true
+  }
+
+  export type AssessmentStageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AssessmentStage to aggregate.
+     */
+    where?: AssessmentStageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AssessmentStages to fetch.
+     */
+    orderBy?: AssessmentStageOrderByWithRelationInput | AssessmentStageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AssessmentStageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AssessmentStages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AssessmentStages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AssessmentStages
+    **/
+    _count?: true | AssessmentStageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AssessmentStageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AssessmentStageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AssessmentStageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AssessmentStageMaxAggregateInputType
+  }
+
+  export type GetAssessmentStageAggregateType<T extends AssessmentStageAggregateArgs> = {
+        [P in keyof T & keyof AggregateAssessmentStage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAssessmentStage[P]>
+      : GetScalarType<T[P], AggregateAssessmentStage[P]>
+  }
+
+
+
+
+  export type AssessmentStageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AssessmentStageWhereInput
+    orderBy?: AssessmentStageOrderByWithAggregationInput | AssessmentStageOrderByWithAggregationInput[]
+    by: AssessmentStageScalarFieldEnum[] | AssessmentStageScalarFieldEnum
+    having?: AssessmentStageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AssessmentStageCountAggregateInputType | true
+    _avg?: AssessmentStageAvgAggregateInputType
+    _sum?: AssessmentStageSumAggregateInputType
+    _min?: AssessmentStageMinAggregateInputType
+    _max?: AssessmentStageMaxAggregateInputType
+  }
+
+  export type AssessmentStageGroupByOutputType = {
+    id: number
+    name: string
+    description: string | null
+    StageState: $Enums.StageState
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    assessmentId: number
+    _count: AssessmentStageCountAggregateOutputType | null
+    _avg: AssessmentStageAvgAggregateOutputType | null
+    _sum: AssessmentStageSumAggregateOutputType | null
+    _min: AssessmentStageMinAggregateOutputType | null
+    _max: AssessmentStageMaxAggregateOutputType | null
+  }
+
+  type GetAssessmentStageGroupByPayload<T extends AssessmentStageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AssessmentStageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AssessmentStageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AssessmentStageGroupByOutputType[P]>
+            : GetScalarType<T[P], AssessmentStageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AssessmentStageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    StageState?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    assessmentId?: boolean
+    Assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["assessmentStage"]>
+
+
+  export type AssessmentStageSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    StageState?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    assessmentId?: boolean
+  }
+
+  export type AssessmentStageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
+  }
+
+  export type $AssessmentStagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AssessmentStage"
+    objects: {
+      Assessment: Prisma.$AssessmentPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      description: string | null
+      StageState: $Enums.StageState
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+      assessmentId: number
+    }, ExtArgs["result"]["assessmentStage"]>
+    composites: {}
+  }
+
+  type AssessmentStageGetPayload<S extends boolean | null | undefined | AssessmentStageDefaultArgs> = $Result.GetResult<Prisma.$AssessmentStagePayload, S>
+
+  type AssessmentStageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<AssessmentStageFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: AssessmentStageCountAggregateInputType | true
+    }
+
+  export interface AssessmentStageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AssessmentStage'], meta: { name: 'AssessmentStage' } }
+    /**
+     * Find zero or one AssessmentStage that matches the filter.
+     * @param {AssessmentStageFindUniqueArgs} args - Arguments to find a AssessmentStage
+     * @example
+     * // Get one AssessmentStage
+     * const assessmentStage = await prisma.assessmentStage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AssessmentStageFindUniqueArgs>(args: SelectSubset<T, AssessmentStageFindUniqueArgs<ExtArgs>>): Prisma__AssessmentStageClient<$Result.GetResult<Prisma.$AssessmentStagePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one AssessmentStage that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {AssessmentStageFindUniqueOrThrowArgs} args - Arguments to find a AssessmentStage
+     * @example
+     * // Get one AssessmentStage
+     * const assessmentStage = await prisma.assessmentStage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AssessmentStageFindUniqueOrThrowArgs>(args: SelectSubset<T, AssessmentStageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AssessmentStageClient<$Result.GetResult<Prisma.$AssessmentStagePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first AssessmentStage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentStageFindFirstArgs} args - Arguments to find a AssessmentStage
+     * @example
+     * // Get one AssessmentStage
+     * const assessmentStage = await prisma.assessmentStage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AssessmentStageFindFirstArgs>(args?: SelectSubset<T, AssessmentStageFindFirstArgs<ExtArgs>>): Prisma__AssessmentStageClient<$Result.GetResult<Prisma.$AssessmentStagePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first AssessmentStage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentStageFindFirstOrThrowArgs} args - Arguments to find a AssessmentStage
+     * @example
+     * // Get one AssessmentStage
+     * const assessmentStage = await prisma.assessmentStage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AssessmentStageFindFirstOrThrowArgs>(args?: SelectSubset<T, AssessmentStageFindFirstOrThrowArgs<ExtArgs>>): Prisma__AssessmentStageClient<$Result.GetResult<Prisma.$AssessmentStagePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more AssessmentStages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentStageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AssessmentStages
+     * const assessmentStages = await prisma.assessmentStage.findMany()
+     * 
+     * // Get first 10 AssessmentStages
+     * const assessmentStages = await prisma.assessmentStage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const assessmentStageWithIdOnly = await prisma.assessmentStage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AssessmentStageFindManyArgs>(args?: SelectSubset<T, AssessmentStageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentStagePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a AssessmentStage.
+     * @param {AssessmentStageCreateArgs} args - Arguments to create a AssessmentStage.
+     * @example
+     * // Create one AssessmentStage
+     * const AssessmentStage = await prisma.assessmentStage.create({
+     *   data: {
+     *     // ... data to create a AssessmentStage
+     *   }
+     * })
+     * 
+     */
+    create<T extends AssessmentStageCreateArgs>(args: SelectSubset<T, AssessmentStageCreateArgs<ExtArgs>>): Prisma__AssessmentStageClient<$Result.GetResult<Prisma.$AssessmentStagePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many AssessmentStages.
+     * @param {AssessmentStageCreateManyArgs} args - Arguments to create many AssessmentStages.
+     * @example
+     * // Create many AssessmentStages
+     * const assessmentStage = await prisma.assessmentStage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AssessmentStageCreateManyArgs>(args?: SelectSubset<T, AssessmentStageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a AssessmentStage.
+     * @param {AssessmentStageDeleteArgs} args - Arguments to delete one AssessmentStage.
+     * @example
+     * // Delete one AssessmentStage
+     * const AssessmentStage = await prisma.assessmentStage.delete({
+     *   where: {
+     *     // ... filter to delete one AssessmentStage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AssessmentStageDeleteArgs>(args: SelectSubset<T, AssessmentStageDeleteArgs<ExtArgs>>): Prisma__AssessmentStageClient<$Result.GetResult<Prisma.$AssessmentStagePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one AssessmentStage.
+     * @param {AssessmentStageUpdateArgs} args - Arguments to update one AssessmentStage.
+     * @example
+     * // Update one AssessmentStage
+     * const assessmentStage = await prisma.assessmentStage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AssessmentStageUpdateArgs>(args: SelectSubset<T, AssessmentStageUpdateArgs<ExtArgs>>): Prisma__AssessmentStageClient<$Result.GetResult<Prisma.$AssessmentStagePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more AssessmentStages.
+     * @param {AssessmentStageDeleteManyArgs} args - Arguments to filter AssessmentStages to delete.
+     * @example
+     * // Delete a few AssessmentStages
+     * const { count } = await prisma.assessmentStage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AssessmentStageDeleteManyArgs>(args?: SelectSubset<T, AssessmentStageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AssessmentStages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentStageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AssessmentStages
+     * const assessmentStage = await prisma.assessmentStage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AssessmentStageUpdateManyArgs>(args: SelectSubset<T, AssessmentStageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one AssessmentStage.
+     * @param {AssessmentStageUpsertArgs} args - Arguments to update or create a AssessmentStage.
+     * @example
+     * // Update or create a AssessmentStage
+     * const assessmentStage = await prisma.assessmentStage.upsert({
+     *   create: {
+     *     // ... data to create a AssessmentStage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AssessmentStage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AssessmentStageUpsertArgs>(args: SelectSubset<T, AssessmentStageUpsertArgs<ExtArgs>>): Prisma__AssessmentStageClient<$Result.GetResult<Prisma.$AssessmentStagePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of AssessmentStages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentStageCountArgs} args - Arguments to filter AssessmentStages to count.
+     * @example
+     * // Count the number of AssessmentStages
+     * const count = await prisma.assessmentStage.count({
+     *   where: {
+     *     // ... the filter for the AssessmentStages we want to count
+     *   }
+     * })
+    **/
+    count<T extends AssessmentStageCountArgs>(
+      args?: Subset<T, AssessmentStageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AssessmentStageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AssessmentStage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentStageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AssessmentStageAggregateArgs>(args: Subset<T, AssessmentStageAggregateArgs>): Prisma.PrismaPromise<GetAssessmentStageAggregateType<T>>
+
+    /**
+     * Group by AssessmentStage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AssessmentStageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AssessmentStageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AssessmentStageGroupByArgs['orderBy'] }
+        : { orderBy?: AssessmentStageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AssessmentStageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAssessmentStageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AssessmentStage model
+   */
+  readonly fields: AssessmentStageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AssessmentStage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AssessmentStageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Assessment<T extends AssessmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AssessmentDefaultArgs<ExtArgs>>): Prisma__AssessmentClient<$Result.GetResult<Prisma.$AssessmentPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AssessmentStage model
+   */ 
+  interface AssessmentStageFieldRefs {
+    readonly id: FieldRef<"AssessmentStage", 'Int'>
+    readonly name: FieldRef<"AssessmentStage", 'String'>
+    readonly description: FieldRef<"AssessmentStage", 'String'>
+    readonly StageState: FieldRef<"AssessmentStage", 'StageState'>
+    readonly isActive: FieldRef<"AssessmentStage", 'Boolean'>
+    readonly createdAt: FieldRef<"AssessmentStage", 'DateTime'>
+    readonly updatedAt: FieldRef<"AssessmentStage", 'DateTime'>
+    readonly assessmentId: FieldRef<"AssessmentStage", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AssessmentStage findUnique
+   */
+  export type AssessmentStageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentStage
+     */
+    select?: AssessmentStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentStageInclude<ExtArgs> | null
+    /**
+     * Filter, which AssessmentStage to fetch.
+     */
+    where: AssessmentStageWhereUniqueInput
+  }
+
+  /**
+   * AssessmentStage findUniqueOrThrow
+   */
+  export type AssessmentStageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentStage
+     */
+    select?: AssessmentStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentStageInclude<ExtArgs> | null
+    /**
+     * Filter, which AssessmentStage to fetch.
+     */
+    where: AssessmentStageWhereUniqueInput
+  }
+
+  /**
+   * AssessmentStage findFirst
+   */
+  export type AssessmentStageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentStage
+     */
+    select?: AssessmentStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentStageInclude<ExtArgs> | null
+    /**
+     * Filter, which AssessmentStage to fetch.
+     */
+    where?: AssessmentStageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AssessmentStages to fetch.
+     */
+    orderBy?: AssessmentStageOrderByWithRelationInput | AssessmentStageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AssessmentStages.
+     */
+    cursor?: AssessmentStageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AssessmentStages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AssessmentStages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AssessmentStages.
+     */
+    distinct?: AssessmentStageScalarFieldEnum | AssessmentStageScalarFieldEnum[]
+  }
+
+  /**
+   * AssessmentStage findFirstOrThrow
+   */
+  export type AssessmentStageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentStage
+     */
+    select?: AssessmentStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentStageInclude<ExtArgs> | null
+    /**
+     * Filter, which AssessmentStage to fetch.
+     */
+    where?: AssessmentStageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AssessmentStages to fetch.
+     */
+    orderBy?: AssessmentStageOrderByWithRelationInput | AssessmentStageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AssessmentStages.
+     */
+    cursor?: AssessmentStageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AssessmentStages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AssessmentStages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AssessmentStages.
+     */
+    distinct?: AssessmentStageScalarFieldEnum | AssessmentStageScalarFieldEnum[]
+  }
+
+  /**
+   * AssessmentStage findMany
+   */
+  export type AssessmentStageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentStage
+     */
+    select?: AssessmentStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentStageInclude<ExtArgs> | null
+    /**
+     * Filter, which AssessmentStages to fetch.
+     */
+    where?: AssessmentStageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AssessmentStages to fetch.
+     */
+    orderBy?: AssessmentStageOrderByWithRelationInput | AssessmentStageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AssessmentStages.
+     */
+    cursor?: AssessmentStageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AssessmentStages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AssessmentStages.
+     */
+    skip?: number
+    distinct?: AssessmentStageScalarFieldEnum | AssessmentStageScalarFieldEnum[]
+  }
+
+  /**
+   * AssessmentStage create
+   */
+  export type AssessmentStageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentStage
+     */
+    select?: AssessmentStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentStageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AssessmentStage.
+     */
+    data: XOR<AssessmentStageCreateInput, AssessmentStageUncheckedCreateInput>
+  }
+
+  /**
+   * AssessmentStage createMany
+   */
+  export type AssessmentStageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AssessmentStages.
+     */
+    data: AssessmentStageCreateManyInput | AssessmentStageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AssessmentStage update
+   */
+  export type AssessmentStageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentStage
+     */
+    select?: AssessmentStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentStageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AssessmentStage.
+     */
+    data: XOR<AssessmentStageUpdateInput, AssessmentStageUncheckedUpdateInput>
+    /**
+     * Choose, which AssessmentStage to update.
+     */
+    where: AssessmentStageWhereUniqueInput
+  }
+
+  /**
+   * AssessmentStage updateMany
+   */
+  export type AssessmentStageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AssessmentStages.
+     */
+    data: XOR<AssessmentStageUpdateManyMutationInput, AssessmentStageUncheckedUpdateManyInput>
+    /**
+     * Filter which AssessmentStages to update
+     */
+    where?: AssessmentStageWhereInput
+  }
+
+  /**
+   * AssessmentStage upsert
+   */
+  export type AssessmentStageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentStage
+     */
+    select?: AssessmentStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentStageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AssessmentStage to update in case it exists.
+     */
+    where: AssessmentStageWhereUniqueInput
+    /**
+     * In case the AssessmentStage found by the `where` argument doesn't exist, create a new AssessmentStage with this data.
+     */
+    create: XOR<AssessmentStageCreateInput, AssessmentStageUncheckedCreateInput>
+    /**
+     * In case the AssessmentStage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AssessmentStageUpdateInput, AssessmentStageUncheckedUpdateInput>
+  }
+
+  /**
+   * AssessmentStage delete
+   */
+  export type AssessmentStageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentStage
+     */
+    select?: AssessmentStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentStageInclude<ExtArgs> | null
+    /**
+     * Filter which AssessmentStage to delete.
+     */
+    where: AssessmentStageWhereUniqueInput
+  }
+
+  /**
+   * AssessmentStage deleteMany
+   */
+  export type AssessmentStageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AssessmentStages to delete
+     */
+    where?: AssessmentStageWhereInput
+  }
+
+  /**
+   * AssessmentStage without action
+   */
+  export type AssessmentStageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentStage
+     */
+    select?: AssessmentStageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentStageInclude<ExtArgs> | null
   }
 
 
@@ -18388,6 +19467,20 @@ export namespace Prisma {
   export type AssessmentScalarFieldEnum = (typeof AssessmentScalarFieldEnum)[keyof typeof AssessmentScalarFieldEnum]
 
 
+  export const AssessmentStageScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    StageState: 'StageState',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    assessmentId: 'assessmentId'
+  };
+
+  export type AssessmentStageScalarFieldEnum = (typeof AssessmentStageScalarFieldEnum)[keyof typeof AssessmentStageScalarFieldEnum]
+
+
   export const AssessmentQuestionScalarFieldEnum: {
     id: 'id',
     assessmentId: 'assessmentId',
@@ -18691,6 +19784,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'StageState'
+   */
+  export type EnumStageStateFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StageState'>
+    
+
+
+  /**
    * Reference to a field of type 'AnswerType'
    */
   export type EnumAnswerTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnswerType'>
@@ -18752,6 +19852,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamListRelationFilter
     QuestionAnswer?: QuestionAnswerListRelationFilter
     AssessmentSetting?: AssessmentSettingListRelationFilter
+    AssessmentStage?: AssessmentStageListRelationFilter
   }
 
   export type AssessmentOrderByWithRelationInput = {
@@ -18775,6 +19876,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamOrderByRelationAggregateInput
     QuestionAnswer?: QuestionAnswerOrderByRelationAggregateInput
     AssessmentSetting?: AssessmentSettingOrderByRelationAggregateInput
+    AssessmentStage?: AssessmentStageOrderByRelationAggregateInput
   }
 
   export type AssessmentWhereUniqueInput = Prisma.AtLeast<{
@@ -18801,6 +19903,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamListRelationFilter
     QuestionAnswer?: QuestionAnswerListRelationFilter
     AssessmentSetting?: AssessmentSettingListRelationFilter
+    AssessmentStage?: AssessmentStageListRelationFilter
   }, "id" | "id">
 
   export type AssessmentOrderByWithAggregationInput = {
@@ -18843,6 +19946,79 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Assessment"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Assessment"> | Date | string
     organisationTemplateId?: IntNullableWithAggregatesFilter<"Assessment"> | number | null
+  }
+
+  export type AssessmentStageWhereInput = {
+    AND?: AssessmentStageWhereInput | AssessmentStageWhereInput[]
+    OR?: AssessmentStageWhereInput[]
+    NOT?: AssessmentStageWhereInput | AssessmentStageWhereInput[]
+    id?: IntFilter<"AssessmentStage"> | number
+    name?: StringFilter<"AssessmentStage"> | string
+    description?: StringNullableFilter<"AssessmentStage"> | string | null
+    StageState?: EnumStageStateFilter<"AssessmentStage"> | $Enums.StageState
+    isActive?: BoolFilter<"AssessmentStage"> | boolean
+    createdAt?: DateTimeFilter<"AssessmentStage"> | Date | string
+    updatedAt?: DateTimeFilter<"AssessmentStage"> | Date | string
+    assessmentId?: IntFilter<"AssessmentStage"> | number
+    Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
+  }
+
+  export type AssessmentStageOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    StageState?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    assessmentId?: SortOrder
+    Assessment?: AssessmentOrderByWithRelationInput
+  }
+
+  export type AssessmentStageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    assessmentId_name?: AssessmentStageAssessmentIdNameCompoundUniqueInput
+    AND?: AssessmentStageWhereInput | AssessmentStageWhereInput[]
+    OR?: AssessmentStageWhereInput[]
+    NOT?: AssessmentStageWhereInput | AssessmentStageWhereInput[]
+    name?: StringFilter<"AssessmentStage"> | string
+    description?: StringNullableFilter<"AssessmentStage"> | string | null
+    StageState?: EnumStageStateFilter<"AssessmentStage"> | $Enums.StageState
+    isActive?: BoolFilter<"AssessmentStage"> | boolean
+    createdAt?: DateTimeFilter<"AssessmentStage"> | Date | string
+    updatedAt?: DateTimeFilter<"AssessmentStage"> | Date | string
+    assessmentId?: IntFilter<"AssessmentStage"> | number
+    Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
+  }, "id" | "id" | "assessmentId_name">
+
+  export type AssessmentStageOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    StageState?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    assessmentId?: SortOrder
+    _count?: AssessmentStageCountOrderByAggregateInput
+    _avg?: AssessmentStageAvgOrderByAggregateInput
+    _max?: AssessmentStageMaxOrderByAggregateInput
+    _min?: AssessmentStageMinOrderByAggregateInput
+    _sum?: AssessmentStageSumOrderByAggregateInput
+  }
+
+  export type AssessmentStageScalarWhereWithAggregatesInput = {
+    AND?: AssessmentStageScalarWhereWithAggregatesInput | AssessmentStageScalarWhereWithAggregatesInput[]
+    OR?: AssessmentStageScalarWhereWithAggregatesInput[]
+    NOT?: AssessmentStageScalarWhereWithAggregatesInput | AssessmentStageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"AssessmentStage"> | number
+    name?: StringWithAggregatesFilter<"AssessmentStage"> | string
+    description?: StringNullableWithAggregatesFilter<"AssessmentStage"> | string | null
+    StageState?: EnumStageStateWithAggregatesFilter<"AssessmentStage"> | $Enums.StageState
+    isActive?: BoolWithAggregatesFilter<"AssessmentStage"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"AssessmentStage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AssessmentStage"> | Date | string
+    assessmentId?: IntWithAggregatesFilter<"AssessmentStage"> | number
   }
 
   export type AssessmentQuestionWhereInput = {
@@ -20259,6 +21435,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
     AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateInput = {
@@ -20280,6 +21457,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUpdateInput = {
@@ -20300,6 +21478,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateInput = {
@@ -20321,6 +21500,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentCreateManyInput = {
@@ -20369,6 +21549,79 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AssessmentStageCreateInput = {
+    name: string
+    description?: string | null
+    StageState?: $Enums.StageState
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Assessment: AssessmentCreateNestedOneWithoutAssessmentStageInput
+  }
+
+  export type AssessmentStageUncheckedCreateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    StageState?: $Enums.StageState
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    assessmentId: number
+  }
+
+  export type AssessmentStageUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    StageState?: EnumStageStateFieldUpdateOperationsInput | $Enums.StageState
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Assessment?: AssessmentUpdateOneRequiredWithoutAssessmentStageNestedInput
+  }
+
+  export type AssessmentStageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    StageState?: EnumStageStateFieldUpdateOperationsInput | $Enums.StageState
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assessmentId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AssessmentStageCreateManyInput = {
+    id?: number
+    name: string
+    description?: string | null
+    StageState?: $Enums.StageState
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    assessmentId: number
+  }
+
+  export type AssessmentStageUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    StageState?: EnumStageStateFieldUpdateOperationsInput | $Enums.StageState
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AssessmentStageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    StageState?: EnumStageStateFieldUpdateOperationsInput | $Enums.StageState
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assessmentId?: IntFieldUpdateOperationsInput | number
   }
 
   export type AssessmentQuestionCreateInput = {
@@ -21970,6 +23223,12 @@ export namespace Prisma {
     none?: AssessmentSettingWhereInput
   }
 
+  export type AssessmentStageListRelationFilter = {
+    every?: AssessmentStageWhereInput
+    some?: AssessmentStageWhereInput
+    none?: AssessmentStageWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -21988,6 +23247,10 @@ export namespace Prisma {
   }
 
   export type AssessmentSettingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AssessmentStageOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -22142,16 +23405,81 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type EnumAnswerTypeNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.AnswerType | EnumAnswerTypeFieldRefInput<$PrismaModel> | null
-    in?: $Enums.AnswerType[] | null
-    notIn?: $Enums.AnswerType[] | null
-    not?: NestedEnumAnswerTypeNullableFilter<$PrismaModel> | $Enums.AnswerType | null
+  export type EnumStageStateFilter<$PrismaModel = never> = {
+    equals?: $Enums.StageState | EnumStageStateFieldRefInput<$PrismaModel>
+    in?: $Enums.StageState[]
+    notIn?: $Enums.StageState[]
+    not?: NestedEnumStageStateFilter<$PrismaModel> | $Enums.StageState
   }
 
   export type AssessmentRelationFilter = {
     is?: AssessmentWhereInput
     isNot?: AssessmentWhereInput
+  }
+
+  export type AssessmentStageAssessmentIdNameCompoundUniqueInput = {
+    assessmentId: number
+    name: string
+  }
+
+  export type AssessmentStageCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    StageState?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    assessmentId?: SortOrder
+  }
+
+  export type AssessmentStageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    assessmentId?: SortOrder
+  }
+
+  export type AssessmentStageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    StageState?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    assessmentId?: SortOrder
+  }
+
+  export type AssessmentStageMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    StageState?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    assessmentId?: SortOrder
+  }
+
+  export type AssessmentStageSumOrderByAggregateInput = {
+    id?: SortOrder
+    assessmentId?: SortOrder
+  }
+
+  export type EnumStageStateWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StageState | EnumStageStateFieldRefInput<$PrismaModel>
+    in?: $Enums.StageState[]
+    notIn?: $Enums.StageState[]
+    not?: NestedEnumStageStateWithAggregatesFilter<$PrismaModel> | $Enums.StageState
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStageStateFilter<$PrismaModel>
+    _max?: NestedEnumStageStateFilter<$PrismaModel>
+  }
+
+  export type EnumAnswerTypeNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnswerType | EnumAnswerTypeFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AnswerType[] | null
+    notIn?: $Enums.AnswerType[] | null
+    not?: NestedEnumAnswerTypeNullableFilter<$PrismaModel> | $Enums.AnswerType | null
   }
 
   export type AssessmentQuestionAssessmentIdQuestionMongoIdCompoundUniqueInput = {
@@ -23274,6 +24602,13 @@ export namespace Prisma {
     connect?: AssessmentSettingWhereUniqueInput | AssessmentSettingWhereUniqueInput[]
   }
 
+  export type AssessmentStageCreateNestedManyWithoutAssessmentInput = {
+    create?: XOR<AssessmentStageCreateWithoutAssessmentInput, AssessmentStageUncheckedCreateWithoutAssessmentInput> | AssessmentStageCreateWithoutAssessmentInput[] | AssessmentStageUncheckedCreateWithoutAssessmentInput[]
+    connectOrCreate?: AssessmentStageCreateOrConnectWithoutAssessmentInput | AssessmentStageCreateOrConnectWithoutAssessmentInput[]
+    createMany?: AssessmentStageCreateManyAssessmentInputEnvelope
+    connect?: AssessmentStageWhereUniqueInput | AssessmentStageWhereUniqueInput[]
+  }
+
   export type AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput = {
     create?: XOR<AssessmentQuestionCreateWithoutAssessmentInput, AssessmentQuestionUncheckedCreateWithoutAssessmentInput> | AssessmentQuestionCreateWithoutAssessmentInput[] | AssessmentQuestionUncheckedCreateWithoutAssessmentInput[]
     connectOrCreate?: AssessmentQuestionCreateOrConnectWithoutAssessmentInput | AssessmentQuestionCreateOrConnectWithoutAssessmentInput[]
@@ -23300,6 +24635,13 @@ export namespace Prisma {
     connectOrCreate?: AssessmentSettingCreateOrConnectWithoutAssessmentInput | AssessmentSettingCreateOrConnectWithoutAssessmentInput[]
     createMany?: AssessmentSettingCreateManyAssessmentInputEnvelope
     connect?: AssessmentSettingWhereUniqueInput | AssessmentSettingWhereUniqueInput[]
+  }
+
+  export type AssessmentStageUncheckedCreateNestedManyWithoutAssessmentInput = {
+    create?: XOR<AssessmentStageCreateWithoutAssessmentInput, AssessmentStageUncheckedCreateWithoutAssessmentInput> | AssessmentStageCreateWithoutAssessmentInput[] | AssessmentStageUncheckedCreateWithoutAssessmentInput[]
+    connectOrCreate?: AssessmentStageCreateOrConnectWithoutAssessmentInput | AssessmentStageCreateOrConnectWithoutAssessmentInput[]
+    createMany?: AssessmentStageCreateManyAssessmentInputEnvelope
+    connect?: AssessmentStageWhereUniqueInput | AssessmentStageWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -23392,6 +24734,20 @@ export namespace Prisma {
     deleteMany?: AssessmentSettingScalarWhereInput | AssessmentSettingScalarWhereInput[]
   }
 
+  export type AssessmentStageUpdateManyWithoutAssessmentNestedInput = {
+    create?: XOR<AssessmentStageCreateWithoutAssessmentInput, AssessmentStageUncheckedCreateWithoutAssessmentInput> | AssessmentStageCreateWithoutAssessmentInput[] | AssessmentStageUncheckedCreateWithoutAssessmentInput[]
+    connectOrCreate?: AssessmentStageCreateOrConnectWithoutAssessmentInput | AssessmentStageCreateOrConnectWithoutAssessmentInput[]
+    upsert?: AssessmentStageUpsertWithWhereUniqueWithoutAssessmentInput | AssessmentStageUpsertWithWhereUniqueWithoutAssessmentInput[]
+    createMany?: AssessmentStageCreateManyAssessmentInputEnvelope
+    set?: AssessmentStageWhereUniqueInput | AssessmentStageWhereUniqueInput[]
+    disconnect?: AssessmentStageWhereUniqueInput | AssessmentStageWhereUniqueInput[]
+    delete?: AssessmentStageWhereUniqueInput | AssessmentStageWhereUniqueInput[]
+    connect?: AssessmentStageWhereUniqueInput | AssessmentStageWhereUniqueInput[]
+    update?: AssessmentStageUpdateWithWhereUniqueWithoutAssessmentInput | AssessmentStageUpdateWithWhereUniqueWithoutAssessmentInput[]
+    updateMany?: AssessmentStageUpdateManyWithWhereWithoutAssessmentInput | AssessmentStageUpdateManyWithWhereWithoutAssessmentInput[]
+    deleteMany?: AssessmentStageScalarWhereInput | AssessmentStageScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -23462,6 +24818,38 @@ export namespace Prisma {
     update?: AssessmentSettingUpdateWithWhereUniqueWithoutAssessmentInput | AssessmentSettingUpdateWithWhereUniqueWithoutAssessmentInput[]
     updateMany?: AssessmentSettingUpdateManyWithWhereWithoutAssessmentInput | AssessmentSettingUpdateManyWithWhereWithoutAssessmentInput[]
     deleteMany?: AssessmentSettingScalarWhereInput | AssessmentSettingScalarWhereInput[]
+  }
+
+  export type AssessmentStageUncheckedUpdateManyWithoutAssessmentNestedInput = {
+    create?: XOR<AssessmentStageCreateWithoutAssessmentInput, AssessmentStageUncheckedCreateWithoutAssessmentInput> | AssessmentStageCreateWithoutAssessmentInput[] | AssessmentStageUncheckedCreateWithoutAssessmentInput[]
+    connectOrCreate?: AssessmentStageCreateOrConnectWithoutAssessmentInput | AssessmentStageCreateOrConnectWithoutAssessmentInput[]
+    upsert?: AssessmentStageUpsertWithWhereUniqueWithoutAssessmentInput | AssessmentStageUpsertWithWhereUniqueWithoutAssessmentInput[]
+    createMany?: AssessmentStageCreateManyAssessmentInputEnvelope
+    set?: AssessmentStageWhereUniqueInput | AssessmentStageWhereUniqueInput[]
+    disconnect?: AssessmentStageWhereUniqueInput | AssessmentStageWhereUniqueInput[]
+    delete?: AssessmentStageWhereUniqueInput | AssessmentStageWhereUniqueInput[]
+    connect?: AssessmentStageWhereUniqueInput | AssessmentStageWhereUniqueInput[]
+    update?: AssessmentStageUpdateWithWhereUniqueWithoutAssessmentInput | AssessmentStageUpdateWithWhereUniqueWithoutAssessmentInput[]
+    updateMany?: AssessmentStageUpdateManyWithWhereWithoutAssessmentInput | AssessmentStageUpdateManyWithWhereWithoutAssessmentInput[]
+    deleteMany?: AssessmentStageScalarWhereInput | AssessmentStageScalarWhereInput[]
+  }
+
+  export type AssessmentCreateNestedOneWithoutAssessmentStageInput = {
+    create?: XOR<AssessmentCreateWithoutAssessmentStageInput, AssessmentUncheckedCreateWithoutAssessmentStageInput>
+    connectOrCreate?: AssessmentCreateOrConnectWithoutAssessmentStageInput
+    connect?: AssessmentWhereUniqueInput
+  }
+
+  export type EnumStageStateFieldUpdateOperationsInput = {
+    set?: $Enums.StageState
+  }
+
+  export type AssessmentUpdateOneRequiredWithoutAssessmentStageNestedInput = {
+    create?: XOR<AssessmentCreateWithoutAssessmentStageInput, AssessmentUncheckedCreateWithoutAssessmentStageInput>
+    connectOrCreate?: AssessmentCreateOrConnectWithoutAssessmentStageInput
+    upsert?: AssessmentUpsertWithoutAssessmentStageInput
+    connect?: AssessmentWhereUniqueInput
+    update?: XOR<XOR<AssessmentUpdateToOneWithWhereWithoutAssessmentStageInput, AssessmentUpdateWithoutAssessmentStageInput>, AssessmentUncheckedUpdateWithoutAssessmentStageInput>
   }
 
   export type AssessmentCreateNestedOneWithoutAssessmentQuestionInput = {
@@ -24936,6 +26324,23 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedEnumStageStateFilter<$PrismaModel = never> = {
+    equals?: $Enums.StageState | EnumStageStateFieldRefInput<$PrismaModel>
+    in?: $Enums.StageState[]
+    notIn?: $Enums.StageState[]
+    not?: NestedEnumStageStateFilter<$PrismaModel> | $Enums.StageState
+  }
+
+  export type NestedEnumStageStateWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StageState | EnumStageStateFieldRefInput<$PrismaModel>
+    in?: $Enums.StageState[]
+    notIn?: $Enums.StageState[]
+    not?: NestedEnumStageStateWithAggregatesFilter<$PrismaModel> | $Enums.StageState
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStageStateFilter<$PrismaModel>
+    _max?: NestedEnumStageStateFilter<$PrismaModel>
+  }
+
   export type NestedEnumAnswerTypeNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.AnswerType | EnumAnswerTypeFieldRefInput<$PrismaModel> | null
     in?: $Enums.AnswerType[] | null
@@ -25294,6 +26699,35 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AssessmentStageCreateWithoutAssessmentInput = {
+    name: string
+    description?: string | null
+    StageState?: $Enums.StageState
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AssessmentStageUncheckedCreateWithoutAssessmentInput = {
+    id?: number
+    name: string
+    description?: string | null
+    StageState?: $Enums.StageState
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AssessmentStageCreateOrConnectWithoutAssessmentInput = {
+    where: AssessmentStageWhereUniqueInput
+    create: XOR<AssessmentStageCreateWithoutAssessmentInput, AssessmentStageUncheckedCreateWithoutAssessmentInput>
+  }
+
+  export type AssessmentStageCreateManyAssessmentInputEnvelope = {
+    data: AssessmentStageCreateManyAssessmentInput | AssessmentStageCreateManyAssessmentInput[]
+    skipDuplicates?: boolean
+  }
+
   export type OrganisationUpsertWithoutAssessmentInput = {
     update: XOR<OrganisationUpdateWithoutAssessmentInput, OrganisationUncheckedUpdateWithoutAssessmentInput>
     create: XOR<OrganisationCreateWithoutAssessmentInput, OrganisationUncheckedCreateWithoutAssessmentInput>
@@ -25531,6 +26965,134 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"AssessmentSetting"> | Date | string
   }
 
+  export type AssessmentStageUpsertWithWhereUniqueWithoutAssessmentInput = {
+    where: AssessmentStageWhereUniqueInput
+    update: XOR<AssessmentStageUpdateWithoutAssessmentInput, AssessmentStageUncheckedUpdateWithoutAssessmentInput>
+    create: XOR<AssessmentStageCreateWithoutAssessmentInput, AssessmentStageUncheckedCreateWithoutAssessmentInput>
+  }
+
+  export type AssessmentStageUpdateWithWhereUniqueWithoutAssessmentInput = {
+    where: AssessmentStageWhereUniqueInput
+    data: XOR<AssessmentStageUpdateWithoutAssessmentInput, AssessmentStageUncheckedUpdateWithoutAssessmentInput>
+  }
+
+  export type AssessmentStageUpdateManyWithWhereWithoutAssessmentInput = {
+    where: AssessmentStageScalarWhereInput
+    data: XOR<AssessmentStageUpdateManyMutationInput, AssessmentStageUncheckedUpdateManyWithoutAssessmentInput>
+  }
+
+  export type AssessmentStageScalarWhereInput = {
+    AND?: AssessmentStageScalarWhereInput | AssessmentStageScalarWhereInput[]
+    OR?: AssessmentStageScalarWhereInput[]
+    NOT?: AssessmentStageScalarWhereInput | AssessmentStageScalarWhereInput[]
+    id?: IntFilter<"AssessmentStage"> | number
+    name?: StringFilter<"AssessmentStage"> | string
+    description?: StringNullableFilter<"AssessmentStage"> | string | null
+    StageState?: EnumStageStateFilter<"AssessmentStage"> | $Enums.StageState
+    isActive?: BoolFilter<"AssessmentStage"> | boolean
+    createdAt?: DateTimeFilter<"AssessmentStage"> | Date | string
+    updatedAt?: DateTimeFilter<"AssessmentStage"> | Date | string
+    assessmentId?: IntFilter<"AssessmentStage"> | number
+  }
+
+  export type AssessmentCreateWithoutAssessmentStageInput = {
+    name: string
+    description?: string | null
+    logo?: string | null
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Organisation: OrganisationCreateNestedOneWithoutAssessmentInput
+    AssessmentQuestion?: AssessmentQuestionCreateNestedManyWithoutAssessmentInput
+    OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
+    AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
+    QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
+  }
+
+  export type AssessmentUncheckedCreateWithoutAssessmentStageInput = {
+    id?: number
+    name: string
+    description?: string | null
+    logo?: string | null
+    organisationId: number
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    organisationTemplateId?: number | null
+    AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
+    QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
+  }
+
+  export type AssessmentCreateOrConnectWithoutAssessmentStageInput = {
+    where: AssessmentWhereUniqueInput
+    create: XOR<AssessmentCreateWithoutAssessmentStageInput, AssessmentUncheckedCreateWithoutAssessmentStageInput>
+  }
+
+  export type AssessmentUpsertWithoutAssessmentStageInput = {
+    update: XOR<AssessmentUpdateWithoutAssessmentStageInput, AssessmentUncheckedUpdateWithoutAssessmentStageInput>
+    create: XOR<AssessmentCreateWithoutAssessmentStageInput, AssessmentUncheckedCreateWithoutAssessmentStageInput>
+    where?: AssessmentWhereInput
+  }
+
+  export type AssessmentUpdateToOneWithWhereWithoutAssessmentStageInput = {
+    where?: AssessmentWhereInput
+    data: XOR<AssessmentUpdateWithoutAssessmentStageInput, AssessmentUncheckedUpdateWithoutAssessmentStageInput>
+  }
+
+  export type AssessmentUpdateWithoutAssessmentStageInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Organisation?: OrganisationUpdateOneRequiredWithoutAssessmentNestedInput
+    AssessmentQuestion?: AssessmentQuestionUpdateManyWithoutAssessmentNestedInput
+    OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
+    AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
+    QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
+  }
+
+  export type AssessmentUncheckedUpdateWithoutAssessmentStageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    organisationId?: IntFieldUpdateOperationsInput | number
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    organisationTemplateId?: NullableIntFieldUpdateOperationsInput | number | null
+    AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
+    QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
+  }
+
   export type AssessmentCreateWithoutAssessmentQuestionInput = {
     name: string
     description?: string | null
@@ -25548,6 +27110,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
     AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutAssessmentQuestionInput = {
@@ -25568,6 +27131,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentCreateOrConnectWithoutAssessmentQuestionInput = {
@@ -25662,6 +27226,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutAssessmentQuestionInput = {
@@ -25682,6 +27247,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type QuestionAnswerUpsertWithWhereUniqueWithoutAssessmentQuestionInput = {
@@ -25717,6 +27283,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutAssessmentSettingInput = {
@@ -25737,6 +27304,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentCreateOrConnectWithoutAssessmentSettingInput = {
@@ -25772,6 +27340,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutAssessmentSettingInput = {
@@ -25792,6 +27361,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentCreateWithoutAssessmentTeamInput = {
@@ -25811,6 +27381,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
     AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutAssessmentTeamInput = {
@@ -25831,6 +27402,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentCreateOrConnectWithoutAssessmentTeamInput = {
@@ -26007,6 +27579,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutAssessmentTeamInput = {
@@ -26027,6 +27600,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type OrganisationUpsertWithoutAssessmentTeamInput = {
@@ -26230,6 +27804,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
     AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutOrganisationInput = {
@@ -26250,6 +27825,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentCreateOrConnectWithoutOrganisationInput = {
@@ -27250,6 +28826,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentInput
     AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutOrganisationTemplateInput = {
@@ -27270,6 +28847,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentCreateOrConnectWithoutOrganisationTemplateInput = {
@@ -27613,6 +29191,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateCreateNestedOneWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentInput
     AssessmentSetting?: AssessmentSettingCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentUncheckedCreateWithoutQuestionAnswerInput = {
@@ -27633,6 +29212,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentInput
     AssessmentSetting?: AssessmentSettingUncheckedCreateNestedManyWithoutAssessmentInput
+    AssessmentStage?: AssessmentStageUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
   export type AssessmentCreateOrConnectWithoutQuestionAnswerInput = {
@@ -27950,6 +29530,7 @@ export namespace Prisma {
     OrganisationTemplate?: OrganisationTemplateUpdateOneWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutQuestionAnswerInput = {
@@ -27970,6 +29551,7 @@ export namespace Prisma {
     AssessmentQuestion?: AssessmentQuestionUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentQuestionUpsertWithoutQuestionAnswerInput = {
@@ -29378,6 +30960,16 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type AssessmentStageCreateManyAssessmentInput = {
+    id?: number
+    name: string
+    description?: string | null
+    StageState?: $Enums.StageState
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type AssessmentQuestionUpdateWithoutAssessmentInput = {
     assessmentStage?: StringFieldUpdateOperationsInput | string
     level?: IntFieldUpdateOperationsInput | number
@@ -29575,6 +31167,35 @@ export namespace Prisma {
     isUnlock?: BoolFieldUpdateOperationsInput | boolean
     secretToken?: NullableStringFieldUpdateOperationsInput | string | null
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AssessmentStageUpdateWithoutAssessmentInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    StageState?: EnumStageStateFieldUpdateOperationsInput | $Enums.StageState
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AssessmentStageUncheckedUpdateWithoutAssessmentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    StageState?: EnumStageStateFieldUpdateOperationsInput | $Enums.StageState
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AssessmentStageUncheckedUpdateManyWithoutAssessmentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    StageState?: EnumStageStateFieldUpdateOperationsInput | $Enums.StageState
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -29882,6 +31503,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutOrganisationInput = {
@@ -29902,6 +31524,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateManyWithoutOrganisationInput = {
@@ -30309,6 +31932,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutOrganisationTemplateInput = {
@@ -30329,6 +31953,7 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
+    AssessmentStage?: AssessmentStageUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateManyWithoutOrganisationTemplateInput = {
@@ -31075,6 +32700,10 @@ export namespace Prisma {
      * @deprecated Use AssessmentDefaultArgs instead
      */
     export type AssessmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AssessmentDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use AssessmentStageDefaultArgs instead
+     */
+    export type AssessmentStageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AssessmentStageDefaultArgs<ExtArgs>
     /**
      * @deprecated Use AssessmentQuestionDefaultArgs instead
      */
