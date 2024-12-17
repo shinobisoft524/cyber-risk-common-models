@@ -2203,6 +2203,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type AssessmentStageCountOutputType
+   */
+
+  export type AssessmentStageCountOutputType = {
+    AssessmentTeam: number
+  }
+
+  export type AssessmentStageCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    AssessmentTeam?: boolean | AssessmentStageCountOutputTypeCountAssessmentTeamArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AssessmentStageCountOutputType without action
+   */
+  export type AssessmentStageCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentStageCountOutputType
+     */
+    select?: AssessmentStageCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AssessmentStageCountOutputType without action
+   */
+  export type AssessmentStageCountOutputTypeCountAssessmentTeamArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AssessmentTeamWhereInput
+  }
+
+
+  /**
    * Count Type AssessmentQuestionCountOutputType
    */
 
@@ -3981,6 +4012,8 @@ export namespace Prisma {
     updatedAt?: boolean
     assessmentId?: boolean
     Assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
+    AssessmentTeam?: boolean | AssessmentStage$AssessmentTeamArgs<ExtArgs>
+    _count?: boolean | AssessmentStageCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["assessmentStage"]>
 
 
@@ -3997,12 +4030,15 @@ export namespace Prisma {
 
   export type AssessmentStageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
+    AssessmentTeam?: boolean | AssessmentStage$AssessmentTeamArgs<ExtArgs>
+    _count?: boolean | AssessmentStageCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $AssessmentStagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AssessmentStage"
     objects: {
       Assessment: Prisma.$AssessmentPayload<ExtArgs>
+      AssessmentTeam: Prisma.$AssessmentTeamPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4354,6 +4390,7 @@ export namespace Prisma {
   export interface Prisma__AssessmentStageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     Assessment<T extends AssessmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AssessmentDefaultArgs<ExtArgs>>): Prisma__AssessmentClient<$Result.GetResult<Prisma.$AssessmentPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    AssessmentTeam<T extends AssessmentStage$AssessmentTeamArgs<ExtArgs> = {}>(args?: Subset<T, AssessmentStage$AssessmentTeamArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentTeamPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4687,6 +4724,26 @@ export namespace Prisma {
      * Filter which AssessmentStages to delete
      */
     where?: AssessmentStageWhereInput
+  }
+
+  /**
+   * AssessmentStage.AssessmentTeam
+   */
+  export type AssessmentStage$AssessmentTeamArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AssessmentTeam
+     */
+    select?: AssessmentTeamSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentTeamInclude<ExtArgs> | null
+    where?: AssessmentTeamWhereInput
+    orderBy?: AssessmentTeamOrderByWithRelationInput | AssessmentTeamOrderByWithRelationInput[]
+    cursor?: AssessmentTeamWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AssessmentTeamScalarFieldEnum | AssessmentTeamScalarFieldEnum[]
   }
 
   /**
@@ -6732,6 +6789,7 @@ export namespace Prisma {
     assessmentId: number | null
     organisationId: number | null
     teamId: number | null
+    assessmentStageId: number | null
   }
 
   export type AssessmentTeamSumAggregateOutputType = {
@@ -6739,6 +6797,7 @@ export namespace Prisma {
     assessmentId: number | null
     organisationId: number | null
     teamId: number | null
+    assessmentStageId: number | null
   }
 
   export type AssessmentTeamMinAggregateOutputType = {
@@ -6755,6 +6814,7 @@ export namespace Prisma {
     tfaToken: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    assessmentStageId: number | null
   }
 
   export type AssessmentTeamMaxAggregateOutputType = {
@@ -6771,6 +6831,7 @@ export namespace Prisma {
     tfaToken: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    assessmentStageId: number | null
   }
 
   export type AssessmentTeamCountAggregateOutputType = {
@@ -6787,6 +6848,7 @@ export namespace Prisma {
     tfaToken: number
     createdAt: number
     updatedAt: number
+    assessmentStageId: number
     _all: number
   }
 
@@ -6796,6 +6858,7 @@ export namespace Prisma {
     assessmentId?: true
     organisationId?: true
     teamId?: true
+    assessmentStageId?: true
   }
 
   export type AssessmentTeamSumAggregateInputType = {
@@ -6803,6 +6866,7 @@ export namespace Prisma {
     assessmentId?: true
     organisationId?: true
     teamId?: true
+    assessmentStageId?: true
   }
 
   export type AssessmentTeamMinAggregateInputType = {
@@ -6819,6 +6883,7 @@ export namespace Prisma {
     tfaToken?: true
     createdAt?: true
     updatedAt?: true
+    assessmentStageId?: true
   }
 
   export type AssessmentTeamMaxAggregateInputType = {
@@ -6835,6 +6900,7 @@ export namespace Prisma {
     tfaToken?: true
     createdAt?: true
     updatedAt?: true
+    assessmentStageId?: true
   }
 
   export type AssessmentTeamCountAggregateInputType = {
@@ -6851,6 +6917,7 @@ export namespace Prisma {
     tfaToken?: true
     createdAt?: true
     updatedAt?: true
+    assessmentStageId?: true
     _all?: true
   }
 
@@ -6954,6 +7021,7 @@ export namespace Prisma {
     tfaToken: string | null
     createdAt: Date
     updatedAt: Date
+    assessmentStageId: number
     _count: AssessmentTeamCountAggregateOutputType | null
     _avg: AssessmentTeamAvgAggregateOutputType | null
     _sum: AssessmentTeamSumAggregateOutputType | null
@@ -6989,7 +7057,9 @@ export namespace Prisma {
     tfaToken?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    assessmentStageId?: boolean
     Assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
+    AssessmentStage?: boolean | AssessmentStageDefaultArgs<ExtArgs>
     Organisation?: boolean | OrganisationDefaultArgs<ExtArgs>
     Team?: boolean | TeamDefaultArgs<ExtArgs>
     QuestionAnswer?: boolean | AssessmentTeam$QuestionAnswerArgs<ExtArgs>
@@ -7011,10 +7081,12 @@ export namespace Prisma {
     tfaToken?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    assessmentStageId?: boolean
   }
 
   export type AssessmentTeamInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
+    AssessmentStage?: boolean | AssessmentStageDefaultArgs<ExtArgs>
     Organisation?: boolean | OrganisationDefaultArgs<ExtArgs>
     Team?: boolean | TeamDefaultArgs<ExtArgs>
     QuestionAnswer?: boolean | AssessmentTeam$QuestionAnswerArgs<ExtArgs>
@@ -7025,6 +7097,7 @@ export namespace Prisma {
     name: "AssessmentTeam"
     objects: {
       Assessment: Prisma.$AssessmentPayload<ExtArgs>
+      AssessmentStage: Prisma.$AssessmentStagePayload<ExtArgs>
       Organisation: Prisma.$OrganisationPayload<ExtArgs>
       Team: Prisma.$TeamPayload<ExtArgs>
       QuestionAnswer: Prisma.$QuestionAnswerPayload<ExtArgs>[]
@@ -7043,6 +7116,7 @@ export namespace Prisma {
       tfaToken: string | null
       createdAt: Date
       updatedAt: Date
+      assessmentStageId: number
     }, ExtArgs["result"]["assessmentTeam"]>
     composites: {}
   }
@@ -7384,6 +7458,7 @@ export namespace Prisma {
   export interface Prisma__AssessmentTeamClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     Assessment<T extends AssessmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AssessmentDefaultArgs<ExtArgs>>): Prisma__AssessmentClient<$Result.GetResult<Prisma.$AssessmentPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    AssessmentStage<T extends AssessmentStageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AssessmentStageDefaultArgs<ExtArgs>>): Prisma__AssessmentStageClient<$Result.GetResult<Prisma.$AssessmentStagePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     Organisation<T extends OrganisationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganisationDefaultArgs<ExtArgs>>): Prisma__OrganisationClient<$Result.GetResult<Prisma.$OrganisationPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     Team<T extends TeamDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TeamDefaultArgs<ExtArgs>>): Prisma__TeamClient<$Result.GetResult<Prisma.$TeamPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     QuestionAnswer<T extends AssessmentTeam$QuestionAnswerArgs<ExtArgs> = {}>(args?: Subset<T, AssessmentTeam$QuestionAnswerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuestionAnswerPayload<ExtArgs>, T, "findMany"> | Null>
@@ -7429,6 +7504,7 @@ export namespace Prisma {
     readonly tfaToken: FieldRef<"AssessmentTeam", 'String'>
     readonly createdAt: FieldRef<"AssessmentTeam", 'DateTime'>
     readonly updatedAt: FieldRef<"AssessmentTeam", 'DateTime'>
+    readonly assessmentStageId: FieldRef<"AssessmentTeam", 'Int'>
   }
     
 
@@ -14201,6 +14277,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     logo: string | null
+    isDefault: boolean | null
     organisationId: number | null
     teamType: $Enums.TeamType | null
     password: string | null
@@ -14218,6 +14295,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     logo: string | null
+    isDefault: boolean | null
     organisationId: number | null
     teamType: $Enums.TeamType | null
     password: string | null
@@ -14235,6 +14313,7 @@ export namespace Prisma {
     name: number
     description: number
     logo: number
+    isDefault: number
     organisationId: number
     teamType: number
     password: number
@@ -14264,6 +14343,7 @@ export namespace Prisma {
     name?: true
     description?: true
     logo?: true
+    isDefault?: true
     organisationId?: true
     teamType?: true
     password?: true
@@ -14281,6 +14361,7 @@ export namespace Prisma {
     name?: true
     description?: true
     logo?: true
+    isDefault?: true
     organisationId?: true
     teamType?: true
     password?: true
@@ -14298,6 +14379,7 @@ export namespace Prisma {
     name?: true
     description?: true
     logo?: true
+    isDefault?: true
     organisationId?: true
     teamType?: true
     password?: true
@@ -14402,6 +14484,7 @@ export namespace Prisma {
     name: string
     description: string | null
     logo: string | null
+    isDefault: boolean
     organisationId: number
     teamType: $Enums.TeamType
     password: string | null
@@ -14438,6 +14521,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     logo?: boolean
+    isDefault?: boolean
     organisationId?: boolean
     teamType?: boolean
     password?: boolean
@@ -14461,6 +14545,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     logo?: boolean
+    isDefault?: boolean
     organisationId?: boolean
     teamType?: boolean
     password?: boolean
@@ -14494,6 +14579,7 @@ export namespace Prisma {
       name: string
       description: string | null
       logo: string | null
+      isDefault: boolean
       organisationId: number
       teamType: $Enums.TeamType
       password: string | null
@@ -14881,6 +14967,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Team", 'String'>
     readonly description: FieldRef<"Team", 'String'>
     readonly logo: FieldRef<"Team", 'String'>
+    readonly isDefault: FieldRef<"Team", 'Boolean'>
     readonly organisationId: FieldRef<"Team", 'Int'>
     readonly teamType: FieldRef<"Team", 'TeamType'>
     readonly password: FieldRef<"Team", 'String'>
@@ -19529,7 +19616,8 @@ export namespace Prisma {
     secretToken: 'secretToken',
     tfaToken: 'tfaToken',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    assessmentStageId: 'assessmentStageId'
   };
 
   export type AssessmentTeamScalarFieldEnum = (typeof AssessmentTeamScalarFieldEnum)[keyof typeof AssessmentTeamScalarFieldEnum]
@@ -19646,6 +19734,7 @@ export namespace Prisma {
     name: 'name',
     description: 'description',
     logo: 'logo',
+    isDefault: 'isDefault',
     organisationId: 'organisationId',
     teamType: 'teamType',
     password: 'password',
@@ -19961,6 +20050,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"AssessmentStage"> | Date | string
     assessmentId?: IntFilter<"AssessmentStage"> | number
     Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
+    AssessmentTeam?: AssessmentTeamListRelationFilter
   }
 
   export type AssessmentStageOrderByWithRelationInput = {
@@ -19973,6 +20063,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     assessmentId?: SortOrder
     Assessment?: AssessmentOrderByWithRelationInput
+    AssessmentTeam?: AssessmentTeamOrderByRelationAggregateInput
   }
 
   export type AssessmentStageWhereUniqueInput = Prisma.AtLeast<{
@@ -19989,6 +20080,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"AssessmentStage"> | Date | string
     assessmentId?: IntFilter<"AssessmentStage"> | number
     Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
+    AssessmentTeam?: AssessmentTeamListRelationFilter
   }, "id" | "id" | "assessmentId_name">
 
   export type AssessmentStageOrderByWithAggregationInput = {
@@ -20222,7 +20314,9 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"AssessmentTeam"> | string | null
     createdAt?: DateTimeFilter<"AssessmentTeam"> | Date | string
     updatedAt?: DateTimeFilter<"AssessmentTeam"> | Date | string
+    assessmentStageId?: IntFilter<"AssessmentTeam"> | number
     Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
+    AssessmentStage?: XOR<AssessmentStageRelationFilter, AssessmentStageWhereInput>
     Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
     Team?: XOR<TeamRelationFilter, TeamWhereInput>
     QuestionAnswer?: QuestionAnswerListRelationFilter
@@ -20242,7 +20336,9 @@ export namespace Prisma {
     tfaToken?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    assessmentStageId?: SortOrder
     Assessment?: AssessmentOrderByWithRelationInput
+    AssessmentStage?: AssessmentStageOrderByWithRelationInput
     Organisation?: OrganisationOrderByWithRelationInput
     Team?: TeamOrderByWithRelationInput
     QuestionAnswer?: QuestionAnswerOrderByRelationAggregateInput
@@ -20266,7 +20362,9 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"AssessmentTeam"> | string | null
     createdAt?: DateTimeFilter<"AssessmentTeam"> | Date | string
     updatedAt?: DateTimeFilter<"AssessmentTeam"> | Date | string
+    assessmentStageId?: IntFilter<"AssessmentTeam"> | number
     Assessment?: XOR<AssessmentRelationFilter, AssessmentWhereInput>
+    AssessmentStage?: XOR<AssessmentStageRelationFilter, AssessmentStageWhereInput>
     Organisation?: XOR<OrganisationRelationFilter, OrganisationWhereInput>
     Team?: XOR<TeamRelationFilter, TeamWhereInput>
     QuestionAnswer?: QuestionAnswerListRelationFilter
@@ -20286,6 +20384,7 @@ export namespace Prisma {
     tfaToken?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    assessmentStageId?: SortOrder
     _count?: AssessmentTeamCountOrderByAggregateInput
     _avg?: AssessmentTeamAvgOrderByAggregateInput
     _max?: AssessmentTeamMaxOrderByAggregateInput
@@ -20310,6 +20409,7 @@ export namespace Prisma {
     tfaToken?: StringNullableWithAggregatesFilter<"AssessmentTeam"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"AssessmentTeam"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AssessmentTeam"> | Date | string
+    assessmentStageId?: IntWithAggregatesFilter<"AssessmentTeam"> | number
   }
 
   export type OrganisationWhereInput = {
@@ -20920,6 +21020,7 @@ export namespace Prisma {
     name?: StringFilter<"Team"> | string
     description?: StringNullableFilter<"Team"> | string | null
     logo?: StringNullableFilter<"Team"> | string | null
+    isDefault?: BoolFilter<"Team"> | boolean
     organisationId?: IntFilter<"Team"> | number
     teamType?: EnumTeamTypeFilter<"Team"> | $Enums.TeamType
     password?: StringNullableFilter<"Team"> | string | null
@@ -20941,6 +21042,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     logo?: SortOrderInput | SortOrder
+    isDefault?: SortOrder
     organisationId?: SortOrder
     teamType?: SortOrder
     password?: SortOrderInput | SortOrder
@@ -20965,6 +21067,7 @@ export namespace Prisma {
     NOT?: TeamWhereInput | TeamWhereInput[]
     description?: StringNullableFilter<"Team"> | string | null
     logo?: StringNullableFilter<"Team"> | string | null
+    isDefault?: BoolFilter<"Team"> | boolean
     organisationId?: IntFilter<"Team"> | number
     teamType?: EnumTeamTypeFilter<"Team"> | $Enums.TeamType
     password?: StringNullableFilter<"Team"> | string | null
@@ -20986,6 +21089,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     logo?: SortOrderInput | SortOrder
+    isDefault?: SortOrder
     organisationId?: SortOrder
     teamType?: SortOrder
     password?: SortOrderInput | SortOrder
@@ -21011,6 +21115,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Team"> | string
     description?: StringNullableWithAggregatesFilter<"Team"> | string | null
     logo?: StringNullableWithAggregatesFilter<"Team"> | string | null
+    isDefault?: BoolWithAggregatesFilter<"Team"> | boolean
     organisationId?: IntWithAggregatesFilter<"Team"> | number
     teamType?: EnumTeamTypeWithAggregatesFilter<"Team"> | $Enums.TeamType
     password?: StringNullableWithAggregatesFilter<"Team"> | string | null
@@ -21559,6 +21664,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Assessment: AssessmentCreateNestedOneWithoutAssessmentStageInput
+    AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentStageInput
   }
 
   export type AssessmentStageUncheckedCreateInput = {
@@ -21570,6 +21676,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     assessmentId: number
+    AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentStageInput
   }
 
   export type AssessmentStageUpdateInput = {
@@ -21580,6 +21687,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUpdateOneRequiredWithoutAssessmentStageNestedInput
+    AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentStageNestedInput
   }
 
   export type AssessmentStageUncheckedUpdateInput = {
@@ -21591,6 +21699,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     assessmentId?: IntFieldUpdateOperationsInput | number
+    AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentStageNestedInput
   }
 
   export type AssessmentStageCreateManyInput = {
@@ -21834,6 +21943,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Assessment: AssessmentCreateNestedOneWithoutAssessmentTeamInput
+    AssessmentStage: AssessmentStageCreateNestedOneWithoutAssessmentTeamInput
     Organisation: OrganisationCreateNestedOneWithoutAssessmentTeamInput
     Team: TeamCreateNestedOneWithoutAssessmentTeamInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentTeamInput
@@ -21853,6 +21963,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    assessmentStageId: number
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentTeamInput
   }
 
@@ -21867,6 +21978,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUpdateOneRequiredWithoutAssessmentTeamNestedInput
+    AssessmentStage?: AssessmentStageUpdateOneRequiredWithoutAssessmentTeamNestedInput
     Organisation?: OrganisationUpdateOneRequiredWithoutAssessmentTeamNestedInput
     Team?: TeamUpdateOneRequiredWithoutAssessmentTeamNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentTeamNestedInput
@@ -21886,6 +21998,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assessmentStageId?: IntFieldUpdateOperationsInput | number
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentTeamNestedInput
   }
 
@@ -21903,6 +22016,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    assessmentStageId: number
   }
 
   export type AssessmentTeamUpdateManyMutationInput = {
@@ -21931,6 +22045,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assessmentStageId?: IntFieldUpdateOperationsInput | number
   }
 
   export type OrganisationCreateInput = {
@@ -22561,6 +22676,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    isDefault?: boolean
     teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
@@ -22581,6 +22697,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    isDefault?: boolean
     organisationId: number
     teamType?: $Enums.TeamType
     password?: string | null
@@ -22600,6 +22717,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22620,6 +22738,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     organisationId?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22640,6 +22759,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    isDefault?: boolean
     organisationId: number
     teamType?: $Enums.TeamType
     password?: string | null
@@ -22656,6 +22776,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22672,6 +22793,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     organisationId?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23637,6 +23759,11 @@ export namespace Prisma {
     not?: NestedEnumTeamTypeFilter<$PrismaModel> | $Enums.TeamType
   }
 
+  export type AssessmentStageRelationFilter = {
+    is?: AssessmentStageWhereInput
+    isNot?: AssessmentStageWhereInput
+  }
+
   export type TeamRelationFilter = {
     is?: TeamWhereInput
     isNot?: TeamWhereInput
@@ -23661,6 +23788,7 @@ export namespace Prisma {
     tfaToken?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    assessmentStageId?: SortOrder
   }
 
   export type AssessmentTeamAvgOrderByAggregateInput = {
@@ -23668,6 +23796,7 @@ export namespace Prisma {
     assessmentId?: SortOrder
     organisationId?: SortOrder
     teamId?: SortOrder
+    assessmentStageId?: SortOrder
   }
 
   export type AssessmentTeamMaxOrderByAggregateInput = {
@@ -23684,6 +23813,7 @@ export namespace Prisma {
     tfaToken?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    assessmentStageId?: SortOrder
   }
 
   export type AssessmentTeamMinOrderByAggregateInput = {
@@ -23700,6 +23830,7 @@ export namespace Prisma {
     tfaToken?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    assessmentStageId?: SortOrder
   }
 
   export type AssessmentTeamSumOrderByAggregateInput = {
@@ -23707,6 +23838,7 @@ export namespace Prisma {
     assessmentId?: SortOrder
     organisationId?: SortOrder
     teamId?: SortOrder
+    assessmentStageId?: SortOrder
   }
 
   export type EnumTeamTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -24233,6 +24365,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     logo?: SortOrder
+    isDefault?: SortOrder
     organisationId?: SortOrder
     teamType?: SortOrder
     password?: SortOrder
@@ -24255,6 +24388,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     logo?: SortOrder
+    isDefault?: SortOrder
     organisationId?: SortOrder
     teamType?: SortOrder
     password?: SortOrder
@@ -24272,6 +24406,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     logo?: SortOrder
+    isDefault?: SortOrder
     organisationId?: SortOrder
     teamType?: SortOrder
     password?: SortOrder
@@ -24840,6 +24975,20 @@ export namespace Prisma {
     connect?: AssessmentWhereUniqueInput
   }
 
+  export type AssessmentTeamCreateNestedManyWithoutAssessmentStageInput = {
+    create?: XOR<AssessmentTeamCreateWithoutAssessmentStageInput, AssessmentTeamUncheckedCreateWithoutAssessmentStageInput> | AssessmentTeamCreateWithoutAssessmentStageInput[] | AssessmentTeamUncheckedCreateWithoutAssessmentStageInput[]
+    connectOrCreate?: AssessmentTeamCreateOrConnectWithoutAssessmentStageInput | AssessmentTeamCreateOrConnectWithoutAssessmentStageInput[]
+    createMany?: AssessmentTeamCreateManyAssessmentStageInputEnvelope
+    connect?: AssessmentTeamWhereUniqueInput | AssessmentTeamWhereUniqueInput[]
+  }
+
+  export type AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentStageInput = {
+    create?: XOR<AssessmentTeamCreateWithoutAssessmentStageInput, AssessmentTeamUncheckedCreateWithoutAssessmentStageInput> | AssessmentTeamCreateWithoutAssessmentStageInput[] | AssessmentTeamUncheckedCreateWithoutAssessmentStageInput[]
+    connectOrCreate?: AssessmentTeamCreateOrConnectWithoutAssessmentStageInput | AssessmentTeamCreateOrConnectWithoutAssessmentStageInput[]
+    createMany?: AssessmentTeamCreateManyAssessmentStageInputEnvelope
+    connect?: AssessmentTeamWhereUniqueInput | AssessmentTeamWhereUniqueInput[]
+  }
+
   export type EnumStageStateFieldUpdateOperationsInput = {
     set?: $Enums.StageState
   }
@@ -24850,6 +24999,34 @@ export namespace Prisma {
     upsert?: AssessmentUpsertWithoutAssessmentStageInput
     connect?: AssessmentWhereUniqueInput
     update?: XOR<XOR<AssessmentUpdateToOneWithWhereWithoutAssessmentStageInput, AssessmentUpdateWithoutAssessmentStageInput>, AssessmentUncheckedUpdateWithoutAssessmentStageInput>
+  }
+
+  export type AssessmentTeamUpdateManyWithoutAssessmentStageNestedInput = {
+    create?: XOR<AssessmentTeamCreateWithoutAssessmentStageInput, AssessmentTeamUncheckedCreateWithoutAssessmentStageInput> | AssessmentTeamCreateWithoutAssessmentStageInput[] | AssessmentTeamUncheckedCreateWithoutAssessmentStageInput[]
+    connectOrCreate?: AssessmentTeamCreateOrConnectWithoutAssessmentStageInput | AssessmentTeamCreateOrConnectWithoutAssessmentStageInput[]
+    upsert?: AssessmentTeamUpsertWithWhereUniqueWithoutAssessmentStageInput | AssessmentTeamUpsertWithWhereUniqueWithoutAssessmentStageInput[]
+    createMany?: AssessmentTeamCreateManyAssessmentStageInputEnvelope
+    set?: AssessmentTeamWhereUniqueInput | AssessmentTeamWhereUniqueInput[]
+    disconnect?: AssessmentTeamWhereUniqueInput | AssessmentTeamWhereUniqueInput[]
+    delete?: AssessmentTeamWhereUniqueInput | AssessmentTeamWhereUniqueInput[]
+    connect?: AssessmentTeamWhereUniqueInput | AssessmentTeamWhereUniqueInput[]
+    update?: AssessmentTeamUpdateWithWhereUniqueWithoutAssessmentStageInput | AssessmentTeamUpdateWithWhereUniqueWithoutAssessmentStageInput[]
+    updateMany?: AssessmentTeamUpdateManyWithWhereWithoutAssessmentStageInput | AssessmentTeamUpdateManyWithWhereWithoutAssessmentStageInput[]
+    deleteMany?: AssessmentTeamScalarWhereInput | AssessmentTeamScalarWhereInput[]
+  }
+
+  export type AssessmentTeamUncheckedUpdateManyWithoutAssessmentStageNestedInput = {
+    create?: XOR<AssessmentTeamCreateWithoutAssessmentStageInput, AssessmentTeamUncheckedCreateWithoutAssessmentStageInput> | AssessmentTeamCreateWithoutAssessmentStageInput[] | AssessmentTeamUncheckedCreateWithoutAssessmentStageInput[]
+    connectOrCreate?: AssessmentTeamCreateOrConnectWithoutAssessmentStageInput | AssessmentTeamCreateOrConnectWithoutAssessmentStageInput[]
+    upsert?: AssessmentTeamUpsertWithWhereUniqueWithoutAssessmentStageInput | AssessmentTeamUpsertWithWhereUniqueWithoutAssessmentStageInput[]
+    createMany?: AssessmentTeamCreateManyAssessmentStageInputEnvelope
+    set?: AssessmentTeamWhereUniqueInput | AssessmentTeamWhereUniqueInput[]
+    disconnect?: AssessmentTeamWhereUniqueInput | AssessmentTeamWhereUniqueInput[]
+    delete?: AssessmentTeamWhereUniqueInput | AssessmentTeamWhereUniqueInput[]
+    connect?: AssessmentTeamWhereUniqueInput | AssessmentTeamWhereUniqueInput[]
+    update?: AssessmentTeamUpdateWithWhereUniqueWithoutAssessmentStageInput | AssessmentTeamUpdateWithWhereUniqueWithoutAssessmentStageInput[]
+    updateMany?: AssessmentTeamUpdateManyWithWhereWithoutAssessmentStageInput | AssessmentTeamUpdateManyWithWhereWithoutAssessmentStageInput[]
+    deleteMany?: AssessmentTeamScalarWhereInput | AssessmentTeamScalarWhereInput[]
   }
 
   export type AssessmentCreateNestedOneWithoutAssessmentQuestionInput = {
@@ -24936,6 +25113,12 @@ export namespace Prisma {
     connect?: AssessmentWhereUniqueInput
   }
 
+  export type AssessmentStageCreateNestedOneWithoutAssessmentTeamInput = {
+    create?: XOR<AssessmentStageCreateWithoutAssessmentTeamInput, AssessmentStageUncheckedCreateWithoutAssessmentTeamInput>
+    connectOrCreate?: AssessmentStageCreateOrConnectWithoutAssessmentTeamInput
+    connect?: AssessmentStageWhereUniqueInput
+  }
+
   export type OrganisationCreateNestedOneWithoutAssessmentTeamInput = {
     create?: XOR<OrganisationCreateWithoutAssessmentTeamInput, OrganisationUncheckedCreateWithoutAssessmentTeamInput>
     connectOrCreate?: OrganisationCreateOrConnectWithoutAssessmentTeamInput
@@ -24972,6 +25155,14 @@ export namespace Prisma {
     upsert?: AssessmentUpsertWithoutAssessmentTeamInput
     connect?: AssessmentWhereUniqueInput
     update?: XOR<XOR<AssessmentUpdateToOneWithWhereWithoutAssessmentTeamInput, AssessmentUpdateWithoutAssessmentTeamInput>, AssessmentUncheckedUpdateWithoutAssessmentTeamInput>
+  }
+
+  export type AssessmentStageUpdateOneRequiredWithoutAssessmentTeamNestedInput = {
+    create?: XOR<AssessmentStageCreateWithoutAssessmentTeamInput, AssessmentStageUncheckedCreateWithoutAssessmentTeamInput>
+    connectOrCreate?: AssessmentStageCreateOrConnectWithoutAssessmentTeamInput
+    upsert?: AssessmentStageUpsertWithoutAssessmentTeamInput
+    connect?: AssessmentStageWhereUniqueInput
+    update?: XOR<XOR<AssessmentStageUpdateToOneWithWhereWithoutAssessmentTeamInput, AssessmentStageUpdateWithoutAssessmentTeamInput>, AssessmentStageUncheckedUpdateWithoutAssessmentTeamInput>
   }
 
   export type OrganisationUpdateOneRequiredWithoutAssessmentTeamNestedInput = {
@@ -26572,6 +26763,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    AssessmentStage: AssessmentStageCreateNestedOneWithoutAssessmentTeamInput
     Organisation: OrganisationCreateNestedOneWithoutAssessmentTeamInput
     Team: TeamCreateNestedOneWithoutAssessmentTeamInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentTeamInput
@@ -26590,6 +26782,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    assessmentStageId: number
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentTeamInput
   }
 
@@ -26706,6 +26899,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    AssessmentTeam?: AssessmentTeamCreateNestedManyWithoutAssessmentStageInput
   }
 
   export type AssessmentStageUncheckedCreateWithoutAssessmentInput = {
@@ -26716,6 +26910,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    AssessmentTeam?: AssessmentTeamUncheckedCreateNestedManyWithoutAssessmentStageInput
   }
 
   export type AssessmentStageCreateOrConnectWithoutAssessmentInput = {
@@ -26884,6 +27079,7 @@ export namespace Prisma {
     tfaToken?: StringNullableFilter<"AssessmentTeam"> | string | null
     createdAt?: DateTimeFilter<"AssessmentTeam"> | Date | string
     updatedAt?: DateTimeFilter<"AssessmentTeam"> | Date | string
+    assessmentStageId?: IntFilter<"AssessmentTeam"> | number
   }
 
   export type QuestionAnswerUpsertWithWhereUniqueWithoutAssessmentInput = {
@@ -27041,6 +27237,49 @@ export namespace Prisma {
     create: XOR<AssessmentCreateWithoutAssessmentStageInput, AssessmentUncheckedCreateWithoutAssessmentStageInput>
   }
 
+  export type AssessmentTeamCreateWithoutAssessmentStageInput = {
+    teamType?: $Enums.TeamType
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Assessment: AssessmentCreateNestedOneWithoutAssessmentTeamInput
+    Organisation: OrganisationCreateNestedOneWithoutAssessmentTeamInput
+    Team: TeamCreateNestedOneWithoutAssessmentTeamInput
+    QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentTeamInput
+  }
+
+  export type AssessmentTeamUncheckedCreateWithoutAssessmentStageInput = {
+    id?: number
+    assessmentId: number
+    organisationId: number
+    teamId: number
+    teamType?: $Enums.TeamType
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentTeamInput
+  }
+
+  export type AssessmentTeamCreateOrConnectWithoutAssessmentStageInput = {
+    where: AssessmentTeamWhereUniqueInput
+    create: XOR<AssessmentTeamCreateWithoutAssessmentStageInput, AssessmentTeamUncheckedCreateWithoutAssessmentStageInput>
+  }
+
+  export type AssessmentTeamCreateManyAssessmentStageInputEnvelope = {
+    data: AssessmentTeamCreateManyAssessmentStageInput | AssessmentTeamCreateManyAssessmentStageInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AssessmentUpsertWithoutAssessmentStageInput = {
     update: XOR<AssessmentUpdateWithoutAssessmentStageInput, AssessmentUncheckedUpdateWithoutAssessmentStageInput>
     create: XOR<AssessmentCreateWithoutAssessmentStageInput, AssessmentUncheckedCreateWithoutAssessmentStageInput>
@@ -27091,6 +27330,22 @@ export namespace Prisma {
     AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentNestedInput
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentNestedInput
     AssessmentSetting?: AssessmentSettingUncheckedUpdateManyWithoutAssessmentNestedInput
+  }
+
+  export type AssessmentTeamUpsertWithWhereUniqueWithoutAssessmentStageInput = {
+    where: AssessmentTeamWhereUniqueInput
+    update: XOR<AssessmentTeamUpdateWithoutAssessmentStageInput, AssessmentTeamUncheckedUpdateWithoutAssessmentStageInput>
+    create: XOR<AssessmentTeamCreateWithoutAssessmentStageInput, AssessmentTeamUncheckedCreateWithoutAssessmentStageInput>
+  }
+
+  export type AssessmentTeamUpdateWithWhereUniqueWithoutAssessmentStageInput = {
+    where: AssessmentTeamWhereUniqueInput
+    data: XOR<AssessmentTeamUpdateWithoutAssessmentStageInput, AssessmentTeamUncheckedUpdateWithoutAssessmentStageInput>
+  }
+
+  export type AssessmentTeamUpdateManyWithWhereWithoutAssessmentStageInput = {
+    where: AssessmentTeamScalarWhereInput
+    data: XOR<AssessmentTeamUpdateManyMutationInput, AssessmentTeamUncheckedUpdateManyWithoutAssessmentStageInput>
   }
 
   export type AssessmentCreateWithoutAssessmentQuestionInput = {
@@ -27410,6 +27665,32 @@ export namespace Prisma {
     create: XOR<AssessmentCreateWithoutAssessmentTeamInput, AssessmentUncheckedCreateWithoutAssessmentTeamInput>
   }
 
+  export type AssessmentStageCreateWithoutAssessmentTeamInput = {
+    name: string
+    description?: string | null
+    StageState?: $Enums.StageState
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Assessment: AssessmentCreateNestedOneWithoutAssessmentStageInput
+  }
+
+  export type AssessmentStageUncheckedCreateWithoutAssessmentTeamInput = {
+    id?: number
+    name: string
+    description?: string | null
+    StageState?: $Enums.StageState
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    assessmentId: number
+  }
+
+  export type AssessmentStageCreateOrConnectWithoutAssessmentTeamInput = {
+    where: AssessmentStageWhereUniqueInput
+    create: XOR<AssessmentStageCreateWithoutAssessmentTeamInput, AssessmentStageUncheckedCreateWithoutAssessmentTeamInput>
+  }
+
   export type OrganisationCreateWithoutAssessmentTeamInput = {
     name: string
     description?: string | null
@@ -27454,6 +27735,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    isDefault?: boolean
     teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
@@ -27473,6 +27755,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    isDefault?: boolean
     organisationId: number
     teamType?: $Enums.TeamType
     password?: string | null
@@ -27603,6 +27886,38 @@ export namespace Prisma {
     AssessmentStage?: AssessmentStageUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
+  export type AssessmentStageUpsertWithoutAssessmentTeamInput = {
+    update: XOR<AssessmentStageUpdateWithoutAssessmentTeamInput, AssessmentStageUncheckedUpdateWithoutAssessmentTeamInput>
+    create: XOR<AssessmentStageCreateWithoutAssessmentTeamInput, AssessmentStageUncheckedCreateWithoutAssessmentTeamInput>
+    where?: AssessmentStageWhereInput
+  }
+
+  export type AssessmentStageUpdateToOneWithWhereWithoutAssessmentTeamInput = {
+    where?: AssessmentStageWhereInput
+    data: XOR<AssessmentStageUpdateWithoutAssessmentTeamInput, AssessmentStageUncheckedUpdateWithoutAssessmentTeamInput>
+  }
+
+  export type AssessmentStageUpdateWithoutAssessmentTeamInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    StageState?: EnumStageStateFieldUpdateOperationsInput | $Enums.StageState
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Assessment?: AssessmentUpdateOneRequiredWithoutAssessmentStageNestedInput
+  }
+
+  export type AssessmentStageUncheckedUpdateWithoutAssessmentTeamInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    StageState?: EnumStageStateFieldUpdateOperationsInput | $Enums.StageState
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assessmentId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type OrganisationUpsertWithoutAssessmentTeamInput = {
     update: XOR<OrganisationUpdateWithoutAssessmentTeamInput, OrganisationUncheckedUpdateWithoutAssessmentTeamInput>
     create: XOR<OrganisationCreateWithoutAssessmentTeamInput, OrganisationUncheckedCreateWithoutAssessmentTeamInput>
@@ -27664,6 +27979,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27683,6 +27999,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     organisationId?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27842,6 +28159,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    isDefault?: boolean
     teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
@@ -27861,6 +28179,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    isDefault?: boolean
     teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
@@ -27998,6 +28317,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Assessment: AssessmentCreateNestedOneWithoutAssessmentTeamInput
+    AssessmentStage: AssessmentStageCreateNestedOneWithoutAssessmentTeamInput
     Team: TeamCreateNestedOneWithoutAssessmentTeamInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentTeamInput
   }
@@ -28015,6 +28335,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    assessmentStageId: number
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentTeamInput
   }
 
@@ -28168,6 +28489,7 @@ export namespace Prisma {
     name?: StringFilter<"Team"> | string
     description?: StringNullableFilter<"Team"> | string | null
     logo?: StringNullableFilter<"Team"> | string | null
+    isDefault?: BoolFilter<"Team"> | boolean
     organisationId?: IntFilter<"Team"> | number
     teamType?: EnumTeamTypeFilter<"Team"> | $Enums.TeamType
     password?: StringNullableFilter<"Team"> | string | null
@@ -28372,6 +28694,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    isDefault?: boolean
     teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
@@ -28391,6 +28714,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    isDefault?: boolean
     organisationId: number
     teamType?: $Enums.TeamType
     password?: string | null
@@ -28585,6 +28909,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28604,6 +28929,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     organisationId?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29026,6 +29352,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    isDefault?: boolean
     teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
@@ -29045,6 +29372,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    isDefault?: boolean
     organisationId: number
     teamType?: $Enums.TeamType
     password?: string | null
@@ -29149,6 +29477,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Assessment: AssessmentCreateNestedOneWithoutAssessmentTeamInput
+    AssessmentStage: AssessmentStageCreateNestedOneWithoutAssessmentTeamInput
     Organisation: OrganisationCreateNestedOneWithoutAssessmentTeamInput
     Team: TeamCreateNestedOneWithoutAssessmentTeamInput
   }
@@ -29167,6 +29496,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    assessmentStageId: number
   }
 
   export type AssessmentTeamCreateOrConnectWithoutQuestionAnswerInput = {
@@ -29347,6 +29677,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29366,6 +29697,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     organisationId?: IntFieldUpdateOperationsInput | number
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29482,6 +29814,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUpdateOneRequiredWithoutAssessmentTeamNestedInput
+    AssessmentStage?: AssessmentStageUpdateOneRequiredWithoutAssessmentTeamNestedInput
     Organisation?: OrganisationUpdateOneRequiredWithoutAssessmentTeamNestedInput
     Team?: TeamUpdateOneRequiredWithoutAssessmentTeamNestedInput
   }
@@ -29500,6 +29833,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assessmentStageId?: IntFieldUpdateOperationsInput | number
   }
 
   export type AssessmentUpsertWithoutQuestionAnswerInput = {
@@ -29775,6 +30109,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Assessment: AssessmentCreateNestedOneWithoutAssessmentTeamInput
+    AssessmentStage: AssessmentStageCreateNestedOneWithoutAssessmentTeamInput
     Organisation: OrganisationCreateNestedOneWithoutAssessmentTeamInput
     QuestionAnswer?: QuestionAnswerCreateNestedManyWithoutAssessmentTeamInput
   }
@@ -29792,6 +30127,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    assessmentStageId: number
     QuestionAnswer?: QuestionAnswerUncheckedCreateNestedManyWithoutAssessmentTeamInput
   }
 
@@ -30919,6 +31255,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    assessmentStageId: number
   }
 
   export type QuestionAnswerCreateManyAssessmentInput = {
@@ -31020,6 +31357,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    AssessmentStage?: AssessmentStageUpdateOneRequiredWithoutAssessmentTeamNestedInput
     Organisation?: OrganisationUpdateOneRequiredWithoutAssessmentTeamNestedInput
     Team?: TeamUpdateOneRequiredWithoutAssessmentTeamNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentTeamNestedInput
@@ -31038,6 +31376,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assessmentStageId?: IntFieldUpdateOperationsInput | number
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentTeamNestedInput
   }
 
@@ -31054,6 +31393,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assessmentStageId?: IntFieldUpdateOperationsInput | number
   }
 
   export type QuestionAnswerUpdateWithoutAssessmentInput = {
@@ -31178,6 +31518,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    AssessmentTeam?: AssessmentTeamUpdateManyWithoutAssessmentStageNestedInput
   }
 
   export type AssessmentStageUncheckedUpdateWithoutAssessmentInput = {
@@ -31188,6 +31529,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    AssessmentTeam?: AssessmentTeamUncheckedUpdateManyWithoutAssessmentStageNestedInput
   }
 
   export type AssessmentStageUncheckedUpdateManyWithoutAssessmentInput = {
@@ -31196,6 +31538,71 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     StageState?: EnumStageStateFieldUpdateOperationsInput | $Enums.StageState
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AssessmentTeamCreateManyAssessmentStageInput = {
+    id?: number
+    assessmentId: number
+    organisationId: number
+    teamId: number
+    teamType?: $Enums.TeamType
+    password?: string | null
+    rememberToken?: string | null
+    isActive?: boolean
+    isUnlock?: boolean
+    secretToken?: string | null
+    tfaToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AssessmentTeamUpdateWithoutAssessmentStageInput = {
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Assessment?: AssessmentUpdateOneRequiredWithoutAssessmentTeamNestedInput
+    Organisation?: OrganisationUpdateOneRequiredWithoutAssessmentTeamNestedInput
+    Team?: TeamUpdateOneRequiredWithoutAssessmentTeamNestedInput
+    QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentTeamNestedInput
+  }
+
+  export type AssessmentTeamUncheckedUpdateWithoutAssessmentStageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    assessmentId?: IntFieldUpdateOperationsInput | number
+    organisationId?: IntFieldUpdateOperationsInput | number
+    teamId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentTeamNestedInput
+  }
+
+  export type AssessmentTeamUncheckedUpdateManyWithoutAssessmentStageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    assessmentId?: IntFieldUpdateOperationsInput | number
+    organisationId?: IntFieldUpdateOperationsInput | number
+    teamId?: IntFieldUpdateOperationsInput | number
+    teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    isUnlock?: BoolFieldUpdateOperationsInput | boolean
+    secretToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -31419,6 +31826,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     logo?: string | null
+    isDefault?: boolean
     teamType?: $Enums.TeamType
     password?: string | null
     rememberToken?: string | null
@@ -31484,6 +31892,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    assessmentStageId: number
   }
 
   export type AssessmentUpdateWithoutOrganisationInput = {
@@ -31547,6 +31956,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -31566,6 +31976,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -31585,6 +31996,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    isDefault?: BoolFieldUpdateOperationsInput | boolean
     teamType?: EnumTeamTypeFieldUpdateOperationsInput | $Enums.TeamType
     password?: NullableStringFieldUpdateOperationsInput | string | null
     rememberToken?: NullableStringFieldUpdateOperationsInput | string | null
@@ -31730,6 +32142,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUpdateOneRequiredWithoutAssessmentTeamNestedInput
+    AssessmentStage?: AssessmentStageUpdateOneRequiredWithoutAssessmentTeamNestedInput
     Team?: TeamUpdateOneRequiredWithoutAssessmentTeamNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentTeamNestedInput
   }
@@ -31747,6 +32160,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assessmentStageId?: IntFieldUpdateOperationsInput | number
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentTeamNestedInput
   }
 
@@ -31763,6 +32177,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assessmentStageId?: IntFieldUpdateOperationsInput | number
   }
 
   export type OrganisationRoleCreateManyOrganisationStructureInput = {
@@ -32065,6 +32480,7 @@ export namespace Prisma {
     tfaToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    assessmentStageId: number
   }
 
   export type QuestionAnswerCreateManyTeamInput = {
@@ -32136,6 +32552,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Assessment?: AssessmentUpdateOneRequiredWithoutAssessmentTeamNestedInput
+    AssessmentStage?: AssessmentStageUpdateOneRequiredWithoutAssessmentTeamNestedInput
     Organisation?: OrganisationUpdateOneRequiredWithoutAssessmentTeamNestedInput
     QuestionAnswer?: QuestionAnswerUpdateManyWithoutAssessmentTeamNestedInput
   }
@@ -32153,6 +32570,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assessmentStageId?: IntFieldUpdateOperationsInput | number
     QuestionAnswer?: QuestionAnswerUncheckedUpdateManyWithoutAssessmentTeamNestedInput
   }
 
@@ -32169,6 +32587,7 @@ export namespace Prisma {
     tfaToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    assessmentStageId?: IntFieldUpdateOperationsInput | number
   }
 
   export type QuestionAnswerUpdateWithoutTeamInput = {
@@ -32660,6 +33079,10 @@ export namespace Prisma {
      * @deprecated Use AssessmentCountOutputTypeDefaultArgs instead
      */
     export type AssessmentCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AssessmentCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use AssessmentStageCountOutputTypeDefaultArgs instead
+     */
+    export type AssessmentStageCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AssessmentStageCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use AssessmentQuestionCountOutputTypeDefaultArgs instead
      */

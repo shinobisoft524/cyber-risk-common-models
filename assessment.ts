@@ -114,3 +114,22 @@ export interface IAssessmentFullData {
   };
   templatesInfo?: IOrganisationTemplateRes[];
 }
+
+export interface IAssessmentTeamInfo {
+  workTitle: RoleTitles;
+  assessment: IAssessmentDetailWithTeamInfo;
+  assessmentTeams: {
+    id: number;
+    assessmentStageId: number;
+    assessmentId: number;
+    AssessmentStage: {
+      id: number;
+      name: string;
+    };
+    Team: ITeamBaseDetail;
+  }[];
+  availableTeams: {
+    workerTeams: ITeamBaseDetail[];
+    viewerTeams: ITeamBaseDetail[];
+  };
+}
