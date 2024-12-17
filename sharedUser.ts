@@ -17,6 +17,34 @@ export interface IAdminUser {
   }[];
 }
 
+export interface IAssessmentWorker {
+  name: string;
+  id: number;
+  email: string;
+  logo: string;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  AssessmentUser: {
+    id: number;
+    isActive: boolean;
+    AssessmentRole: {
+      id: number;
+      isActive: boolean;
+      Role: { name: string; id: number };
+    }[];
+    AssessmentTeam: {
+      id: number;
+      assessmentId: number;
+      Assessment: {
+        id: number;
+        name: string;
+      };
+      stageId: number;
+    };
+  }[];
+}
+
 export interface IWorker {
   name: string;
   id: number;

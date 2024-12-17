@@ -160,7 +160,7 @@ export interface ITeamDetail {
   organisationId: number;
   isActive: boolean;
   Organisation: { name: string; id: number };
-  AssessmentTeam: {
+  AssessmentTeam?: {
     id: number;
     Assessment: {
       name: string;
