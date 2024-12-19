@@ -65,8 +65,9 @@ export interface ITeamUser {
 }
 export interface ITeamInfo {
   managers: ITeamUser[];
-  teamUsers: ITeamUser[];
-  organisationUsers: ITeamUser[];
+  auditees: ITeamUser[];
+  viewers: ITeamUser[];
+  users: ITeamUser[];
 }
 
 export interface ITeamDetailRes {
@@ -159,6 +160,7 @@ export interface ITeamDetail {
   description: string;
   organisationId: number;
   isActive: boolean;
+  isDefault: boolean;
   Organisation: { name: string; id: number };
   AssessmentTeam: {
     id: number;
