@@ -68,6 +68,11 @@ export interface IUserListIteam {
       isActive: boolean;
     };
     teamId: number;
+    OrganisationRole?: {
+      id: number;
+      isActive: boolean;
+      Role: { name: string; id: number };
+    }[];
   }[];
 }
 
