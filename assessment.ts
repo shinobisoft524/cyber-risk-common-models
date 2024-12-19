@@ -112,7 +112,7 @@ export interface IAssessmentFullData {
     viewerTeamIds: number[];
     assessmentTeamIds: number[];
   };
-  templatesInfo?: IOrganisationTemplateRes[];
+  templatesInfo?: IOrganisationTemplateRes[] | IOrganisationTemplateRes;
 }
 
 export interface IAssessmentTeamInfo {
