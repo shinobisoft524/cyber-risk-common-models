@@ -96,6 +96,7 @@ export interface IAssessmentDetailWithTeamInfo extends IAssessmentDetail {
     assessmentId: number;
     Team: ITeamBase;
   }[];
+  templatesInfo?: IOrganisationTemplateRes;
 }
 
 export interface IAssessmentFullData {
