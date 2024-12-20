@@ -133,3 +133,17 @@ export interface IAssessmentTeamInfo {
     viewerTeams: ITeamBaseDetail[];
   };
 }
+
+export interface IAssessmentListItem {
+  id: number;
+  name: string;
+  description: string;
+  AssessmentTeam: { id: number; Team: { id: number; name: string } }[];
+  organisationTemplateId: number;
+  AssessmentSetting: { name: string; value: string }[];
+  AssessmentStage: {
+    name: string;
+    StageState: string;
+    roleTitle: RoleTitles;
+  }[];
+}
