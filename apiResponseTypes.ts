@@ -8,6 +8,12 @@ export interface IStandardRes<T> {
   statusCode: number;
 }
 
+export interface IAiRes<T> {
+  data: T;
+  message?: string;
+  status: string;
+}
+
 export interface IAuthReq {
   email: string;
   password: string;
